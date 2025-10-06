@@ -36,9 +36,8 @@
   /* NAV LATERAL */
   nav.sidenav{background:#fff;color:#1f2a56;border:1px solid rgba(1,5,66,.08);border-radius:28px;padding:22px;position:sticky;top:16px;height:max-content;display:flex;flex-direction:column;min-width:248px;box-shadow:0 24px 48px rgba(15,23,42,.06)}
   .brand{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-  .brand-logo{display:flex;align-items:center;gap:10px;color:#010542;font-weight:700;font-size:1.06rem;letter-spacing:-.01em;text-transform:lowercase}
-  .brand-logo .brand-mark{width:32px;height:32px;display:block}
-  .brand-logo .brand-text{display:inline-flex;align-items:flex-end;padding-bottom:2px}
+  .brand-logo{display:flex;align-items:center;gap:12px;color:#010542;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;text-transform:lowercase}
+  .brand-logo .brand-mark{width:150px;height:auto;display:block}
   .brand .theme{margin-left:12px;border:none;background:#eef1ff;color:#010542;width:38px;height:38px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.15rem;transition:background .2s ease,color .2s ease}
   .brand .theme:hover{background:#dfe6ff}
   .brand .theme:focus-visible{outline:2px solid transparent;box-shadow:0 0 0 3px rgba(37,99,235,.25)}
@@ -142,12 +141,18 @@
   <nav class="sidenav" aria-label="Navegação principal">
     <div class="brand">
       <div class="brand-logo">
-        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="Adsmagic">
-          <path fill="#1fb96e" d="M30.4 6.4 9 58h10.8l4.5-10.2h15.6L44.4 58H55L34.1 6.4h-3.7Zm-1.4 27.8 3.6-8.7 3.8 8.7Z"/>
-          <path fill="#010542" d="m32 6.4 21 51.6h-8.6l-6.3-14.8H25.6Z"/>
-          <path fill="#1fb96e" d="M32 2.5c1.4 0 2.6 1.2 2.6 2.6S33.4 7.7 32 7.7s-2.6-1.2-2.6-2.6S30.6 2.5 32 2.5Z"/>
+        <svg class="brand-mark" viewBox="0 0 220 60" role="img" aria-labelledby="logoTitle">
+          <title id="logoTitle">Adsmagic</title>
+          <defs>
+            <linearGradient id="logoGradient" x1="49" y1="6" x2="49" y2="54" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#3FE28D"/>
+              <stop offset="1" stop-color="#1A9F5E"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#logoGradient)" fill-rule="evenodd" d="M76.2 6L44.6 54H58.7L66.9 39.8H92.1L100 54H114.7L84.2 6Z M64.9 31.6L57.2 44.8H88.1L80.4 31.6Z"/>
+          <path fill="#010542" d="M84.7 6h14L126 54h-13.7L104 39.8H70.6Z"/>
+          <text x="140" y="43" fill="#010542" font-family="'Inter',system-ui,Arial,sans-serif" font-size="32" font-weight="700" style="letter-spacing:-0.8px">adsmagic</text>
         </svg>
-        <span class="brand-text">adsmagic</span>
       </div>
       <button class="theme" onclick="toggleTheme()" aria-pressed="false" aria-label="Alternar tema">🌙</button>
     </div>
