@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Onboarding • Adsmagic</title>
+<style>
+  *{box-sizing:border-box}html,body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:#f7f8fb;color:#111}
+  :root{--primary:#010542;--success:#12a150;--muted:#6b7280;--border:#e6e7ec}
+
+  /* ==== Tokens do shadcn (sidebar) ==== */
+  :root{
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+  }
+  .dark{
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.439 0 0);
+  }
+
+  .app{max-width:1280px;margin:32px auto;padding:0 20px;display:grid;grid-template-columns:240px 260px 1fr;gap:20px}
+  @media(max-width:1024px){.app{grid-template-columns:1fr}}
+
+  /* NAV LATERAL */
+  nav.sidenav{background:var(--sidebar);color:var(--sidebar-foreground);border:1px solid var(--sidebar-border);border-radius:12px;padding:16px;position:sticky;top:16px;height:max-content;display:flex;flex-direction:column;gap:14px}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:800;color:inherit;font-size:1.1rem}
+  .brand .logo{width:20px;height:20px;border-radius:4px;background:conic-gradient(from 140deg at 50% 50%, #10b981, #22d3ee, #6366f1);display:inline-block}
+  .brand .theme{margin-left:auto;border:1px solid var(--sidebar-border);background:var(--sidebar-accent);color:var(--sidebar-accent-foreground);padding:6px 10px;border-radius:8px;cursor:pointer}
+  .brand .theme:focus-visible{outline:2px solid transparent;box-shadow:0 0 0 2px var(--sidebar-ring)}
+  .progress{border:1px solid var(--sidebar-border);border-radius:10px;padding:10px 12px;background:var(--sidebar-accent)}
+  .progress .title{font-weight:600}
+  .progress .bar{height:6px;border-radius:999px;background:color-mix(in oklab, var(--sidebar-border) 60%, transparent);margin-top:8px;overflow:hidden}
+  .progress .bar i{display:block;height:100%;width:0%;background:var(--sidebar-primary)}
+  .group-title{color:var(--sidebar-foreground);opacity:.6;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;margin:6px 0}
+  .navitem{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:inherit;text-decoration:none;border:1px solid transparent;cursor:pointer}
+  .navitem:hover:not(.locked){background:var(--sidebar-accent);color:var(--sidebar-accent-foreground)}
+  .navitem.active{background:var(--sidebar-primary);color:var(--sidebar-primary-foreground)}
+  .navitem:focus-visible{outline:2px solid transparent;box-shadow:0 0 0 2px var(--sidebar-ring)}
+  .navitem .icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center}
+  .navitem.locked{opacity:.45;pointer-events:auto;cursor:default}
+
+  /* WIZARD */
+  aside{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;position:sticky;top:16px;height:max-content;overflow:hidden}
+  aside h4{margin:0 0 10px;color:#111}
+  aside ul{list-style:none;padding:0;margin:0}
+  aside li{margin-bottom:6px}
+  aside button{all:unset;display:block;width:100%;padding:10px 12px;border-radius:10px;cursor:pointer;color:#333}
+  aside button.active{background:var(--primary);color:#fff;font-weight:600}
+  aside button.done:not(.active){color:var(--success)}
+  main{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;min-height:520px}
+  h2{margin:0 0 10px}
+  p{margin:8px 0}
+  .row{margin:14px 0}
+  label{display:block;margin-bottom:6px;font-weight:600;font-size:.92rem}
+  input,select,textarea{width:100%;padding:10px 12px;border:1px solid #cfd2da;border-radius:10px;font-size:1rem;background:#fff}
+  .cta{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+  .btn{background:var(--primary);color:#fff;border:none;padding:10px 16px;border-radius:10px;cursor:pointer}
+  .btn.sec{background:#eef1f6;color:#222}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .card{border:1px solid var(--border);border-radius:12px;padding:14px;background:#fff}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:780px){.grid2{grid-template-columns:1fr}}
+  .radioCard{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:10px;padding:12px;cursor:pointer}
+  .radioCard input{width:auto;margin-top:3px}
+  .muted{color:var(--muted);font-size:.9rem}
+  .box{border:1px solid var(--border);border-radius:12px;padding:12px;margin:10px 0;background:#fff}
+  .ok{color:var(--success);font-weight:700}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;font-size:.78rem;border:1px solid var(--border)}
+  .chip.ok{color:var(--success);border-color:#cfe9d7;background:#f1fbf4}
+  .chip.bad{color:#b91c1c;border-color:#f3c9c9;background:#fff5f5}
+  details.accordion{border:1px solid var(--border);border-radius:12px;margin:12px 0;background:#fff}
+  details.accordion>summary{list-style:none;padding:14px 16px;cursor:pointer;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+  details.accordion>div{padding:0 16px 16px}
+  .toast{position:fixed;right:18px;bottom:18px;background:#333;color:#fff;padding:10px 14px;border-radius:10px;font-size:.9rem;z-index:10000}
+  .media-16x9{width:100%;height:auto;border:1px solid var(--border);border-radius:12px;margin:16px 0 16px;aspect-ratio:16/9;background:#000}
+  /* WhatsApp - card de canal */
+  .channel-card{position:relative;border:1px solid var(--border);border-radius:16px;padding:18px;background:#fff}
+  .wa-head{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+  .wa-badge{width:46px;height:46px;border-radius:999px;background:#22c55e;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+  .wa-title{font-weight:700;font-size:1.25rem}
+  .status-pill{position:absolute;top:16px;right:16px;border-radius:999px;padding:6px 10px;font-size:.85rem;border:1px solid;user-select:none}
+  .status-pill.ok{color:#166534;background:#dcfce7;border-color:#bbf7d0}
+  .status-pill.bad{color:#b91c1c;background:#fee2e2;border-color:#fecaca}
+  .select-lg{appearance:none;padding:12px 40px 12px 12px;border:1px solid #cfd2da;border-radius:12px;background:#fff right 12px center/18px no-repeat;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%236b7280"><path d="M7 10l5 5 5-5"/></svg>')}
+  .btn.wa{background:#16a34a;width:100%;height:48px;border-radius:12px;font-weight:600}
+  .btn.wa:hover{filter:brightness(.95)}
+  /* Meta & Google cards */
+  .meta-badge{width:46px;height:46px;border-radius:999px;background:#1877F2;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+  .g-badge{width:46px;height:46px;border-radius:999px;background:#EA4335;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+  .btn.meta{background:#2563eb;width:100%;height:48px;border-radius:12px;font-weight:600}
+  .btn.google{background:#dc2626;width:100%;height:48px;border-radius:12px;font-weight:600}
+  .btn.meta:hover,.btn.google:hover{filter:brightness(.95)}
+  /* Modal de conclusão */
+  .backdrop{position:fixed;inset:0;background:rgba(17,24,39,.55);display:flex;align-items:center;justify-content:center;z-index:9999}
+  .modal{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;width:min(520px,92vw);text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.15)}
+  .modal .icon{width:72px;height:72px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:38px;margin-bottom:8px;background:linear-gradient(135deg,var(--primary), var(--primary));color:#fff}
+  .modal h3{margin:.4rem 0 6px;font-size:1.6rem}
+  .modal p{margin:0 0 14px;color:#4b5563}
+  .modal .actions{display:flex;gap:10px;justify-content:center;margin-top:6px}
+  /* ===== WhatsApp Modal (conectar) ===== */
+  .wa-modal{width:min(760px,96vw);text-align:left}
+  .wa-modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .wa-modal-head .x{all:unset;cursor:pointer;font-size:18px;padding:4px}
+  .step{display:flex;align-items:center;gap:8px;margin:12px 0 8px}
+  .step .num{width:28px;height:28px;border-radius:999px;background:#e0f2fe;color:#1d4ed8;display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+  .step .ttl{font-weight:700}
+  .qr-wrap{border-radius:12px;background:#eafff3;border:1px solid #bbf7d0;padding:16px;display:flex;justify-content:center;margin-bottom:6px}
+  .qr{width:220px;height:220px;border-radius:8px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:42px;letter-spacing:6px}
+  .or-row{display:flex;align-items:center;gap:10px;margin:14px 0}
+  .or-row::before,.or-row::after{content:"";height:1px;background:var(--border);flex:1}
+  .bluebox{border:1px solid #bfdbfe;background:#eff6ff;padding:12px;border-radius:12px}
+  .status-wait{border:1px solid #fde68a;background:#fef3c7;color:#92400e;border-radius:12px;padding:10px 12px;margin-top:10px}
+  /* Confetes */
+  .confetti{position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden}
+  .confetti i{position:fixed;top:-12px;border-radius:2px;opacity:.95;animation-name:fall;animation-timing-function:linear;animation-fill-mode:forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:1}}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- NAV PRINCIPAL -->
+  <nav class="sidenav" aria-label="Navegação principal">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"></span> Adsmagic
+      <button class="theme" onclick="toggleTheme()" aria-pressed="false" aria-label="Alternar tema">🌙</button>
+    </div>
+    <div class="progress" aria-label="Progresso do onboarding">
+      <div class="title">Comece por aqui</div>
+      <div class="muted" style="font-size:.82rem"><span id="progTxt">0% concluído</span></div>
+      <div class="bar" aria-hidden="true"><i id="progBar" style="width:0%"></i></div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Principal</div>
+      <a href="#" class="navitem" data-key="visao" data-step="0">
+        <span class="icon">📊</span><span>Visão geral</span>
+      </a>
+      <a href="#" class="navitem locked" data-key="contatos" data-locked="true">
+        <span class="icon">👥</span><span>Contatos</span>
+      </a>
+      <a href="#" class="navitem locked" data-key="vendas" data-locked="true">
+        <span class="icon">💲</span><span>Vendas</span>
+      </a>
+      <a href="#" class="navitem locked" data-key="funil" data-locked="true">
+        <span class="icon">🧭</span><span>Funil</span>
+      </a>
+      <a href="#" class="navitem locked" data-key="eventos" data-locked="true">
+        <span class="icon">🧊</span><span>Eventos</span>
+      </a>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Rastreamento</div>
+      <a href="#" class="navitem locked" data-key="links" data-locked="true">
+        <span class="icon">🔗</span><span>Links</span>
+      </a>
+      <a href="#" class="navitem locked" data-key="mensagens" data-locked="true">
+        <span class="icon">💬</span><span>Mensagens</span>
+      </a>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Sistema</div>
+      <a href="#" class="navitem locked" data-key="integracoes" data-locked="true">
+        <span class="icon">⚙️</span><span>Integrações</span>
+      </a>
+      <a href="#" class="navitem locked" data-key="projetos" data-locked="true">
+        <span class="icon">🏢</span><span>Meus projetos</span>
+      </a>
+      <a href="#" class="navitem locked" data-key="suporte" data-locked="true">
+        <span class="icon">🔒</span><span>Suporte</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- WIZARD / ONBOARDING -->
+  <aside>
+    <h4>Configuração</h4>
+    <ul id="menu">
+      <li><button onclick="go(0)">0 • Visão geral</button></li>
+      <li><button onclick="go(1)" disabled>3 • Integrações</button></li>
+      <li><button onclick="go(2)" disabled>4 • Rastreamento</button></li>
+      <li><button onclick="go(3)" disabled>5 • Funil</button></li>
+      <li><button onclick="go(4)" disabled>6 • Relatórios</button></li>
+    </ul>
+  </aside>
+
+  <main id="step"></main>
+</div>
+
+<script>
+// *** IMPORTANTE: Nunca escrever a sequência literal de fechamento aqui. ***
+// Usamos divisão da palavra para evitar que o parser de HTML feche este bloco.
+const SCRIPT_CLOSE = '</scr' + 'ipt>';
+const SCRIPT_CLOSE_ESCAPED = '<\\/scr' + 'ipt>';
+
+function sanitize(html){
+  // Converte qualquer fechamento de tag de script em versão escapada ANTES de injetar com innerHTML.
+  return String(html).split(SCRIPT_CLOSE).join(SCRIPT_CLOSE_ESCAPED);
+}
+
+function getTagSnippet(){
+  // O fechamento já vem escapado para não quebrar o script hospedeiro.
+  return `<script>\n(function(w,d){var s=d.createElement('script');s.async=1;s.src='https://s.adsmagic.com.br/ad-script.js';d.head.appendChild(s)})(window,document);\n<\\/script>`;
+}
+
+function toggleTheme(){
+  const root=document.documentElement;
+  const on=root.classList.toggle('dark');
+  const btn=document.querySelector('.brand .theme');
+  if(btn){btn.setAttribute('aria-pressed',String(on));btn.textContent=on?'☀️':'🌙'}
+}
+
+// ===== Navegação lateral =====
+function setupNavHandlers(){
+  document.querySelectorAll('.sidenav .navitem').forEach(link=>{
+    link.addEventListener('click',event=>{
+      event.preventDefault();
+      if(link.dataset.locked==='true') return;
+      const stepAttr=link.getAttribute('data-step');
+      const stepIndex=stepAttr!==null?Number(stepAttr):undefined;
+      if(stepAttr!==null && !Number.isFinite(stepIndex)) return;
+      navSelect(link,link.dataset.key,typeof stepIndex==='number'&&Number.isFinite(stepIndex)?stepIndex:undefined);
+    });
+  });
+}
+
+// ===== State =====
+let step=0, maxStep=0;
+let onboardingDone=false;
+let whatsappConnected=false, tagCopied=false;
+let googleConnected=false, metaConnected=false;
+let generatedLink=false, generatedMsg=false;
+let generatedLinkValue='', generatedMsgValue='';
+let funnel=[{name:'Vendas',phrase:'',google:'',metaValue:'0'}];
+let reports=[{phone:'',time:'09:00',days:['seg','ter','qua','qui','sex']}];
+
+let trackOk=false,funnelOk=false,reportsOk=false;
+
+const stepKeyMap=['visao','integracoes','links','funil','relatorios'];
+
+// ===== Nav helpers =====
+function unlockNav(){
+  document.querySelectorAll('.navitem.locked').forEach(a=>{
+    a.classList.remove('locked');
+    if(a.dataset){
+      delete a.dataset.locked;
+    }
+  });
+}
+
+function navSelect(el,key,gotoStep){
+  document.querySelectorAll('.sidenav .navitem').forEach(a=>{a.classList.remove('active');a.removeAttribute('aria-current')});
+  el.classList.add('active');
+  el.setAttribute('aria-current','page');
+  if(typeof gotoStep==='number'){
+    maxStep=Math.max(maxStep,gotoStep);
+    step=gotoStep;
+    render();
+  }
+}
+function updateNavActive(){
+  const targetKey=stepKeyMap[step];
+  document.querySelectorAll('.sidenav .navitem').forEach(a=>{
+    const isActive=a.dataset.key===targetKey;
+    a.classList.toggle('active',isActive);
+    if(isActive){a.setAttribute('aria-current','page')}else{a.removeAttribute('aria-current')}
+  });
+}
+
+// ===== Progress =====
+function stepsCompletedCount(){
+  if(onboardingDone) return 5;
+  let count=0;
+  if(maxStep>=1) count++;          // saiu da Visão geral
+  if(whatsappConnected) count++;    // integrou WhatsApp
+  if(trackOk) count++;              // rastreamento válido
+  if(funnelOk) count++;             // funil válido
+  if(reportsOk) count++;            // relatórios válidos
+  return count;
+}
+function updateProgress(){
+  const total=5; const done=stepsCompletedCount();
+  const pct=Math.round((done/total)*100);
+  const txt=document.getElementById('progTxt');
+  const bar=document.getElementById('progBar');
+  if(txt) txt.textContent=`${pct}% concluído`;
+  if(bar) bar.style.width=pct+'%';
+}
+
+// ===== Render =====
+function render(){
+  const tpl = templates[step]();
+  document.getElementById('step').innerHTML = sanitize(tpl);
+  [...document.querySelectorAll('#menu button')].forEach((b,i)=>{b.classList.toggle('active',i===step);b.classList.toggle('done',i<=maxStep);b.disabled=i>maxStep;});
+  if(step===1){bindIntegrations();}
+  if(step===2){bindTracking();}
+  if(step===3){bindFunnel();}
+  if(step===4){bindReports();}
+  updateNavActive();
+  updateProgress();
+}
+function next(){ step=Math.min(step+1,4); maxStep=Math.max(maxStep,step); render(); }
+function prev(){ step=Math.max(0,step-1); render(); }
+function go(n){ if(n<=maxStep){ step=n; render(); } }
+
+// ===== Templates =====
+const templates=[
+  ()=>{
+    return (
+      `<h2>Bem-vindo ao Adsmagic 🎉</h2>
+       <video class="media-16x9" controls poster="" aria-label="Vídeo de boas-vindas">
+         <source src="" type="video/mp4">
+         Seu navegador não suporta vídeo HTML5.
+       </video>
+       <div class="card muted">Este painel guiará você pelos passos essenciais para configurar sua conta e começar a rastrear seus anúncios efetivamente.</div>
+       <div class="cta"><button class="btn" onclick="next()">Começar</button></div>`
+    );
+  },
+  ()=>{
+    return (
+      `<h2>Integrações</h2>
+       <details class="accordion" open>
+         <summary>
+           <span>Site • Tag Adsmagic</span>
+           <span class="chip ${tagCopied?'ok':'bad'}">${tagCopied?'Copiado':'Não copiado'}</span>
+         </summary>
+         <div>
+           <div class="muted">Cole este código antes do <code>&lt;head&gt;</code> do seu site ou via GTM.</div>
+           <div class="row"><textarea id="tag" rows="7" readonly>${getTagSnippet()}</textarea></div>
+           <button class="btn sec" onclick="copyTag()">Copiar</button>
+           <a class="muted" style="margin-left:10px" href="#">Leia o guia de integrações</a>
+         </div>
+       </details>
+
+       <h3 style="margin-top:16px">Canais</h3>
+       <section class="channel-card" role="region" aria-label="WhatsApp">
+         <div class="wa-head">
+           <div class="wa-badge" aria-hidden="true">WA</div>
+           <div class="wa-title">WhatsApp</div>
+         </div>
+         <span class="status-pill ${whatsappConnected?'ok':'bad'}">${whatsappConnected?'Conectado':'Desconectado'}</span>
+         <p class="muted" style="margin:6px 0 10px">Conecte-se com o WhatsApp para salvar automaticamente os contatos e rastrear a jornada de compra</p>
+         <div class="row"><select id="waAcc" class="select-lg"><option value="">Nenhuma conta conectada</option></select></div>
+         <div class="row"><button class="btn wa" onclick="openWAModal()">Conectar WhatsApp</button></div>
+       </section>
+
+       <section class="channel-card" role="region" aria-label="Meta Ads">
+         <div class="wa-head">
+           <div class="meta-badge" aria-hidden="true">f</div>
+           <div class="wa-title">Meta Ads</div>
+         </div>
+         <span class="status-pill ${metaConnected?'ok':'bad'}">${metaConnected?'Conectado':'Desconectado'}</span>
+         <p class="muted" style="margin:6px 0 10px">Conecte-se com o Meta Ads para obter as informações da conta e enviar as conversões via API</p>
+         <div class="row"><select id="mAcc" class="select-lg"><option value="">Nenhuma conta conectada</option><option>BM/Conta X</option></select></div>
+         <div class="row"><button class="btn meta" onclick="openMetaModal()">🔐 Autenticar Meta Ads</button></div>
+       </section>
+
+       <section class="channel-card" role="region" aria-label="Google Ads">
+         <div class="wa-head">
+           <div class="g-badge" aria-hidden="true">G</div>
+           <div class="wa-title">Google Ads</div>
+         </div>
+         <span class="status-pill ${googleConnected?'ok':'bad'}">${googleConnected?'Conectado':'Desconectado'}</span>
+         <p class="muted" style="margin:6px 0 10px">Conecte-se com o Google Ads para obter as informações da conta e enviar as conversões via API</p>
+         <div class="row"><select id="gAcc" class="select-lg"><option value="">Nenhuma conta conectada</option><option>Letícia Lopes (Odonto)</option></select></div>
+         <div class="row"><button class="btn google" onclick="openGoogleModal()">🔗 Conectar Google Ads</button></div>
+       </section>
+
+       <div class="cta">
+         <button class="btn sec" onclick="prev()">Voltar</button>
+         <button id="nextInt" class="btn" ${whatsappConnected?'':'disabled'} onclick="next()">Próximo</button>
+       </div>`
+    );
+  },
+  ()=>{
+    return (
+      `<h2>Rastreamento</h2>
+       <div class="row grid2">
+         <label class="radioCard"><input type="radio" name="mode" value="direct" checked><div><strong>Mensagens diretas</strong><div class="muted">Sem site: Meta Mensagem, Extensão WhatsApp, GMB…</div></div></label>
+         <label class="radioCard"><input type="radio" name="mode" value="site"><div><strong>Cliques do site → WhatsApp</strong><div class="muted">Com site: Botões, Bio IG, UTMs…</div></div></label>
+       </div>
+       <div class="row"><label>Fontes</label><div id="sources" class="grid2"></div><div id="hint" class="muted"></div></div>
+       <div id="config"></div>
+       <div class="cta"><button class="btn sec" onclick="prev()">Voltar</button><button id="nextTrack" class="btn" disabled onclick="next()">Próximo</button></div>`
+    );
+  },
+  ()=>{
+    return (
+      `<h2>Funil</h2>
+       <div id="funnelBox"></div>
+       <div class="row"><button class="btn sec" onclick="addStage()">+ Adicionar etapa</button></div>
+       <div class="cta"><button class="btn sec" onclick="prev()">Voltar</button><button id="nextFunnel" class="btn" disabled onclick="next()">Próximo</button></div>`
+    );
+  },
+  ()=>{
+    return (
+      `<h2>Relatórios</h2>
+       <div id="reportsBox"></div>
+       <div class="row"><button class="btn sec" onclick="addReport()">+ Adicionar telefone</button></div>
+       <div class="cta"><button class="btn sec" onclick="prev()">Voltar</button><button id="finish" class="btn" disabled onclick="done()">Concluir</button></div>`
+    );
+  }
+];
+
+// ===== WhatsApp Connect Modal =====
+function openWAModal(){
+  const token=Math.random().toString(36).slice(2,10);
+  const link='https://wa.adsmagic.com.br/connect?token='+token;
+  const bd=document.createElement('div');
+  bd.className='backdrop';
+  const html = `
+  <div class="modal wa-modal" role="dialog" aria-modal="true" aria-labelledby="waTitle">
+    <div class="wa-modal-head">
+      <h3 id="waTitle" style="margin:0">Conectar WhatsApp</h3>
+      <button class="x" id="waClose" aria-label="Fechar">✕</button>
+    </div>
+    <p class="muted">Para conectar sua conta WhatsApp, você pode escanear o QR Code ou usar o link de ativação</p>
+    <div class="step"><span class="num">1</span><span class="ttl">Escaneie o QR Code</span></div>
+    <div class="qr-wrap"><div class="qr" aria-label="QR Code">QR</div></div>
+    <p class="muted">Abra o WhatsApp → <b>Menu</b> → <b>Dispositivos conectados</b> → <b>Conectar dispositivo</b></p>
+    <div class="or-row"><span>OU</span></div>
+    <div class="step"><span class="num">2</span><span class="ttl">Compartilhe o link</span></div>
+    <div class="bluebox">
+      <div class="muted"><b>Não está com o celular?</b> Copie o link e envie para quem tem acesso ao número <b>16991095643</b></div>
+      <div class="row"><input id="waLink" readonly value="${link}"></div>
+      <div class="row"><button class="btn sec" id="waCopyLink">📋 Copiar link de ativação</button></div>
+    </div>
+    <div class="status-wait">⏳ Aguardando conexão com o WhatsApp...</div>
+    <div class="actions" style="display:flex;justify-content:space-between;margin-top:14px">
+      <button class="btn sec" id="waCancel">Cancelar</button>
+      <button class="btn" style="background:#16a34a" id="waSimulate">✓ Simular conexão</button>
+    </div>
+  </div>`;
+  bd.innerHTML = html;
+  document.body.appendChild(bd);
+  const close=()=>bd.remove();
+  bd.addEventListener('click',e=>{if(e.target===bd) close();});
+  bd.querySelector('#waCancel').onclick=close;
+  const closeBtn=bd.querySelector('#waClose'); if(closeBtn) closeBtn.onclick=close;
+  bd.querySelector('#waCopyLink').onclick=()=>{const v=bd.querySelector('#waLink').value;copyToClipboard(v)};
+  bd.querySelector('#waSimulate').onclick=()=>{connectWA();close();};
+  const onKey=(ev)=>{if(ev.key==='Escape'){close();document.removeEventListener('keydown',onKey)}};document.addEventListener('keydown',onKey);
+}
+
+function openMetaModal(){
+  const bd=document.createElement('div');bd.className='backdrop';
+  const html=`<div class="modal wa-modal" role="dialog" aria-modal="true" aria-labelledby="metaTitle">
+    <div class="wa-modal-head">
+      <h3 id="metaTitle" style="margin:0">Autenticar Meta Ads</h3>
+      <button class="x" id="mClose" aria-label="Fechar">✕</button>
+    </div>
+    <p class="muted">Faça login com sua conta Meta para listar Pixels e autorizar o envio de conversões.</p>
+    <div class="grid2">
+      <div class="row"><label>Conta</label><select id="mAcc2"><option value="">Selecione…</option><option>BM/Conta X</option></select></div>
+      <div class="row"><label>Pixel</label><select id="mPixel2"><option value="">Selecione…</option><option>PX-111</option><option>PX-222</option></select></div>
+    </div>
+    <div class="row"><label>Token</label><input id="mToken2" placeholder="EAAB..."></div>
+    <div class="actions" style="display:flex;justify-content:space-between;margin-top:14px">
+      <button class="btn sec" id="mCancel">Cancelar</button>
+      <button class="btn meta" id="mAuth">🔐 Autenticar Meta Ads</button>
+    </div>
+  </div>`;
+  bd.innerHTML=html;document.body.appendChild(bd);
+  const close=()=>bd.remove();
+  bd.addEventListener('click',e=>{if(e.target===bd) close();});
+  const el=(q)=>bd.querySelector(q);
+  el('#mCancel').onclick=close; const cb=el('#mClose'); if(cb) cb.onclick=close;
+  el('#mAuth').onclick=()=>{metaConnected=true;toast('Meta Ads conectado');close();render();};
+}
+
+function openGoogleModal(){
+  const bd=document.createElement('div');bd.className='backdrop';
+  const html=`<div class="modal wa-modal" role="dialog" aria-modal="true" aria-labelledby="gTitle">
+    <div class="wa-modal-head">
+      <h3 id="gTitle" style="margin:0">Conectar Google Ads</h3>
+      <button class="x" id="gClose" aria-label="Fechar">✕</button>
+    </div>
+    <p class="muted">Autorize o acesso à sua conta Google Ads para leitura de campanhas e envio de conversões.</p>
+    <div class="row"><label>Conta</label><select id="gAcc2"><option value="">Selecione…</option><option>Letícia Lopes (Odonto)</option></select></div>
+    <div class="actions" style="display:flex;justify-content:space-between;margin-top:14px">
+      <button class="btn sec" id="gCancel">Cancelar</button>
+      <button class="btn google" id="gAuth">🔗 Conectar Google Ads</button>
+    </div>
+  </div>`;
+  bd.innerHTML=html;document.body.appendChild(bd);
+  const close=()=>bd.remove();
+  bd.addEventListener('click',e=>{if(e.target===bd) close();});
+  const el=(q)=>bd.querySelector(q);
+  el('#gCancel').onclick=close; const cb=el('#gClose'); if(cb) cb.onclick=close;
+  el('#gAuth').onclick=()=>{googleConnected=true;toast('Google Ads conectado');close();render();};
+}
+
+// ===== Integrações =====
+function bindIntegrations(){updateNextInt();}
+function copyTag(){const ta=document.getElementById('tag');copyToClipboard(ta.value);tagCopied=true;render();}
+function connectWA(){whatsappConnected=true;toast('WhatsApp conectado');render();}
+function oauthGoogle(){const acc=document.getElementById('gAcc').value;if(!acc)return toast('Escolha a conta');googleConnected=true;toast('Google Ads conectado');render();}
+function oauthMeta(){const a=document.getElementById('mAcc').value,p=document.getElementById('mPixel').value,t=document.getElementById('mToken').value;if(!a||!p||!t)return toast('Preencha conta, pixel e token');metaConnected=true;toast('Meta Ads conectado');render();}
+function updateNextInt(){const btn=document.getElementById('nextInt');if(btn)btn.disabled=!whatsappConnected}
+
+// ===== Rastreamento =====
+const SRC={direct:[["meta_dm","Meta Ads • Mensagem direta"],["google_whatsapp","Google Ads • Extensão WhatsApp"],["gmb_dm","Google Meu Negócio • Mensagem"],["email","E-mail • Link WhatsApp"],["qrcode","QR Code"],["influenciador","Influenciador"]],site:[["meta_site","Meta Ads • Link para site"],["google_site","Google Ads • Link para site"],["organico","Orgânico"],["bio_ig","Bio do Instagram"],["utms","UTMs"],["outros","Outros"]]}
+function bindTracking(){renderSources('direct');document.querySelectorAll('input[name="mode"]').forEach(r=>r.addEventListener('change',e=>{renderSources(e.target.value);renderConfig();updateNextTrack();}));document.getElementById('sources').addEventListener('change',()=>{renderConfig();updateNextTrack()});renderConfig();updateNextTrack();}
+function renderSources(mode){const c=document.getElementById('sources');c.innerHTML=SRC[mode].map(([v,t])=>'<label class="radioCard"><input type="checkbox" value="'+v+'"><div>'+t+'</div></label>').join('');document.getElementById('hint').innerHTML=mode==='direct'? 'Algumas fontes exigem <b>mensagem rastreável</b> (Extensão WhatsApp / GMB); outras usam <b>link rastreável</b> (E-mail, QR Code, Influenciador).':'Você criará <b>links rastreáveis</b> e substituirá os links do WhatsApp nos botões/CTAs.'}
+function selectedSources(){return[...document.querySelectorAll('#sources input:checked')].map(i=>i.value)}
+function renderConfig(){
+  const sel=selectedSources(),mode=(document.querySelector('input[name="mode"]:checked')||{value:'direct'}).value;
+  const needLink=(mode==='site'&&sel.length)||sel.some(v=>['email','qrcode','influenciador','meta_site','google_site','organico','bio_ig','utms','outros'].includes(v));
+  const needMsg=sel.some(v=>['google_whatsapp','gmb_dm'].includes(v));
+  const cfg=document.getElementById('config');
+  let html='';
+  html+='<div class="box"><b>1. Fontes</b> '+(sel.length?'<span class="ok">✓ '+sel.length+' selecionada(s)</span>':'')+'</div>';
+  let n=2;
+  if(needLink){
+    const linkOutput=generatedLinkValue?`<div class="row"><input readonly value="${generatedLinkValue}"></div><span class="ok">✓ Link gerado</span>`:'';
+    html+=`<div class="box"><b>${n}. Criar link rastreável</b><div class="row"><label>Nome do link</label><input id="lnkName" placeholder="Ex: Botão do site / campanha X"></div><div class="row"><label>Mensagem inicial</label><input id="lnkMsg" placeholder="Ex: Olá! Quero saber sobre..."></div><button class="btn sec" id="btnGenLink" ${generatedLinkValue?'disabled':''} onclick="genLink()">Gerar link</button><div id="outLink" class="row">${linkOutput}</div></div>`;
+    n++;
+  }
+  if(needMsg){
+    const msgOutput=generatedMsgValue?`<div class="row"><input readonly value="${generatedMsgValue}"></div><span class="ok">✓ Mensagem gerada</span>`:'';
+    html+=`<div class="box"><b>${n}. Criar mensagem rastreável</b><div class="row"><label>Origem</label><select id="msgOrigin"><option>Google Ads - Extensão WhatsApp</option><option>Google Meu Negócio - Mensagem</option></select></div><div class="row"><label>Mensagem</label><input id="msgText" placeholder="Ex: Olá!"></div><button class="btn sec" id="btnGenMsg" ${generatedMsgValue?'disabled':''} onclick="genMsg()">Gerar mensagem</button><div id="outMsg" class="row">${msgOutput}</div></div>`;
+  }
+  cfg.innerHTML=html;
+}
+function genLink(){
+  const url='https://adsmagic.link/'+Math.random().toString(36).slice(2,8);
+  generatedLinkValue=url;
+  generatedLink=true;
+  renderConfig();
+  updateNextTrack();
+  toast('Link gerado');
+}
+function genMsg(){
+  const t=(document.getElementById('msgText')||{}).value||'Olá!';
+  const o=(document.getElementById('msgOrigin')||{}).value||'Origem';
+  generatedMsgValue=`${t} (via ${o})`;
+  generatedMsg=true;
+  renderConfig();
+  updateNextTrack();
+  toast('Mensagem gerada');
+}
+function updateNextTrack(){
+  const sel=selectedSources();
+  const mode=(document.querySelector('input[name="mode"]:checked')||{value:'direct'}).value;
+  const needLink=(mode==='site'&&sel.length>0)||sel.some(v=>['email','qrcode','influenciador','meta_site','google_site','organico','bio_ig','utms','outros'].includes(v));
+  const needMsg=sel.some(v=>['google_whatsapp','gmb_dm'].includes(v));
+  if(!needLink){
+    generatedLink=false;
+    generatedLinkValue='';
+  }
+  if(!needMsg){
+    generatedMsg=false;
+    generatedMsgValue='';
+  }
+  const linkReady=!needLink || !!generatedLinkValue;
+  const msgReady=!needMsg || !!generatedMsgValue;
+  const ok=(sel.length>0)&&linkReady&&msgReady;
+  trackOk=ok;
+  const btn=document.getElementById('nextTrack');
+  if(btn) btn.disabled=!ok;
+  updateProgress();
+}
+
+// ===== Funil =====
+function bindFunnel(){renderFunnel()}
+function renderFunnel(){const g=googleConnected,m=metaConnected;const out=funnel.map((s,i)=>{
+  return '<div class="box">\n    <div><b>Etapa '+(i+1)+'</b> '+(g?'<span class="muted">• Google</span>':'')+' '+(m?'<span class="muted">• Meta</span>':'')+'</div>\n    <div class="grid2">\n      <div class="row"><label>Nome</label><input value="'+s.name+'" oninput="updStage('+i+',\'name\',this.value)"></div>\n      <div class="row"><label>Frase de rastreio</label><input value="'+s.phrase+'" oninput="updStage('+i+',\'phrase\',this.value)"></div>\n      '+(g?('<div class="row"><label>Etapa Google</label><select onchange="updStage('+i+',\'google\',this.value)"><option value="">Selecione…</option><option '+(s.google==='Lead'?'selected':'')+'>Lead</option><option '+(s.google==='Contato'?'selected':'')+'>Contato</option><option '+(s.google==='Purchase'?'selected':'')+'>Purchase</option></select></div>'):'')+'\n      '+(m?('<div class="row"><label>Valor padrão (R$)</label><input type="number" step="0.01" value="'+s.metaValue+'" oninput="updStage('+i+',\'metaValue\',this.value)"></div>'):'')+'\n    </div>\n    <div class="row"><button class="btn sec" onclick="delStage('+i+')" '+(funnel.length===1?'disabled':'')+'>Remover</button></div>\n  </div>';
+}).join('');
+  document.getElementById('funnelBox').innerHTML=out;validateFunnel()}
+function updStage(i,k,v){funnel[i][k]=v;validateFunnel()}
+function addStage(){funnel.push({name:'',phrase:'',google:'',metaValue:'0'});renderFunnel()}
+function delStage(i){if(funnel.length>1){funnel.splice(i,1);renderFunnel()}}
+function validateFunnel(){
+  const g=googleConnected,m=metaConnected;
+  const ok=funnel.length>0&&funnel.every(s=>s.name&&s.phrase&&(g?!!s.google:true)&&(m?s.metaValue!=='' :true));
+  funnelOk=ok;
+  const btn=document.getElementById('nextFunnel');
+  if(btn) btn.disabled=!ok;
+  updateProgress();
+}
+
+// ===== Relatórios =====
+function bindReports(){renderReports()}
+function renderReports(){const DAYS=['seg','ter','qua','qui','sex','sab','dom'],LABEL={seg:'Seg',ter:'Ter',qua:'Qua',qui:'Qui',sex:'Sex',sab:'Sáb',dom:'Dom'};const out=reports.map((r,i)=>{
+  const days=DAYS.map(d=>'<label class="radioCard"><input type="checkbox" '+(r.days.includes(d)?'checked':'')+' onchange="togDay('+i+',\''+d+'\',this.checked)"> <div>'+LABEL[d]+'</div></label>').join('');
+  return '<div class="box">\n    <div class="grid2">\n      <div class="row"><label>Telefone</label><input value="'+r.phone+'" oninput="updRep('+i+',\'phone\',this.value)"></div>\n      <div class="row"><label>Horário</label><input type="time" value="'+r.time+'" oninput="updRep('+i+',\'time\',this.value)"></div>\n    </div>\n    <div class="row"><label>Dias</label><div>'+days+'</div></div>\n    <button class="btn sec" onclick="delReport('+i+')" '+(reports.length===1?'disabled':'')+'>Remover</button>\n  </div>';
+}).join('');
+  document.getElementById('reportsBox').innerHTML=out;validateReports()}
+function updRep(i,k,v){reports[i][k]=v;validateReports()}
+function togDay(i,d,on){const s=new Set(reports[i].days);on?s.add(d):s.delete(d);reports[i].days=[...s];validateReports();renderReports()}
+function addReport(){reports.push({phone:'',time:'09:00',days:['seg','ter','qua','qui','sex']});renderReports()}
+function delReport(i){if(reports.length>1){reports.splice(i,1);renderReports()}}
+function onlyDigits(str){return (str||'').split('').filter(ch=>ch>='0'&&ch<='9').join('')}
+function isHHMM(t){if(!t||t.length!==5||t[2]!==':')return false;const h=+t.slice(0,2),m=+t.slice(3,5);return h>=0&&h<24&&m>=0&&m<60}
+function validateReports(){
+  const ok=reports.every(r=>{const digits=onlyDigits(r.phone||'');return digits.length>=10 && isHHMM(r.time||'') && (r.days||[]).length>0});
+  reportsOk=ok;
+  const btn=document.getElementById('finish');
+  if(btn) btn.disabled=!ok;
+  updateProgress();
+}
+
+// ===== Util =====
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),1600)}
+function copyToClipboard(text){try{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Copiado');return true}catch(e){if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>toast('Copiado')).catch(()=>toast('Copie manualmente'))}return false}}
+
+function done(){
+  onboardingDone=true;
+  unlockNav();
+  launchConfetti(2300,160);
+  showFinalModal();
+  updateProgress();
+}
+
+// ===== Modal + Confete =====
+function showFinalModal(){
+  const bd=document.createElement('div');
+  bd.className='backdrop';
+  bd.innerHTML='<div class="modal" role="dialog" aria-modal="true">\n    <div class="icon" aria-hidden="true">🚀</div>\n    <h3>Configuração concluída!</h3>\n    <p>Você será redirecionado para a plataforma para acompanhar, em tempo real, as atividades e vendas no dashboard. Nada mais a configurar aqui — agora é só operar.</p>\n    <div class="actions">\n      <button class="btn sec" id="btnStay">Fechar</button>\n      <button class="btn" id="btnGo">Ir para a plataforma</button>\n    </div>\n  </div>';
+  document.body.appendChild(bd);
+  const close=()=>bd.remove();
+  bd.addEventListener('click',e=>{if(e.target===bd) close();});
+  document.getElementById('btnStay').onclick=close;
+  document.getElementById('btnGo').onclick=()=>{close();toast('Redirecionando…');};
+}
+function launchConfetti(ms,count){
+  const wrap=document.createElement('div');wrap.className='confetti';document.body.appendChild(wrap);
+  const colors=['#010542','#ffcc00','#12a150','#00bcd4','#7c3aed'];
+  for(let i=0;i<(count||140);i++){
+    const p=document.createElement('i');
+    const size=6+Math.random()*8;p.style.width=size+'px';p.style.height=size*1.6+'px';
+    p.style.left=(Math.random()*100)+'vw';p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration=(1.6+Math.random()*1.6)+'s';wrap.appendChild(p);
+  }
+  setTimeout(()=>wrap.remove(),(ms||2200)+1600);
+}
+
+// ===== Auto‑testes (silenciosos no console) =====
+(function runSelfTests(){
+  const results=[];const log=(ok,msg)=>results.push((ok?'✔':'✖')+' '+msg);
+  try{const s='x </scr'+'ipt> y';const r=sanitize(s);log(!r.includes('</scr'+'ipt>'),'sanitize remove fechamento');log(r.includes('<\\/scr'+'ipt>'),'sanitize insere versão escapada');}catch(e){log(false,'sanitize falhou: '+e.message)}
+  try{const sn=getTagSnippet();log(sn.includes('<script>'),'snippet tem <script>');log(sn.includes('<\\/scr'+'ipt>'),'snippet fecha escapado');}catch(e){log(false,'snippet falhou: '+e.message)}
+  try{const h=sanitize(templates[0]());log(typeof h==='string' && h.length>0,'template[0] é string segura');
+  log(h.includes('media-16x9'),'vídeo 16:9 aplicado');}catch(e){log(false,'template[0] quebrou: '+e.message)}
+  try{const t1=templates[1]();log(t1.includes('Autenticar Meta Ads'),'template integrações tem Meta');log(t1.includes('Conectar Google Ads'),'template integrações tem Google');render();log(true,'render executou');}catch(e){log(false,'render quebrou: '+e.message)}
+  try{ // progress sanity
+    const oMax=maxStep,oWa=whatsappConnected,oTr=trackOk,oFu=funnelOk,oRe=reportsOk;
+    maxStep=1; whatsappConnected=true; trackOk=false; funnelOk=false; reportsOk=false;
+    log(stepsCompletedCount()===2,'progress 2/5 após WhatsApp');
+    trackOk=true; funnelOk=true; reportsOk=true;
+    log(stepsCompletedCount()>=5,'progress completo quando todos ok');
+    maxStep=oMax; whatsappConnected=oWa; trackOk=oTr; funnelOk=oFu; reportsOk=oRe;
+  }catch(e){log(false,'progress tests falharam: '+e.message)}
+  console.log('[SelfTests]\n'+results.join('\n'));
+})();
+
+// ===== Boot =====
+setupNavHandlers();
+render();
+</script>
+</body>
+</html>
