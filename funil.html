@@ -9,52 +9,27 @@
   </head>
   <body>
     <div class="app-shell">
-      <aside class="app-sidebar hidden flex-col lg:flex">
-        <div class="app-brand">
-          <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
-          <div class="app-brand-title">
-            <strong>Adsmágic</strong>
-            <span>Growth Suite</span>
-          </div>
+      <aside class="app-sidebar hidden lg:flex">
+        <div class="app-sidebar-header">
+          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+          <a class="app-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+            <div class="app-brand-title">
+              <strong>Adsmágic</strong>
+              <span>Growth Suite</span>
+            </div>
+          </a>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+          </button>
         </div>
-        <nav class="app-nav">
-          <div class="app-nav-group">
-            <p class="app-nav-heading">Menu</p>
-            <a href="index.html" class="app-nav-link">
-              <span>Visão geral</span>
-            </a>
-            <a href="contatos.html" class="app-nav-link">
-              <span>Contatos</span>
-              <span class="app-nav-count">24</span>
-            </a>
-            <a href="vendas.html" class="app-nav-link">
-              <span>Vendas</span>
-              <span class="app-nav-count">12</span>
-            </a>
-            <a href="funil.html" class="app-nav-link is-active">
-              <span>Funil</span>
-              <span class="app-nav-count">Ativo</span>
-            </a>
-            <a href="#" class="app-nav-link">
-              <span>Mensagens</span>
-            </a>
-            <a href="#" class="app-nav-link">
-              <span>Automação</span>
-            </a>
-            <a href="#" class="app-nav-link">
-              <span>Relatórios</span>
-            </a>
-            <a href="#" class="app-nav-link">
-              <span>Configurações</span>
-            </a>
-          </div>
-          <div class="app-nav-group pt-2">
-            <p class="app-nav-heading">Conta</p>
-            <a href="#" class="app-nav-link is-danger">
-              <span>Sair</span>
-            </a>
-          </div>
-        </nav>
+        <nav class="app-nav" data-active="funil"></nav>
       </aside>
       <div class="flex flex-1 flex-col">
         <header class="app-header">
@@ -323,5 +298,6 @@
         </main>
       </div>
     </div>
+    <script src="assets/js/nav.js"></script>
   </body>
 </html>
