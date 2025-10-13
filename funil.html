@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Funil</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      .card-shadow {
+        box-shadow: 0px 10px 32px rgba(15, 23, 42, 0.06);
+      }
+    </style>
+  </head>
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <aside class="hidden w-64 flex-col border-r border-slate-200 bg-white px-6 py-8 lg:flex">
+        <div class="flex items-center gap-2">
+          <img
+            src="https://raw.githubusercontent.com/tailwindlabs/tailwindcss/master/stubs/logo.svg"
+            alt="Logo Adsmágic"
+            class="h-10 w-10"
+          />
+          <div>
+            <p class="text-sm font-semibold text-slate-900">Adsmágic</p>
+            <p class="text-xs text-slate-500">Growth Suite</p>
+          </div>
+        </div>
+        <nav class="mt-8 space-y-2 text-sm font-medium text-slate-600">
+          <p class="px-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">Menu</p>
+          <a href="index.html" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
+            <span>Visão geral</span>
+          </a>
+          <a href="contatos.html" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
+            <span>Contatos</span>
+          </a>
+          <a href="vendas.html" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
+            <span>Vendas</span>
+          </a>
+          <a
+            href="funil.html"
+            class="flex items-center justify-between rounded-xl bg-slate-900 px-3 py-2 text-white shadow-lg"
+          >
+            <span>Funil</span>
+            <span class="rounded-full bg-white/20 px-2 py-0.5 text-xs">Ativo</span>
+          </a>
+          <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
+            <span>Mensagens</span>
+          </a>
+          <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
+            <span>Automação</span>
+          </a>
+          <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
+            <span>Relatórios</span>
+          </a>
+          <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
+            <span>Configurações</span>
+          </a>
+          <div class="pt-4">
+            <p class="px-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">Conta</p>
+            <a href="#" class="mt-2 flex items-center justify-between rounded-xl px-3 py-2 text-red-500 hover:bg-red-50">
+              <span>Sair</span>
+            </a>
+          </div>
+        </nav>
+      </aside>
+      <div class="flex flex-1 flex-col">
+        <header class="border-b border-slate-200 bg-white/80 backdrop-blur">
+          <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
+                AL
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
+                <p class="text-xs text-slate-500">Marketing Consultant</p>
+              </div>
+              <span
+                class="hidden rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-600 sm:inline-flex"
+              >
+                Workplace Conectado
+              </span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+                <span>Português</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15l3.75-3.75L15.75 15" />
+                </svg>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 2a6 6 0 00-6 6v2.586l-.707.707A1 1 0 004 13h12a1 1 0 00.707-1.707L16 10.586V8a6 6 0 00-6-6z" />
+                  <path d="M8 15a2 2 0 104 0H8z" />
+                </svg>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 6.75h15m-15 4.5h15m-15 4.5h15" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-6 px-6 py-8">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <h1 class="text-2xl font-semibold text-slate-900">Funil</h1>
+              <p class="text-sm text-slate-500">Visualize o progresso das oportunidades e identifique gargalos.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+              <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 font-medium">
+                <span class="inline-flex h-2 w-2 rounded-full bg-amber-500"></span>
+                Atualizado há 8 min
+              </span>
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
+                Ver filtros avançados
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15l3.75-3.75L15.75 15" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <section class="grid gap-4 xl:grid-cols-[2fr_1fr]">
+            <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Funil Kanban</h2>
+                  <p class="text-xs text-slate-500">Arraste oportunidades entre etapas e acompanhe o valor potencial.</p>
+                </div>
+                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+                  Exportar CSV
+                </button>
+              </div>
+              <div class="mt-6 grid gap-4 overflow-x-auto lg:grid-cols-4">
+                <div class="min-w-[220px] rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-semibold text-slate-800">Prospecção</h3>
+                    <span class="rounded-full bg-white px-2 py-0.5 text-xs font-medium text-slate-500">8</span>
+                  </div>
+                  <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                    <li class="rounded-xl bg-white p-3 shadow-sm">
+                      <p class="font-semibold text-slate-800">Bright Design</p>
+                      <p class="text-xs text-slate-400">R$ 12.300 • há 2 dias</p>
+                    </li>
+                    <li class="rounded-xl bg-white p-3 shadow-sm">
+                      <p class="font-semibold text-slate-800">Nuvem Labs</p>
+                      <p class="text-xs text-slate-400">R$ 9.800 • há 6 horas</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="min-w-[220px] rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-semibold text-slate-800">Qualificação</h3>
+                    <span class="rounded-full bg-white px-2 py-0.5 text-xs font-medium text-slate-500">5</span>
+                  </div>
+                  <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                    <li class="rounded-xl bg-white p-3 shadow-sm">
+                      <p class="font-semibold text-slate-800">Upgrowth</p>
+                      <p class="text-xs text-slate-400">R$ 18.900 • há 1 dia</p>
+                    </li>
+                    <li class="rounded-xl bg-white p-3 shadow-sm">
+                      <p class="font-semibold text-slate-800">GlobalLine</p>
+                      <p class="text-xs text-slate-400">R$ 21.400 • há 4 dias</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="min-w-[220px] rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-semibold text-slate-800">Proposta</h3>
+                    <span class="rounded-full bg-white px-2 py-0.5 text-xs font-medium text-slate-500">4</span>
+                  </div>
+                  <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                    <li class="rounded-xl bg-white p-3 shadow-sm">
+                      <p class="font-semibold text-slate-800">Focus Prime</p>
+                      <p class="text-xs text-slate-400">R$ 25.700 • há 5 dias</p>
+                    </li>
+                    <li class="rounded-xl bg-white p-3 shadow-sm">
+                      <p class="font-semibold text-slate-800">StartNow</p>
+                      <p class="text-xs text-slate-400">R$ 19.600 • há 8 horas</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="min-w-[220px] rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-semibold text-slate-800">Negociação</h3>
+                    <span class="rounded-full bg-white px-2 py-0.5 text-xs font-medium text-slate-500">3</span>
+                  </div>
+                  <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                    <li class="rounded-xl bg-white p-3 shadow-sm">
+                      <p class="font-semibold text-slate-800">Solar Hub</p>
+                      <p class="text-xs text-slate-400">R$ 32.800 • há 3 dias</p>
+                    </li>
+                    <li class="rounded-xl bg-white p-3 shadow-sm">
+                      <p class="font-semibold text-slate-800">Minds Digital</p>
+                      <p class="text-xs text-slate-400">R$ 16.900 • há 1 hora</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-shadow flex flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Ações recomendadas</h2>
+                  <p class="text-xs text-slate-500">Sugestões para destravar o funil</p>
+                </div>
+                <span class="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">4 recomendações</span>
+              </div>
+              <ul class="space-y-3 text-sm text-slate-600">
+                <li class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <p class="font-semibold text-slate-800">Envie materiais personalizados para oportunidades em Proposta.</p>
+                  <p class="text-xs text-slate-500">Impacto estimado: +12% na taxa de ganho.</p>
+                </li>
+                <li class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <p class="font-semibold text-slate-800">Agende follow-ups com clientes parados há mais de 5 dias.</p>
+                  <p class="text-xs text-slate-500">Priorizar GlobalLine e Solar Hub.</p>
+                </li>
+                <li class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <p class="font-semibold text-slate-800">Ative automações para leads frios retornarem à qualificação.</p>
+                  <p class="text-xs text-slate-500">Revisar mensagens dentro do Playbook.</p>
+                </li>
+                <li class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <p class="font-semibold text-slate-800">Revise critérios de ICP para reduzir perdas na negociação.</p>
+                  <p class="text-xs text-slate-500">Compartilhar insights com equipe de marketing.</p>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 class="text-lg font-semibold text-slate-900">Indicadores de conversão</h2>
+                <p class="text-xs text-slate-500">Taxas por etapa e tempo médio de permanência</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+                  Últimos 30 dias
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15l3.75-3.75L15.75 15" />
+                  </svg>
+                </button>
+                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+                  Comparar período
+                </button>
+              </div>
+            </div>
+            <div class="mt-6 grid gap-4 md:grid-cols-2">
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">Tempo médio por etapa</p>
+                <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                  <li class="flex items-center justify-between">
+                    <span>Prospecção</span>
+                    <span class="font-semibold text-slate-900">3,2 dias</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Qualificação</span>
+                    <span class="font-semibold text-slate-900">4,8 dias</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Proposta</span>
+                    <span class="font-semibold text-slate-900">6,1 dias</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Negociação</span>
+                    <span class="font-semibold text-slate-900">5,4 dias</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">Taxa de conversão por etapa</p>
+                <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                  <li class="flex items-center justify-between">
+                    <span>Prospecção → Qualificação</span>
+                    <span class="font-semibold text-slate-900">56%</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Qualificação → Proposta</span>
+                    <span class="font-semibold text-slate-900">63%</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Proposta → Negociação</span>
+                    <span class="font-semibold text-slate-900">48%</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Negociação → Fechado</span>
+                    <span class="font-semibold text-slate-900">42%</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

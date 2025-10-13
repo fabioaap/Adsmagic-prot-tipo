@@ -6,6 +6,8 @@ Este repositório concentra protótipos de interfaces e fluxos.
 
 - `index.html`: visão geral do dashboard com métricas, gráficos e painéis resumidos.
 - `contatos.html`: listagem de contatos com filtros, tabela e paginação.
+- `vendas.html`: acompanhamento de pipeline, metas trimestrais e negociações em destaque.
+- `funil.html`: visão kanban do funil com indicadores de conversão e ações recomendadas.
 
 ## Integrações
 
