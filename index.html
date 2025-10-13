@@ -1,792 +1,358 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Onboarding • Adsmagic</title>
-<style>
-  *{box-sizing:border-box}html,body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:#f7f8fb;color:#111}
-  :root{--primary:#010542;--success:#12a150;--muted:#6b7280;--border:#e6e7ec}
-
-  /* ==== Tokens do shadcn (sidebar) ==== */
-  :root{
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
-  }
-  .dark{
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.439 0 0);
-  }
-
-  .app{max-width:1280px;margin:32px auto;padding:0 20px;display:grid;grid-template-columns:280px 260px 1fr;gap:20px}
-  @media(max-width:1024px){.app{grid-template-columns:1fr}}
-
-  /* NAV LATERAL */
-  nav.sidenav{background:#fff;color:#1f2a56;border:1px solid rgba(1,5,66,.08);border-radius:28px;padding:22px;position:sticky;top:16px;height:max-content;display:flex;flex-direction:column;min-width:248px;box-shadow:0 24px 48px rgba(15,23,42,.06)}
-  .brand{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-  .brand-logo{display:flex;align-items:center;gap:12px;color:#010542;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;text-transform:lowercase}
-  .brand-logo .brand-mark{width:150px;height:auto;display:block}
-  .brand .theme{margin-left:12px;border:none;background:#eef1ff;color:#010542;width:38px;height:38px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.15rem;transition:background .2s ease,color .2s ease}
-  .brand .theme:hover{background:#dfe6ff}
-  .brand .theme:focus-visible{outline:2px solid transparent;box-shadow:0 0 0 3px rgba(37,99,235,.25)}
-  .progress{border:1px solid rgba(1,5,66,.08);border-radius:18px;padding:14px 16px;background:linear-gradient(145deg,#f5f6ff,#ffffff);color:#010542;margin-bottom:14px}
-  .progress .title{font-weight:600;font-size:.9rem}
-  .progress .bar{height:8px;border-radius:999px;background:#e2e7ff;margin-top:10px;overflow:hidden}
-  .progress .bar i{display:block;height:100%;width:0%;background:linear-gradient(135deg,#4f46e5,#2563eb)}
-  .nav-body{display:flex;flex-direction:column;gap:20px;margin-top:4px}
-  .group-title{color:rgba(1,5,66,.48);font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;margin-bottom:6px}
-  .navitem{display:flex;align-items:center;gap:14px;padding:10px 14px;border-radius:14px;color:inherit;text-decoration:none;cursor:pointer;font-weight:500;line-height:1.2;transition:background .18s ease,color .18s ease}
-  .navitem .icon{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;color:inherit}
-  .navitem .icon svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .navitem:hover{background:#eef1ff;color:#010542}
-  .navitem.active{background:#dfe6ff;color:#010542;font-weight:600}
-  .navitem.active .icon svg{stroke:#010542}
-  .navitem:focus-visible{outline:2px solid transparent;box-shadow:0 0 0 3px rgba(37,99,235,.25)}
-  .navitem[data-locked="true"]{opacity:.5;cursor:default}
-  .navitem[data-locked="true"]:hover{background:transparent;color:inherit}
-  .navitem-out{margin-top:auto;border-top:1px solid rgba(1,5,66,.08);padding-top:18px}
-
-  /* WIZARD */
-  aside{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;position:sticky;top:16px;height:max-content;overflow:hidden}
-  aside h4{margin:0 0 10px;color:#111}
-  aside ul{list-style:none;padding:0;margin:0}
-  aside li{margin-bottom:6px}
-  aside button{all:unset;display:block;width:100%;padding:10px 12px;border-radius:10px;cursor:pointer;color:#333}
-  aside button.active{background:var(--primary);color:#fff;font-weight:600}
-  aside button.done:not(.active){color:var(--success)}
-  main{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;min-height:520px}
-  h2{margin:0 0 10px}
-  p{margin:8px 0}
-  .row{margin:14px 0}
-  label{display:block;margin-bottom:6px;font-weight:600;font-size:.92rem}
-  input,select,textarea{width:100%;padding:10px 12px;border:1px solid #cfd2da;border-radius:10px;font-size:1rem;background:#fff}
-  .cta{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
-  .btn{background:var(--primary);color:#fff;border:none;padding:10px 16px;border-radius:10px;cursor:pointer}
-  .btn.sec{background:#eef1f6;color:#222}
-  .btn:disabled{opacity:.45;cursor:not-allowed}
-  .card{border:1px solid var(--border);border-radius:12px;padding:14px;background:#fff}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  @media(max-width:780px){.grid2{grid-template-columns:1fr}}
-  .radioCard{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:10px;padding:12px;cursor:pointer}
-  .radioCard input{width:auto;margin-top:3px}
-  .muted{color:var(--muted);font-size:.9rem}
-  .box{border:1px solid var(--border);border-radius:12px;padding:12px;margin:10px 0;background:#fff}
-  .ok{color:var(--success);font-weight:700}
-  .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;font-size:.78rem;border:1px solid var(--border)}
-  .chip.ok{color:var(--success);border-color:#cfe9d7;background:#f1fbf4}
-  .chip.bad{color:#b91c1c;border-color:#f3c9c9;background:#fff5f5}
-  details.accordion{border:1px solid var(--border);border-radius:12px;margin:12px 0;background:#fff}
-  details.accordion>summary{list-style:none;padding:14px 16px;cursor:pointer;font-weight:600;display:flex;justify-content:space-between;align-items:center}
-  details.accordion>div{padding:0 16px 16px}
-  .toast{position:fixed;right:18px;bottom:18px;background:#333;color:#fff;padding:10px 14px;border-radius:10px;font-size:.9rem;z-index:10000}
-  .media-16x9{width:100%;height:auto;border:1px solid var(--border);border-radius:12px;margin:16px 0 16px;aspect-ratio:16/9;background:#000}
-  /* WhatsApp - card de canal */
-  .channel-card{position:relative;border:1px solid var(--border);border-radius:16px;padding:18px;background:#fff}
-  .wa-head{display:flex;align-items:center;gap:12px;margin-bottom:4px}
-  .wa-badge{width:46px;height:46px;border-radius:999px;background:#22c55e;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700}
-  .wa-title{font-weight:700;font-size:1.25rem}
-  .status-pill{position:absolute;top:16px;right:16px;border-radius:999px;padding:6px 10px;font-size:.85rem;border:1px solid;user-select:none}
-  .status-pill.ok{color:#166534;background:#dcfce7;border-color:#bbf7d0}
-  .status-pill.bad{color:#b91c1c;background:#fee2e2;border-color:#fecaca}
-  .select-lg{appearance:none;padding:12px 40px 12px 12px;border:1px solid #cfd2da;border-radius:12px;background:#fff right 12px center/18px no-repeat;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%236b7280"><path d="M7 10l5 5 5-5"/></svg>')}
-  .btn.wa{background:#16a34a;width:100%;height:48px;border-radius:12px;font-weight:600}
-  .btn.wa:hover{filter:brightness(.95)}
-  /* Meta & Google cards */
-  .meta-badge{width:46px;height:46px;border-radius:999px;background:#1877F2;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
-  .g-badge{width:46px;height:46px;border-radius:999px;background:#EA4335;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
-  .btn.meta{background:#2563eb;width:100%;height:48px;border-radius:12px;font-weight:600}
-  .btn.google{background:#dc2626;width:100%;height:48px;border-radius:12px;font-weight:600}
-  .btn.meta:hover,.btn.google:hover{filter:brightness(.95)}
-  /* Modal de conclusão */
-  .backdrop{position:fixed;inset:0;background:rgba(17,24,39,.55);display:flex;align-items:center;justify-content:center;z-index:9999}
-  .modal{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;width:min(520px,92vw);text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.15)}
-  .modal .icon{width:72px;height:72px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:38px;margin-bottom:8px;background:linear-gradient(135deg,var(--primary), var(--primary));color:#fff}
-  .modal h3{margin:.4rem 0 6px;font-size:1.6rem}
-  .modal p{margin:0 0 14px;color:#4b5563}
-  .modal .actions{display:flex;gap:10px;justify-content:center;margin-top:6px}
-  /* ===== WhatsApp Modal (conectar) ===== */
-  .wa-modal{width:min(760px,96vw);text-align:left}
-  .wa-modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-  .wa-modal-head .x{all:unset;cursor:pointer;font-size:18px;padding:4px}
-  .step{display:flex;align-items:center;gap:8px;margin:12px 0 8px}
-  .step .num{width:28px;height:28px;border-radius:999px;background:#e0f2fe;color:#1d4ed8;display:inline-flex;align-items:center;justify-content:center;font-weight:700}
-  .step .ttl{font-weight:700}
-  .qr-wrap{border-radius:12px;background:#eafff3;border:1px solid #bbf7d0;padding:16px;display:flex;justify-content:center;margin-bottom:6px}
-  .qr{width:220px;height:220px;border-radius:8px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:42px;letter-spacing:6px}
-  .or-row{display:flex;align-items:center;gap:10px;margin:14px 0}
-  .or-row::before,.or-row::after{content:"";height:1px;background:var(--border);flex:1}
-  .bluebox{border:1px solid #bfdbfe;background:#eff6ff;padding:12px;border-radius:12px}
-  .status-wait{border:1px solid #fde68a;background:#fef3c7;color:#92400e;border-radius:12px;padding:10px 12px;margin-top:10px}
-  /* Confetes */
-  .confetti{position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden}
-  .confetti i{position:fixed;top:-12px;border-radius:2px;opacity:.95;animation-name:fall;animation-timing-function:linear;animation-fill-mode:forwards}
-  @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:1}}
-</style>
-</head>
-<body>
-<div class="app">
-  <!-- NAV PRINCIPAL -->
-  <nav class="sidenav" aria-label="Navegação principal">
-    <div class="brand">
-      <div class="brand-logo">
-        <svg class="brand-mark" viewBox="0 0 210 48" role="img" aria-labelledby="logoTitle">
-          <title id="logoTitle">Adsmagic</title>
-          <defs>
-            <linearGradient id="logoGradient" x1="22" y1="4" x2="22" y2="44" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#4AE38D"/>
-              <stop offset="1" stop-color="#2DB56A"/>
-            </linearGradient>
-          </defs>
-          <path fill="url(#logoGradient)" d="M14.8 44L30.7 4h12L58.6 44H45.8l-4.7-11.8H27.4L22.8 44Z"/>
-          <path fill="#061447" d="M42.7 4h12.1L70.6 44H58.5l-4.6-10.7H36.4Z"/>
-          <path fill="#061447" d="M85.3 35.3c-3.5 0-6.4-1.8-6.4-6.4V14.7h5.4v12.9c0 2 .9 3.1 2.6 3.1 1.8 0 2.8-1 2.8-3.2V14.7h5.4v12.7c0 5.1-3.3 7.9-9.8 7.9Zm20.5.2c-5.9 0-10.2-3.9-10.2-10.8 0-6.8 4.2-11 10.5-11 5.7 0 9.6 3.5 9.6 9.6 0 .7-.1 1.5-.2 2.2h-14.5c.2 3.2 2 4.5 4.7 4.5 2.1 0 3.2-.8 3.8-2.2h5.6c-.7 4.3-4.3 7.7-9.5 7.7Zm4.1-13.6c-.1-2.5-1.8-4-4.2-4-2.6 0-4.3 1.7-4.6 4Zm23.7 13.4c-4.3 0-7.8-2-9-5.7l5.2-1.1c.5 1.4 1.7 2.5 3.8 2.5 2.1 0 3.3-.8 3.3-2.3 0-1.2-.7-1.9-2.8-2.3l-2.9-.6c-4-1-6-3.2-6-6.7 0-4.5 3.8-7.5 9-7.5 4 0 7.5 1.8 8.6 5.5l-5 1.3c-.4-1.2-1.6-2.2-3.6-2.2-1.9 0-3.1.9-3.1 2.3 0 1.1.6 1.8 2.3 2.1l3 .6c4.6 1 6.6 3.3 6.6 6.9 0 4.6-3.9 7.3-9.4 7.3Zm23.6 0c-5.9 0-10.2-3.9-10.2-10.8 0-6.8 4.2-11 10.5-11 5.7 0 9.6 3.5 9.6 9.6 0 .7-.1 1.5-.2 2.2h-14.5c.2 3.2 2 4.5 4.7 4.5 2.1 0 3.2-.8 3.8-2.2h5.6c-.7 4.3-4.3 7.7-9.5 7.7Zm4.1-13.6c-.1-2.5-1.8-4-4.2-4-2.6 0-4.3 1.7-4.6 4Zm18 13.4c-4 0-7.1-1.8-8.5-4.7v4.4h-5.3V8.5h5.3v12c1.4-2.7 4.2-4.4 8.1-4.4 6.3 0 9.8 4.4 9.8 11 0 6.8-4 11-9.4 11Zm-1.6-4.3c3.1 0 5.7-2.3 5.7-6.7s-2.2-6.8-5.7-6.8c-3.3 0-5.6 2.4-5.6 6.8s2.3 6.7 5.6 6.7Zm24.4 4.3c-5.5 0-8.9-3.2-8.9-8.4v-13h5.4v12.3c0 2.5 1.4 3.8 3.6 3.8 2.3 0 3.7-1.4 3.7-4.1V14.7h5.4v12.6c0 5.6-3.7 8.2-9.2 8.2Zm21.7 0c-5.4 0-9.3-3.4-9.3-8.4 0-5.2 3.8-8.5 9.6-8.5 3 0 5.4.9 6.9 2.4v-1.4c0-2.5-1.4-3.9-4.3-3.9-2.3 0-3.6.9-4 2.4l-5.2-1.1c1-3.7 4.4-6.2 9.5-6.2 5.9 0 9.4 3 9.4 8.7v15.9h-5.1v-3.2c-1.5 2-4.2 3.3-7.5 3.3Zm1.4-4.3c3.1 0 5.7-2.1 5.7-5 0-2.8-2.3-4.6-5.7-4.6-3.3 0-5.2 1.7-5.2 4.5 0 2.8 2 5.1 5.2 5.1Z"/>
-        </svg>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Visão geral</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="app-sidebar hidden lg:flex">
+        <div class="app-sidebar-header">
+          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+          <a class="app-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+            <div class="app-brand-title">
+              <strong>Adsmágic</strong>
+              <span>Growth Suite</span>
+            </div>
+          </a>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+          </button>
+        </div>
+        <nav class="app-nav" data-active="overview"></nav>
+      </aside>
+      <div class="flex flex-1 flex-col">
+        <header class="app-header">
+          <div class="app-header-inner">
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white pill-shadow">
+                AL
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
+                <p class="text-xs text-slate-500">Marketing Consultant</p>
+              </div>
+              <span class="badge-soft hidden sm:inline-flex">Workplace Conectado</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+                <span>Português</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15l3.75-3.75L15.75 15" />
+                </svg>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 2a6 6 0 00-6 6v2.586l-.707.707A1 1 0 004 13h12a1 1 0 00.707-1.707L16 10.586V8a6 6 0 00-6-6z" />
+                  <path d="M8 15a2 2 0 104 0H8z" />
+                </svg>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 6.75h15m-15 4.5h15m-15 4.5h15" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="app-main">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <h1 class="text-2xl font-semibold text-slate-900">Visão geral</h1>
+              <p class="text-sm text-slate-500">Resumo das principais métricas dos últimos 30 dias.</p>
+            </div>
+            <div class="flex items-center gap-3 text-xs text-slate-500">
+              <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 font-medium">
+                <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                Atualizado há 5 min
+              </span>
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
+                Últimos 30 dias
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15l3.75-3.75L15.75 15" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <section class="grid gap-4 lg:grid-cols-3">
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-center justify-between">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Novos contatos</p>
+                <span class="text-xs font-medium text-emerald-500">+18% vs mês anterior</span>
+              </div>
+              <p class="mt-4 text-3xl font-semibold text-slate-900">785</p>
+              <p class="mt-2 text-sm text-slate-500">Meta mensal: 650</p>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-center justify-between">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Receita</p>
+                <span class="text-xs font-medium text-emerald-500">+12% vs mês anterior</span>
+              </div>
+              <p class="mt-4 text-3xl font-semibold text-slate-900">R$ 55.655,00</p>
+              <p class="mt-2 text-sm text-slate-500">Ticket médio: R$ 720</p>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-center justify-between">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Conversões</p>
+                <span class="text-xs font-medium text-emerald-500">Taxa: 5,82%</span>
+              </div>
+              <p class="mt-4 text-3xl font-semibold text-slate-900">78</p>
+              <p class="mt-2 text-sm text-slate-500">Funil completo até contrato assinado.</p>
+            </article>
+          </section>
+          <section class="grid gap-4 lg:grid-cols-[2fr_1fr]">
+            <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Contatos e Vendas</h2>
+                  <p class="text-xs text-slate-500">Volume por semana</p>
+                </div>
+                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+                  Exportar CSV
+                </button>
+              </div>
+              <div class="mt-6 flex items-end gap-6">
+                <div class="flex-1">
+                  <div class="h-56 rounded-2xl bg-gradient-to-b from-indigo-50 via-white to-white">
+                    <svg viewBox="0 0 400 200" class="h-full w-full">
+                      <defs>
+                        <linearGradient id="lineGradient" x1="0" x2="0" y1="0" y2="1">
+                          <stop offset="0%" stop-color="#2563EB" stop-opacity="0.9"></stop>
+                          <stop offset="100%" stop-color="#2563EB" stop-opacity="0"></stop>
+                        </linearGradient>
+                      </defs>
+                      <path d="M0 150 Q50 120 80 140 T160 120 240 140 320 100 400 110" fill="none" stroke="#2563EB" stroke-width="4" stroke-linecap="round"></path>
+                      <path d="M0 170 Q50 140 80 160 T160 150 240 170 320 140 400 150" fill="none" stroke="#10B981" stroke-width="4" stroke-linecap="round" stroke-dasharray="6"></path>
+                    </svg>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between text-xs text-slate-400">
+                    <span>Fev</span>
+                    <span>Mar</span>
+                    <span>Abr</span>
+                    <span>Mai</span>
+                    <span>Jun</span>
+                  </div>
+                </div>
+                <div class="flex w-36 flex-col gap-4 text-xs text-slate-500">
+                  <div>
+                    <p class="font-semibold text-slate-900">Contatos</p>
+                    <p>Semana atual</p>
+                    <p class="text-base font-semibold text-indigo-600">273</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-slate-900">Vendas</p>
+                    <p>Semana atual</p>
+                    <p class="text-base font-semibold text-emerald-500">78</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-shadow flex flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Receita</h2>
+                  <p class="text-xs text-slate-500">Comparativo com meta</p>
+                </div>
+                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-600">+5,3%</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-center">
+                <svg viewBox="0 0 200 200" class="h-40 w-40">
+                  <circle cx="100" cy="100" r="80" fill="#EFF6FF"></circle>
+                  <path d="M100 20 A80 80 0 1 1 45 45" fill="none" stroke="#2563EB" stroke-width="24" stroke-linecap="round"></path>
+                  <path d="M45 45 A80 80 0 0 1 100 20" fill="none" stroke="#10B981" stroke-width="24" stroke-linecap="round"></path>
+                </svg>
+                <p class="mt-4 text-sm text-slate-500">Meta mensal atingida em</p>
+                <p class="text-2xl font-semibold text-slate-900">82%</p>
+              </div>
+            </div>
+          </section>
+          <section class="grid gap-4 lg:grid-cols-2">
+            <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Top Funis</h2>
+                  <p class="text-xs text-slate-500">Desempenho por estágio</p>
+                </div>
+                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+                  Ver todos
+                </button>
+              </div>
+              <div class="mt-6 space-y-4 text-sm text-slate-600">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="font-medium text-slate-900">Funil inbound</p>
+                    <p class="text-xs text-slate-400">Taxa de conversão</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-lg font-semibold text-slate-900">7,2%</p>
+                    <p class="text-xs text-emerald-500">+1,4%</p>
+                  </div>
+                </div>
+                <div class="h-2 rounded-full bg-slate-200">
+                  <div class="h-full w-[72%] rounded-full bg-indigo-500"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="font-medium text-slate-900">Funil outbound</p>
+                    <p class="text-xs text-slate-400">Taxa de conversão</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-lg font-semibold text-slate-900">4,5%</p>
+                    <p class="text-xs text-rose-500">-0,6%</p>
+                  </div>
+                </div>
+                <div class="h-2 rounded-full bg-slate-200">
+                  <div class="h-full w-[45%] rounded-full bg-rose-400"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="font-medium text-slate-900">Eventos</p>
+                    <p class="text-xs text-slate-400">Participantes confirmados</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-lg font-semibold text-slate-900">65%</p>
+                    <p class="text-xs text-emerald-500">+3,1%</p>
+                  </div>
+                </div>
+                <div class="h-2 rounded-full bg-slate-200">
+                  <div class="h-full w-[65%] rounded-full bg-emerald-500"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-shadow grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <div class="flex items-center justify-between text-xs text-slate-400">
+                  <p class="font-semibold uppercase tracking-[0.08em]">Ticket médio</p>
+                  <span class="rounded-full bg-emerald-100 px-2 py-0.5 font-medium text-emerald-600">+3,4%</span>
+                </div>
+                <p class="mt-4 text-2xl font-semibold text-slate-900">R$ 855,00</p>
+                <p class="mt-2 text-xs text-slate-500">Meta: R$ 820</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <div class="flex items-center justify-between text-xs text-slate-400">
+                  <p class="font-semibold uppercase tracking-[0.08em]">Ciclo de vendas</p>
+                  <span class="rounded-full bg-rose-100 px-2 py-0.5 font-medium text-rose-500">-1,2 dias</span>
+                </div>
+                <p class="mt-4 text-2xl font-semibold text-slate-900">26 dias</p>
+                <p class="mt-2 text-xs text-slate-500">Objetivo: 24 dias</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <div class="flex items-center justify-between text-xs text-slate-400">
+                  <p class="font-semibold uppercase tracking-[0.08em]">Novos contratos</p>
+                  <span class="rounded-full bg-emerald-100 px-2 py-0.5 font-medium text-emerald-600">+9</span>
+                </div>
+                <p class="mt-4 text-2xl font-semibold text-slate-900">57</p>
+                <p class="mt-2 text-xs text-slate-500">Últimos 30 dias</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <div class="flex items-center justify-between text-xs text-slate-400">
+                  <p class="font-semibold uppercase tracking-[0.08em]">Clientes ativos</p>
+                  <span class="rounded-full bg-indigo-100 px-2 py-0.5 font-medium text-indigo-600">+3,8%</span>
+                </div>
+                <p class="mt-4 text-2xl font-semibold text-slate-900">206</p>
+                <p class="mt-2 text-xs text-slate-500">Renovações previstas: 14</p>
+              </div>
+            </div>
+          </section>
+          <section class="grid gap-4 lg:grid-cols-[2fr_1fr]">
+            <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Últimas interações</h2>
+                  <p class="text-xs text-slate-500">Comunicações mais recentes com prospects.</p>
+                </div>
+                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+                  Ver histórico
+                </button>
+              </div>
+              <ul class="mt-6 space-y-4 text-sm text-slate-600">
+                <li class="flex items-start justify-between rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Gabriel Torres</p>
+                    <p class="text-xs text-slate-500">Solicitou proposta atualizada</p>
+                  </div>
+                  <div class="text-right text-xs text-slate-400">
+                    <p>12:45</p>
+                    <p>Chat</p>
+                  </div>
+                </li>
+                <li class="flex items-start justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Ana Carvalho</p>
+                    <p class="text-xs text-slate-500">E-mail sobre onboarding</p>
+                  </div>
+                  <div class="text-right text-xs text-slate-400">
+                    <p>Ontem</p>
+                    <p>Email</p>
+                  </div>
+                </li>
+                <li class="flex items-start justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Estúdio Pluma</p>
+                    <p class="text-xs text-slate-500">Solicitou demonstração</p>
+                  </div>
+                  <div class="text-right text-xs text-slate-400">
+                    <p>Ontem</p>
+                    <p>Ligação</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Últimas vendas</h2>
+                  <p class="text-xs text-slate-500">Negócios fechados recentemente.</p>
+                </div>
+                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+                  Exportar
+                </button>
+              </div>
+              <ul class="mt-6 space-y-3 text-sm text-slate-600">
+                <li class="flex items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Adset Terra</p>
+                    <p class="text-xs text-slate-500">Plano Enterprise</p>
+                  </div>
+                  <p class="text-sm font-semibold text-slate-900">R$ 19.200</p>
+                </li>
+                <li class="flex items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Nexo Labs</p>
+                    <p class="text-xs text-slate-500">Plano Growth</p>
+                  </div>
+                  <p class="text-sm font-semibold text-slate-900">R$ 9.680</p>
+                </li>
+                <li class="flex items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Studio Dobra</p>
+                    <p class="text-xs text-slate-500">Plano Starter</p>
+                  </div>
+                  <p class="text-sm font-semibold text-slate-900">R$ 6.250</p>
+                </li>
+                <li class="flex items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Orion Fit</p>
+                    <p class="text-xs text-slate-500">Plano Growth</p>
+                  </div>
+                  <p class="text-sm font-semibold text-slate-900">R$ 7.950</p>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </main>
       </div>
-      <button class="theme" onclick="toggleTheme()" aria-pressed="false" aria-label="Alternar tema">🌙</button>
     </div>
-    <div class="progress" aria-label="Progresso do onboarding">
-      <div class="title">Comece por aqui</div>
-      <div class="muted" style="font-size:.82rem"><span id="progTxt">0% concluído</span></div>
-      <div class="bar" aria-hidden="true"><i id="progBar" style="width:0%"></i></div>
-    </div>
-
-    <div class="nav-body">
-      <div class="group">
-        <div class="group-title">Principal</div>
-        <a href="#" class="navitem" data-key="visao" data-step="0">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <rect x="3.5" y="3.5" width="6.6" height="6.6" rx="1.3"/>
-              <rect x="13" y="3.5" width="7.5" height="5.6" rx="1.3"/>
-              <rect x="3.5" y="13" width="5.6" height="7.5" rx="1.3"/>
-              <rect x="12" y="12" width="8.5" height="8.5" rx="1.5"/>
-            </svg>
-          </span>
-          <span>Visão geral</span>
-        </a>
-        <a href="#" class="navitem" data-key="contatos" data-locked="true" aria-disabled="true">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <circle cx="9" cy="8.5" r="3"/>
-              <path d="M4.5 18.5c0-2.7 2.2-4.9 4.9-4.9h0c2.7 0 4.9 2.2 4.9 4.9"/>
-              <circle cx="17" cy="7" r="2.5"/>
-              <path d="M15.4 12.8c2.3 0 4.1 1.8 4.1 4.1v1.6"/>
-            </svg>
-          </span>
-          <span>Contatos</span>
-        </a>
-        <a href="#" class="navitem" data-key="vendas" data-locked="true" aria-disabled="true">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M6.5 9h11l-1 10H7.5Z"/>
-              <path d="M9 9V7.8c0-1.7 1.3-3 3-3s3 1.3 3 3V9"/>
-              <path d="M10 13h4"/>
-              <path d="M10 16h4"/>
-            </svg>
-          </span>
-          <span>Vendas</span>
-        </a>
-        <a href="#" class="navitem" data-key="funil" data-locked="true" aria-disabled="true" data-step="3">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 4h16l-6.4 8.1v4.9l-3.2 2.6v-7.5Z"/>
-            </svg>
-          </span>
-          <span>Funil</span>
-        </a>
-        <a href="#" class="navitem" data-key="eventos" data-locked="true" aria-disabled="true">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <rect x="4" y="6" width="16" height="14" rx="2"/>
-              <path d="M8 4v4"/>
-              <path d="M16 4v4"/>
-              <path d="M4 11h16"/>
-            </svg>
-          </span>
-          <span>Eventos</span>
-        </a>
-      </div>
-
-      <div class="group">
-        <div class="group-title">Rastreamento</div>
-        <a href="#" class="navitem" data-key="links" data-locked="true" aria-disabled="true" data-step="2">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="m8.8 14.9-1.8 1.8a3.8 3.8 0 0 0 5.4 5.4l2.5-2.5a3.8 3.8 0 0 0 0-5.4"/>
-              <path d="M15.2 9.1 17 7.3a3.8 3.8 0 0 0-5.4-5.4L9.1 4.4a3.8 3.8 0 0 0 0 5.4"/>
-              <path d="m9.5 14.5 5-5"/>
-            </svg>
-          </span>
-          <span>Links</span>
-        </a>
-        <a href="#" class="navitem" data-key="mensagens" data-locked="true" aria-disabled="true">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M4.5 6.5h11c1.9 0 3.5 1.6 3.5 3.5v3c0 1.9-1.6 3.5-3.5 3.5H11l-4.5 3v-3H4.5c-1.9 0-3.5-1.6-3.5-3.5v-3c0-1.9 1.6-3.5 3.5-3.5Z"/>
-              <path d="M8 11h8"/>
-            </svg>
-          </span>
-          <span>Mensagens</span>
-        </a>
-      </div>
-
-      <div class="group">
-        <div class="group-title">Sistema</div>
-        <a href="#" class="navitem" data-key="integracoes" data-locked="true" aria-disabled="true" data-step="1">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="5.5" r="2.5"/>
-              <circle cx="7" cy="18" r="2.5"/>
-              <circle cx="17" cy="18" r="2.5"/>
-              <path d="m10.7 7.7-2.4 5.3"/>
-              <path d="m13.3 7.7 2.4 5.3"/>
-              <path d="M9.5 18h5"/>
-            </svg>
-          </span>
-          <span>Integrações</span>
-        </a>
-        <a href="#" class="navitem" data-key="projetos" data-locked="true" aria-disabled="true">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M6 20V9.5L12 5l6 4.5V20"/>
-              <path d="M10 20v-4.5h4V20"/>
-              <path d="M6 20h12"/>
-            </svg>
-          </span>
-          <span>Meus projetos</span>
-        </a>
-        <a href="#" class="navitem" data-key="suporte" data-locked="true" aria-disabled="true">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="7.5"/>
-              <circle cx="12" cy="12" r="3.5"/>
-              <path d="M12 4.5v2.2"/>
-              <path d="M12 17.3v2.2"/>
-              <path d="M4.7 12h2.2"/>
-              <path d="M17.1 12h2.2"/>
-            </svg>
-          </span>
-          <span>Suporte</span>
-        </a>
-      </div>
-    </div>
-
-    <a href="#" class="navitem navitem-out" data-action="logout">
-      <span class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24">
-          <path d="M9 5H6.5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H9"/>
-          <path d="m13 8 4 4-4 4"/>
-          <path d="M11 12h6"/>
-        </svg>
-      </span>
-      <span>Sair</span>
-    </a>
-  </nav>
-
-  <!-- WIZARD / ONBOARDING -->
-  <aside>
-    <h4>Configuração</h4>
-    <ul id="menu">
-      <li><button onclick="go(0)">0 • Visão geral</button></li>
-      <li><button onclick="go(1)" disabled>3 • Integrações</button></li>
-      <li><button onclick="go(2)" disabled>4 • Rastreamento</button></li>
-      <li><button onclick="go(3)" disabled>5 • Funil</button></li>
-      <li><button onclick="go(4)" disabled>6 • Relatórios</button></li>
-    </ul>
-  </aside>
-
-  <main id="step"></main>
-</div>
-
-<script>
-// *** IMPORTANTE: Nunca escrever a sequência literal de fechamento aqui. ***
-// Usamos divisão da palavra para evitar que o parser de HTML feche este bloco.
-const SCRIPT_CLOSE = '</scr' + 'ipt>';
-const SCRIPT_CLOSE_ESCAPED = '<\\/scr' + 'ipt>';
-
-function sanitize(html){
-  // Converte qualquer fechamento de tag de script em versão escapada ANTES de injetar com innerHTML.
-  return String(html).split(SCRIPT_CLOSE).join(SCRIPT_CLOSE_ESCAPED);
-}
-
-function getTagSnippet(){
-  // O fechamento já vem escapado para não quebrar o script hospedeiro.
-  return `<script>\n(function(w,d){var s=d.createElement('script');s.async=1;s.src='https://s.adsmagic.com.br/ad-script.js';d.head.appendChild(s)})(window,document);\n<\\/script>`;
-}
-
-function toggleTheme(){
-  const root=document.documentElement;
-  const on=root.classList.toggle('dark');
-  const btn=document.querySelector('.brand .theme');
-  if(btn){btn.setAttribute('aria-pressed',String(on));btn.textContent=on?'☀️':'🌙'}
-}
-
-// ===== Navegação lateral =====
-function setupNavHandlers(){
-  document.querySelectorAll('.sidenav .navitem').forEach(link=>{
-    link.addEventListener('click',event=>{
-      event.preventDefault();
-      if(link.dataset.locked==='true') return;
-      if(link.dataset.action==='logout'){
-        toast('Sessão encerrada (protótipo)');
-        return;
-      }
-      const stepAttr=link.getAttribute('data-step');
-      if(stepAttr!==null && stepAttr!==''){
-        const stepIndex=Number(stepAttr);
-        if(Number.isFinite(stepIndex)){
-          navSelect(link,link.dataset.key,stepIndex);
-          return;
-        }
-      }
-      navSelect(link,link.dataset.key);
-    });
-  });
-}
-
-// ===== State =====
-let step=0, maxStep=0;
-let onboardingDone=false;
-let whatsappConnected=false, tagCopied=false;
-let googleConnected=false, metaConnected=false;
-let generatedLink=false, generatedMsg=false;
-let generatedLinkValue='', generatedMsgValue='';
-let funnel=[{name:'Vendas',phrase:'',google:'',metaValue:'0'}];
-let reports=[{phone:'',time:'09:00',days:['seg','ter','qua','qui','sex']}];
-
-let trackOk=false,funnelOk=false,reportsOk=false;
-
-const stepKeyMap=['visao','integracoes','links','funil','relatorios'];
-
-// ===== Nav helpers =====
-function unlockNav(){
-  document.querySelectorAll('.sidenav .navitem[data-locked="true"]').forEach(a=>{
-    a.removeAttribute('data-locked');
-    a.removeAttribute('aria-disabled');
-  });
-}
-
-function navSelect(el,key,gotoStep){
-  document.querySelectorAll('.sidenav .navitem').forEach(a=>{a.classList.remove('active');a.removeAttribute('aria-current')});
-  el.classList.add('active');
-  el.setAttribute('aria-current','page');
-  if(typeof gotoStep==='number'){
-    maxStep=Math.max(maxStep,gotoStep);
-    step=gotoStep;
-    render();
-  }
-}
-function updateNavActive(){
-  const targetKey=stepKeyMap[step];
-  document.querySelectorAll('.sidenav .navitem').forEach(a=>{
-    const isActive=a.dataset.key===targetKey;
-    a.classList.toggle('active',isActive);
-    if(isActive){a.setAttribute('aria-current','page')}else{a.removeAttribute('aria-current')}
-  });
-}
-
-// ===== Progress =====
-function stepsCompletedCount(){
-  if(onboardingDone) return 5;
-  let count=0;
-  if(maxStep>=1) count++;          // saiu da Visão geral
-  if(whatsappConnected) count++;    // integrou WhatsApp
-  if(trackOk) count++;              // rastreamento válido
-  if(funnelOk) count++;             // funil válido
-  if(reportsOk) count++;            // relatórios válidos
-  return count;
-}
-function updateProgress(){
-  const total=5; const done=stepsCompletedCount();
-  const pct=Math.round((done/total)*100);
-  const txt=document.getElementById('progTxt');
-  const bar=document.getElementById('progBar');
-  if(txt) txt.textContent=`${pct}% concluído`;
-  if(bar) bar.style.width=pct+'%';
-}
-
-// ===== Render =====
-function render(){
-  const tpl = templates[step]();
-  document.getElementById('step').innerHTML = sanitize(tpl);
-  [...document.querySelectorAll('#menu button')].forEach((b,i)=>{b.classList.toggle('active',i===step);b.classList.toggle('done',i<=maxStep);b.disabled=i>maxStep;});
-  if(step===1){bindIntegrations();}
-  if(step===2){bindTracking();}
-  if(step===3){bindFunnel();}
-  if(step===4){bindReports();}
-  updateNavActive();
-  updateProgress();
-}
-function next(){ step=Math.min(step+1,4); maxStep=Math.max(maxStep,step); render(); }
-function prev(){ step=Math.max(0,step-1); render(); }
-function go(n){ if(n<=maxStep){ step=n; render(); } }
-
-// ===== Templates =====
-const templates=[
-  ()=>{
-    return (
-      `<h2>Bem-vindo ao Adsmagic 🎉</h2>
-       <video class="media-16x9" controls poster="" aria-label="Vídeo de boas-vindas">
-         <source src="" type="video/mp4">
-         Seu navegador não suporta vídeo HTML5.
-       </video>
-       <div class="card muted">Este painel guiará você pelos passos essenciais para configurar sua conta e começar a rastrear seus anúncios efetivamente.</div>
-       <div class="cta"><button class="btn" onclick="next()">Começar</button></div>`
-    );
-  },
-  ()=>{
-    return (
-      `<h2>Integrações</h2>
-       <details class="accordion" open>
-         <summary>
-           <span>Site • Tag Adsmagic</span>
-           <span class="chip ${tagCopied?'ok':'bad'}">${tagCopied?'Copiado':'Não copiado'}</span>
-         </summary>
-         <div>
-           <div class="muted">Cole este código antes do <code>&lt;head&gt;</code> do seu site ou via GTM.</div>
-           <div class="row"><textarea id="tag" rows="7" readonly>${getTagSnippet()}</textarea></div>
-           <button class="btn sec" onclick="copyTag()">Copiar</button>
-           <a class="muted" style="margin-left:10px" href="#">Leia o guia de integrações</a>
-         </div>
-       </details>
-
-       <h3 style="margin-top:16px">Canais</h3>
-       <section class="channel-card" role="region" aria-label="WhatsApp">
-         <div class="wa-head">
-           <div class="wa-badge" aria-hidden="true">WA</div>
-           <div class="wa-title">WhatsApp</div>
-         </div>
-         <span class="status-pill ${whatsappConnected?'ok':'bad'}">${whatsappConnected?'Conectado':'Desconectado'}</span>
-         <p class="muted" style="margin:6px 0 10px">Conecte-se com o WhatsApp para salvar automaticamente os contatos e rastrear a jornada de compra</p>
-         <div class="row"><select id="waAcc" class="select-lg"><option value="">Nenhuma conta conectada</option></select></div>
-         <div class="row"><button class="btn wa" onclick="openWAModal()">Conectar WhatsApp</button></div>
-       </section>
-
-       <section class="channel-card" role="region" aria-label="Meta Ads">
-         <div class="wa-head">
-           <div class="meta-badge" aria-hidden="true">f</div>
-           <div class="wa-title">Meta Ads</div>
-         </div>
-         <span class="status-pill ${metaConnected?'ok':'bad'}">${metaConnected?'Conectado':'Desconectado'}</span>
-         <p class="muted" style="margin:6px 0 10px">Conecte-se com o Meta Ads para obter as informações da conta e enviar as conversões via API</p>
-         <div class="row"><select id="mAcc" class="select-lg"><option value="">Nenhuma conta conectada</option><option>BM/Conta X</option></select></div>
-         <div class="row"><button class="btn meta" onclick="openMetaModal()">🔐 Autenticar Meta Ads</button></div>
-       </section>
-
-       <section class="channel-card" role="region" aria-label="Google Ads">
-         <div class="wa-head">
-           <div class="g-badge" aria-hidden="true">G</div>
-           <div class="wa-title">Google Ads</div>
-         </div>
-         <span class="status-pill ${googleConnected?'ok':'bad'}">${googleConnected?'Conectado':'Desconectado'}</span>
-         <p class="muted" style="margin:6px 0 10px">Conecte-se com o Google Ads para obter as informações da conta e enviar as conversões via API</p>
-         <div class="row"><select id="gAcc" class="select-lg"><option value="">Nenhuma conta conectada</option><option>Letícia Lopes (Odonto)</option></select></div>
-         <div class="row"><button class="btn google" onclick="openGoogleModal()">🔗 Conectar Google Ads</button></div>
-       </section>
-
-       <div class="cta">
-         <button class="btn sec" onclick="prev()">Voltar</button>
-         <button id="nextInt" class="btn" ${whatsappConnected?'':'disabled'} onclick="next()">Próximo</button>
-       </div>`
-    );
-  },
-  ()=>{
-    return (
-      `<h2>Rastreamento</h2>
-       <div class="row grid2">
-         <label class="radioCard"><input type="radio" name="mode" value="direct" checked><div><strong>Mensagens diretas</strong><div class="muted">Sem site: Meta Mensagem, Extensão WhatsApp, GMB…</div></div></label>
-         <label class="radioCard"><input type="radio" name="mode" value="site"><div><strong>Cliques do site → WhatsApp</strong><div class="muted">Com site: Botões, Bio IG, UTMs…</div></div></label>
-       </div>
-       <div class="row"><label>Fontes</label><div id="sources" class="grid2"></div><div id="hint" class="muted"></div></div>
-       <div id="config"></div>
-       <div class="cta"><button class="btn sec" onclick="prev()">Voltar</button><button id="nextTrack" class="btn" disabled onclick="next()">Próximo</button></div>`
-    );
-  },
-  ()=>{
-    return (
-      `<h2>Funil</h2>
-       <div id="funnelBox"></div>
-       <div class="row"><button class="btn sec" onclick="addStage()">+ Adicionar etapa</button></div>
-       <div class="cta"><button class="btn sec" onclick="prev()">Voltar</button><button id="nextFunnel" class="btn" disabled onclick="next()">Próximo</button></div>`
-    );
-  },
-  ()=>{
-    return (
-      `<h2>Relatórios</h2>
-       <div id="reportsBox"></div>
-       <div class="row"><button class="btn sec" onclick="addReport()">+ Adicionar telefone</button></div>
-       <div class="cta"><button class="btn sec" onclick="prev()">Voltar</button><button id="finish" class="btn" disabled onclick="done()">Concluir</button></div>`
-    );
-  }
-];
-
-// ===== WhatsApp Connect Modal =====
-function openWAModal(){
-  const token=Math.random().toString(36).slice(2,10);
-  const link='https://wa.adsmagic.com.br/connect?token='+token;
-  const bd=document.createElement('div');
-  bd.className='backdrop';
-  const html = `
-  <div class="modal wa-modal" role="dialog" aria-modal="true" aria-labelledby="waTitle">
-    <div class="wa-modal-head">
-      <h3 id="waTitle" style="margin:0">Conectar WhatsApp</h3>
-      <button class="x" id="waClose" aria-label="Fechar">✕</button>
-    </div>
-    <p class="muted">Para conectar sua conta WhatsApp, você pode escanear o QR Code ou usar o link de ativação</p>
-    <div class="step"><span class="num">1</span><span class="ttl">Escaneie o QR Code</span></div>
-    <div class="qr-wrap"><div class="qr" aria-label="QR Code">QR</div></div>
-    <p class="muted">Abra o WhatsApp → <b>Menu</b> → <b>Dispositivos conectados</b> → <b>Conectar dispositivo</b></p>
-    <div class="or-row"><span>OU</span></div>
-    <div class="step"><span class="num">2</span><span class="ttl">Compartilhe o link</span></div>
-    <div class="bluebox">
-      <div class="muted"><b>Não está com o celular?</b> Copie o link e envie para quem tem acesso ao número <b>16991095643</b></div>
-      <div class="row"><input id="waLink" readonly value="${link}"></div>
-      <div class="row"><button class="btn sec" id="waCopyLink">📋 Copiar link de ativação</button></div>
-    </div>
-    <div class="status-wait">⏳ Aguardando conexão com o WhatsApp...</div>
-    <div class="actions" style="display:flex;justify-content:space-between;margin-top:14px">
-      <button class="btn sec" id="waCancel">Cancelar</button>
-      <button class="btn" style="background:#16a34a" id="waSimulate">✓ Simular conexão</button>
-    </div>
-  </div>`;
-  bd.innerHTML = html;
-  document.body.appendChild(bd);
-  const close=()=>bd.remove();
-  bd.addEventListener('click',e=>{if(e.target===bd) close();});
-  bd.querySelector('#waCancel').onclick=close;
-  const closeBtn=bd.querySelector('#waClose'); if(closeBtn) closeBtn.onclick=close;
-  bd.querySelector('#waCopyLink').onclick=()=>{const v=bd.querySelector('#waLink').value;copyToClipboard(v)};
-  bd.querySelector('#waSimulate').onclick=()=>{connectWA();close();};
-  const onKey=(ev)=>{if(ev.key==='Escape'){close();document.removeEventListener('keydown',onKey)}};document.addEventListener('keydown',onKey);
-}
-
-function openMetaModal(){
-  const bd=document.createElement('div');bd.className='backdrop';
-  const html=`<div class="modal wa-modal" role="dialog" aria-modal="true" aria-labelledby="metaTitle">
-    <div class="wa-modal-head">
-      <h3 id="metaTitle" style="margin:0">Autenticar Meta Ads</h3>
-      <button class="x" id="mClose" aria-label="Fechar">✕</button>
-    </div>
-    <p class="muted">Faça login com sua conta Meta para listar Pixels e autorizar o envio de conversões.</p>
-    <div class="grid2">
-      <div class="row"><label>Conta</label><select id="mAcc2"><option value="">Selecione…</option><option>BM/Conta X</option></select></div>
-      <div class="row"><label>Pixel</label><select id="mPixel2"><option value="">Selecione…</option><option>PX-111</option><option>PX-222</option></select></div>
-    </div>
-    <div class="row"><label>Token</label><input id="mToken2" placeholder="EAAB..."></div>
-    <div class="actions" style="display:flex;justify-content:space-between;margin-top:14px">
-      <button class="btn sec" id="mCancel">Cancelar</button>
-      <button class="btn meta" id="mAuth">🔐 Autenticar Meta Ads</button>
-    </div>
-  </div>`;
-  bd.innerHTML=html;document.body.appendChild(bd);
-  const close=()=>bd.remove();
-  bd.addEventListener('click',e=>{if(e.target===bd) close();});
-  const el=(q)=>bd.querySelector(q);
-  el('#mCancel').onclick=close; const cb=el('#mClose'); if(cb) cb.onclick=close;
-  el('#mAuth').onclick=()=>{metaConnected=true;toast('Meta Ads conectado');close();render();};
-}
-
-function openGoogleModal(){
-  const bd=document.createElement('div');bd.className='backdrop';
-  const html=`<div class="modal wa-modal" role="dialog" aria-modal="true" aria-labelledby="gTitle">
-    <div class="wa-modal-head">
-      <h3 id="gTitle" style="margin:0">Conectar Google Ads</h3>
-      <button class="x" id="gClose" aria-label="Fechar">✕</button>
-    </div>
-    <p class="muted">Autorize o acesso à sua conta Google Ads para leitura de campanhas e envio de conversões.</p>
-    <div class="row"><label>Conta</label><select id="gAcc2"><option value="">Selecione…</option><option>Letícia Lopes (Odonto)</option></select></div>
-    <div class="actions" style="display:flex;justify-content:space-between;margin-top:14px">
-      <button class="btn sec" id="gCancel">Cancelar</button>
-      <button class="btn google" id="gAuth">🔗 Conectar Google Ads</button>
-    </div>
-  </div>`;
-  bd.innerHTML=html;document.body.appendChild(bd);
-  const close=()=>bd.remove();
-  bd.addEventListener('click',e=>{if(e.target===bd) close();});
-  const el=(q)=>bd.querySelector(q);
-  el('#gCancel').onclick=close; const cb=el('#gClose'); if(cb) cb.onclick=close;
-  el('#gAuth').onclick=()=>{googleConnected=true;toast('Google Ads conectado');close();render();};
-}
-
-// ===== Integrações =====
-function bindIntegrations(){updateNextInt();}
-function copyTag(){const ta=document.getElementById('tag');copyToClipboard(ta.value);tagCopied=true;render();}
-function connectWA(){whatsappConnected=true;toast('WhatsApp conectado');render();}
-function oauthGoogle(){const acc=document.getElementById('gAcc').value;if(!acc)return toast('Escolha a conta');googleConnected=true;toast('Google Ads conectado');render();}
-function oauthMeta(){const a=document.getElementById('mAcc').value,p=document.getElementById('mPixel').value,t=document.getElementById('mToken').value;if(!a||!p||!t)return toast('Preencha conta, pixel e token');metaConnected=true;toast('Meta Ads conectado');render();}
-function updateNextInt(){const btn=document.getElementById('nextInt');if(btn)btn.disabled=!whatsappConnected}
-
-// ===== Rastreamento =====
-const SRC={direct:[["meta_dm","Meta Ads • Mensagem direta"],["google_whatsapp","Google Ads • Extensão WhatsApp"],["gmb_dm","Google Meu Negócio • Mensagem"],["email","E-mail • Link WhatsApp"],["qrcode","QR Code"],["influenciador","Influenciador"]],site:[["meta_site","Meta Ads • Link para site"],["google_site","Google Ads • Link para site"],["organico","Orgânico"],["bio_ig","Bio do Instagram"],["utms","UTMs"],["outros","Outros"]]}
-function bindTracking(){renderSources('direct');document.querySelectorAll('input[name="mode"]').forEach(r=>r.addEventListener('change',e=>{renderSources(e.target.value);renderConfig();updateNextTrack();}));document.getElementById('sources').addEventListener('change',()=>{renderConfig();updateNextTrack()});renderConfig();updateNextTrack();}
-function renderSources(mode){const c=document.getElementById('sources');c.innerHTML=SRC[mode].map(([v,t])=>'<label class="radioCard"><input type="checkbox" value="'+v+'"><div>'+t+'</div></label>').join('');document.getElementById('hint').innerHTML=mode==='direct'? 'Algumas fontes exigem <b>mensagem rastreável</b> (Extensão WhatsApp / GMB); outras usam <b>link rastreável</b> (E-mail, QR Code, Influenciador).':'Você criará <b>links rastreáveis</b> e substituirá os links do WhatsApp nos botões/CTAs.'}
-function selectedSources(){return[...document.querySelectorAll('#sources input:checked')].map(i=>i.value)}
-function renderConfig(){
-  const sel=selectedSources(),mode=(document.querySelector('input[name="mode"]:checked')||{value:'direct'}).value;
-  const needLink=(mode==='site'&&sel.length)||sel.some(v=>['email','qrcode','influenciador','meta_site','google_site','organico','bio_ig','utms','outros'].includes(v));
-  const needMsg=sel.some(v=>['google_whatsapp','gmb_dm'].includes(v));
-  const cfg=document.getElementById('config');
-  let html='';
-  html+='<div class="box"><b>1. Fontes</b> '+(sel.length?'<span class="ok">✓ '+sel.length+' selecionada(s)</span>':'')+'</div>';
-  let n=2;
-  if(needLink){
-    const linkOutput=generatedLinkValue?`<div class="row"><input readonly value="${generatedLinkValue}"></div><span class="ok">✓ Link gerado</span>`:'';
-    html+=`<div class="box"><b>${n}. Criar link rastreável</b><div class="row"><label>Nome do link</label><input id="lnkName" placeholder="Ex: Botão do site / campanha X"></div><div class="row"><label>Mensagem inicial</label><input id="lnkMsg" placeholder="Ex: Olá! Quero saber sobre..."></div><button class="btn sec" id="btnGenLink" ${generatedLinkValue?'disabled':''} onclick="genLink()">Gerar link</button><div id="outLink" class="row">${linkOutput}</div></div>`;
-    n++;
-  }
-  if(needMsg){
-    const msgOutput=generatedMsgValue?`<div class="row"><input readonly value="${generatedMsgValue}"></div><span class="ok">✓ Mensagem gerada</span>`:'';
-    html+=`<div class="box"><b>${n}. Criar mensagem rastreável</b><div class="row"><label>Origem</label><select id="msgOrigin"><option>Google Ads - Extensão WhatsApp</option><option>Google Meu Negócio - Mensagem</option></select></div><div class="row"><label>Mensagem</label><input id="msgText" placeholder="Ex: Olá!"></div><button class="btn sec" id="btnGenMsg" ${generatedMsgValue?'disabled':''} onclick="genMsg()">Gerar mensagem</button><div id="outMsg" class="row">${msgOutput}</div></div>`;
-  }
-  cfg.innerHTML=html;
-}
-function genLink(){
-  const url='https://adsmagic.link/'+Math.random().toString(36).slice(2,8);
-  generatedLinkValue=url;
-  generatedLink=true;
-  renderConfig();
-  updateNextTrack();
-  toast('Link gerado');
-}
-function genMsg(){
-  const t=(document.getElementById('msgText')||{}).value||'Olá!';
-  const o=(document.getElementById('msgOrigin')||{}).value||'Origem';
-  generatedMsgValue=`${t} (via ${o})`;
-  generatedMsg=true;
-  renderConfig();
-  updateNextTrack();
-  toast('Mensagem gerada');
-}
-function updateNextTrack(){
-  const sel=selectedSources();
-  const mode=(document.querySelector('input[name="mode"]:checked')||{value:'direct'}).value;
-  const needLink=(mode==='site'&&sel.length>0)||sel.some(v=>['email','qrcode','influenciador','meta_site','google_site','organico','bio_ig','utms','outros'].includes(v));
-  const needMsg=sel.some(v=>['google_whatsapp','gmb_dm'].includes(v));
-  if(!needLink){
-    generatedLink=false;
-    generatedLinkValue='';
-  }
-  if(!needMsg){
-    generatedMsg=false;
-    generatedMsgValue='';
-  }
-  const linkReady=!needLink || !!generatedLinkValue;
-  const msgReady=!needMsg || !!generatedMsgValue;
-  const ok=(sel.length>0)&&linkReady&&msgReady;
-  trackOk=ok;
-  const btn=document.getElementById('nextTrack');
-  if(btn) btn.disabled=!ok;
-  updateProgress();
-}
-
-// ===== Funil =====
-function bindFunnel(){renderFunnel()}
-function renderFunnel(){const g=googleConnected,m=metaConnected;const out=funnel.map((s,i)=>{
-  return '<div class="box">\n    <div><b>Etapa '+(i+1)+'</b> '+(g?'<span class="muted">• Google</span>':'')+' '+(m?'<span class="muted">• Meta</span>':'')+'</div>\n    <div class="grid2">\n      <div class="row"><label>Nome</label><input value="'+s.name+'" oninput="updStage('+i+',\'name\',this.value)"></div>\n      <div class="row"><label>Frase de rastreio</label><input value="'+s.phrase+'" oninput="updStage('+i+',\'phrase\',this.value)"></div>\n      '+(g?('<div class="row"><label>Etapa Google</label><select onchange="updStage('+i+',\'google\',this.value)"><option value="">Selecione…</option><option '+(s.google==='Lead'?'selected':'')+'>Lead</option><option '+(s.google==='Contato'?'selected':'')+'>Contato</option><option '+(s.google==='Purchase'?'selected':'')+'>Purchase</option></select></div>'):'')+'\n      '+(m?('<div class="row"><label>Valor padrão (R$)</label><input type="number" step="0.01" value="'+s.metaValue+'" oninput="updStage('+i+',\'metaValue\',this.value)"></div>'):'')+'\n    </div>\n    <div class="row"><button class="btn sec" onclick="delStage('+i+')" '+(funnel.length===1?'disabled':'')+'>Remover</button></div>\n  </div>';
-}).join('');
-  document.getElementById('funnelBox').innerHTML=out;validateFunnel()}
-function updStage(i,k,v){funnel[i][k]=v;validateFunnel()}
-function addStage(){funnel.push({name:'',phrase:'',google:'',metaValue:'0'});renderFunnel()}
-function delStage(i){if(funnel.length>1){funnel.splice(i,1);renderFunnel()}}
-function validateFunnel(){
-  const g=googleConnected,m=metaConnected;
-  const ok=funnel.length>0&&funnel.every(s=>s.name&&s.phrase&&(g?!!s.google:true)&&(m?s.metaValue!=='' :true));
-  funnelOk=ok;
-  const btn=document.getElementById('nextFunnel');
-  if(btn) btn.disabled=!ok;
-  updateProgress();
-}
-
-// ===== Relatórios =====
-function bindReports(){renderReports()}
-function renderReports(){const DAYS=['seg','ter','qua','qui','sex','sab','dom'],LABEL={seg:'Seg',ter:'Ter',qua:'Qua',qui:'Qui',sex:'Sex',sab:'Sáb',dom:'Dom'};const out=reports.map((r,i)=>{
-  const days=DAYS.map(d=>'<label class="radioCard"><input type="checkbox" '+(r.days.includes(d)?'checked':'')+' onchange="togDay('+i+',\''+d+'\',this.checked)"> <div>'+LABEL[d]+'</div></label>').join('');
-  return '<div class="box">\n    <div class="grid2">\n      <div class="row"><label>Telefone</label><input value="'+r.phone+'" oninput="updRep('+i+',\'phone\',this.value)"></div>\n      <div class="row"><label>Horário</label><input type="time" value="'+r.time+'" oninput="updRep('+i+',\'time\',this.value)"></div>\n    </div>\n    <div class="row"><label>Dias</label><div>'+days+'</div></div>\n    <button class="btn sec" onclick="delReport('+i+')" '+(reports.length===1?'disabled':'')+'>Remover</button>\n  </div>';
-}).join('');
-  document.getElementById('reportsBox').innerHTML=out;validateReports()}
-function updRep(i,k,v){reports[i][k]=v;validateReports()}
-function togDay(i,d,on){const s=new Set(reports[i].days);on?s.add(d):s.delete(d);reports[i].days=[...s];validateReports();renderReports()}
-function addReport(){reports.push({phone:'',time:'09:00',days:['seg','ter','qua','qui','sex']});renderReports()}
-function delReport(i){if(reports.length>1){reports.splice(i,1);renderReports()}}
-function onlyDigits(str){return (str||'').split('').filter(ch=>ch>='0'&&ch<='9').join('')}
-function isHHMM(t){if(!t||t.length!==5||t[2]!==':')return false;const h=+t.slice(0,2),m=+t.slice(3,5);return h>=0&&h<24&&m>=0&&m<60}
-function validateReports(){
-  const ok=reports.every(r=>{const digits=onlyDigits(r.phone||'');return digits.length>=10 && isHHMM(r.time||'') && (r.days||[]).length>0});
-  reportsOk=ok;
-  const btn=document.getElementById('finish');
-  if(btn) btn.disabled=!ok;
-  updateProgress();
-}
-
-// ===== Util =====
-function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),1600)}
-function copyToClipboard(text){try{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Copiado');return true}catch(e){if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>toast('Copiado')).catch(()=>toast('Copie manualmente'))}return false}}
-
-function done(){
-  onboardingDone=true;
-  unlockNav();
-  launchConfetti(2300,160);
-  showFinalModal();
-  updateProgress();
-}
-
-// ===== Modal + Confete =====
-function showFinalModal(){
-  const bd=document.createElement('div');
-  bd.className='backdrop';
-  bd.innerHTML='<div class="modal" role="dialog" aria-modal="true">\n    <div class="icon" aria-hidden="true">🚀</div>\n    <h3>Configuração concluída!</h3>\n    <p>Você será redirecionado para a plataforma para acompanhar, em tempo real, as atividades e vendas no dashboard. Nada mais a configurar aqui — agora é só operar.</p>\n    <div class="actions">\n      <button class="btn sec" id="btnStay">Fechar</button>\n      <button class="btn" id="btnGo">Ir para a plataforma</button>\n    </div>\n  </div>';
-  document.body.appendChild(bd);
-  const close=()=>bd.remove();
-  bd.addEventListener('click',e=>{if(e.target===bd) close();});
-  document.getElementById('btnStay').onclick=close;
-  document.getElementById('btnGo').onclick=()=>{close();toast('Redirecionando…');};
-}
-function launchConfetti(ms,count){
-  const wrap=document.createElement('div');wrap.className='confetti';document.body.appendChild(wrap);
-  const colors=['#010542','#ffcc00','#12a150','#00bcd4','#7c3aed'];
-  for(let i=0;i<(count||140);i++){
-    const p=document.createElement('i');
-    const size=6+Math.random()*8;p.style.width=size+'px';p.style.height=size*1.6+'px';
-    p.style.left=(Math.random()*100)+'vw';p.style.background=colors[Math.floor(Math.random()*colors.length)];
-    p.style.animationDuration=(1.6+Math.random()*1.6)+'s';wrap.appendChild(p);
-  }
-  setTimeout(()=>wrap.remove(),(ms||2200)+1600);
-}
-
-// ===== Auto‑testes (silenciosos no console) =====
-(function runSelfTests(){
-  const results=[];const log=(ok,msg)=>results.push((ok?'✔':'✖')+' '+msg);
-  try{const s='x </scr'+'ipt> y';const r=sanitize(s);log(!r.includes('</scr'+'ipt>'),'sanitize remove fechamento');log(r.includes('<\\/scr'+'ipt>'),'sanitize insere versão escapada');}catch(e){log(false,'sanitize falhou: '+e.message)}
-  try{const sn=getTagSnippet();log(sn.includes('<script>'),'snippet tem <script>');log(sn.includes('<\\/scr'+'ipt>'),'snippet fecha escapado');}catch(e){log(false,'snippet falhou: '+e.message)}
-  try{const h=sanitize(templates[0]());log(typeof h==='string' && h.length>0,'template[0] é string segura');
-  log(h.includes('media-16x9'),'vídeo 16:9 aplicado');}catch(e){log(false,'template[0] quebrou: '+e.message)}
-  try{const t1=templates[1]();log(t1.includes('Autenticar Meta Ads'),'template integrações tem Meta');log(t1.includes('Conectar Google Ads'),'template integrações tem Google');render();log(true,'render executou');}catch(e){log(false,'render quebrou: '+e.message)}
-  try{ // progress sanity
-    const oMax=maxStep,oWa=whatsappConnected,oTr=trackOk,oFu=funnelOk,oRe=reportsOk;
-    maxStep=1; whatsappConnected=true; trackOk=false; funnelOk=false; reportsOk=false;
-    log(stepsCompletedCount()===2,'progress 2/5 após WhatsApp');
-    trackOk=true; funnelOk=true; reportsOk=true;
-    log(stepsCompletedCount()>=5,'progress completo quando todos ok');
-    maxStep=oMax; whatsappConnected=oWa; trackOk=oTr; funnelOk=oFu; reportsOk=oRe;
-  }catch(e){log(false,'progress tests falharam: '+e.message)}
-  console.log('[SelfTests]\n'+results.join('\n'));
-})();
-
-// ===== Boot =====
-setupNavHandlers();
-render();
-</script>
-</body>
+    <script src="assets/js/nav.js"></script>
+  </body>
 </html>
