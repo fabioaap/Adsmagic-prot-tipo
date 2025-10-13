@@ -1,0 +1,429 @@
+:root {
+  color-scheme: light;
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --page-background: #f1f5f9;
+  --page-text: #0f172a;
+  --surface: #ffffff;
+  --border-soft: #e2e8f0;
+  --border-strong: #cbd5f5;
+  --shadow-card: 0px 10px 32px rgba(15, 23, 42, 0.06);
+  --shadow-pill: 0px 8px 24px rgba(59, 130, 246, 0.35);
+  --radius-lg: 1.5rem;
+  --radius-md: 1rem;
+  --transition-base: 150ms ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page-background);
+  color: var(--page-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 16rem;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--border-soft);
+  background: var(--surface);
+  gap: 2rem;
+  position: relative;
+  transition: width var(--transition-base), padding var(--transition-base);
+}
+
+.app-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.app-brand-compact,
+.app-sidebar-toggle {
+  appearance: none;
+  border: 1px solid var(--border-soft);
+  background: #f8fafc;
+  color: #0f172a;
+  border-radius: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+}
+
+.app-brand-compact:hover,
+.app-sidebar-toggle:hover,
+.app-brand-compact:focus-visible,
+.app-sidebar-toggle:focus-visible {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  outline: none;
+}
+
+.app-brand-compact {
+  display: none;
+}
+
+.app-sidebar.is-collapsed .app-brand-compact {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.app-sidebar.is-collapsed .app-sidebar-header:hover .app-brand-compact,
+.app-sidebar.is-collapsed .app-sidebar-header:focus-within .app-brand-compact,
+.app-sidebar.is-collapsed .app-brand-compact:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-brand-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.app-brand-title strong {
+  font-size: 0.95rem;
+}
+
+.app-brand-title span {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.app-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.app-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.app-nav-heading {
+  padding: 0 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.app-nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-radius: 0.9rem;
+  padding: 0.55rem 0.75rem;
+  transition: background var(--transition-base), color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.app-nav-link:hover {
+  background: #f8fafc;
+}
+
+.app-nav-link:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+.app-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: inherit;
+}
+
+.app-nav-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.app-nav-text {
+  flex: 1;
+}
+
+.app-nav-link .app-nav-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.app-nav-link.is-active {
+  background: #0f172a;
+  color: #ffffff;
+  box-shadow: 0px 16px 32px rgba(15, 23, 42, 0.18);
+}
+
+.app-nav-link.is-active .app-nav-icon {
+  color: #ffffff;
+}
+
+.app-nav-link.is-active .app-nav-count {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.app-nav-link.is-danger {
+  color: #ef4444;
+}
+
+.app-nav-link.is-danger:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.app-sidebar.is-collapsed {
+  width: 4.75rem;
+  padding: 2rem 1rem;
+}
+
+.app-sidebar.is-collapsed .app-sidebar-header {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.app-sidebar.is-collapsed .app-brand {
+  display: none;
+}
+
+.app-sidebar.is-collapsed .app-sidebar-toggle {
+  display: none;
+}
+
+.app-sidebar.is-collapsed .app-brand-compact {
+  display: inline-flex;
+}
+
+.app-sidebar.is-collapsed .app-nav {
+  align-items: center;
+}
+
+.app-sidebar.is-collapsed .app-nav-group {
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-sidebar.is-collapsed .app-nav-heading {
+  display: none;
+}
+
+.app-sidebar.is-collapsed .app-nav-link {
+  width: 100%;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.app-sidebar.is-collapsed .app-nav-text,
+.app-sidebar.is-collapsed .app-nav-count {
+  display: none;
+}
+
+.app-sidebar.is-collapsed .app-nav-link::after {
+  content: attr(data-label);
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  z-index: 20;
+}
+
+.app-sidebar.is-collapsed .app-nav-link::before {
+  content: "";
+  position: absolute;
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid #0f172a;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  z-index: 19;
+}
+
+.app-sidebar.is-collapsed .app-nav-link:hover::after,
+.app-sidebar.is-collapsed .app-nav-link:focus-visible::after {
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.app-sidebar.is-collapsed .app-nav-link:hover::before,
+.app-sidebar.is-collapsed .app-nav-link:focus-visible::before {
+  opacity: 1;
+}
+
+.app-header {
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+}
+
+.app-header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.app-main {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.card-shadow {
+  box-shadow: var(--shadow-card);
+}
+
+.pill-shadow {
+  box-shadow: var(--shadow-pill);
+}
+
+.section-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.section-title h1,
+.section-title h2,
+.section-title h3 {
+  margin: 0;
+}
+
+.table-shell table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-shell thead th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: #94a3b8;
+  padding-bottom: 0.75rem;
+}
+
+.table-shell tbody tr {
+  background: var(--surface);
+  border-radius: 1rem;
+}
+
+.table-shell tbody td {
+  padding: 0.9rem 0.75rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.table-shell tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.badge-soft {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: #e0f2fe;
+  color: #2563eb;
+}
+
+@media (max-width: 1023px) {
+  .app-header-inner,
+  .app-main {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .app-header-inner {
+    align-items: flex-start;
+  }
+}
