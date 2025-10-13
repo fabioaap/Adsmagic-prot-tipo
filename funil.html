@@ -5,74 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Adsmágic - Funil</title>
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    <style>
-      :root {
-        color-scheme: light;
-      }
-      body {
-        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background-color: #f1f5f9;
-      }
-      .card-shadow {
-        box-shadow: 0px 10px 32px rgba(15, 23, 42, 0.06);
-      }
-    </style>
+    <link rel="stylesheet" href="assets/css/base.css" />
   </head>
-  <body class="text-slate-900">
-    <div class="flex min-h-screen">
-      <aside class="hidden w-64 flex-col border-r border-slate-200 bg-white px-6 py-8 lg:flex">
-        <div class="flex items-center gap-2">
-          <img
-            src="https://raw.githubusercontent.com/tailwindlabs/tailwindcss/master/stubs/logo.svg"
-            alt="Logo Adsmágic"
-            class="h-10 w-10"
-          />
-          <div>
-            <p class="text-sm font-semibold text-slate-900">Adsmágic</p>
-            <p class="text-xs text-slate-500">Growth Suite</p>
+  <body>
+    <div class="app-shell">
+      <aside class="app-sidebar hidden flex-col lg:flex">
+        <div class="app-brand">
+          <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+          <div class="app-brand-title">
+            <strong>Adsmágic</strong>
+            <span>Growth Suite</span>
           </div>
         </div>
-        <nav class="mt-8 space-y-2 text-sm font-medium text-slate-600">
-          <p class="px-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">Menu</p>
-          <a href="index.html" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
-            <span>Visão geral</span>
-          </a>
-          <a href="contatos.html" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
-            <span>Contatos</span>
-          </a>
-          <a href="vendas.html" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
-            <span>Vendas</span>
-          </a>
-          <a
-            href="funil.html"
-            class="flex items-center justify-between rounded-xl bg-slate-900 px-3 py-2 text-white shadow-lg"
-          >
-            <span>Funil</span>
-            <span class="rounded-full bg-white/20 px-2 py-0.5 text-xs">Ativo</span>
-          </a>
-          <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
-            <span>Mensagens</span>
-          </a>
-          <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
-            <span>Automação</span>
-          </a>
-          <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
-            <span>Relatórios</span>
-          </a>
-          <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-slate-100">
-            <span>Configurações</span>
-          </a>
-          <div class="pt-4">
-            <p class="px-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">Conta</p>
-            <a href="#" class="mt-2 flex items-center justify-between rounded-xl px-3 py-2 text-red-500 hover:bg-red-50">
+        <nav class="app-nav">
+          <div class="app-nav-group">
+            <p class="app-nav-heading">Menu</p>
+            <a href="index.html" class="app-nav-link">
+              <span>Visão geral</span>
+            </a>
+            <a href="contatos.html" class="app-nav-link">
+              <span>Contatos</span>
+              <span class="app-nav-count">24</span>
+            </a>
+            <a href="vendas.html" class="app-nav-link">
+              <span>Vendas</span>
+              <span class="app-nav-count">12</span>
+            </a>
+            <a href="funil.html" class="app-nav-link is-active">
+              <span>Funil</span>
+              <span class="app-nav-count">Ativo</span>
+            </a>
+            <a href="#" class="app-nav-link">
+              <span>Mensagens</span>
+            </a>
+            <a href="#" class="app-nav-link">
+              <span>Automação</span>
+            </a>
+            <a href="#" class="app-nav-link">
+              <span>Relatórios</span>
+            </a>
+            <a href="#" class="app-nav-link">
+              <span>Configurações</span>
+            </a>
+          </div>
+          <div class="app-nav-group pt-2">
+            <p class="app-nav-heading">Conta</p>
+            <a href="#" class="app-nav-link is-danger">
               <span>Sair</span>
             </a>
           </div>
         </nav>
       </aside>
       <div class="flex flex-1 flex-col">
-        <header class="border-b border-slate-200 bg-white/80 backdrop-blur">
-          <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+        <header class="app-header">
+          <div class="app-header-inner">
             <div class="flex items-center gap-4">
               <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
                 AL
@@ -81,9 +67,7 @@
                 <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
                 <p class="text-xs text-slate-500">Marketing Consultant</p>
               </div>
-              <span class="hidden rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-600 sm:inline-flex">
-                Workplace Conectado
-              </span>
+              <span class="badge-soft hidden sm:inline-flex">Workplace Conectado</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
@@ -106,7 +90,7 @@
             </div>
           </div>
         </header>
-        <main class="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-6 px-6 py-8">
+        <main class="app-main">
           <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <h1 class="text-2xl font-semibold text-slate-900">Funil</h1>
@@ -178,7 +162,7 @@
                 </button>
               </div>
             </div>
-            <div class="overflow-x-auto">
+            <div class="table-shell overflow-x-auto">
               <table class="min-w-full divide-y divide-slate-200 text-sm">
                 <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
                   <tr>
