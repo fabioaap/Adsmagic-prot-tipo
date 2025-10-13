@@ -16,9 +16,10 @@ Este repositório concentra protótipos de interfaces e fluxos.
 ## Padrão visual compartilhado
 
 - `assets/css/base.css` concentra tipografia, tokens de cor, espaçamentos e utilitários estruturais (sidebar, header, navegação, tabelas).
+- `assets/js/nav.js` gera a navegação lateral compartilhada e aplica o destaque automático do item ativo.
 - `assets/img/logo.svg` guarda o logotipo usado na barra lateral e nos cabeçalhos.
 - As páginas consomem Tailwind via CDN apenas para utilitários pontuais; qualquer ajuste global deve ser feito primeiro em `base.css`.
-- Para destacar a página atual, utilize a classe `is-active` sobre o link correspondente na navegação lateral (`.app-nav-link`).
+- Para destacar a página atual, adicione o atributo `data-active="<id>"` no elemento `.app-nav` (ex.: `overview`, `contatos`, `vendas`); o script aplica `is-active` automaticamente durante o carregamento.
 - Componentes reutilizáveis contam com classes auxiliares (`.card-shadow`, `.table-shell`, `.badge-soft`) definidas no CSS compartilhado para preservar sombras, bordas e badges.
 
 ## Integrações
