@@ -101,16 +101,16 @@ textarea {
 }
 
 .app-sidebar.is-collapsed .app-brand-compact {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition-base);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .app-sidebar.is-collapsed .app-sidebar-header:hover .app-brand-compact,
 .app-sidebar.is-collapsed .app-sidebar-header:focus-within .app-brand-compact,
 .app-sidebar.is-collapsed .app-brand-compact:focus-visible {
-  opacity: 1;
-  pointer-events: auto;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -12px rgba(15, 23, 42, 0.45);
 }
 
 .app-brand {
@@ -253,6 +253,7 @@ textarea {
 
 .app-sidebar.is-collapsed .app-brand-compact {
   display: inline-flex;
+  transform: none;
 }
 
 .app-sidebar.is-collapsed .app-nav {
