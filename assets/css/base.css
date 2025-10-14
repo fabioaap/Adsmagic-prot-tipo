@@ -187,7 +187,8 @@ textarea {
   color: inherit;
 }
 
-.app-nav-icon svg {
+.app-nav-icon svg,
+.app-nav-icon .lucide {
   width: 1.5rem;
   height: 1.5rem;
 }

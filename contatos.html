@@ -12,9 +12,7 @@
       <aside class="app-sidebar hidden lg:flex">
         <div class="app-sidebar-header">
           <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" />
-            </svg>
+            <i data-lucide="chevron-right" class="h-5 w-5"></i>
           </button>
           <a class="app-brand" href="index.html">
             <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
@@ -24,9 +22,7 @@
             </div>
           </a>
           <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M15 6l-6 6 6 6" />
-            </svg>
+            <i data-lucide="chevron-left" class="h-5 w-5"></i>
           </button>
         </div>
         <nav class="app-nav" data-active="contatos"></nav>
@@ -47,15 +43,10 @@
             <div class="flex items-center gap-3 text-sm">
               <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
                 <span>Português</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15l3.75-3.75L15.75 15" />
-                </svg>
+                <i data-lucide="chevron-down" class="h-4 w-4"></i>
               </button>
               <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M10 2a6 6 0 00-6 6v2.586l-.707.707A1 1 0 004 13h12a1 1 0 00.707-1.707L16 10.586V8a6 6 0 00-6-6z" />
-                  <path d="M8 15a2 2 0 104 0H8z" />
-                </svg>
+                <i data-lucide="bell" class="h-5 w-5"></i>
               </button>
             </div>
           </div>
@@ -73,15 +64,11 @@
               </span>
               <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
                 Exportar
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5h7.5M12 3v12m3 0l-3 3-3-3" />
-                </svg>
+                <i data-lucide="download" class="h-4 w-4"></i>
               </button>
               <button class="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow transition hover:bg-blue-700">
                 Adicionar
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
+                <i data-lucide="plus" class="h-4 w-4"></i>
               </button>
             </div>
           </div>
@@ -99,24 +86,13 @@
                     placeholder="Pesquise pelo nome ou telefone"
                     class="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-600 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none"
                   />
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 105.4 5.4a7.5 7.5 0 0011.31 11.31z" />
-                  </svg>
+                  <i data-lucide="search" class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i>
                 </label>
               </div>
               <div class="flex flex-col gap-3 md:w-auto md:flex-row md:items-center">
                 <button class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
                   Filtros
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9m-9 6h6m-6 6h3m-9-6h.008v.008H4.5V12zm0-6h.008v.008H4.5V6zm0 12h.008v.008H4.5V18z" />
-                  </svg>
+                  <i data-lucide="sliders-horizontal" class="h-4 w-4"></i>
                 </button>
                 <div class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-4 py-2 text-sm text-slate-500">
                   <span>Ordenar:</span>
@@ -296,9 +272,7 @@
               <p>Mostrando 1-9 de 112 contatos</p>
               <div class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2">
                 <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Página anterior">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                  </svg>
+                  <i data-lucide="chevron-left" class="h-4 w-4"></i>
                 </button>
                 <div class="flex items-center gap-1">
                   <button class="h-8 w-8 rounded-xl bg-blue-600 text-sm font-semibold text-white">1</button>
@@ -308,9 +282,7 @@
                   <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">12</button>
                 </div>
                 <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Próxima página">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                  </svg>
+                  <i data-lucide="chevron-right" class="h-4 w-4"></i>
                 </button>
               </div>
             </div>
@@ -318,6 +290,7 @@
         </main>
       </div>
     </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="assets/js/nav.js"></script>
   </body>
 </html>
