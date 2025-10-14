@@ -10,7 +10,8 @@
   <body>
     <div class="app-shell">
       <aside class="app-sidebar hidden lg:flex">
-        <div class="app-sidebar-header">
+        <div class="app-sidebar-body">
+          <div class="app-sidebar-header">
           <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
             <i data-lucide="chevron-right" class="h-5 w-5"></i>
           </button>
@@ -24,8 +25,9 @@
           <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
             <i data-lucide="chevron-left" class="h-5 w-5"></i>
           </button>
+          </div>
+          <nav class="app-nav" data-active="overview"></nav>
         </div>
-        <nav class="app-nav" data-active="overview"></nav>
       </aside>
       <div class="flex flex-1 flex-col">
         <header class="app-header">
@@ -38,7 +40,6 @@
                 <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
                 <p class="text-xs text-slate-500">Marketing Consultant</p>
               </div>
-              <span class="badge-soft hidden sm:inline-flex">Workplace Conectado</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
@@ -57,11 +58,62 @@
               <h1 class="text-2xl font-semibold text-slate-900">Visão geral</h1>
               <p class="text-sm text-slate-500">Resumo das principais métricas dos últimos 30 dias.</p>
             </div>
-            <div class="flex items-center gap-3 text-xs text-slate-500">
-              <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 font-medium">
+            <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+              <button
+                type="button"
+                class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                title="Atualizar agora"
+              >
                 <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-                Atualizado há 5 min
-              </span>
+                <span>Atualizado há 5 min</span>
+                <i data-lucide="rotate-cw" class="h-4 w-4"></i>
+              </button>
+              <div class="relative" data-status-dropdown>
+                <button
+                  type="button"
+                  id="whatsapp-status-button"
+                  class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                  data-status-trigger
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span class="inline-flex text-emerald-500">
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      class="h-4 w-4"
+                      fill="currentColor"
+                      focusable="false"
+                    >
+                      <path
+                        d="M12 .5C5.649.5.5 5.649.5 12c0 2.111.547 4.099 1.6 5.875L.5 23.5l5.876-1.6A11.4 11.4 0 0 0 12 23.5c6.351 0 11.5-5.149 11.5-11.5S18.351.5 12 .5Zm0 20.9a9.371 9.371 0 0 1-4.772-1.313l-.34-.2-3.478.947.93-3.392-.221-.35A9.425 9.425 0 0 1 2.6 12a9.4 9.4 0 1 1 9.4 9.4Zm5.093-6.884c-.276-.138-1.628-.804-1.88-.895-.252-.092-.437-.138-.623.138-.184.275-.713.895-.873 1.08-.16.184-.321.206-.597.068-.276-.138-1.164-.429-2.217-1.37-.819-.729-1.37-1.63-1.53-1.906-.16-.275-.017-.424.121-.562.125-.124.276-.321.414-.482.138-.16.184-.276.276-.46.092-.184.046-.344-.023-.482-.07-.138-.623-1.504-.854-2.061-.225-.54-.454-.467-.623-.476-.16-.008-.344-.01-.528-.01-.184 0-.482.069-.735.344-.252.275-.966.942-.966 2.3 0 1.358.99 2.67 1.125 2.854.138.184 1.953 2.977 4.73 4.168.661.285 1.178.455 1.58.583.664.212 1.267.182 1.744.11.532-.079 1.628-.664 1.858-1.305.23-.64.23-1.189.16-1.305-.07-.115-.252-.184-.528-.322Z"
+                      />
+                    </svg>
+                  </span>
+                  <span>whatsapp Conectado</span>
+                  <i data-lucide="chevron-down" class="h-4 w-4"></i>
+                </button>
+                <div
+                  class="app-status-menu absolute right-0 z-10 mt-2 w-56 rounded-2xl border border-slate-200 bg-white p-3 text-xs font-medium text-slate-600 shadow-xl transition hidden"
+                  data-status-menu
+                  role="menu"
+                  aria-labelledby="whatsapp-status-button"
+                  aria-hidden="true"
+                >
+                  <p class="text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-slate-400">WhatsApp</p>
+                  <p class="mt-1 text-slate-500">Conectado à conta principal.</p>
+                  <hr class="my-3 border-slate-100" />
+                  <button
+                    type="button"
+                    class="flex w-full items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-left font-semibold text-slate-600 transition hover:bg-slate-50"
+                    data-close-menu
+                    role="menuitem"
+                  >
+                    <i data-lucide="power" class="h-4 w-4 text-rose-500"></i>
+                    Desconectar WhatsApp
+                  </button>
+                </div>
+              </div>
               <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
                 Últimos 30 dias
                 <i data-lucide="chevron-down" class="h-4 w-4"></i>
