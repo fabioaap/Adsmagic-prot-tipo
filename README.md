@@ -16,7 +16,6 @@ Este repositório concentra protótipos de interfaces e fluxos.
 
 - `links.html`: gestão dos links rastreáveis com métricas por canal e tabela de desempenho.
 - `mensagens.html`: acompanhamento das mensagens rastreadas por origem com filtros e tabela de resultados.
-- `automacao.html`: visão dos fluxos automatizados, métricas principais e tabela de workflows.
 
 ### Sistema
 
