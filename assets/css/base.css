@@ -328,6 +328,9 @@ textarea {
 }
 
 .app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   border-bottom: 1px solid var(--border-soft);
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
@@ -351,6 +354,32 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: visible;
+    padding: 2rem 1.5rem;
+    z-index: 30;
+  }
+
+  .app-shell {
+    position: relative;
+  }
+
+  .app-shell > .flex {
+    margin-left: 16rem;
+    min-height: 100vh;
+    transition: margin-left var(--transition-base);
+  }
+
+  .app-sidebar.is-collapsed ~ .flex {
+    margin-left: 4.75rem;
+  }
 }
 
 .card-shadow {
