@@ -10,7 +10,8 @@
   <body>
     <div class="app-shell">
       <aside class="app-sidebar hidden lg:flex">
-        <div class="app-sidebar-header">
+        <div class="app-sidebar-body">
+          <div class="app-sidebar-header">
           <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
             <i data-lucide="chevron-right" class="h-5 w-5"></i>
           </button>
@@ -24,8 +25,9 @@
           <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
             <i data-lucide="chevron-left" class="h-5 w-5"></i>
           </button>
+          </div>
+          <nav class="app-nav" data-active="funil"></nav>
         </div>
-        <nav class="app-nav" data-active="funil"></nav>
       </aside>
       <div class="flex flex-1 flex-col">
         <header class="app-header">
