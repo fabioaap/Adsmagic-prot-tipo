@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Contatos</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="app-sidebar hidden lg:flex">
+        <div class="app-sidebar-header">
+          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+          <a class="app-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+            <div class="app-brand-title">
+              <strong>Adsmágic</strong>
+              <span>Growth Suite</span>
+            </div>
+          </a>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+          </button>
+        </div>
+        <nav class="app-nav" data-active="contatos"></nav>
+      </aside>
+      <div class="flex flex-1 flex-col">
+        <header class="app-header">
+          <div class="app-header-inner">
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
+                AL
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
+                <p class="text-xs text-slate-500">Marketing Consultant</p>
+              </div>
+              <span class="badge-soft hidden sm:inline-flex">Workplace Conectado</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+                <span>Português</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15l3.75-3.75L15.75 15" />
+                </svg>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 2a6 6 0 00-6 6v2.586l-.707.707A1 1 0 004 13h12a1 1 0 00.707-1.707L16 10.586V8a6 6 0 00-6-6z" />
+                  <path d="M8 15a2 2 0 104 0H8z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="app-main">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <h1 class="text-2xl font-semibold text-slate-900">Contatos</h1>
+              <p class="text-sm text-slate-500">Resultados filtrados dos últimos 30 dias.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+              <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 font-medium">
+                <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                1.230 contatos sincronizados
+              </span>
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
+                Exportar
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5h7.5M12 3v12m3 0l-3 3-3-3" />
+                </svg>
+              </button>
+              <button class="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow transition hover:bg-blue-700">
+                Adicionar
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="flex flex-col gap-4 pb-6 md:flex-row md:items-center md:justify-between">
+              <div class="flex flex-1 flex-col gap-3 md:flex-row md:items-center">
+                <div class="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
+                  <span class="text-slate-400">Resultados</span>
+                  <span class="rounded-full bg-white px-2 py-0.5 text-xs font-semibold text-slate-600">112</span>
+                </div>
+                <label class="relative flex-1">
+                  <span class="sr-only">Pesquise pelo nome ou telefone</span>
+                  <input
+                    type="text"
+                    placeholder="Pesquise pelo nome ou telefone"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-600 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none"
+                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 105.4 5.4a7.5 7.5 0 0011.31 11.31z" />
+                  </svg>
+                </label>
+              </div>
+              <div class="flex flex-col gap-3 md:w-auto md:flex-row md:items-center">
+                <button class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                  Filtros
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9m-9 6h6m-6 6h3m-9-6h.008v.008H4.5V12zm0-6h.008v.008H4.5V6zm0 12h.008v.008H4.5V18z" />
+                  </svg>
+                </button>
+                <div class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-4 py-2 text-sm text-slate-500">
+                  <span>Ordenar:</span>
+                  <span class="font-semibold text-slate-700">Mais recentes</span>
+                </div>
+              </div>
+            </div>
+            <div class="table-shell overflow-hidden rounded-3xl border border-slate-100">
+              <table class="min-w-full divide-y divide-slate-100 text-sm">
+                <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                  <tr>
+                    <th scope="col" class="px-6 py-4 text-left">Contato</th>
+                    <th scope="col" class="px-6 py-4 text-left">Telefone</th>
+                    <th scope="col" class="px-6 py-4 text-left">Origem</th>
+                    <th scope="col" class="px-6 py-4 text-left">Etapa</th>
+                    <th scope="col" class="px-6 py-4 text-left">Data de criação</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white">
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">S</span>
+                        <div>
+                          <p class="font-medium text-slate-900">Swell Lopes</p>
+                          <p class="text-xs text-slate-400">swell@estudio.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-600">(11) 98621-9980</td>
+                    <td class="px-6 py-4 text-slate-600">Google Ads</td>
+                    <td class="px-6 py-4">
+                      <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">Contato iniciado</span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-600">D</span>
+                        <div>
+                          <p class="font-medium text-slate-900">Denise Lima</p>
+                          <p class="text-xs text-slate-400">denise@coletivo.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-600">(11) 99840-5021</td>
+                    <td class="px-6 py-4 text-slate-600">Instagram</td>
+                    <td class="px-6 py-4">
+                      <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">Contato iniciado</span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 text-sm font-semibold text-white">B</span>
+                        <div>
+                          <p class="font-medium text-slate-900">Beatriz</p>
+                          <p class="text-xs text-slate-400">bea@studio.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-600">(21) 99540-8021</td>
+                    <td class="px-6 py-4 text-slate-600">Google Ads</td>
+                    <td class="px-6 py-4">
+                      <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">Contato iniciado</span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-900 text-sm font-semibold text-white">B</span>
+                        <div>
+                          <p class="font-medium text-slate-900">BRUNO BARBOSA</p>
+                          <p class="text-xs text-slate-400">bruno@studio.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-600">(11) 99832-3021</td>
+                    <td class="px-6 py-4 text-slate-600">Google Ads</td>
+                    <td class="px-6 py-4">
+                      <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">Contato iniciado</span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-600">V</span>
+                        <div>
+                          <p class="font-medium text-slate-900">vendasonline99</p>
+                          <p class="text-xs text-slate-400">vendasonline@contato.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-600">(21) 98012-1190</td>
+                    <td class="px-6 py-4 text-slate-600">Google Ads</td>
+                    <td class="px-6 py-4">
+                      <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">Contato iniciado</span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">E</span>
+                        <div>
+                          <p class="font-medium text-slate-900">Ericka Souza</p>
+                          <p class="text-xs text-slate-400">ericka@novaloja.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-600">(11) 97731-2021</td>
+                    <td class="px-6 py-4 text-slate-600">WhatsApp</td>
+                    <td class="px-6 py-4">
+                      <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">Contato iniciado</span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-red-500 text-sm font-semibold text-white">N</span>
+                        <div>
+                          <p class="font-medium text-slate-900">Nicolle</p>
+                          <p class="text-xs text-slate-400">nicolle@studio.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-600">(11) 99701-1001</td>
+                    <td class="px-6 py-4 text-slate-600">Google Ads</td>
+                    <td class="px-6 py-4">
+                      <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">Contato iniciado</span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">A</span>
+                        <div>
+                          <p class="font-medium text-slate-900">Aline</p>
+                          <p class="text-xs text-slate-400">aline@clubevip.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-600">(11) 90010-9876</td>
+                    <td class="px-6 py-4 text-slate-600">Facebook Ads</td>
+                    <td class="px-6 py-4">
+                      <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">Contato iniciado</span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-600">*</span>
+                        <div>
+                          <p class="font-medium text-slate-900">**</p>
+                          <p class="text-xs text-slate-400">nao informado</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-600">(11) 99999-9999</td>
+                    <td class="px-6 py-4 text-slate-600">Google Ads</td>
+                    <td class="px-6 py-4">
+                      <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">Contato iniciado</span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex flex-col items-center justify-between gap-4 pt-6 text-sm text-slate-500 md:flex-row">
+              <p>Mostrando 1-9 de 112 contatos</p>
+              <div class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2">
+                <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Página anterior">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </button>
+                <div class="flex items-center gap-1">
+                  <button class="h-8 w-8 rounded-xl bg-blue-600 text-sm font-semibold text-white">1</button>
+                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">2</button>
+                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">3</button>
+                  <span class="px-2 text-slate-400">...</span>
+                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">12</button>
+                </div>
+                <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Próxima página">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="assets/js/nav.js"></script>
+  </body>
+</html>

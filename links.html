@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Links rastreáveis</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="app-sidebar hidden lg:flex">
+        <div class="app-sidebar-header">
+          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+          <a class="app-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+            <div class="app-brand-title">
+              <strong>Adsmágic</strong>
+              <span>Growth Suite</span>
+            </div>
+          </a>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+          </button>
+        </div>
+        <nav class="app-nav" data-active="links"></nav>
+      </aside>
+      <div class="flex flex-1 flex-col">
+        <header class="app-header">
+          <div class="app-header-inner">
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
+                AL
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
+                <p class="text-xs text-slate-500">Marketing Consultant</p>
+              </div>
+              <span class="badge-soft hidden sm:inline-flex">WhatsApp Conectado</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+                <span>Português</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15l3.75-3.75L15.75 15" />
+                </svg>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 2a6 6 0 00-6 6v2.586l-.707.707A1 1 0 004 13h12a1 1 0 00.707-1.707L16 10.586V8a6 6 0 00-6-6z" />
+                  <path d="M8 15a2 2 0 104 0H8z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="app-main">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div class="section-title">
+              <h1 class="text-2xl font-semibold text-slate-900">Links rastreáveis</h1>
+              <p class="text-sm text-slate-500">Cole, monitore e compartilhe os links que conectam campanhas aos seus canais.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                Exportar CSV
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2m-5-4l-3 3m0 0l-3-3m3 3V4" />
+                </svg>
+              </button>
+              <button class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-slate-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                Criar link
+              </button>
+            </div>
+          </div>
+
+          <section class="grid gap-3 md:grid-cols-3 xl:grid-cols-6">
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Google Ads</p>
+              <p class="mt-4 text-2xl font-semibold text-slate-900">08</p>
+              <p class="mt-2 text-xs text-slate-500">Ativos na rede de pesquisa.</p>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Meta Ads</p>
+              <p class="mt-4 text-2xl font-semibold text-slate-900">05</p>
+              <p class="mt-2 text-xs text-slate-500">Distribuídos em públicos lookalike.</p>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Bing Ads</p>
+              <p class="mt-4 text-2xl font-semibold text-slate-900">02</p>
+              <p class="mt-2 text-xs text-slate-500">Campanhas de marca.</p>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Orgânico</p>
+              <p class="mt-4 text-2xl font-semibold text-slate-900">09</p>
+              <p class="mt-2 text-xs text-slate-500">SEO, blog e parcerias.</p>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Direct</p>
+              <p class="mt-4 text-2xl font-semibold text-slate-900">03</p>
+              <p class="mt-2 text-xs text-slate-500">Atendimentos diretos.</p>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Outros</p>
+              <p class="mt-4 text-2xl font-semibold text-slate-900">12</p>
+              <p class="mt-2 text-xs text-slate-500">UTMs personalizados.</p>
+            </article>
+          </section>
+
+          <section class="card-shadow rounded-3xl border border-slate-200 bg-white">
+            <div class="flex flex-col gap-4 border-b border-slate-200 px-6 py-5 lg:flex-row lg:items-center lg:justify-between">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">
+                  Resultados
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">
+                  20 links monitorados
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">
+                  Atualizado há 3 minutos
+                </span>
+              </div>
+              <div class="grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_200px_200px]">
+                <label class="sr-only" for="search-links">Pesquisar links</label>
+                <div class="relative sm:col-span-2 lg:col-span-1">
+                  <input
+                    id="search-links"
+                    type="search"
+                    placeholder="Pesquise pelo nome do link ou vendedor"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-2 pr-10 text-sm text-slate-600 placeholder:text-slate-400 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                  />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                  </svg>
+                </div>
+                <label class="sr-only" for="filter-source">Origem</label>
+                <select
+                  id="filter-source"
+                  class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                  aria-label="Filtrar por origem"
+                >
+                  <option>Todas as origens</option>
+                  <option>Google Ads</option>
+                  <option>Meta Ads</option>
+                  <option>WhatsApp</option>
+                  <option>Orgânico</option>
+                </select>
+                <label class="sr-only" for="filter-status">Status</label>
+                <select
+                  id="filter-status"
+                  class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                  aria-label="Filtrar por status"
+                >
+                  <option>Todos</option>
+                  <option>Ativo</option>
+                  <option>Pausado</option>
+                  <option>Arquivado</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-shell overflow-x-auto">
+              <table class="min-w-full table-fixed divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-left">Link</th>
+                    <th scope="col" class="w-32 px-6 py-3 text-left">Contatos</th>
+                    <th scope="col" class="w-32 px-6 py-3 text-left">Vendas</th>
+                    <th scope="col" class="w-40 px-6 py-3 text-left">Ticket médio</th>
+                    <th scope="col" class="w-40 px-6 py-3 text-left">Data de criação</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white text-slate-600">
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Google Ads - Remarketing</p>
+                      <p class="text-xs text-slate-400">utm_source=google&utm_campaign=remarketing_q1</p>
+                    </td>
+                    <td class="px-6 py-4">9</td>
+                    <td class="px-6 py-4">6</td>
+                    <td class="px-6 py-4">R$ 650,00</td>
+                    <td class="px-6 py-4 text-slate-500">05/03/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Página Flutuante</p>
+                      <p class="text-xs text-slate-400">utm_source=landing&utm_medium=popup</p>
+                    </td>
+                    <td class="px-6 py-4">6</td>
+                    <td class="px-6 py-4">3</td>
+                    <td class="px-6 py-4">R$ 640,00</td>
+                    <td class="px-6 py-4 text-slate-500">27/02/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Meta Ads - Lookalike</p>
+                      <p class="text-xs text-slate-400">utm_source=meta&utm_audience=lookalike_3</p>
+                    </td>
+                    <td class="px-6 py-4">8</td>
+                    <td class="px-6 py-4">5</td>
+                    <td class="px-6 py-4">R$ 670,00</td>
+                    <td class="px-6 py-4 text-slate-500">25/02/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">WhatsApp Botão</p>
+                      <p class="text-xs text-slate-400">utm_source=site&utm_medium=whatsapp_button</p>
+                    </td>
+                    <td class="px-6 py-4">4</td>
+                    <td class="px-6 py-4">2</td>
+                    <td class="px-6 py-4">R$ 610,00</td>
+                    <td class="px-6 py-4 text-slate-500">18/02/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Fake.com</p>
+                      <p class="text-xs text-slate-400">utm_source=fake&utm_medium=referral</p>
+                    </td>
+                    <td class="px-6 py-4">3</td>
+                    <td class="px-6 py-4">2</td>
+                    <td class="px-6 py-4">R$ 590,00</td>
+                    <td class="px-6 py-4 text-slate-500">12/02/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Links Híbridos</p>
+                      <p class="text-xs text-slate-400">utm_source=parceiros&utm_medium=offline</p>
+                    </td>
+                    <td class="px-6 py-4">6</td>
+                    <td class="px-6 py-4">4</td>
+                    <td class="px-6 py-4">R$ 680,00</td>
+                    <td class="px-6 py-4 text-slate-500">08/02/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Google Orgânico</p>
+                      <p class="text-xs text-slate-400">utm_source=google&utm_medium=organic</p>
+                    </td>
+                    <td class="px-6 py-4">9</td>
+                    <td class="px-6 py-4">3</td>
+                    <td class="px-6 py-4">R$ 560,00</td>
+                    <td class="px-6 py-4 text-slate-500">02/02/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Produto - Retargeting</p>
+                      <p class="text-xs text-slate-400">utm_source=meta&utm_campaign=retargeting_produto</p>
+                    </td>
+                    <td class="px-6 py-4">5</td>
+                    <td class="px-6 py-4">3</td>
+                    <td class="px-6 py-4">R$ 705,00</td>
+                    <td class="px-6 py-4 text-slate-500">29/01/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Portal - Financeiro</p>
+                      <p class="text-xs text-slate-400">utm_source=portal&utm_medium=referral</p>
+                    </td>
+                    <td class="px-6 py-4">4</td>
+                    <td class="px-6 py-4">2</td>
+                    <td class="px-6 py-4">R$ 630,00</td>
+                    <td class="px-6 py-4 text-slate-500">21/01/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Parceiro - Restaurante</p>
+                      <p class="text-xs text-slate-400">utm_source=parceiro&utm_medium=restaurante</p>
+                    </td>
+                    <td class="px-6 py-4">2</td>
+                    <td class="px-6 py-4">1</td>
+                    <td class="px-6 py-4">R$ 510,00</td>
+                    <td class="px-6 py-4 text-slate-500">15/01/2024</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex flex-col items-center justify-between gap-4 px-6 pb-6 pt-5 text-sm text-slate-500 md:flex-row">
+              <p>Mostrando 1-10 de 20 links</p>
+              <div class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2">
+                <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Página anterior">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </button>
+                <div class="flex items-center gap-1">
+                  <button class="h-8 w-8 rounded-xl bg-blue-600 text-sm font-semibold text-white">1</button>
+                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">2</button>
+                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">3</button>
+                  <span class="px-2 text-slate-400">...</span>
+                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">5</button>
+                </div>
+                <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Próxima página">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="assets/js/nav.js"></script>
+  </body>
+</html>

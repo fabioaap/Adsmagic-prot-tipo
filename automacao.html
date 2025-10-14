@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Automação</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="app-sidebar hidden lg:flex">
+        <div class="app-sidebar-header">
+          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+          <a class="app-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+            <div class="app-brand-title">
+              <strong>Adsmágic</strong>
+              <span>Growth Suite</span>
+            </div>
+          </a>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+          </button>
+        </div>
+        <nav class="app-nav" data-active="automacao"></nav>
+      </aside>
+      <div class="flex flex-1 flex-col">
+        <header class="app-header">
+          <div class="app-header-inner">
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
+                AL
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
+                <p class="text-xs text-slate-500">Marketing Consultant</p>
+              </div>
+              <span class="badge-soft hidden sm:inline-flex">Automação ativa</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+                <span>Português</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15l3.75-3.75L15.75 15" />
+                </svg>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 2a6 6 0 00-6 6v2.586l-.707.707A1 1 0 004 13h12a1 1 0 00.707-1.707L16 10.586V8a6 6 0 00-6-6z" />
+                  <path d="M8 15a2 2 0 104 0H8z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="app-main">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div class="section-title">
+              <h1 class="text-2xl font-semibold text-slate-900">Automação</h1>
+              <p class="text-sm text-slate-500">Organize fluxos inteligentes para responder e nutrir os contatos em tempo real.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                Criar fluxo
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" />
+                </svg>
+              </button>
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                Importar blueprint
+              </button>
+            </div>
+          </div>
+
+          <section class="card-shadow rounded-3xl border border-slate-200 bg-white">
+            <div class="flex flex-col gap-4 border-b border-slate-200 px-6 py-5 lg:flex-row lg:items-center lg:justify-between">
+              <div class="flex flex-col gap-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">Resumo</p>
+                <h2 class="text-lg font-semibold text-slate-900">Workflows monitorados</h2>
+              </div>
+              <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-500">
+                <span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                Última sincronização há 3 minutos
+              </div>
+            </div>
+            <div class="grid gap-3 border-t border-slate-100 px-6 py-6 sm:grid-cols-2 xl:grid-cols-5">
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Fluxos ativos</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">18</p>
+                <p class="mt-2 text-xs text-slate-500">Campanhas rodando com gatilhos automáticos.</p>
+              </article>
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Automação de leads</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">9</p>
+                <p class="mt-2 text-xs text-slate-500">Nutrição segmentada para novos contatos.</p>
+              </article>
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Sequências de vendas</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">5</p>
+                <p class="mt-2 text-xs text-slate-500">Playbooks conectados ao CRM comercial.</p>
+              </article>
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Tempo médio de resposta</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">2m48s</p>
+                <p class="mt-2 text-xs text-slate-500">Conversas iniciadas após o gatilho.</p>
+              </article>
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Contatos impactados</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">1.240</p>
+                <p class="mt-2 text-xs text-slate-500">Últimos 30 dias de execução automática.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="card-shadow rounded-3xl border border-slate-200 bg-white">
+            <div class="flex flex-col gap-4 border-b border-slate-200 px-6 py-5 lg:flex-row lg:items-center lg:justify-between">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">Fluxos cadastrados</span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">Taxa média 37%</span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">Última auditoria 12/05</span>
+              </div>
+              <div class="grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_200px_200px]">
+                <label class="sr-only" for="search-automation">Pesquisar automações</label>
+                <div class="relative sm:col-span-2 lg:col-span-1">
+                  <input
+                    id="search-automation"
+                    type="search"
+                    placeholder="Busque por nome do fluxo"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-2 pr-10 text-sm text-slate-600 placeholder:text-slate-400 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                  />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                  </svg>
+                </div>
+                <label class="sr-only" for="filter-channel">Filtrar por canal</label>
+                <select
+                  id="filter-channel"
+                  class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                >
+                  <option>Todos os canais</option>
+                  <option>WhatsApp</option>
+                  <option>E-mail</option>
+                  <option>SMS</option>
+                  <option>Push</option>
+                </select>
+                <label class="sr-only" for="filter-status">Filtrar por status</label>
+                <select
+                  id="filter-status"
+                  class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                >
+                  <option>Todos os status</option>
+                  <option>Ativo</option>
+                  <option>Em teste</option>
+                  <option>Pausado</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-shell overflow-x-auto">
+              <table class="min-w-full table-fixed divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-left">Fluxo</th>
+                    <th scope="col" class="w-28 px-6 py-3 text-left">Canal</th>
+                    <th scope="col" class="w-32 px-6 py-3 text-left">Etapas</th>
+                    <th scope="col" class="w-32 px-6 py-3 text-left">Contatos</th>
+                    <th scope="col" class="w-36 px-6 py-3 text-left">Conversões</th>
+                    <th scope="col" class="w-36 px-6 py-3 text-left">Última atualização</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white text-slate-600">
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Onboarding WhatsApp</p>
+                      <p class="text-xs text-slate-400">Sequência de boas-vindas com questionário inteligente</p>
+                    </td>
+                    <td class="px-6 py-4">WhatsApp</td>
+                    <td class="px-6 py-4">6</td>
+                    <td class="px-6 py-4">420</td>
+                    <td class="px-6 py-4">31%</td>
+                    <td class="px-6 py-4 text-slate-500">14/05/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Follow-up de proposta</p>
+                      <p class="text-xs text-slate-400">Lembretes automáticos + agendamento de reunião</p>
+                    </td>
+                    <td class="px-6 py-4">E-mail</td>
+                    <td class="px-6 py-4">4</td>
+                    <td class="px-6 py-4">180</td>
+                    <td class="px-6 py-4">42%</td>
+                    <td class="px-6 py-4 text-slate-500">12/05/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Reengajamento de carrinho</p>
+                      <p class="text-xs text-slate-400">Ofertas progressivas com personalização por ticket</p>
+                    </td>
+                    <td class="px-6 py-4">SMS</td>
+                    <td class="px-6 py-4">5</td>
+                    <td class="px-6 py-4">240</td>
+                    <td class="px-6 py-4">28%</td>
+                    <td class="px-6 py-4 text-slate-500">10/05/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Upgrade de plano</p>
+                      <p class="text-xs text-slate-400">Campanha de retenção com ofertas especiais</p>
+                    </td>
+                    <td class="px-6 py-4">E-mail</td>
+                    <td class="px-6 py-4">3</td>
+                    <td class="px-6 py-4">96</td>
+                    <td class="px-6 py-4">35%</td>
+                    <td class="px-6 py-4 text-slate-500">07/05/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Pesquisa NPS</p>
+                      <p class="text-xs text-slate-400">Disparo automático pós-atendimento com régua de ações</p>
+                    </td>
+                    <td class="px-6 py-4">Push</td>
+                    <td class="px-6 py-4">4</td>
+                    <td class="px-6 py-4">132</td>
+                    <td class="px-6 py-4">18%</td>
+                    <td class="px-6 py-4 text-slate-500">03/05/2024</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-100 px-6 py-4 text-xs text-slate-500">
+              <p>Mostrando 5 de 18 automações</p>
+              <div class="flex items-center gap-2">
+                <button class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition hover:bg-slate-50">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </button>
+                <button class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-slate-900 text-white transition hover:bg-slate-800">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="grid gap-4 lg:grid-cols-2">
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Tarefas automáticas agendadas</h2>
+                  <p class="text-xs text-slate-500">Previsão das próximas execuções</p>
+                </div>
+                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-600">Sem atrasos</span>
+              </div>
+              <ul class="mt-5 space-y-3 text-sm text-slate-600">
+                <li class="flex items-start justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Enviar SMS de reengajamento</p>
+                    <p class="text-xs text-slate-500">Segmento carrinho abandonado &bull; 250 contatos</p>
+                  </div>
+                  <span class="text-xs text-slate-400">Hoje • 17h00</span>
+                </li>
+                <li class="flex items-start justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Disparo WhatsApp Pós-evento</p>
+                    <p class="text-xs text-slate-500">Evento Inbound Experience &bull; 480 contatos</p>
+                  </div>
+                  <span class="text-xs text-slate-400">Amanhã • 09h00</span>
+                </li>
+                <li class="flex items-start justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Campanha Upgrade Premium</p>
+                    <p class="text-xs text-slate-500">Clientes ativos com +6 meses</p>
+                  </div>
+                  <span class="text-xs text-slate-400">18/05 • 11h30</span>
+                </li>
+              </ul>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Alertas e recomendações</h2>
+                  <p class="text-xs text-slate-500">Otimizações sugeridas automaticamente</p>
+                </div>
+                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-50">
+                  Revisar agora
+                </button>
+              </div>
+              <ul class="mt-5 space-y-3 text-sm text-slate-600">
+                <li class="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3">
+                  <p class="font-medium text-amber-600">Fluxo "Follow-up de proposta" com queda de 12% na taxa de resposta.</p>
+                  <p class="mt-1 text-xs text-amber-600">Sugestão: adicione um segundo lembrete 24h antes do vencimento.</p>
+                </li>
+                <li class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3">
+                  <p class="font-medium text-emerald-600">Fluxo "Onboarding WhatsApp" superou a meta em 8%.</p>
+                  <p class="mt-1 text-xs text-emerald-600">Sugestão: replicar o fluxo para leads vindos de anúncios Meta.</p>
+                </li>
+                <li class="rounded-2xl border border-indigo-200 bg-indigo-50 px-4 py-3">
+                  <p class="font-medium text-indigo-600">Nova integração disponível com RD Station.</p>
+                  <p class="mt-1 text-xs text-indigo-600">Conecte para automatizar importações e evitar arquivos CSV.</p>
+                </li>
+              </ul>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="assets/js/nav.js"></script>
+  </body>
+</html>
