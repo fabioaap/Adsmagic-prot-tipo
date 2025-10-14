@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Suporte</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="app-sidebar hidden lg:flex">
+        <div class="app-sidebar-header">
+          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
+            <i data-lucide="chevron-right" class="h-5 w-5"></i>
+          </button>
+          <a class="app-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+            <div class="app-brand-title">
+              <strong>Adsmágic</strong>
+              <span>Growth Suite</span>
+            </div>
+          </a>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
+            <i data-lucide="chevron-left" class="h-5 w-5"></i>
+          </button>
+        </div>
+        <nav class="app-nav" data-active="suporte"></nav>
+      </aside>
+      <div class="flex flex-1 flex-col">
+        <header class="app-header">
+          <div class="app-header-inner">
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
+                AL
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
+                <p class="text-xs text-slate-500">Marketing Consultant</p>
+              </div>
+              <span class="badge-soft hidden sm:inline-flex">Suporte prioritário</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+                <span>Português</span>
+                <i data-lucide="chevron-down" class="h-4 w-4"></i>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <i data-lucide="bell" class="h-5 w-5"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="app-main">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div class="section-title">
+              <h1 class="text-2xl font-semibold text-slate-900">Suporte</h1>
+              <p class="text-sm text-slate-500">Centralize pedidos, acompanhe SLAs e acesse materiais para sua equipe.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                Abrir chamado
+                <i data-lucide="clock" class="h-4 w-4"></i>
+              </button>
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                Chat ao vivo
+              </button>
+            </div>
+          </div>
+
+          <section class="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Chamados em andamento</h2>
+                  <p class="text-xs text-slate-500">Acompanhe prioridade, responsável e tempo de resolução.</p>
+                </div>
+                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-600">SLA médio 1h48</span>
+              </div>
+              <div class="table-shell mt-5 overflow-x-auto">
+                <table class="min-w-full table-fixed divide-y divide-slate-200 text-sm">
+                  <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <tr>
+                      <th scope="col" class="px-6 py-3 text-left">Chamado</th>
+                      <th scope="col" class="w-32 px-6 py-3 text-left">Prioridade</th>
+                      <th scope="col" class="w-40 px-6 py-3 text-left">Responsável</th>
+                      <th scope="col" class="w-36 px-6 py-3 text-left">Atualizado</th>
+                      <th scope="col" class="w-32 px-6 py-3 text-left">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100 bg-white text-slate-600">
+                    <tr class="transition hover:bg-slate-50">
+                      <td class="px-6 py-4">
+                        <p class="font-medium text-slate-900">Integração RD Station apresentou duplicidade</p>
+                        <p class="text-xs text-slate-400">Chamado #4581</p>
+                      </td>
+                      <td class="px-6 py-4">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-600">Alta</span>
+                      </td>
+                      <td class="px-6 py-4">Marina Teixeira</td>
+                      <td class="px-6 py-4">Há 32 min</td>
+                      <td class="px-6 py-4">Em análise</td>
+                    </tr>
+                    <tr class="transition hover:bg-slate-50">
+                      <td class="px-6 py-4">
+                        <p class="font-medium text-slate-900">Webhook de leads disparou alerta de erro 403</p>
+                        <p class="text-xs text-slate-400">Chamado #4579</p>
+                      </td>
+                      <td class="px-6 py-4">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-600">Média</span>
+                      </td>
+                      <td class="px-6 py-4">João Pedrosa</td>
+                      <td class="px-6 py-4">Há 1h12</td>
+                      <td class="px-6 py-4">Em progresso</td>
+                    </tr>
+                    <tr class="transition hover:bg-slate-50">
+                      <td class="px-6 py-4">
+                        <p class="font-medium text-slate-900">Relatório de funil sem atualizar métricas</p>
+                        <p class="text-xs text-slate-400">Chamado #4574</p>
+                      </td>
+                      <td class="px-6 py-4">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-600">Média</span>
+                      </td>
+                      <td class="px-6 py-4">Ana Paula Neri</td>
+                      <td class="px-6 py-4">Há 3h05</td>
+                      <td class="px-6 py-4">Aguardando cliente</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Canais de atendimento</h2>
+                  <p class="text-xs text-slate-500">Escolha a melhor forma de falar com o nosso time.</p>
+                </div>
+                <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-500">Disponível 24/7</span>
+              </div>
+              <ul class="mt-5 space-y-3 text-sm text-slate-600">
+                <li class="flex items-start justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Chat ao vivo</p>
+                    <p class="text-xs text-slate-500">Tempo médio de resposta: 2 minutos</p>
+                  </div>
+                  <button class="rounded-xl border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600 transition hover:bg-slate-50">Iniciar</button>
+                </li>
+                <li class="flex items-start justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">WhatsApp Business</p>
+                    <p class="text-xs text-slate-500">Equipe disponível de segunda a sábado, 08h-20h</p>
+                  </div>
+                  <button class="rounded-xl border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600 transition hover:bg-slate-50">Abrir conversa</button>
+                </li>
+                <li class="flex items-start justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Central telefônica</p>
+                    <p class="text-xs text-slate-500">0800 123 344 • Suporte a incidentes críticos</p>
+                  </div>
+                  <button class="rounded-xl border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600 transition hover:bg-slate-50">Agendar ligação</button>
+                </li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="grid gap-4 lg:grid-cols-2">
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Base de conhecimento</h2>
+                  <p class="text-xs text-slate-500">Artigos e guias organizados por tema.</p>
+                </div>
+                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-50">
+                  Ver biblioteca
+                </button>
+              </div>
+              <ul class="mt-5 space-y-3 text-sm text-slate-600">
+                <li class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <p class="font-medium text-slate-900">Configuração inicial da plataforma</p>
+                  <p class="text-xs text-slate-500">Checklist para conectar canais e importar contatos.</p>
+                </li>
+                <li class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <p class="font-medium text-slate-900">Automação: melhores práticas</p>
+                  <p class="text-xs text-slate-500">Templates para fluxos de boas-vindas e reengajamento.</p>
+                </li>
+                <li class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <p class="font-medium text-slate-900">Modelos de relatórios</p>
+                  <p class="text-xs text-slate-500">Como criar dashboards personalizados em poucos passos.</p>
+                </li>
+              </ul>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Status dos serviços</h2>
+                  <p class="text-xs text-slate-500">Acompanhe incidentes e manutenções programadas.</p>
+                </div>
+                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-600">Todos operacionais</span>
+              </div>
+              <ul class="mt-5 space-y-3 text-sm text-slate-600">
+                <li class="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <span class="font-medium text-slate-900">API pública</span>
+                  <span class="text-xs text-emerald-600">Sem incidentes</span>
+                </li>
+                <li class="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <span class="font-medium text-slate-900">Integração Meta Ads</span>
+                  <span class="text-xs text-emerald-600">Operacional</span>
+                </li>
+                <li class="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <span class="font-medium text-slate-900">Relatórios e BI</span>
+                  <span class="text-xs text-amber-600">Latência leve &bull; previsto normalizar às 18h</span>
+                </li>
+              </ul>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/nav.js"></script>
+  </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Configurações</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="app-sidebar hidden lg:flex">
+        <div class="app-sidebar-header">
+          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
+            <i data-lucide="chevron-right" class="h-5 w-5"></i>
+          </button>
+          <a class="app-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+            <div class="app-brand-title">
+              <strong>Adsmágic</strong>
+              <span>Growth Suite</span>
+            </div>
+          </a>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
+            <i data-lucide="chevron-left" class="h-5 w-5"></i>
+          </button>
+        </div>
+        <nav class="app-nav" data-active="configuracoes"></nav>
+      </aside>
+      <div class="flex flex-1 flex-col">
+        <header class="app-header">
+          <div class="app-header-inner">
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
+                AL
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
+                <p class="text-xs text-slate-500">Marketing Consultant</p>
+              </div>
+              <span class="badge-soft hidden sm:inline-flex">Administração</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+                <span>Português</span>
+                <i data-lucide="chevron-down" class="h-4 w-4"></i>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <i data-lucide="bell" class="h-5 w-5"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="app-main">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div class="section-title">
+              <h1 class="text-2xl font-semibold text-slate-900">Configurações</h1>
+              <p class="text-sm text-slate-500">Gerencie integrações, segurança e preferências globais da sua conta.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                Salvar alterações
+              </button>
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                Reverter
+              </button>
+            </div>
+          </div>
+
+          <section class="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Preferências gerais</h2>
+                  <p class="text-xs text-slate-500">Definições padrão aplicadas a todos os membros da conta.</p>
+                </div>
+                <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-500">Atualizado há 2 dias</span>
+              </div>
+              <form class="mt-5 space-y-5 text-sm text-slate-600">
+                <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Idioma padrão da equipe</p>
+                    <p class="text-xs text-slate-500">Defina a língua mostrada nos relatórios e notificações.</p>
+                  </div>
+                  <select class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                    <option>Português (Brasil)</option>
+                    <option>Inglês (Estados Unidos)</option>
+                    <option>Espanhol (Latam)</option>
+                  </select>
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Moeda padrão</p>
+                    <p class="text-xs text-slate-500">Utilizada em dashboards, relatórios e integrações.</p>
+                  </div>
+                  <select class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                    <option>Real (BRL)</option>
+                    <option>Dólar (USD)</option>
+                    <option>Euro (EUR)</option>
+                  </select>
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Formato de datas</p>
+                    <p class="text-xs text-slate-500">Aplicado em listas, relatórios e automações.</p>
+                  </div>
+                  <select class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                    <option>dd/mm/aaaa</option>
+                    <option>mm/dd/aaaa</option>
+                    <option>aaaa-mm-dd</option>
+                  </select>
+                </div>
+              </form>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Segurança</h2>
+                  <p class="text-xs text-slate-500">Controle de acesso e autenticação para usuários internos.</p>
+                </div>
+                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-600">Status saudável</span>
+              </div>
+              <div class="mt-5 space-y-4 text-sm text-slate-600">
+                <label class="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <span>
+                    <span class="font-medium text-slate-900">Autenticação em duas etapas</span>
+                    <span class="mt-1 block text-xs text-slate-500">Exige token enviado por e-mail ou app autenticador.</span>
+                  </span>
+                  <input type="checkbox" class="h-5 w-10 rounded-full border border-slate-300 bg-white text-slate-900 focus:ring-2 focus:ring-slate-300" checked />
+                </label>
+                <label class="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <span>
+                    <span class="font-medium text-slate-900">Aprovação de novos membros</span>
+                    <span class="mt-1 block text-xs text-slate-500">Solicitações exigem aprovação de um administrador.</span>
+                  </span>
+                  <input type="checkbox" class="h-5 w-10 rounded-full border border-slate-300 bg-white text-slate-900 focus:ring-2 focus:ring-slate-300" checked />
+                </label>
+                <label class="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <span>
+                    <span class="font-medium text-slate-900">Relatórios de login semanal</span>
+                    <span class="mt-1 block text-xs text-slate-500">Resumo enviado toda segunda-feira às 8h.</span>
+                  </span>
+                  <input type="checkbox" class="h-5 w-10 rounded-full border border-slate-300 bg-white text-slate-900 focus:ring-2 focus:ring-slate-300" />
+                </label>
+              </div>
+            </article>
+          </section>
+
+          <section class="card-shadow grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 lg:grid-cols-2">
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <h2 class="text-lg font-semibold text-slate-900">Notificações e alertas</h2>
+              <p class="text-xs text-slate-500">Escolha como cada equipe será avisada sobre eventos críticos.</p>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li class="flex items-start justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Marketing</p>
+                    <p class="text-xs text-slate-500">Alertas de performance e queda de conversões.</p>
+                  </div>
+                  <select class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                    <option>WhatsApp + E-mail</option>
+                    <option>Somente e-mail</option>
+                    <option>Somente WhatsApp</option>
+                  </select>
+                </li>
+                <li class="flex items-start justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Vendas</p>
+                    <p class="text-xs text-slate-500">Leads quentes e mudanças de etapa no funil.</p>
+                  </div>
+                  <select class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                    <option>WhatsApp + E-mail</option>
+                    <option>Somente e-mail</option>
+                    <option>Somente WhatsApp</option>
+                  </select>
+                </li>
+                <li class="flex items-start justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Financeiro</p>
+                    <p class="text-xs text-slate-500">Alertas de cobrança e reconciliação de receita.</p>
+                  </div>
+                  <select class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                    <option>Somente e-mail</option>
+                    <option>WhatsApp + E-mail</option>
+                    <option>Somente WhatsApp</option>
+                  </select>
+                </li>
+              </ul>
+            </article>
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <h2 class="text-lg font-semibold text-slate-900">Logs e auditoria</h2>
+              <p class="text-xs text-slate-500">Registros de ações recentes realizadas pelos usuários.</p>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li class="flex items-start justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">15/05 • 09h14</p>
+                    <p class="text-xs text-slate-500">Letícia ativou o webhook de leads do RD Station.</p>
+                  </div>
+                  <button class="rounded-xl border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600 transition hover:bg-slate-50">Ver detalhes</button>
+                </li>
+                <li class="flex items-start justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">14/05 • 17h52</p>
+                    <p class="text-xs text-slate-500">Carlos alterou permissões da equipe de vendas.</p>
+                  </div>
+                  <button class="rounded-xl border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600 transition hover:bg-slate-50">Ver detalhes</button>
+                </li>
+                <li class="flex items-start justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">13/05 • 15h21</p>
+                    <p class="text-xs text-slate-500">Sistema sincronizou automaticamente 245 contatos.</p>
+                  </div>
+                  <button class="rounded-xl border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600 transition hover:bg-slate-50">Ver detalhes</button>
+                </li>
+              </ul>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/nav.js"></script>
+  </body>
+</html>
