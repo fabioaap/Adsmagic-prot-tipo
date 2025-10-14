@@ -9,7 +9,6 @@ const ICONS = {
   relatorios: "bar-chart-3",
   integracoes: "puzzle",
   configuracoes: "settings",
-  "meus-projetos": "folder-kanban",
   suporte: "life-buoy",
   logout: "log-out",
   default: "circle"
@@ -39,7 +38,6 @@ const NAV_GROUPS = [
       { id: "relatorios", label: "Relatórios", href: "relatorios.html", icon: "relatorios" },
       { id: "integracoes", label: "Integrações", href: "integracoes.html", icon: "integracoes", count: "5" },
       { id: "configuracoes", label: "Configurações", href: "configuracoes.html", icon: "configuracoes" },
-      { id: "meus-projetos", label: "Meus projetos", href: "meus-projetos.html", icon: "meus-projetos" },
       { id: "suporte", label: "Suporte", href: "suporte.html", icon: "suporte" }
     ]
   },

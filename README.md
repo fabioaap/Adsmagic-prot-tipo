@@ -22,7 +22,6 @@ Este repositório concentra protótipos de interfaces e fluxos.
 - `relatorios.html`: biblioteca de relatórios com filtros, cards analíticos e próximos envios.
 - `integracoes.html`: gerenciamento das integrações, canais conectados e distribuição da Tag Adsmágic.
 - `configuracoes.html`: preferências globais, segurança e logs administrativos da conta.
-- `meus-projetos.html`: planejamento de iniciativas estratégicas com cards e tabela de roadmap.
 - `suporte.html`: central de atendimento com chamados, canais e status dos serviços.
 
 ## Padrão visual compartilhado
