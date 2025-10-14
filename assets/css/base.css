@@ -461,6 +461,14 @@ textarea {
   color: #2563eb;
 }
 
+[data-status-dropdown] [data-status-trigger] .lucide-chevron-down {
+  transition: transform 0.2s ease;
+}
+
+[data-status-dropdown].is-open [data-status-trigger] .lucide-chevron-down {
+  transform: rotate(180deg);
+}
+
 @media (max-width: 1023px) {
   .app-header-inner,
   .app-main {

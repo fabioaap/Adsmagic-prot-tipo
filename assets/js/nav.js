@@ -189,12 +189,77 @@ function initSidebar() {
   }
 }
 
+function initStatusDropdowns() {
+  const dropdowns = document.querySelectorAll("[data-status-dropdown]");
+  dropdowns.forEach((dropdown) => {
+    const trigger = dropdown.querySelector("[data-status-trigger]");
+    const menu = dropdown.querySelector("[data-status-menu]");
+
+    if (!trigger || !menu) {
+      return;
+    }
+
+    let isOpen = false;
+
+    function handleClickOutside(event) {
+      if (!dropdown.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+
+    function handleEscape(event) {
+      if (event.key === "Escape") {
+        setOpen(false);
+        trigger.focus();
+      }
+    }
+
+    function setOpen(open) {
+      isOpen = open;
+      dropdown.classList.toggle("is-open", open);
+      trigger.setAttribute("aria-expanded", open ? "true" : "false");
+      menu.classList.toggle("hidden", !open);
+      menu.setAttribute("aria-hidden", open ? "false" : "true");
+
+      if (open) {
+        document.addEventListener("click", handleClickOutside);
+        document.addEventListener("keydown", handleEscape, true);
+      } else {
+        document.removeEventListener("click", handleClickOutside);
+        document.removeEventListener("keydown", handleEscape, true);
+      }
+    }
+
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      setOpen(!isOpen);
+    });
+
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    });
+
+    menu.addEventListener("click", (event) => {
+      const closeTarget = event.target.closest("[data-close-menu]");
+      if (closeTarget) {
+        setOpen(false);
+      }
+    });
+
+    setOpen(false);
+  });
+}
+
 function initNavigation() {
   document.querySelectorAll(".app-nav").forEach(renderNav);
   if (window.lucide?.createIcons) {
     window.lucide.createIcons();
   }
   initSidebar();
+  initStatusDropdowns();
 }
 
 if (document.readyState === "loading") {
