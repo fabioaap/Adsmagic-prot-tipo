@@ -10,7 +10,8 @@
   <body>
     <div class="app-shell">
       <aside class="app-sidebar hidden lg:flex">
-        <div class="app-sidebar-header">
+        <div class="app-sidebar-body">
+          <div class="app-sidebar-header">
           <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
             <i data-lucide="chevron-right" class="h-5 w-5"></i>
           </button>
@@ -24,8 +25,9 @@
           <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
             <i data-lucide="chevron-left" class="h-5 w-5"></i>
           </button>
+          </div>
+          <nav class="app-nav" data-active="overview"></nav>
         </div>
-        <nav class="app-nav" data-active="overview"></nav>
       </aside>
       <div class="flex flex-1 flex-col">
         <header class="app-header">
@@ -38,7 +40,6 @@
                 <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
                 <p class="text-xs text-slate-500">Marketing Consultant</p>
               </div>
-              <span class="badge-soft hidden sm:inline-flex">Workplace Conectado</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
@@ -62,6 +63,7 @@
                 <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
                 Atualizado há 5 min
               </span>
+              <span class="badge-soft inline-flex">whatsapp Conectado</span>
               <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
                 Últimos 30 dias
                 <i data-lucide="chevron-down" class="h-4 w-4"></i>

@@ -6,11 +6,9 @@ const ICONS = {
   eventos: "calendar-days",
   links: "link-2",
   mensagens: "messages-square",
-  automacao: "workflow",
   relatorios: "bar-chart-3",
   integracoes: "puzzle",
   configuracoes: "settings",
-  "meus-projetos": "folder-kanban",
   suporte: "life-buoy",
   logout: "log-out",
   default: "circle"
@@ -31,8 +29,7 @@ const NAV_GROUPS = [
     heading: "Rastreamento",
     items: [
       { id: "links", label: "Links", href: "links.html", icon: "links", count: "11" },
-      { id: "mensagens", label: "Mensagens", href: "mensagens.html", icon: "mensagens", count: "4" },
-      { id: "automacao", label: "Automação", href: "automacao.html", icon: "automacao", count: "6" }
+      { id: "mensagens", label: "Mensagens", href: "mensagens.html", icon: "mensagens", count: "4" }
     ]
   },
   {
@@ -41,7 +38,6 @@ const NAV_GROUPS = [
       { id: "relatorios", label: "Relatórios", href: "relatorios.html", icon: "relatorios" },
       { id: "integracoes", label: "Integrações", href: "integracoes.html", icon: "integracoes", count: "5" },
       { id: "configuracoes", label: "Configurações", href: "configuracoes.html", icon: "configuracoes" },
-      { id: "meus-projetos", label: "Meus projetos", href: "meus-projetos.html", icon: "meus-projetos" },
       { id: "suporte", label: "Suporte", href: "suporte.html", icon: "suporte" }
     ]
   },

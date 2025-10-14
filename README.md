@@ -16,14 +16,12 @@ Este repositório concentra protótipos de interfaces e fluxos.
 
 - `links.html`: gestão dos links rastreáveis com métricas por canal e tabela de desempenho.
 - `mensagens.html`: acompanhamento das mensagens rastreadas por origem com filtros e tabela de resultados.
-- `automacao.html`: visão dos fluxos automatizados, métricas principais e tabela de workflows.
 
 ### Sistema
 
 - `relatorios.html`: biblioteca de relatórios com filtros, cards analíticos e próximos envios.
 - `integracoes.html`: gerenciamento das integrações, canais conectados e distribuição da Tag Adsmágic.
 - `configuracoes.html`: preferências globais, segurança e logs administrativos da conta.
-- `meus-projetos.html`: planejamento de iniciativas estratégicas com cards e tabela de roadmap.
 - `suporte.html`: central de atendimento com chamados, canais e status dos serviços.
 
 ## Padrão visual compartilhado
