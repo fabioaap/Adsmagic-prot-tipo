@@ -6,7 +6,6 @@ const ICONS = {
   eventos: "calendar-days",
   links: "link-2",
   mensagens: "messages-square",
-  automacao: "workflow",
   relatorios: "bar-chart-3",
   integracoes: "puzzle",
   configuracoes: "settings",
@@ -31,8 +30,7 @@ const NAV_GROUPS = [
     heading: "Rastreamento",
     items: [
       { id: "links", label: "Links", href: "links.html", icon: "links", count: "11" },
-      { id: "mensagens", label: "Mensagens", href: "mensagens.html", icon: "mensagens", count: "4" },
-      { id: "automacao", label: "Automação", href: "automacao.html", icon: "automacao", count: "6" }
+      { id: "mensagens", label: "Mensagens", href: "mensagens.html", icon: "mensagens", count: "4" }
     ]
   },
   {
