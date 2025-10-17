@@ -416,6 +416,7 @@ textarea {
   z-index: 20;
   border-bottom: 1px solid var(--border-soft);
   background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(16px); /* Suporte para Safari/Safari iOS */
   backdrop-filter: blur(16px);
 }
 
