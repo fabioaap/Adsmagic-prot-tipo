@@ -18,25 +18,25 @@ const NAV_GROUPS = [
   {
     heading: "Principal",
     items: [
-      { id: "overview", label: "Visão geral", href: "index.html", icon: "overview", activeBadge: "Ativo" },
-      { id: "contatos", label: "Contatos", href: "contatos.html", icon: "contatos", count: "24" },
-      { id: "vendas", label: "Vendas", href: "vendas.html", icon: "vendas", count: "12" },
-      { id: "funil", label: "Funil", href: "funil.html", icon: "funil", count: "7" },
-      { id: "eventos", label: "Eventos", href: "eventos.html", icon: "eventos", count: "3" }
+      { id: "overview", label: "Visão geral", href: "index.html", icon: "overview" },
+      { id: "contatos", label: "Contatos", href: "contatos.html", icon: "contatos" },
+      { id: "vendas", label: "Vendas", href: "vendas.html", icon: "vendas" },
+      { id: "funil", label: "Funil", href: "funil.html", icon: "funil" },
+      { id: "eventos", label: "Eventos", href: "eventos.html", icon: "eventos" }
     ]
   },
   {
     heading: "Rastreamento",
     items: [
-      { id: "links", label: "Links", href: "links.html", icon: "links", count: "11" },
-      { id: "mensagens", label: "Mensagens", href: "mensagens.html", icon: "mensagens", count: "4" }
+      { id: "links", label: "Links", href: "links.html", icon: "links" },
+      { id: "mensagens", label: "Mensagens", href: "mensagens.html", icon: "mensagens" }
     ]
   },
   {
     heading: "Sistema",
     items: [
       { id: "relatorios", label: "Relatórios", href: "relatorios.html", icon: "relatorios" },
-      { id: "integracoes", label: "Integrações", href: "integracoes.html", icon: "integracoes", count: "5" },
+      { id: "integracoes", label: "Integrações", href: "integracoes.html", icon: "integracoes" },
       { id: "configuracoes", label: "Configurações", href: "configuracoes.html", icon: "configuracoes" },
       { id: "suporte", label: "Suporte", href: "suporte.html", icon: "suporte" }
     ]
@@ -110,8 +110,7 @@ function renderNav(nav) {
           classes.push("is-active");
         }
 
-        const badgeLabel = item.id === activeId ? item.activeBadge ?? item.count : item.count;
-        const count = badgeLabel ? `<span class="app-nav-count" aria-hidden="true">${badgeLabel}</span>` : "";
+        const count = "";
 
         return `
           <a href="${item.href}" class="${classes.join(" ")}" data-label="${item.label}" aria-label="${item.label}">
