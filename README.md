@@ -1,4 +1,4 @@
-# Protótipos do Adsmágic
+﻿# Protótipos do Adsmágic
 
 Este repositório concentra protótipos de interfaces e fluxos.
 
@@ -37,7 +37,7 @@ Este repositório concentra protótipos de interfaces e fluxos.
 ## Integrações
 
 - [Configuração do MCP do Figma](docs/figma-mcp.md): tokens, manifestos e fluxo para extrair HTML/CSS de frames via MCP.
-  - ⚠️ No ambiente Codex Cloud, o servidor MCP do Figma não pode ser executado diretamente; use um cliente local para rodar o fluxo e apenas consulte o repositório por aqui.
+  - Obs.: No ambiente Codex Cloud, o servidor MCP do Figma não pode ser executado diretamente; use um cliente local para rodar o fluxo e apenas consulte o repositório por aqui.
 
 ## Como compartilhar a `main` com o agente
 
@@ -58,3 +58,6 @@ O ambiente do agente só enxerga as branches que existem localmente no contêine
 3. Sempre que trouxer novas alterações, rode `git pull origin main` para atualizar a branch local antes de pedir novas mudanças ao agente.
 
 Com isso, a branch `main` passa a estar disponível localmente e o agente pode inspecioná-la, compará-la com outras branches e criar PRs tomando `main` como base.
+
+
+

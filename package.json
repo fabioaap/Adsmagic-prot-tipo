@@ -1,0 +1,29 @@
+{
+  "name": "adsmagic-prot-tipo",
+  "version": "1.0.0",
+  "description": "Este repositório concentra protótipos de interfaces e fluxos.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabioaap/Adsmagic-prot-tipo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabioaap/Adsmagic-prot-tipo/issues"
+  },
+  "homepage": "https://github.com/fabioaap/Adsmagic-prot-tipo#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}

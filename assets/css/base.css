@@ -1,4 +1,4 @@
-﻿/* Layout para Ã¡rea do funil e card lateral */
+﻿/* Layout para área do funil e card lateral */
 
 .dashboard-area {
   display: flex;
@@ -18,60 +18,150 @@
   margin-top: 0.5rem;
 }
 
-.metric-highlights {
+.overview-summary {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  outline: 1px solid #e2e8f0;
+  outline-offset: -1px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.overview-summary.card-shadow {
+  box-shadow:
+    var(--shadow-card),
+    0 28px 50px -28px rgba(79, 70, 229, 0.25),
+    0 0 0 1px rgba(148, 163, 184, 0.12) inset;
+}
+
+.summary-card {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  height: 100%;
 }
 
-.metric-highlights > .metric-card {
-  flex: 1 1 15rem;
-}
-
-.metric-card {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.metric-card-header {
+.summary-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
 }
 
-.metric-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.summary-card-label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
 }
 
-@media (min-width: 768px) {
-  .metric-highlights {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+.summary-card-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1rem;
+}
 
-  .metric-card {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+.summary-card-badge--positive {
+  background: #d1fae5;
+  color: #059669;
+}
 
-  .metric-card-body {
-    align-items: flex-end;
-    text-align: right;
+.summary-card-badge--negative {
+  background: #ffe4e6;
+  color: #f43f5e;
+}
+
+.summary-card-badge--indigo {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+.summary-card-value {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+  color: #0f172a;
+}
+
+.summary-card-caption {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1rem;
+  color: #64748b;
+}
+
+.summary-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+/* Estilos para os dois últimos cards ficarem lado a lado ocupando toda a largura */
+.summary-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+}
+
+/* Garante que os cards se ajustem em telas menores */
+@media (max-width: 1023px) {
+  .summary-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
-  .metric-highlights {
-    flex-wrap: nowrap;
+@media (max-width: 767px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 479px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Os dois últimos cards ficam lado a lado na última linha */
+.summary-grid .summary-card:nth-last-child(1),
+.summary-grid .summary-card:nth-last-child(2) {
+  grid-column: span 2;
+}
+
+@media (max-width: 767px) {
+  .summary-grid .summary-card:nth-last-child(1),
+  .summary-grid .summary-card:nth-last-child(2) {
+    grid-column: span 1;
+  }
+}
+
+.summary-grid .summary-card {
+  min-height: 140px;
+}
+
+@media (max-width: 767px) {
+  .overview-summary {
+    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 900px) {
-/* dashboard-area jÃ¡ forÃ§a coluna. Se quiser espaÃ§amento diferente em mobile, ajuste aqui. */
+/* dashboard-area já força coluna. Se quiser espaçamento diferente em mobile, ajuste aqui. */
 }
 :root {
   color-scheme: light;
@@ -572,7 +662,7 @@ textarea {
   position: relative;
   z-index: 0;
   box-shadow: 0 18px 36px -22px var(--stage-shadow, rgba(15, 23, 42, 0.32));
-  /* clip-path removido para evitar corte do conteÃºdo */
+  /* clip-path removido para evitar corte do conteúdo */
 }
 
 .funnel-stage-bar::after {
@@ -683,4 +773,3 @@ textarea {
     align-items: flex-start;
   }
 }
-

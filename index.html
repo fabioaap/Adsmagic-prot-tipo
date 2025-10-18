@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AdsmÃ¡gic - VisÃ£o geral</title>
+    <title>Adsmágic - Visão geral</title>
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <link rel="stylesheet" href="assets/css/base.css" />
   </head>
@@ -16,9 +16,9 @@
             <i data-lucide="chevron-right" class="h-5 w-5"></i>
           </button>
           <a class="app-brand" href="index.html">
-            <img src="assets/img/logo.svg" alt="Logo AdsmÃ¡gic" width="40" height="40" />
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
             <div class="app-brand-title">
-              <strong>AdsmÃ¡gic</strong>
+              <strong>Adsmágic</strong>
               <span>Growth Suite</span>
             </div>
           </a>
@@ -37,13 +37,13 @@
                 AL
               </div>
               <div>
-                <p class="text-sm font-semibold text-slate-900">Dra. LetÃ­cia Lopes</p>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
                 <p class="text-xs text-slate-500">Marketing Consultant</p>
               </div>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
-                <span>PortuguÃªs</span>
+                <span>Português</span>
                 <i data-lucide="chevron-down" class="h-4 w-4"></i>
               </button>
               <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
@@ -55,8 +55,8 @@
         <main class="app-main">
           <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <h1 class="text-2xl font-semibold text-slate-900">VisÃ£o geral</h1>
-              <p class="text-sm text-slate-500">Resumo das principais mÃ©tricas dos Ãºltimos 30 dias.</p>
+              <h1 class="text-2xl font-semibold text-slate-900">Visão geral</h1>
+              <p class="text-sm text-slate-500">Resumo das principais métricas dos últimos 30 dias.</p>
             </div>
             <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
               <button
@@ -65,7 +65,7 @@
                 title="Atualizar agora"
               >
                 <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-                <span>Atualizado hÃ¡ 5 min</span>
+                <span>Atualizado há 5 min</span>
                 <i data-lucide="rotate-cw" class="h-4 w-4"></i>
               </button>
               <div class="relative" data-status-dropdown>
@@ -101,7 +101,7 @@
                   aria-hidden="true"
                 >
                   <p class="text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-slate-400">WhatsApp</p>
-                  <p class="mt-1 text-slate-500">Conectado Ã  conta principal.</p>
+                  <p class="mt-1 text-slate-500">Conectado à conta principal.</p>
                   <hr class="my-3 border-slate-100" />
                   <button
                     type="button"
@@ -115,35 +115,123 @@
                 </div>
               </div>
               <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
-                Ãšltimos 30 dias
+                Últimos 30 dias
                 <i data-lucide="chevron-down" class="h-4 w-4"></i>
               </button>
             </div>
           </div>
-          <section class="grid gap-4 lg:grid-cols-3">
-            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
-              <div class="flex items-center justify-between">
-                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Novos contatos</p>
-                <span class="text-xs font-medium text-emerald-500">+18% vs mÃªs anterior</span>
-              </div>
-              <p class="mt-4 text-3xl font-semibold text-slate-900">785</p>
-              <p class="mt-2 text-sm text-slate-500">Meta mensal: 650</p>
+          <section class="summary-grid">
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Gastos an�ncios</p>
+                <span class="summary-card-badge summary-card-badge--positive">+4,3%</span>
+              </header>
+              <p class="summary-card-value">R$ 784,21</p>
+              <p class="summary-card-caption">Investimento do per�odo.</p>
             </article>
-            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
-              <div class="flex items-center justify-between">
-                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Receita</p>
-                <span class="text-xs font-medium text-emerald-500">+12% vs mÃªs anterior</span>
-              </div>
-              <p class="mt-4 text-3xl font-semibold text-slate-900">R$ 55.655,00</p>
-              <p class="mt-2 text-sm text-slate-500">Ticket mÃ©dio: R$ 720</p>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Receita</p>
+                <span class="summary-card-badge summary-card-badge--positive">+9,8%</span>
+              </header>
+              <p class="summary-card-value">R$ 6.060,00</p>
+              <p class="summary-card-caption">Receita total atribu�da.</p>
             </article>
-            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
-              <div class="flex items-center justify-between">
-                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">ConversÃµes</p>
-                <span class="text-xs font-medium text-emerald-500">Taxa: 5,82%</span>
-              </div>
-              <p class="mt-4 text-3xl font-semibold text-slate-900">78</p>
-              <p class="mt-2 text-sm text-slate-500">Funil completo atÃ© contrato assinado.</p>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Ticket m�dio</p>
+                <span class="summary-card-badge summary-card-badge--positive">+5,2%</span>
+              </header>
+              <p class="summary-card-value">R$ 757,50</p>
+              <p class="summary-card-caption">Valor m�dio por venda.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">ROI</p>
+                <span class="summary-card-badge summary-card-badge--positive">+0,7x</span>
+              </header>
+              <p class="summary-card-value">7,7x</p>
+              <p class="summary-card-caption">Retorno sobre o investimento.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Custo por venda</p>
+                <span class="summary-card-badge summary-card-badge--negative">-3,1%</span>
+              </header>
+              <p class="summary-card-value">R$ 98,00</p>
+              <p class="summary-card-caption">Aquisi��o m�dia por venda.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Contatos</p>
+                <span class="summary-card-badge summary-card-badge--positive">+12</span>
+              </header>
+              <p class="summary-card-value">68</p>
+              <p class="summary-card-caption">Leads gerados no per�odo.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Vendas</p>
+                <span class="summary-card-badge summary-card-badge--positive">+2</span>
+              </header>
+              <p class="summary-card-value">8</p>
+              <p class="summary-card-caption">Neg�cios fechados.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Taxa de vendas</p>
+                <span class="summary-card-badge summary-card-badge--positive">+1,6 p.p.</span>
+              </header>
+              <p class="summary-card-value">11,76%</p>
+              <p class="summary-card-caption">Convers�es sobre contatos.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Impress�es</p>
+                <span class="summary-card-badge summary-card-badge--positive">+540</span>
+              </header>
+              <p class="summary-card-value">6.020</p>
+              <p class="summary-card-caption">Exibi��es das campanhas.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Cliques</p>
+                <span class="summary-card-badge summary-card-badge--positive">+28</span>
+              </header>
+              <p class="summary-card-value">245</p>
+              <p class="summary-card-caption">Intera��es registradas.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Custo por clique</p>
+                <span class="summary-card-badge summary-card-badge--negative">-0,18</span>
+              </header>
+              <p class="summary-card-value">R$ 3,20</p>
+              <p class="summary-card-caption">Investimento m�dio por clique.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Taxa de cliques</p>
+                <span class="summary-card-badge summary-card-badge--positive">+0,5 p.p.</span>
+              </header>
+              <p class="summary-card-value">4,07%</p>
+              <p class="summary-card-caption">CTR das campanhas.</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Ciclo de vendas</p>
+                <span class="summary-card-badge summary-card-badge--negative">-1,2 dias</span>
+              </header>
+              <p class="summary-card-value">26 dias</p>
+              <p class="summary-card-caption">Objetivo: 24 dias</p>
+            </article>
+            <article class="summary-card card-shadow">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Clientes ativos</p>
+                <span class="summary-card-badge summary-card-badge--positive">+3,8%</span>
+              </header>
+              <p class="summary-card-value">206</p>
+              <p class="summary-card-caption">Renova��es previstas: 14</p>
             </article>
           </section>
           <section class="grid gap-4 lg:grid-cols-[2fr_1fr]">
@@ -217,8 +305,8 @@
             <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
               <div class="flex items-start justify-between">
                 <div>
-                  <h2 class="text-lg font-semibold text-slate-900">Funil de conversÃ£o</h2>
-                  <p class="text-xs text-slate-500">DistribuiÃ§Ã£o dos leads por etapa</p>
+                  <h2 class="text-lg font-semibold text-slate-900">Funil de conversão</h2>
+                  <p class="text-xs text-slate-500">Distribuição dos leads por etapa</p>
                 </div>
                 <div class="text-right text-xs text-slate-500">
                   <p class="font-semibold text-slate-900">Total analisado</p>
@@ -231,11 +319,11 @@
                   <p class="mt-2 text-lg font-semibold text-slate-900">724 novos contatos</p>
                 </div>
                 <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-                  <p class="font-semibold uppercase tracking-[0.08em] text-slate-400">AvanÃ§o mÃ©dio</p>
+                  <p class="font-semibold uppercase tracking-[0.08em] text-slate-400">Avanço médio</p>
                   <p class="mt-2 text-lg font-semibold text-slate-900">61% por etapa</p>
                 </div>
                 <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 sm:col-span-1 sm:text-right">
-                  <p class="font-semibold uppercase tracking-[0.08em] text-slate-400">ConversÃ£o final</p>
+                  <p class="font-semibold uppercase tracking-[0.08em] text-slate-400">Conversão final</p>
                   <p class="mt-2 text-lg font-semibold text-slate-900">212 vendas (17%)</p>
                 </div>
               </div>
@@ -244,7 +332,7 @@
                   <div class="funnel-stage-bar">
                     <div>
                       <p class="funnel-stage-name">Agendou atendimento</p>
-                      <p class="funnel-stage-caption">Leads com horÃ¡rio confirmado</p>
+                      <p class="funnel-stage-caption">Leads com horário confirmado</p>
                     </div>
                     <div class="funnel-stage-values">
                       <p class="funnel-stage-count">724</p>
@@ -261,79 +349,36 @@
                     <div class="funnel-stage-values">
                       <p class="funnel-stage-count">436</p>
                       <p class="funnel-stage-percentage">35% do total</p>
-                      <span class="funnel-stage-delta">60% avanÃ§aram</span>
+                      <span class="funnel-stage-delta">60% avançaram</span>
                     </div>
                   </div>
                 </div>
                 <div class="funnel-stage" style="--stage-width: 48%; --stage-color: #0ea5e9; --stage-color-soft: #06b6d4; --stage-shadow: rgba(14, 165, 233, 0.32)">
                   <div class="funnel-stage-bar">
                     <div>
-                      <p class="funnel-stage-name">ServiÃ§o realizado</p>
-                      <p class="funnel-stage-caption">Entrega concluÃ­da e faturada</p>
+                      <p class="funnel-stage-name">Serviço realizado</p>
+                      <p class="funnel-stage-caption">Entrega concluída e faturada</p>
                     </div>
                     <div class="funnel-stage-values">
                       <p class="funnel-stage-count">212</p>
                       <p class="funnel-stage-percentage">17% do total</p>
-                      <span class="funnel-stage-delta">49% avanÃ§aram</span>
+                      <span class="funnel-stage-delta">49% avançaram</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
-              <div class="metric-highlights mt-6">
-                <div class="metric-card rounded-2xl border border-slate-200 bg-white p-4">
-                  <div class="metric-card-header text-xs text-slate-400">
-                    <p class="font-semibold uppercase tracking-[0.08em]">Ticket médio</p>
-                    <span class="rounded-full bg-emerald-100 px-2 py-0.5 font-medium text-emerald-600">+3,4%</span>
-                  </div>
-                  <div class="metric-card-body">
-                    <p class="text-2xl font-semibold text-slate-900">R$ 855,00</p>
-                    <p class="text-xs text-slate-500">Meta: R$ 820</p>
-                  </div>
-                </div>
-                <div class="metric-card rounded-2xl border border-slate-200 bg-white p-4">
-                  <div class="metric-card-header text-xs text-slate-400">
-                    <p class="font-semibold uppercase tracking-[0.08em]">Ciclo de vendas</p>
-                    <span class="rounded-full bg-rose-100 px-2 py-0.5 font-medium text-rose-500">-1,2 dias</span>
-                  </div>
-                  <div class="metric-card-body">
-                    <p class="text-2xl font-semibold text-slate-900">26 dias</p>
-                    <p class="text-xs text-slate-500">Objetivo: 24 dias</p>
-                  </div>
-                </div>
-                <div class="metric-card rounded-2xl border border-slate-200 bg-white p-4">
-                  <div class="metric-card-header text-xs text-slate-400">
-                    <p class="font-semibold uppercase tracking-[0.08em]">Novos contratos</p>
-                    <span class="rounded-full bg-emerald-100 px-2 py-0.5 font-medium text-emerald-600">+9</span>
-                  </div>
-                  <div class="metric-card-body">
-                    <p class="text-2xl font-semibold text-slate-900">57</p>
-                    <p class="text-xs text-slate-500">�sltimos 30 dias</p>
-                  </div>
-                </div>
-                <div class="metric-card rounded-2xl border border-slate-200 bg-white p-4">
-                  <div class="metric-card-header text-xs text-slate-400">
-                    <p class="font-semibold uppercase tracking-[0.08em]">Clientes ativos</p>
-                    <span class="rounded-full bg-indigo-100 px-2 py-0.5 font-medium text-indigo-600">+3,8%</span>
-                  </div>
-                  <div class="metric-card-body">
-                    <p class="text-2xl font-semibold text-slate-900">206</p>
-                    <p class="text-xs text-slate-500">Renova����es previstas: 14</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </section>
           <section class="grid gap-4 lg:grid-cols-[2fr_1fr]">
             <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
               <div class="flex items-start justify-between">
                 <div>
-                  <h2 class="text-lg font-semibold text-slate-900">Ãšltimas interaÃ§Ãµes</h2>
-                  <p class="text-xs text-slate-500">ComunicaÃ§Ãµes mais recentes com prospects.</p>
+                  <h2 class="text-lg font-semibold text-slate-900">Últimas interações</h2>
+                  <p class="text-xs text-slate-500">Comunicações mais recentes com prospects.</p>
                 </div>
                 <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
-                  Ver histÃ³rico
+                  Ver histórico
                 </button>
               </div>
               <ul class="mt-6 space-y-4 text-sm text-slate-600">
@@ -359,12 +404,12 @@
                 </li>
                 <li class="flex items-start justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3">
                   <div>
-                    <p class="font-medium text-slate-900">EstÃºdio Pluma</p>
-                    <p class="text-xs text-slate-500">Solicitou demonstraÃ§Ã£o</p>
+                    <p class="font-medium text-slate-900">Estúdio Pluma</p>
+                    <p class="text-xs text-slate-500">Solicitou demonstração</p>
                   </div>
                   <div class="text-right text-xs text-slate-400">
                     <p>Ontem</p>
-                    <p>LigaÃ§Ã£o</p>
+                    <p>Ligação</p>
                   </div>
                 </li>
               </ul>
@@ -372,8 +417,8 @@
             <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
               <div class="flex items-start justify-between">
                 <div>
-                  <h2 class="text-lg font-semibold text-slate-900">Ãšltimas vendas</h2>
-                  <p class="text-xs text-slate-500">NegÃ³cios fechados recentemente.</p>
+                  <h2 class="text-lg font-semibold text-slate-900">Últimas vendas</h2>
+                  <p class="text-xs text-slate-500">Negócios fechados recentemente.</p>
                 </div>
                 <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
                   Exportar
@@ -418,6 +463,19 @@
     <script src="assets/js/nav.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

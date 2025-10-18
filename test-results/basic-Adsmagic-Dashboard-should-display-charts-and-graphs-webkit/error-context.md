@@ -1,0 +1,321 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Logo Adsmágic Adsmágic Growth Suite" [ref=e6]:
+          - /url: index.html
+          - img "Logo Adsmágic" [ref=e7]
+          - generic [ref=e8]:
+            - strong [ref=e9]: Adsmágic
+            - generic [ref=e10]: Growth Suite
+        - button "Recolher menu" [expanded] [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+      - navigation [ref=e14]:
+        - generic [ref=e15]:
+          - paragraph [ref=e16]: Principal
+          - link "Visão geral" [ref=e17]:
+            - /url: index.html
+            - img [ref=e19]
+            - generic [ref=e24]: Visão geral
+          - link "Contatos" [ref=e25]:
+            - /url: contatos.html
+            - img [ref=e27]
+            - generic [ref=e32]: Contatos
+          - link "Vendas" [ref=e33]:
+            - /url: vendas.html
+            - img [ref=e35]
+            - generic [ref=e39]: Vendas
+          - link "Funil" [ref=e40]:
+            - /url: funil.html
+            - img [ref=e42]
+            - generic [ref=e44]: Funil
+          - link "Eventos" [ref=e45]:
+            - /url: eventos.html
+            - img [ref=e47]
+            - generic [ref=e49]: Eventos
+        - generic [ref=e50]:
+          - paragraph [ref=e51]: Rastreamento
+          - link "Links" [ref=e52]:
+            - /url: links.html
+            - img [ref=e54]
+            - generic [ref=e57]: Links
+          - link "Mensagens" [ref=e58]:
+            - /url: mensagens.html
+            - img [ref=e60]
+            - generic [ref=e63]: Mensagens
+        - generic [ref=e64]:
+          - paragraph [ref=e65]: Sistema
+          - link "Relatórios" [ref=e66]:
+            - /url: relatorios.html
+            - img [ref=e68]
+            - generic [ref=e70]: Relatórios
+          - link "Integrações" [ref=e71]:
+            - /url: integracoes.html
+            - img [ref=e73]
+            - generic [ref=e75]: Integrações
+          - link "Configurações" [ref=e76]:
+            - /url: configuracoes.html
+            - img [ref=e78]
+            - generic [ref=e81]: Configurações
+          - link "Suporte" [ref=e82]:
+            - /url: suporte.html
+            - img [ref=e84]
+            - generic [ref=e91]: Suporte
+        - generic [ref=e92]:
+          - paragraph [ref=e93]: Conta
+          - link "Sair" [ref=e94]:
+            - /url: "#"
+            - img [ref=e96]
+            - generic [ref=e99]: Sair
+  - generic [ref=e100]:
+    - banner [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e104]: AL
+          - generic [ref=e105]:
+            - paragraph [ref=e106]: Dra. Letícia Lopes
+            - paragraph [ref=e107]: Marketing Consultant
+        - generic [ref=e108]:
+          - button "Português" [ref=e109] [cursor=pointer]:
+            - generic [ref=e110]: Português
+            - img [ref=e111]
+          - button [ref=e113] [cursor=pointer]:
+            - img [ref=e114]
+    - main [ref=e117]:
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - heading "Visão geral" [level=1] [ref=e120]
+          - paragraph [ref=e121]: Resumo das principais métricas dos últimos 30 dias.
+        - generic [ref=e122]:
+          - button "Atualizado há 5 min" [ref=e123] [cursor=pointer]:
+            - generic [ref=e125]: Atualizado há 5 min
+            - img [ref=e126]
+          - button "whatsapp Conectado" [ref=e130] [cursor=pointer]:
+            - img [ref=e132]
+            - generic [ref=e134]: whatsapp Conectado
+            - img [ref=e135]
+          - button "Últimos 30 dias" [ref=e137] [cursor=pointer]:
+            - text: Últimos 30 dias
+            - img [ref=e138]
+      - generic [ref=e140]:
+        - article [ref=e141]:
+          - generic [ref=e142]:
+            - paragraph [ref=e143]: Gastos an�ncios
+            - generic [ref=e144]: +4,3%
+          - paragraph [ref=e145]: R$ 784,21
+          - paragraph [ref=e146]: Investimento do per�odo.
+        - article [ref=e147]:
+          - generic [ref=e148]:
+            - paragraph [ref=e149]: Receita
+            - generic [ref=e150]: +9,8%
+          - paragraph [ref=e151]: R$ 6.060,00
+          - paragraph [ref=e152]: Receita total atribu�da.
+        - article [ref=e153]:
+          - generic [ref=e154]:
+            - paragraph [ref=e155]: Ticket m�dio
+            - generic [ref=e156]: +5,2%
+          - paragraph [ref=e157]: R$ 757,50
+          - paragraph [ref=e158]: Valor m�dio por venda.
+        - article [ref=e159]:
+          - generic [ref=e160]:
+            - paragraph [ref=e161]: ROI
+            - generic [ref=e162]: +0,7x
+          - paragraph [ref=e163]: 7,7x
+          - paragraph [ref=e164]: Retorno sobre o investimento.
+        - article [ref=e165]:
+          - generic [ref=e166]:
+            - paragraph [ref=e167]: Custo por venda
+            - generic [ref=e168]: "-3,1%"
+          - paragraph [ref=e169]: R$ 98,00
+          - paragraph [ref=e170]: Aquisi��o m�dia por venda.
+        - article [ref=e171]:
+          - generic [ref=e172]:
+            - paragraph [ref=e173]: Contatos
+            - generic [ref=e174]: "+12"
+          - paragraph [ref=e175]: "68"
+          - paragraph [ref=e176]: Leads gerados no per�odo.
+        - article [ref=e177]:
+          - generic [ref=e178]:
+            - paragraph [ref=e179]: Vendas
+            - generic [ref=e180]: "+2"
+          - paragraph [ref=e181]: "8"
+          - paragraph [ref=e182]: Neg�cios fechados.
+        - article [ref=e183]:
+          - generic [ref=e184]:
+            - paragraph [ref=e185]: Taxa de vendas
+            - generic [ref=e186]: +1,6 p.p.
+          - paragraph [ref=e187]: 11,76%
+          - paragraph [ref=e188]: Convers�es sobre contatos.
+        - article [ref=e189]:
+          - generic [ref=e190]:
+            - paragraph [ref=e191]: Impress�es
+            - generic [ref=e192]: "+540"
+          - paragraph [ref=e193]: "6.020"
+          - paragraph [ref=e194]: Exibi��es das campanhas.
+        - article [ref=e195]:
+          - generic [ref=e196]:
+            - paragraph [ref=e197]: Cliques
+            - generic [ref=e198]: "+28"
+          - paragraph [ref=e199]: "245"
+          - paragraph [ref=e200]: Intera��es registradas.
+        - article [ref=e201]:
+          - generic [ref=e202]:
+            - paragraph [ref=e203]: Custo por clique
+            - generic [ref=e204]: "-0,18"
+          - paragraph [ref=e205]: R$ 3,20
+          - paragraph [ref=e206]: Investimento m�dio por clique.
+        - article [ref=e207]:
+          - generic [ref=e208]:
+            - paragraph [ref=e209]: Taxa de cliques
+            - generic [ref=e210]: +0,5 p.p.
+          - paragraph [ref=e211]: 4,07%
+          - paragraph [ref=e212]: CTR das campanhas.
+        - article [ref=e213]:
+          - generic [ref=e214]:
+            - paragraph [ref=e215]: Ciclo de vendas
+            - generic [ref=e216]: "-1,2 dias"
+          - paragraph [ref=e217]: 26 dias
+          - paragraph [ref=e218]: "Objetivo: 24 dias"
+        - article [ref=e219]:
+          - generic [ref=e220]:
+            - paragraph [ref=e221]: Clientes ativos
+            - generic [ref=e222]: +3,8%
+          - paragraph [ref=e223]: "206"
+          - paragraph [ref=e224]: "Renova��es previstas: 14"
+      - generic [ref=e225]:
+        - generic [ref=e226]:
+          - generic [ref=e227]:
+            - generic [ref=e228]:
+              - heading "Contatos e Vendas" [level=2] [ref=e229]
+              - paragraph [ref=e230]: Volume por semana
+            - button "Exportar CSV" [ref=e231] [cursor=pointer]
+          - generic [ref=e232]:
+            - generic [ref=e233]:
+              - img [ref=e235]
+              - generic [ref=e238]:
+                - generic [ref=e239]: Fev
+                - generic [ref=e240]: Mar
+                - generic [ref=e241]: Abr
+                - generic [ref=e242]: Mai
+                - generic [ref=e243]: Jun
+            - generic [ref=e244]:
+              - generic [ref=e245]:
+                - paragraph [ref=e246]: Contatos
+                - paragraph [ref=e247]: Semana atual
+                - paragraph [ref=e248]: "273"
+              - generic [ref=e249]:
+                - paragraph [ref=e250]: Vendas
+                - paragraph [ref=e251]: Semana atual
+                - paragraph [ref=e252]: "78"
+        - generic [ref=e253]:
+          - generic [ref=e254]:
+            - generic [ref=e255]:
+              - heading "Receita" [level=2] [ref=e256]
+              - paragraph [ref=e257]: Comparativo com meta
+            - generic [ref=e258]: +5,3%
+          - generic [ref=e259]:
+            - img [ref=e260]
+            - paragraph [ref=e264]: Meta mensal atingida em
+            - paragraph [ref=e265]: 82%
+      - generic [ref=e267]:
+        - generic [ref=e268]:
+          - generic [ref=e269]:
+            - heading "Funil de conversão" [level=2] [ref=e270]
+            - paragraph [ref=e271]: Distribuição dos leads por etapa
+          - generic [ref=e272]:
+            - paragraph [ref=e273]: Total analisado
+            - paragraph [ref=e274]: 1.248 leads
+        - generic [ref=e275]:
+          - generic [ref=e276]:
+            - paragraph [ref=e277]: Entrada do funil
+            - paragraph [ref=e278]: 724 novos contatos
+          - generic [ref=e279]:
+            - paragraph [ref=e280]: Avanço médio
+            - paragraph [ref=e281]: 61% por etapa
+          - generic [ref=e282]:
+            - paragraph [ref=e283]: Conversão final
+            - paragraph [ref=e284]: 212 vendas (17%)
+        - generic [ref=e285]:
+          - generic [ref=e287]:
+            - generic [ref=e288]:
+              - paragraph [ref=e289]: Agendou atendimento
+              - paragraph [ref=e290]: Leads com horário confirmado
+            - generic [ref=e291]:
+              - paragraph [ref=e292]: "724"
+              - paragraph [ref=e293]: 58% do total
+          - generic [ref=e295]:
+            - generic [ref=e296]:
+              - paragraph [ref=e297]: Contato iniciado
+              - paragraph [ref=e298]: Equipe respondeu e conduziu proposta
+            - generic [ref=e299]:
+              - paragraph [ref=e300]: "436"
+              - paragraph [ref=e301]: 35% do total
+              - generic [ref=e302]: 60% avançaram
+          - generic [ref=e304]:
+            - generic [ref=e305]:
+              - paragraph [ref=e306]: Serviço realizado
+              - paragraph [ref=e307]: Entrega concluída e faturada
+            - generic [ref=e308]:
+              - paragraph [ref=e309]: "212"
+              - paragraph [ref=e310]: 17% do total
+              - generic [ref=e311]: 49% avançaram
+      - generic [ref=e312]:
+        - generic [ref=e313]:
+          - generic [ref=e314]:
+            - generic [ref=e315]:
+              - heading "Últimas interações" [level=2] [ref=e316]
+              - paragraph [ref=e317]: Comunicações mais recentes com prospects.
+            - button "Ver histórico" [ref=e318] [cursor=pointer]
+          - list [ref=e319]:
+            - listitem [ref=e320]:
+              - generic [ref=e321]:
+                - paragraph [ref=e322]: Gabriel Torres
+                - paragraph [ref=e323]: Solicitou proposta atualizada
+              - generic [ref=e324]:
+                - paragraph [ref=e325]: 12:45
+                - paragraph [ref=e326]: Chat
+            - listitem [ref=e327]:
+              - generic [ref=e328]:
+                - paragraph [ref=e329]: Ana Carvalho
+                - paragraph [ref=e330]: E-mail sobre onboarding
+              - generic [ref=e331]:
+                - paragraph [ref=e332]: Ontem
+                - paragraph [ref=e333]: Email
+            - listitem [ref=e334]:
+              - generic [ref=e335]:
+                - paragraph [ref=e336]: Estúdio Pluma
+                - paragraph [ref=e337]: Solicitou demonstração
+              - generic [ref=e338]:
+                - paragraph [ref=e339]: Ontem
+                - paragraph [ref=e340]: Ligação
+        - generic [ref=e341]:
+          - generic [ref=e342]:
+            - generic [ref=e343]:
+              - heading "Últimas vendas" [level=2] [ref=e344]
+              - paragraph [ref=e345]: Negócios fechados recentemente.
+            - button "Exportar" [ref=e346] [cursor=pointer]
+          - list [ref=e347]:
+            - listitem [ref=e348]:
+              - generic [ref=e349]:
+                - paragraph [ref=e350]: Adset Terra
+                - paragraph [ref=e351]: Plano Enterprise
+              - paragraph [ref=e352]: R$ 19.200
+            - listitem [ref=e353]:
+              - generic [ref=e354]:
+                - paragraph [ref=e355]: Nexo Labs
+                - paragraph [ref=e356]: Plano Growth
+              - paragraph [ref=e357]: R$ 9.680
+            - listitem [ref=e358]:
+              - generic [ref=e359]:
+                - paragraph [ref=e360]: Studio Dobra
+                - paragraph [ref=e361]: Plano Starter
+              - paragraph [ref=e362]: R$ 6.250
+            - listitem [ref=e363]:
+              - generic [ref=e364]:
+                - paragraph [ref=e365]: Orion Fit
+                - paragraph [ref=e366]: Plano Growth
+              - paragraph [ref=e367]: R$ 7.950
+```

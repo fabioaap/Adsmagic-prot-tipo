@@ -1,4 +1,4 @@
-const ICONS = {
+﻿const ICONS = {
   overview: "layout-dashboard",
   contatos: "users",
   vendas: "briefcase-business",
@@ -110,14 +110,10 @@ function renderNav(nav) {
           classes.push("is-active");
         }
 
-        const badgeLabel = item.id === activeId ? item.activeBadge ?? item.count : item.count;
-        const count = badgeLabel ? `<span class="app-nav-count" aria-hidden="true">${badgeLabel}</span>` : "";
-
         return `
           <a href="${item.href}" class="${classes.join(" ")}" data-label="${item.label}" aria-label="${item.label}">
             <span class="app-nav-icon">${getIconMarkup(item.icon ?? item.id)}</span>
             <span class="app-nav-text">${item.label}</span>
-            ${count}
           </a>
         `;
       })
@@ -267,3 +263,4 @@ if (document.readyState === "loading") {
 } else {
   initNavigation();
 }
+
