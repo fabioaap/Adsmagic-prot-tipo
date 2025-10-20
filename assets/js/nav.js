@@ -1,5 +1,11 @@
 ﻿const ICONS = {
   overview: "layout-dashboard",
+  projetos: "gallery-vertical-end",
+  "chevrons-up-down": "chevrons-up-down",
+  "building-2": "building-2",
+  factory: "factory",
+  "shield-alert": "shield-alert",
+  plus: "plus",
   contatos: "users",
   vendas: "briefcase-business",
   funil: "filter",
@@ -15,6 +21,27 @@
 };
 
 const NAV_GROUPS = [
+  {
+    heading: "Projetos",
+    items: [
+      {
+        id: "projetos",
+        label: "Projetos",
+        href: "projetos.html",
+        icon: "projetos",
+        trailingIcon: "chevrons-up-down",
+        dropdown: {
+          heading: "Projetos",
+          items: [
+            { id: "acme-inc", label: "Acme Inc.", icon: "building-2", shortcut: "Ctrl+1" },
+            { id: "acme-corp", label: "Acme Corp.", icon: "factory", shortcut: "Ctrl+2" },
+            { id: "evil-corp", label: "Evil Corp.", icon: "shield-alert", shortcut: "Ctrl+3" }
+          ],
+          action: { label: "Adicionar projeto", icon: "plus" }
+        }
+      }
+    ]
+  },
   {
     heading: "Principal",
     items: [
@@ -72,9 +99,146 @@ function getIconMarkup(iconKey) {
   return `<i data-lucide="${iconName}" aria-hidden="true"></i>`;
 }
 
+function closeNavDropdowns(nav) {
+  nav.querySelectorAll("[data-nav-dropdown-panel]").forEach((panel) => {
+    panel.classList.remove("is-open");
+    panel.setAttribute("aria-hidden", "true");
+    panel.style.left = "";
+    panel.style.top = "";
+    panel.style.visibility = "";
+    panel.style.removeProperty("--dropdown-arrow-top");
+  });
+
+  nav.querySelectorAll("[data-nav-dropdown-trigger]").forEach((trigger) => {
+    trigger.setAttribute("aria-expanded", "false");
+  });
+}
+
+function positionNavDropdown(nav, dropdownId) {
+  const panel = nav.querySelector(`[data-nav-dropdown-panel="${dropdownId}"]`);
+  const navItem = nav.querySelector(`[data-nav-item="${dropdownId}"]`);
+  if (!panel || !navItem) {
+    return;
+  }
+
+  const sidebar = nav.closest(".app-sidebar");
+  const isCollapsed =
+    sidebar?.classList.contains("is-collapsed") || sidebar?.getAttribute("data-collapsed") === "true";
+
+  const trigger =
+    nav.querySelector(`[data-nav-dropdown-trigger="${dropdownId}"]`) ||
+    navItem.querySelector("a.app-nav-link") ||
+    navItem;
+
+  const triggerRect = trigger.getBoundingClientRect();
+  const panelRect = panel.getBoundingClientRect();
+  const gutter = 16;
+
+  const collapsedOffset = isCollapsed ? 12 : 0;
+  const preferredLeft = triggerRect.right + gutter + collapsedOffset;
+  const maxLeft = window.innerWidth - panelRect.width - gutter;
+  const left = Math.min(Math.max(gutter, preferredLeft), Math.max(gutter, maxLeft));
+
+  const preferredTop = triggerRect.top;
+  const maxTop = window.innerHeight - panelRect.height - gutter;
+  const top = Math.min(Math.max(gutter, preferredTop), Math.max(gutter, maxTop));
+
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  const arrowOffset = triggerRect.top + triggerRect.height / 2 - top;
+  const clampedArrow = Math.max(20, Math.min(panelRect.height - 20, arrowOffset));
+  panel.style.setProperty("--dropdown-arrow-top", `${clampedArrow}px`);
+}
+
+function toggleNavDropdown(nav, dropdownId, forceOpen) {
+  const trigger = nav.querySelector(`[data-nav-dropdown-trigger="${dropdownId}"]`);
+  const panel = nav.querySelector(`[data-nav-dropdown-panel="${dropdownId}"]`);
+  if (!trigger || !panel) {
+    return;
+  }
+
+  const isOpen = panel.classList.contains("is-open");
+  const shouldOpen = typeof forceOpen === "boolean" ? forceOpen : !isOpen;
+
+  closeNavDropdowns(nav);
+
+  if (shouldOpen) {
+    panel.classList.add("is-open");
+    panel.setAttribute("aria-hidden", "false");
+    trigger.setAttribute("aria-expanded", "true");
+    panel.style.visibility = "hidden";
+    window.requestAnimationFrame(() => {
+      positionNavDropdown(nav, dropdownId);
+      panel.style.visibility = "";
+    });
+  }
+}
+
+let navDropdownGlobalHandlersAttached = false;
+
+function ensureGlobalNavDropdownHandlers() {
+  if (navDropdownGlobalHandlersAttached) {
+    return;
+  }
+
+  document.addEventListener("click", (event) => {
+    document.querySelectorAll(".app-nav").forEach((nav) => {
+      if (!nav.contains(event.target)) {
+        closeNavDropdowns(nav);
+      }
+    });
+  });
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key === "Escape") {
+        document.querySelectorAll(".app-nav").forEach((nav) => {
+          closeNavDropdowns(nav);
+        });
+      }
+    },
+    true
+  );
+
+  navDropdownGlobalHandlersAttached = true;
+}
+
 function handleNavClick(event) {
+  const dropdownTrigger = event.target.closest("[data-nav-dropdown-trigger]");
+  if (dropdownTrigger) {
+    event.preventDefault();
+    event.stopPropagation();
+    const nav = dropdownTrigger.closest(".app-nav");
+    if (nav) {
+      toggleNavDropdown(nav, dropdownTrigger.dataset.navDropdownTrigger);
+    }
+    return;
+  }
+
+  const dropdownLink = event.target.closest(".app-nav-dropdown-link");
+  if (dropdownLink) {
+    event.preventDefault();
+    event.stopPropagation();
+    return;
+  }
+
   const link = event.target.closest("a.app-nav-link");
   if (!link) return;
+
+  const nav = link.closest(".app-nav");
+  const sidebar = nav?.closest(".app-sidebar");
+  const isCollapsed =
+    sidebar?.classList.contains("is-collapsed") || sidebar?.getAttribute("data-collapsed") === "true";
+
+  const dropdownId = link.getAttribute("data-nav-dropdown-id");
+  if (dropdownId && isCollapsed) {
+    event.preventDefault();
+    event.stopPropagation();
+    toggleNavDropdown(nav, dropdownId);
+    return;
+  }
 
   const href = link.getAttribute("href");
   if (!href || href === "#") return;
@@ -90,31 +254,111 @@ function handleNavClick(event) {
     return;
   }
 
+  if (nav) {
+    closeNavDropdowns(nav);
+  }
+
   event.preventDefault();
   window.location.assign(link.href);
+}
+
+function handleNavKeydown(event) {
+  const nav = event.currentTarget;
+
+  const dropdownTrigger = event.target.closest("[data-nav-dropdown-trigger]");
+  if (dropdownTrigger) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleNavDropdown(nav, dropdownTrigger.dataset.navDropdownTrigger);
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      closeNavDropdowns(nav);
+      dropdownTrigger.blur();
+    }
+    return;
+  }
+
+  if (event.key === "Escape") {
+    closeNavDropdowns(nav);
+  }
 }
 
 function renderNav(nav) {
   const activeId = nav.dataset.active || "";
 
-  nav.innerHTML = NAV_GROUPS.map((group) => {
+  nav.innerHTML = NAV_GROUPS.map((group, groupIndex) => {
     const itemsHtml = group.items
       .map((item) => {
-        const classes = ["app-nav-link"];
+        const linkClasses = ["app-nav-link"];
 
         if (item.variant === "danger") {
-          classes.push("is-danger");
+          linkClasses.push("is-danger");
         }
 
         if (item.id === activeId) {
-          classes.push("is-active");
+          linkClasses.push("is-active");
         }
 
+        const hasDropdown = Boolean(item.dropdown);
+
+        const trailingIcon = hasDropdown && item.trailingIcon
+          ? `<span class="app-nav-trailing" role="button" tabindex="0" data-nav-dropdown-trigger="${item.id}" aria-label="Abrir menu de ${item.label}" aria-haspopup="true" aria-expanded="false">${getIconMarkup(item.trailingIcon)}</span>`
+          : item.trailingIcon
+          ? `<span class="app-nav-icon app-nav-icon--trailing">${getIconMarkup(item.trailingIcon)}</span>`
+          : "";
+
+        const dropdownList =
+          item.dropdown?.items?.map(
+            (dropdownItem) => `
+              <li>
+                <a href="#" class="app-nav-dropdown-link" role="menuitem" data-dropdown-item-id="${dropdownItem.id}">
+                  <span class="app-nav-dropdown-icon">${getIconMarkup(dropdownItem.icon ?? dropdownItem.id)}</span>
+                  <span class="app-nav-dropdown-text">${dropdownItem.label}</span>
+                  ${
+                    dropdownItem.shortcut
+                      ? `<span class="app-nav-dropdown-shortcut">${dropdownItem.shortcut}</span>`
+                      : ""
+                  }
+                </a>
+              </li>
+            `
+          ).join("") ?? "";
+
+        const dropdownAction =
+          item.dropdown?.action
+            ? `
+              <button type="button" class="app-nav-dropdown-action">
+                <span class="app-nav-dropdown-action-icon">${getIconMarkup(item.dropdown.action.icon ?? "plus")}</span>
+                <span class="app-nav-dropdown-action-text">${item.dropdown.action.label}</span>
+              </button>
+            `
+            : "";
+
+        const dropdownHtml = hasDropdown
+          ? `
+            <div class="app-nav-dropdown" data-nav-dropdown-panel="${item.id}" aria-hidden="true">
+              <p class="app-nav-dropdown-heading">${item.dropdown.heading}</p>
+              <div class="app-nav-dropdown-content">
+                <ul class="app-nav-dropdown-list" role="menu">
+                  ${dropdownList}
+                </ul>
+                ${dropdownAction}
+              </div>
+            </div>
+          `
+          : "";
+
+        const dropdownAttr = hasDropdown ? ` data-nav-dropdown-id="${item.id}"` : "";
+
         return `
-          <a href="${item.href}" class="${classes.join(" ")}" data-label="${item.label}" aria-label="${item.label}">
-            <span class="app-nav-icon">${getIconMarkup(item.icon ?? item.id)}</span>
-            <span class="app-nav-text">${item.label}</span>
-          </a>
+          <div class="app-nav-item" data-nav-item="${item.id}">
+            <a href="${item.href}" class="${linkClasses.join(" ")}"${dropdownAttr} data-label="${item.label}" aria-label="${item.label}">
+              <span class="app-nav-icon">${getIconMarkup(item.icon ?? item.id)}</span>
+              <span class="app-nav-text">${item.label}</span>
+              ${trailingIcon}
+            </a>
+            ${dropdownHtml}
+          </div>
         `;
       })
       .join("");
@@ -127,7 +371,7 @@ function renderNav(nav) {
 
     return `
       <div class="${groupClasses.join(" ")}">
-        <p class="app-nav-heading">${group.heading}</p>
+        <p class="app-nav-heading" data-label-id="${groupIndex}">${group.heading}</p>
         ${itemsHtml}
       </div>
     `;
@@ -140,6 +384,11 @@ function renderNav(nav) {
   if (!nav.__navClickHandlerAttached) {
     nav.addEventListener("click", handleNavClick);
     nav.__navClickHandlerAttached = true;
+  }
+
+  if (!nav.__navKeydownHandlerAttached) {
+    nav.addEventListener("keydown", handleNavKeydown);
+    nav.__navKeydownHandlerAttached = true;
   }
 }
 
@@ -251,6 +500,7 @@ function initStatusDropdowns() {
 
 function initNavigation() {
   document.querySelectorAll(".app-nav").forEach(renderNav);
+  ensureGlobalNavDropdownHandlers();
   if (window.lucide?.createIcons) {
     window.lucide.createIcons();
   }
@@ -263,4 +513,5 @@ if (document.readyState === "loading") {
 } else {
   initNavigation();
 }
+
 

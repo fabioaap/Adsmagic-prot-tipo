@@ -12,47 +12,138 @@
       <aside class="app-sidebar hidden lg:flex">
         <div class="app-sidebar-body">
           <div class="app-sidebar-header">
-          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
-            <i data-lucide="chevron-right" class="h-5 w-5"></i>
-          </button>
           <a class="app-brand" href="index.html">
-            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
-            <div class="app-brand-title">
-              <strong>Adsmágic</strong>
-              <span>Growth Suite</span>
-            </div>
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" class="h-10 w-auto" />
           </a>
-          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
-            <i data-lucide="chevron-left" class="h-5 w-5"></i>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true" style="display: inline-flex;">
+            <i data-lucide="chevron-left" class="h-4 w-4"></i>
           </button>
           </div>
-          <nav class="app-nav" data-active="overview"></nav>
+          <nav class="app-nav" data-active="overview">
+            <div class="app-nav-group">
+              <div class="app-nav-heading">PROJETOS</div>
+              <a href="projetos.html" class="app-nav-link" data-label="Projetos">
+                <div class="app-nav-icon">
+                  <i data-lucide="folder"></i>
+                </div>
+                <span class="app-nav-text">Projetos</span>
+                <i data-lucide="chevron-down" class="app-nav-count"></i>
+              </a>
+            </div>
+            <div class="app-nav-group">
+              <div class="app-nav-heading">PRINCIPAL</div>
+              <a href="index.html" class="app-nav-link is-active" data-label="Visão geral">
+                <div class="app-nav-icon">
+                  <i data-lucide="layout-dashboard"></i>
+                </div>
+                <span class="app-nav-text">Visão geral</span>
+              </a>
+              <a href="contatos.html" class="app-nav-link" data-label="Contatos">
+                <div class="app-nav-icon">
+                  <i data-lucide="users"></i>
+                </div>
+                <span class="app-nav-text">Contatos</span>
+              </a>
+              <a href="vendas.html" class="app-nav-link" data-label="Vendas">
+                <div class="app-nav-icon">
+                  <i data-lucide="trending-up"></i>
+                </div>
+                <span class="app-nav-text">Vendas</span>
+              </a>
+              <a href="funil.html" class="app-nav-link" data-label="Funil">
+                <div class="app-nav-icon">
+                  <i data-lucide="filter"></i>
+                </div>
+                <span class="app-nav-text">Funil</span>
+              </a>
+              <a href="eventos.html" class="app-nav-link" data-label="Eventos">
+                <div class="app-nav-icon">
+                  <i data-lucide="calendar"></i>
+                </div>
+                <span class="app-nav-text">Eventos</span>
+              </a>
+            </div>
+            <div class="app-nav-group">
+              <div class="app-nav-heading">RASTREAMENTO</div>
+              <a href="links.html" class="app-nav-link" data-label="Links">
+                <div class="app-nav-icon">
+                  <i data-lucide="link"></i>
+                </div>
+                <span class="app-nav-text">Links</span>
+              </a>
+              <a href="mensagens.html" class="app-nav-link" data-label="Mensagens">
+                <div class="app-nav-icon">
+                  <i data-lucide="message-square"></i>
+                </div>
+                <span class="app-nav-text">Mensagens</span>
+              </a>
+            </div>
+            <div class="app-nav-group">
+              <div class="app-nav-heading">SISTEMA</div>
+              <a href="relatorios.html" class="app-nav-link" data-label="Relatórios">
+                <div class="app-nav-icon">
+                  <i data-lucide="bar-chart-3"></i>
+                </div>
+                <span class="app-nav-text">Relatórios</span>
+              </a>
+              <a href="integracoes.html" class="app-nav-link" data-label="Integrações">
+                <div class="app-nav-icon">
+                  <i data-lucide="settings"></i>
+                </div>
+                <span class="app-nav-text">Integrações</span>
+              </a>
+              <a href="configuracoes.html" class="app-nav-link" data-label="Configurações">
+                <div class="app-nav-icon">
+                  <i data-lucide="sliders"></i>
+                </div>
+                <span class="app-nav-text">Configurações</span>
+              </a>
+              <a href="suporte.html" class="app-nav-link" data-label="Suporte">
+                <div class="app-nav-icon">
+                  <i data-lucide="headphones"></i>
+                </div>
+                <span class="app-nav-text">Suporte</span>
+              </a>
+            </div>
+            <div class="app-nav-group">
+              <a href="#" class="app-nav-link is-danger" data-label="Sair">
+                <div class="app-nav-icon">
+                  <i data-lucide="log-out"></i>
+                </div>
+                <span class="app-nav-text">Sair</span>
+              </a>
+            </div>
+          </nav>
         </div>
       </aside>
       <div class="flex flex-1 flex-col">
-        <header class="app-header">
-          <div class="app-header-inner">
-            <div class="flex items-center gap-4">
-              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white pill-shadow">
-                AL
-              </div>
-              <div>
-                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
-                <p class="text-xs text-slate-500">Marketing Consultant</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 text-sm">
-              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
-                <span>Português</span>
-                <i data-lucide="chevron-down" class="h-4 w-4"></i>
+        <div class="header" data-label-id="0" style="position: fixed; top: 0; left: 288px; right: 0; z-index: 50; transition: none; cursor: move;">
+          <div class="container">
+            <div class="header-container" style="position: relative; left: 0px; top: 1px;">
+              <button class="notification-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="m13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
               </button>
-              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
-                <i data-lucide="bell" class="h-5 w-5"></i>
-              </button>
+
+              <div class="container2">
+                <div class="container3">
+                  <div class="container4">
+                    <div class="dra-letcia-lopes">Dra. Letícia Lopes</div>
+                  </div>
+                  <div class="container5">
+                    <div class="marketing-consultant">Marketing Consultant</div>
+                  </div>
+                </div>
+                <div class="backgroundshadow">
+                  <div class="al">AL</div>
+                </div>
+              </div>
             </div>
           </div>
-        </header>
-        <main class="app-main">
+        </div>
+        <main class="app-main" style="padding-top: 140px;">
           <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <h1 class="text-2xl font-semibold text-slate-900">Visão geral</h1>
@@ -300,6 +391,171 @@
               </div>
             </div>
           </section>
+          <!-- CARDS VENDAS E RECEITA POR CANAL -->
+          <section class="grid gap-4 lg:grid-cols-2">
+            <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Vendas por canal.</h2>
+                  <p class="text-xs text-slate-500">Distribuição de vendas por canal.</p>
+                </div>
+                <div class="rounded-xl bg-blue-100 px-3 py-1 text-xs font-medium text-blue-600">
+                  Total de vendas: 8
+                </div>
+              </div>
+              <div class="mt-6 flex items-center gap-6">
+                <div class="flex-1">
+                  <div class="relative h-48 w-48 mx-auto">
+                    <svg viewBox="0 0 200 200" class="h-full w-full -rotate-90">
+                      <!-- Google Ads - 55% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#4F46E5" stroke-width="20"
+                              stroke-dasharray="384.845 615.752"
+                              stroke-dashoffset="0" class="transition-all duration-500"></circle>
+                      <!-- Meta Ads - 18% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#F97316" stroke-width="20"
+                              stroke-dasharray="125.796 615.752"
+                              stroke-dashoffset="-384.845" class="transition-all duration-500"></circle>
+                      <!-- TikTok Ads - 12% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#10B981" stroke-width="20"
+                              stroke-dasharray="83.864 615.752"
+                              stroke-dashoffset="-510.641" class="transition-all duration-500"></circle>
+                      <!-- Orgânico - 8% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#F59E0B" stroke-width="20"
+                              stroke-dasharray="55.909 615.752"
+                              stroke-dashoffset="-594.505" class="transition-all duration-500"></circle>
+                      <!-- Direto - 5% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#8B5CF6" stroke-width="20"
+                              stroke-dasharray="34.943 615.752"
+                              stroke-dashoffset="-650.414" class="transition-all duration-500"></circle>
+                      <!-- Outros - 2% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#6B7280" stroke-width="20"
+                              stroke-dasharray="13.977 615.752"
+                              stroke-dashoffset="-685.357" class="transition-all duration-500"></circle>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="text-center">
+                        <p class="text-lg font-semibold text-slate-900 ">VENDAS</p>
+                        <p class="text-base font-semibold text-slate-700">R$ 6.060</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex w-40 flex-col gap-3 text-xs">
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-blue-600"></div>
+                    <span class="text-slate-600">Google Ads</span>
+                    <span class="ml-auto font-semibold text-slate-900">55%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-orange-500"></div>
+                    <span class="text-slate-600">Meta Ads</span>
+                    <span class="ml-auto font-semibold text-slate-900">18%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-emerald-500"></div>
+                    <span class="text-slate-600">TikTok Ads</span>
+                    <span class="ml-auto font-semibold text-slate-900">12%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <span class="text-slate-600">Orgânico</span>
+                    <span class="ml-auto font-semibold text-slate-900">8%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-purple-500"></div>
+                    <span class="text-slate-600">Direto</span>
+                    <span class="ml-auto font-semibold text-slate-900">5%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-gray-500"></div>
+                    <span class="text-slate-600">Outros</span>
+                    <span class="ml-auto font-semibold text-slate-900">2%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-slate-900">Receita por canal</h2>
+                  <p class="text-xs text-slate-500">Distribuição da receita por canal.</p>
+                </div>
+                <div class="rounded-xl bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-600">
+                  Total de receita: R$ 12.120,00
+                </div>
+              </div>
+              <div class="mt-6 flex items-center gap-6">
+                <div class="flex-1">
+                  <div class="relative h-48 w-48 mx-auto">
+                    <svg viewBox="0 0 200 200" class="h-full w-full -rotate-90">
+                      <!-- Google Ads - 52% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#4F46E5" stroke-width="20"
+                              stroke-dasharray="363.879 615.752"
+                              stroke-dashoffset="0" class="transition-all duration-500"></circle>
+                      <!-- Meta Ads - 20% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#F97316" stroke-width="20"
+                              stroke-dasharray="139.773 615.752"
+                              stroke-dashoffset="-363.879" class="transition-all duration-500"></circle>
+                      <!-- TikTok Ads - 11% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#10B981" stroke-width="20"
+                              stroke-dasharray="76.864 615.752"
+                              stroke-dashoffset="-503.652" class="transition-all duration-500"></circle>
+                      <!-- Orgânico - 7% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#F59E0B" stroke-width="20"
+                              stroke-dasharray="48.936 615.752"
+                              stroke-dashoffset="-580.516" class="transition-all duration-500"></circle>
+                      <!-- Direto - 6% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#8B5CF6" stroke-width="20"
+                              stroke-dasharray="41.964 615.752"
+                              stroke-dashoffset="-629.452" class="transition-all duration-500"></circle>
+                      <!-- Outros - 4% -->
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="#6B7280" stroke-width="20"
+                              stroke-dasharray="27.976 615.752"
+                              stroke-dashoffset="-671.416" class="transition-all duration-500"></circle>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="text-center">
+                        <p class="text-xl font-semibold text-slate-900">RECEITA</p>
+                        <p class="text-base font-semibold text-slate-700">R$ 12.120</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex w-40 flex-col gap-3 text-xs">
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-blue-600"></div>
+                    <span class="text-slate-600">Google Ads</span>
+                    <span class="ml-auto font-semibold text-slate-900">52%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-orange-500"></div>
+                    <span class="text-slate-600">Meta Ads</span>
+                    <span class="ml-auto font-semibold text-slate-900">20%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-emerald-500"></div>
+                    <span class="text-slate-600">TikTok Ads</span>
+                    <span class="ml-auto font-semibold text-slate-900">11%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <span class="text-slate-600">Orgânico</span>
+                    <span class="ml-auto font-semibold text-slate-900">7%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-purple-500"></div>
+                    <span class="text-slate-600">Direto</span>
+                    <span class="ml-auto font-semibold text-slate-900">6%</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-gray-500"></div>
+                    <span class="text-slate-600">Outros</span>
+                    <span class="ml-auto font-semibold text-slate-900">4%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
           <!-- FUNIL NOVO -->
           <section class="flex flex-col gap-4">
             <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
@@ -463,20 +719,3 @@
     <script src="assets/js/nav.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
