@@ -43,11 +43,11 @@
               <span class="badge-soft hidden sm:inline-flex">Workplace Conectado</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
-              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+              <button class="hidden md:inline-flex ds-btn ds-btn--ghost">
                 <span>Português</span>
                 <i data-lucide="chevron-down" class="h-4 w-4"></i>
               </button>
-              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+              <button class="ds-btn ds-btn--ghost ds-btn--icon">
                 <i data-lucide="bell" class="h-5 w-5"></i>
               </button>
             </div>
@@ -60,7 +60,7 @@
               <p class="text-sm text-slate-500">Acompanhe o avanço das etapas e priorize próximos passos com segurança.</p>
             </div>
             <div class="flex flex-wrap items-center gap-3">
-              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+              <button class="ds-btn ds-btn--ghost">
                 Exportar
                 <i data-lucide="download" class="h-4 w-4"></i>
               </button>
@@ -111,7 +111,7 @@
                   />
                   <i data-lucide="search" class="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i>
                 </div>
-                <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                <button class="ds-btn ds-btn--ghost">
                   <i data-lucide="arrow-up-down" class="h-4 w-4"></i>
                   Ordenar
                 </button>
@@ -190,9 +190,9 @@
             <div class="flex flex-col gap-3 border-t border-slate-200 px-6 py-4 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
               <p>Mostrando 4 de 4 etapas • Última atualização há 5 minutos</p>
               <div class="flex items-center gap-2 font-medium">
-                <button class="rounded-xl border border-slate-200 px-3 py-1.5 text-slate-500 transition hover:bg-slate-50">Anterior</button>
-                <button class="rounded-xl border border-slate-900 bg-slate-900 px-3 py-1.5 text-white">1</button>
-                <button class="rounded-xl border border-slate-200 px-3 py-1.5 text-slate-500 transition hover:bg-slate-50">Próximo</button>
+                <button class="ds-btn ds-btn--ghost ds-btn--sm text-slate-500" aria-disabled="true">Anterior</button>
+                <button class="ds-btn ds-btn--primary ds-btn--sm is-active">1</button>
+                <button class="ds-btn ds-btn--ghost ds-btn--sm text-slate-500">Próximo</button>
               </div>
             </div>
           </section>
@@ -282,6 +282,12 @@
     <script src="assets/js/nav.js"></script>
   </body>
 </html>
+
+
+
+
+
+
 
 
 

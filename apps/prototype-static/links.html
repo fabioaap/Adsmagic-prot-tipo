@@ -43,11 +43,11 @@
               <span class="badge-soft hidden sm:inline-flex">WhatsApp Conectado</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
-              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+              <button class="hidden md:inline-flex ds-btn ds-btn--ghost">
                 <span>Português</span>
                 <i data-lucide="chevron-down" class="h-4 w-4"></i>
               </button>
-              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+              <button class="ds-btn ds-btn--ghost ds-btn--icon">
                 <i data-lucide="bell" class="h-5 w-5"></i>
               </button>
             </div>
@@ -60,7 +60,7 @@
               <p class="text-sm text-slate-500">Cole, monitore e compartilhe os links que conectam campanhas aos seus canais.</p>
             </div>
             <div class="flex flex-wrap items-center gap-3">
-              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+              <button class="ds-btn ds-btn--ghost">
                 Exportar CSV
                 <i data-lucide="download" class="h-4 w-4"></i>
               </button>
@@ -271,17 +271,17 @@
             <div class="flex flex-col items-center justify-between gap-4 px-6 pb-6 pt-5 text-sm text-slate-500 md:flex-row">
               <p>Mostrando 1-10 de 20 links</p>
               <div class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2">
-                <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Página anterior">
+                <button class="ds-btn ds-btn--ghost ds-btn--xs ds-btn--square text-slate-400" aria-label="Página anterior">
                   <i data-lucide="chevron-left" class="h-4 w-4"></i>
                 </button>
                 <div class="flex items-center gap-1">
-                  <button class="h-8 w-8 rounded-xl bg-blue-600 text-sm font-semibold text-white">1</button>
-                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">2</button>
-                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">3</button>
+                  <button class="ds-btn ds-btn--primary ds-btn--xs ds-btn--square is-active">1</button>
+                  <button class="ds-btn ds-btn--ghost ds-btn--xs ds-btn--square text-slate-500" aria-disabled="true">2</button>
+                  <button class="ds-btn ds-btn--ghost ds-btn--xs ds-btn--square text-slate-500">3</button>
                   <span class="px-2 text-slate-400">...</span>
-                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">5</button>
+                  <button class="ds-btn ds-btn--ghost ds-btn--xs ds-btn--square text-slate-500">5</button>
                 </div>
-                <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Próxima página">
+                <button class="ds-btn ds-btn--ghost ds-btn--xs ds-btn--square text-slate-400" aria-label="Próxima página">
                   <i data-lucide="chevron-right" class="h-4 w-4"></i>
                 </button>
               </div>
@@ -294,5 +294,11 @@
     <script src="assets/js/nav.js"></script>
   </body>
 </html>
+
+
+
+
+
+
 
 

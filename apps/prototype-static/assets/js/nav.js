@@ -16,6 +16,7 @@
   integracoes: "puzzle",
   configuracoes: "settings",
   suporte: "life-buoy",
+  componentes: "square-stack",
   logout: "log-out",
   default: "circle"
 };
@@ -67,6 +68,10 @@ const NAV_GROUPS = [
       { id: "configuracoes", label: "Configurações", href: "configuracoes.html", icon: "configuracoes" },
       { id: "suporte", label: "Suporte", href: "suporte.html", icon: "suporte" }
     ]
+  },
+  {
+    heading: "Design System",
+    items: [{ id: "componentes", label: "Componentes", href: "componentes.html", icon: "componentes" }]
   },
   {
     heading: "Conta",
@@ -513,5 +518,6 @@ if (document.readyState === "loading") {
 } else {
   initNavigation();
 }
+
 
 

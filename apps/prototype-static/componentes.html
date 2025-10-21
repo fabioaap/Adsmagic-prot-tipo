@@ -1,0 +1,1544 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Componentes</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+  </head>
+  <body>
+    <div class="component-layout">
+      <aside class="component-sidebar" aria-label="Lista de componentes">
+        <div class="component-sidebar-header">
+          <h1>Componentes</h1>
+          <p>
+            Exemplos canonizados com tokens compartilhados. Selecione uma
+            categoria para ver a implementação em cada stack.
+          </p>
+        </div>
+
+        <nav
+          class="component-sidebar-group"
+          aria-labelledby="component-nav-layout"
+        >
+          <h2 id="component-nav-layout">Layout</h2>
+          <ul class="component-sidebar-list">
+            <li>
+              <a
+                class="component-sidebar-link is-active"
+                href="#component-header"
+                >Header</a
+              >
+            </li>
+            <li>
+              <a class="component-sidebar-link" href="#component-sidebar"
+                >Sidebar</a
+              >
+            </li>
+            <li>
+              <a class="component-sidebar-link" href="#component-card"
+                >Card base</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <nav
+          class="component-sidebar-group"
+          aria-labelledby="component-nav-content"
+        >
+          <h2 id="component-nav-content">Conteúdo</h2>
+          <ul class="component-sidebar-list">
+            <li>
+              <a class="component-sidebar-link" href="#component-buttons"
+                >Botões</a
+              >
+            </li>
+            <li>
+              <a class="component-sidebar-link" href="#component-badges"
+                >Badges</a
+              >
+            </li>
+            <li>
+              <a class="component-sidebar-link" href="#component-summary-card"
+                >Card de resumo</a
+              >
+            </li>
+            <li>
+              <a class="component-sidebar-link" href="#component-table"
+                >Tabela</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <nav
+          class="component-sidebar-group"
+          aria-labelledby="component-nav-feedback"
+        >
+          <h2 id="component-nav-feedback">Feedback</h2>
+          <ul class="component-sidebar-list">
+            <li>
+              <a class="component-sidebar-link" href="#component-status-menu"
+                >Dropdown de status</a
+              >
+            </li>
+            <li>
+              <a class="component-sidebar-link" href="#component-avatar"
+                >Avatar destacado</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="component-stage">
+        <header class="component-stage-header">
+          <div>
+            <p class="ds-text-sm">Design System Adsmágic</p>
+            <h1 class="text-3xl font-semibold text-slate-900">
+              Catálogo de componentes
+            </h1>
+          </div>
+          <ul class="component-meta-list">
+            <li>
+              <i data-lucide="sparkles" class="h-4 w-4"></i>Base única de tokens
+            </li>
+            <li><i data-lucide="code" class="h-4 w-4"></i>Multi-framework</li>
+            <li>
+              <i data-lucide="rocket" class="h-4 w-4"></i>Pronto para produção
+            </li>
+          </ul>
+        </header>
+
+        <!-- Header -->
+        <section class="component-section" id="component-header">
+          <div class="component-section-header">
+            <h2>Header</h2>
+            <p>
+              Cabeçalho padrão com avatar, estado e ações rápidas. Orquestra
+              título e utilitários.
+            </p>
+          </div>
+
+          <div class="component-demo" style="flex-direction: column">
+            <header class="app-header">
+              <div class="app-header-inner">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white"
+                  >
+                    AL
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-900">
+                      Dra. Letícia Lopes
+                    </p>
+                    <p class="text-xs text-slate-500">Marketing Consultant</p>
+                  </div>
+                  <span class="badge-soft hidden sm:inline-flex"
+                    >Design System</span
+                  >
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                  <span
+                    class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 font-medium"
+                  >
+                    <span
+                      class="inline-flex h-2 w-2 rounded-full bg-emerald-500"
+                    ></span>
+                    Atualizado há 5 min
+                  </span>
+                  <button
+                    class="ds-btn ds-btn--ghost ds-btn--icon"
+                    aria-label="Abrir notificações"
+                  >
+                    <i data-lucide="bell" class="h-5 w-5"></i>
+                  </button>
+                </div>
+              </div>
+            </header>
+          </div>
+
+          <div class="component-tabs" data-component-tabs>
+            <div class="component-tablist" role="tablist" aria-label="Header">
+              <button
+                class="component-tab"
+                id="tab-header-html"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-header-html"
+              >
+                HTML
+              </button>
+              <button
+                class="component-tab"
+                id="tab-header-react"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-header-react"
+              >
+                React
+              </button>
+              <button
+                class="component-tab"
+                id="tab-header-vue"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-header-vue"
+              >
+                Vue
+              </button>
+            </div>
+
+            <div
+              class="component-tabpanel"
+              id="panel-header-html"
+              role="tabpanel"
+              aria-labelledby="tab-header-html"
+              tabindex="0"
+            >
+              <pre><code>&lt;header class="app-header"&gt;
+  &lt;div class="app-header-inner"&gt;
+    &lt;div class="flex items-center gap-4"&gt;
+      &lt;div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white"&gt;AL&lt;/div&gt;
+      &lt;div&gt;
+        &lt;p class="text-sm font-semibold text-slate-900"&gt;Dra. Letícia Lopes&lt;/p&gt;
+        &lt;p class="text-xs text-slate-500"&gt;Marketing Consultant&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;span class="badge-soft hidden sm:inline-flex"&gt;Design System&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="flex items-center gap-3 text-sm"&gt;
+      &lt;span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 font-medium"&gt;
+        &lt;span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"&gt;&lt;/span&gt;
+        Atualizado há 5 min
+      &lt;/span&gt;
+      &lt;button class="ds-btn ds-btn--ghost ds-btn--icon" aria-label="Abrir notificações"&gt;
+        &lt;i data-lucide="bell" class="h-5 w-5"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-header-react"
+              role="tabpanel"
+              aria-labelledby="tab-header-react"
+              tabindex="0"
+            >
+              <pre><code>import { useDesignTokens } from "./assets/tokens/react";
+
+export function AppHeader() {
+  useDesignTokens();
+
+  return (
+    &lt;header className="app-header"&gt;
+      &lt;div className="app-header-inner"&gt;
+        &lt;div className="flex items-center gap-4"&gt;
+          &lt;div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white"&gt;
+            AL
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;p className="text-sm font-semibold text-slate-900"&gt;Dra. Letícia Lopes&lt;/p&gt;
+            &lt;p className="text-xs text-slate-500"&gt;Marketing Consultant&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span className="badge-soft hidden sm:inline-flex"&gt;Design System&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div className="flex items-center gap-3 text-sm"&gt;
+          &lt;span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 font-medium"&gt;
+            &lt;span className="inline-flex h-2 w-2 rounded-full bg-emerald-500"&gt;&lt;/span&gt;
+            Atualizado há 5 min
+          &lt;/span&gt;
+          &lt;button className="ds-btn ds-btn--ghost ds-btn--icon" aria-label="Abrir notificações"&gt;
+            &lt;i data-lucide="bell" className="h-5 w-5" /&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+  );
+}</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-header-vue"
+              role="tabpanel"
+              aria-labelledby="tab-header-vue"
+              tabindex="0"
+            >
+              <pre><code>&lt;template&gt;
+  &lt;header class="app-header"&gt;
+    &lt;div class="app-header-inner"&gt;
+      &lt;div class="flex items-center gap-4"&gt;
+        &lt;div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white"&gt;
+          AL
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;p class="text-sm font-semibold text-slate-900"&gt;Dra. Letícia Lopes&lt;/p&gt;
+          &lt;p class="text-xs text-slate-500"&gt;Marketing Consultant&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;span class="badge-soft hidden sm:inline-flex"&gt;Design System&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="flex items-center gap-3 text-sm"&gt;
+        &lt;span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 font-medium"&gt;
+          &lt;span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"&gt;&lt;/span&gt;
+          Atualizado há 5 min
+        &lt;/span&gt;
+        &lt;button class="ds-btn ds-btn--ghost ds-btn--icon" aria-label="Abrir notificações"&gt;
+          &lt;i data-lucide="bell" class="h-5 w-5"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+&lt;/template&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sidebar -->
+        <section class="component-section" id="component-sidebar">
+          <div class="component-section-header">
+            <h2>Sidebar</h2>
+            <p>
+              Estrutura lateral com grupos e ícones adaptáveis para navegação
+              principal.
+            </p>
+          </div>
+
+          <div class="component-demo" style="flex-direction: column">
+            <nav class="app-sidebar-body" style="max-width: 260px">
+              <div class="app-sidebar-header">
+                <a class="app-brand" href="#">
+                  <img
+                    src="assets/img/logo.svg"
+                    alt="Logo Adsmágic"
+                    width="40"
+                    height="40"
+                  />
+                  <div class="app-brand-title">
+                    <strong>Adsmágic</strong>
+                    <span>Growth Suite</span>
+                  </div>
+                </a>
+              </div>
+              <div class="app-nav">
+                <div class="app-nav-group" data-nav-group>
+                  <p class="app-nav-heading">Principal</p>
+                  <a class="app-nav-link is-active" href="#"
+                    ><span class="app-nav-text">Visão geral</span></a
+                  >
+                  <a class="app-nav-link" href="#"
+                    ><span class="app-nav-text">Contatos</span></a
+                  >
+                  <a class="app-nav-link" href="#"
+                    ><span class="app-nav-text">Vendas</span></a
+                  >
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <div class="component-tabs" data-component-tabs>
+            <div class="component-tablist" role="tablist" aria-label="Sidebar">
+              <button
+                class="component-tab"
+                id="tab-sidebar-html"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-sidebar-html"
+              >
+                HTML
+              </button>
+              <button
+                class="component-tab"
+                id="tab-sidebar-react"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-sidebar-react"
+              >
+                React
+              </button>
+              <button
+                class="component-tab"
+                id="tab-sidebar-vue"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-sidebar-vue"
+              >
+                Vue
+              </button>
+            </div>
+
+            <div
+              class="component-tabpanel"
+              id="panel-sidebar-html"
+              role="tabpanel"
+              aria-labelledby="tab-sidebar-html"
+              tabindex="0"
+            >
+              <pre><code>&lt;aside class="app-sidebar"&gt;
+  &lt;div class="app-sidebar-body"&gt;
+    &lt;div class="app-sidebar-header"&gt;
+      &lt;a class="app-brand" href="#"&gt;
+        &lt;img src="assets/img/logo.svg" alt="Logo" width="40" height="40" /&gt;
+        &lt;div class="app-brand-title"&gt;
+          &lt;strong&gt;Adsmágic&lt;/strong&gt;
+          &lt;span&gt;Growth Suite&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;nav class="app-nav"&gt;
+      &lt;div class="app-nav-group"&gt;
+        &lt;p class="app-nav-heading"&gt;Principal&lt;/p&gt;
+        &lt;a class="app-nav-link is-active" href="#"&gt;&lt;span class="app-nav-text"&gt;Visão geral&lt;/span&gt;&lt;/a&gt;
+        &lt;a class="app-nav-link" href="#"&gt;&lt;span class="app-nav-text"&gt;Contatos&lt;/span&gt;&lt;/a&gt;
+        &lt;a class="app-nav-link" href="#"&gt;&lt;span class="app-nav-text"&gt;Vendas&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-sidebar-react"
+              role="tabpanel"
+              aria-labelledby="tab-sidebar-react"
+              tabindex="0"
+            >
+              <pre><code>import { useDesignTokens } from "./assets/tokens/react";
+
+export function Sidebar() {
+  useDesignTokens();
+
+  return (
+    &lt;aside className="app-sidebar"&gt;
+      &lt;div className="app-sidebar-body"&gt;
+        &lt;div className="app-sidebar-header"&gt;
+          &lt;a className="app-brand" href="#"&gt;
+            &lt;img src="assets/img/logo.svg" alt="Logo" width="40" height="40" /&gt;
+            &lt;div className="app-brand-title"&gt;
+              &lt;strong&gt;Adsmágic&lt;/strong&gt;
+              &lt;span&gt;Growth Suite&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;nav className="app-nav"&gt;
+          &lt;div className="app-nav-group"&gt;
+            &lt;p className="app-nav-heading"&gt;Principal&lt;/p&gt;
+            &lt;a className="app-nav-link is-active" href="#"&gt;
+              &lt;span className="app-nav-text"&gt;Visão geral&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;a className="app-nav-link" href="#"&gt;
+              &lt;span className="app-nav-text"&gt;Contatos&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;a className="app-nav-link" href="#"&gt;
+              &lt;span className="app-nav-text"&gt;Vendas&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+    &lt;/aside&gt;
+  );
+}</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-sidebar-vue"
+              role="tabpanel"
+              aria-labelledby="tab-sidebar-vue"
+              tabindex="0"
+            >
+              <pre><code>&lt;template&gt;
+  &lt;aside class="app-sidebar"&gt;
+    &lt;div class="app-sidebar-body"&gt;
+      &lt;div class="app-sidebar-header"&gt;
+        &lt;a class="app-brand" href="#"&gt;
+          &lt;img src="assets/img/logo.svg" alt="Logo" width="40" height="40" /&gt;
+          &lt;div class="app-brand-title"&gt;
+            &lt;strong&gt;Adsmágic&lt;/strong&gt;
+            &lt;span&gt;Growth Suite&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+      &lt;nav class="app-nav"&gt;
+        &lt;div class="app-nav-group"&gt;
+          &lt;p class="app-nav-heading"&gt;Principal&lt;/p&gt;
+          &lt;a class="app-nav-link is-active" href="#"&gt;&lt;span class="app-nav-text"&gt;Visão geral&lt;/span&gt;&lt;/a&gt;
+          &lt;a class="app-nav-link" href="#"&gt;&lt;span class="app-nav-text"&gt;Contatos&lt;/span&gt;&lt;/a&gt;
+          &lt;a class="app-nav-link" href="#"&gt;&lt;span class="app-nav-text"&gt;Vendas&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/aside&gt;
+&lt;/template&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+        <!-- Card base -->
+        <section class="component-section" id="component-card">
+          <div class="component-section-header">
+            <h2>Card base</h2>
+            <p>
+              Container com borda, raio e sombra padrão usado em dashboards e
+              listagens.
+            </p>
+          </div>
+
+          <div class="component-demo" style="flex-direction: column">
+            <article
+              class="card-shadow rounded-3xl border border-slate-200 bg-white p-6"
+            >
+              <h3 class="text-lg font-semibold text-slate-900">
+                Título do card
+              </h3>
+              <p class="mt-2 text-sm text-slate-500">
+                Texto auxiliar com descrição do conteúdo. Use
+                <code>card-shadow</code> para reforçar profundidade.
+              </p>
+              <div class="mt-4 flex gap-3">
+                <button class="ds-btn ds-btn--ghost">Ação secundária</button>
+                <button class="ds-btn ds-btn--primary">Ação principal</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="component-tabs" data-component-tabs>
+            <div
+              class="component-tablist"
+              role="tablist"
+              aria-label="Card base"
+            >
+              <button
+                class="component-tab"
+                id="tab-card-base-html"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-card-base-html"
+              >
+                HTML
+              </button>
+              <button
+                class="component-tab"
+                id="tab-card-base-react"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-card-base-react"
+              >
+                React
+              </button>
+              <button
+                class="component-tab"
+                id="tab-card-base-vue"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-card-base-vue"
+              >
+                Vue
+              </button>
+            </div>
+
+            <div
+              class="component-tabpanel"
+              id="panel-card-base-html"
+              role="tabpanel"
+              aria-labelledby="tab-card-base-html"
+              tabindex="0"
+            >
+              <pre><code>&lt;article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6"&gt;
+  &lt;h3 class="text-lg font-semibold text-slate-900"&gt;Título do card&lt;/h3&gt;
+  &lt;p class="mt-2 text-sm text-slate-500"&gt;Descrição do conteúdo.&lt;/p&gt;
+  &lt;div class="mt-4 flex gap-3"&gt;
+    &lt;button class="ds-btn ds-btn--ghost"&gt;Ação secundária&lt;/button&gt;
+    &lt;button class="ds-btn ds-btn--primary"&gt;Ação principal&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-card-base-react"
+              role="tabpanel"
+              aria-labelledby="tab-card-base-react"
+              tabindex="0"
+            >
+              <pre><code>export function Card({ title, description, actions }) {
+  return (
+    &lt;article className="card-shadow rounded-3xl border border-slate-200 bg-white p-6"&gt;
+      &lt;h3 className="text-lg font-semibold text-slate-900"&gt;{title}&lt;/h3&gt;
+      &lt;p className="mt-2 text-sm text-slate-500"&gt;{description}&lt;/p&gt;
+      &lt;div className="mt-4 flex gap-3"&gt;{actions}&lt;/div&gt;
+    &lt;/article&gt;
+  );
+}</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-card-base-vue"
+              role="tabpanel"
+              aria-labelledby="tab-card-base-vue"
+              tabindex="0"
+            >
+              <pre><code>&lt;template&gt;
+  &lt;article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6"&gt;
+    &lt;h3 class="text-lg font-semibold text-slate-900"&gt;{{ title }}&lt;/h3&gt;
+    &lt;p class="mt-2 text-sm text-slate-500"&gt;{{ description }}&lt;/p&gt;
+    &lt;div class="mt-4 flex gap-3"&gt;
+      &lt;slot name="actions" /&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+defineProps({
+  title: String,
+  description: String
+});
+&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+        <!-- Botões -->
+        <section class="component-section" id="component-buttons">
+          <div class="component-section-header">
+            <h2>Botões</h2>
+            <p>
+              Ações principais e secundárias com suporte a ícones, estados
+              ativos e variações fantasma.
+            </p>
+          </div>
+
+          <div class="component-demo">
+            <button class="ds-btn ds-btn--primary">Primário</button>
+            <button class="ds-btn ds-btn--ghost">Fantasma</button>
+            <button class="ds-btn ds-btn--tonal">Tonal</button>
+            <button
+              class="ds-btn ds-btn--ghost ds-btn--icon"
+              aria-label="Notificações"
+            >
+              <i data-lucide="bell" class="h-4 w-4"></i>
+            </button>
+            <button class="ds-btn ds-btn--ghost" aria-disabled="true">
+              Desabilitado
+            </button>
+          </div>
+
+          <div class="component-tabs" data-component-tabs>
+            <div class="component-tablist" role="tablist" aria-label="Botões">
+              <button
+                class="component-tab"
+                id="tab-buttons-html"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-buttons-html"
+              >
+                HTML
+              </button>
+              <button
+                class="component-tab"
+                id="tab-buttons-react"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-buttons-react"
+              >
+                React
+              </button>
+              <button
+                class="component-tab"
+                id="tab-buttons-vue"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-buttons-vue"
+              >
+                Vue
+              </button>
+            </div>
+
+            <div
+              class="component-tabpanel"
+              id="panel-buttons-html"
+              role="tabpanel"
+              aria-labelledby="tab-buttons-html"
+              tabindex="0"
+            >
+              <pre><code>&lt;button class="ds-btn ds-btn--primary"&gt;Primário&lt;/button&gt;
+&lt;button class="ds-btn ds-btn--ghost"&gt;Fantasma&lt;/button&gt;
+&lt;button class="ds-btn ds-btn--tonal"&gt;Tonal&lt;/button&gt;
+&lt;button class="ds-btn ds-btn--ghost ds-btn--icon" aria-label="Notificações"&gt;
+  &lt;i data-lucide="bell" class="h-4 w-4"&gt;&lt;/i&gt;
+&lt;/button&gt;
+&lt;button class="ds-btn ds-btn--ghost" aria-disabled="true"&gt;Desabilitado&lt;/button&gt;</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-buttons-react"
+              role="tabpanel"
+              aria-labelledby="tab-buttons-react"
+              tabindex="0"
+            >
+              <pre><code>export function ButtonExamples() {
+  return (
+    &lt;div className="component-demo"&gt;
+      &lt;button className="ds-btn ds-btn--primary"&gt;Primário&lt;/button&gt;
+      &lt;button className="ds-btn ds-btn--ghost"&gt;Fantasma&lt;/button&gt;
+      &lt;button className="ds-btn ds-btn--tonal"&gt;Tonal&lt;/button&gt;
+      &lt;button className="ds-btn ds-btn--ghost ds-btn--icon" aria-label="Notificações"&gt;
+        &lt;i data-lucide="bell" className="h-4 w-4" /&gt;
+      &lt;/button&gt;
+      &lt;button className="ds-btn ds-btn--ghost" aria-disabled="true"&gt;Desabilitado&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-buttons-vue"
+              role="tabpanel"
+              aria-labelledby="tab-buttons-vue"
+              tabindex="0"
+            >
+              <pre><code>&lt;template&gt;
+  &lt;div class="component-demo"&gt;
+    &lt;button class="ds-btn ds-btn--primary"&gt;Primário&lt;/button&gt;
+    &lt;button class="ds-btn ds-btn--ghost"&gt;Fantasma&lt;/button&gt;
+    &lt;button class="ds-btn ds-btn--tonal"&gt;Tonal&lt;/button&gt;
+    &lt;button class="ds-btn ds-btn--ghost ds-btn--icon" aria-label="Notificações"&gt;
+      &lt;i data-lucide="bell" class="h-4 w-4"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;button class="ds-btn ds-btn--ghost" aria-disabled="true"&gt;Desabilitado&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+        <!-- Badges -->
+        <section class="component-section" id="component-badges">
+          <div class="component-section-header">
+            <h2>Badges</h2>
+            <p>
+              Indicadores sutis para estados e status alinhados aos tokens de
+              cor.
+            </p>
+          </div>
+
+          <div class="component-demo">
+            <span class="ds-badge summary-card-badge--positive">Ativo</span>
+            <span class="ds-badge summary-card-badge--indigo">Planejado</span>
+            <span class="ds-badge summary-card-badge--negative">Atenção</span>
+          </div>
+
+          <div class="component-tabs" data-component-tabs>
+            <div class="component-tablist" role="tablist" aria-label="Badges">
+              <button
+                class="component-tab"
+                id="tab-badges-html"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-badges-html"
+              >
+                HTML
+              </button>
+              <button
+                class="component-tab"
+                id="tab-badges-react"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-badges-react"
+              >
+                React
+              </button>
+              <button
+                class="component-tab"
+                id="tab-badges-vue"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-badges-vue"
+              >
+                Vue
+              </button>
+            </div>
+
+            <div
+              class="component-tabpanel"
+              id="panel-badges-html"
+              role="tabpanel"
+              aria-labelledby="tab-badges-html"
+              tabindex="0"
+            >
+              <pre><code>&lt;span class="ds-badge summary-card-badge--positive"&gt;Ativo&lt;/span&gt;
+&lt;span class="ds-badge summary-card-badge--indigo"&gt;Planejado&lt;/span&gt;
+&lt;span class="ds-badge summary-card-badge--negative"&gt;Atenção&lt;/span&gt;</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-badges-react"
+              role="tabpanel"
+              aria-labelledby="tab-badges-react"
+              tabindex="0"
+            >
+              <pre><code>export function Badge({ variant = "positive", children }) {
+  return &lt;span className={`ds-badge summary-card-badge--${variant}`}&gt;{children}&lt;/span&gt;;
+}</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-badges-vue"
+              role="tabpanel"
+              aria-labelledby="tab-badges-vue"
+              tabindex="0"
+            >
+              <pre><code>&lt;template&gt;
+  &lt;span :class="['ds-badge', `summary-card-badge--${variant}`]"&gt;
+    &lt;slot /&gt;
+  &lt;/span&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+const props = defineProps({
+  variant: {
+    type: String,
+    default: 'positive'
+  }
+});
+&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+        <!-- Card de resumo -->
+        <section class="component-section" id="component-summary-card">
+          <div class="component-section-header">
+            <h2>Card de resumo</h2>
+            <p>Estrutura usada em dashboards para apresentar métricas chave.</p>
+          </div>
+
+          <div class="component-demo">
+            <article class="summary-card ds-stack">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Receita</p>
+                <span class="ds-badge summary-card-badge--positive">+9,8%</span>
+              </header>
+              <p class="summary-card-value">R$ 6.060,00</p>
+              <p class="summary-card-caption">Receita total atribuída.</p>
+            </article>
+            <article class="summary-card ds-stack">
+              <header class="summary-card-header">
+                <p class="summary-card-label">Contatos</p>
+                <span class="ds-badge summary-card-badge--indigo">+12</span>
+              </header>
+              <p class="summary-card-value">68</p>
+              <p class="summary-card-caption">Leads gerados no período.</p>
+            </article>
+          </div>
+
+          <div class="component-tabs" data-component-tabs>
+            <div
+              class="component-tablist"
+              role="tablist"
+              aria-label="Card de resumo"
+            >
+              <button
+                class="component-tab"
+                id="tab-card-html"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-card-html"
+              >
+                HTML
+              </button>
+              <button
+                class="component-tab"
+                id="tab-card-react"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-card-react"
+              >
+                React
+              </button>
+              <button
+                class="component-tab"
+                id="tab-card-vue"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-card-vue"
+              >
+                Vue
+              </button>
+            </div>
+
+            <div
+              class="component-tabpanel"
+              id="panel-card-html"
+              role="tabpanel"
+              aria-labelledby="tab-card-html"
+              tabindex="0"
+            >
+              <pre><code>&lt;article class="summary-card ds-stack"&gt;
+  &lt;header class="summary-card-header"&gt;
+    &lt;p class="summary-card-label"&gt;Receita&lt;/p&gt;
+    &lt;span class="ds-badge summary-card-badge--positive"&gt;+9,8%&lt;/span&gt;
+  &lt;/header&gt;
+  &lt;p class="summary-card-value"&gt;R$ 6.060,00&lt;/p&gt;
+  &lt;p class="summary-card-caption"&gt;Receita total atribuída.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-card-react"
+              role="tabpanel"
+              aria-labelledby="tab-card-react"
+              tabindex="0"
+            >
+              <pre><code>export function SummaryCard({ label, value, caption, badge, badgeVariant = 'positive' }) {
+  return (
+    &lt;article className="summary-card ds-stack"&gt;
+      &lt;header className="summary-card-header"&gt;
+        &lt;p className="summary-card-label"&gt;{label}&lt;/p&gt;
+        {badge ? (
+          &lt;span className={`ds-badge summary-card-badge--${badgeVariant}`}&gt;{badge}&lt;/span&gt;
+        ) : null}
+      &lt;/header&gt;
+      &lt;p className="summary-card-value"&gt;{value}&lt;/p&gt;
+      &lt;p className="summary-card-caption"&gt;{caption}&lt;/p&gt;
+    &lt;/article&gt;
+  );
+}</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-card-vue"
+              role="tabpanel"
+              aria-labelledby="tab-card-vue"
+              tabindex="0"
+            >
+              <pre><code>&lt;template&gt;
+  &lt;article class="summary-card ds-stack"&gt;
+    &lt;header class="summary-card-header"&gt;
+      &lt;p class="summary-card-label"&gt;{{ label }}&lt;/p&gt;
+      &lt;span v-if="badge" class="ds-badge" :class="`summary-card-badge--${badgeVariant}`"&gt;{{ badge }}&lt;/span&gt;
+    &lt;/header&gt;
+    &lt;p class="summary-card-value"&gt;{{ value }}&lt;/p&gt;
+    &lt;p class="summary-card-caption"&gt;{{ caption }}&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+defineProps({
+  label: String,
+  value: [String, Number],
+  caption: String,
+  badge: String,
+  badgeVariant: {
+    type: String,
+    default: 'positive'
+  }
+});
+&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+        <!-- Tabela -->
+        <section class="component-section" id="component-table">
+          <div class="component-section-header">
+            <h2>Tabela</h2>
+            <p>
+              Estrutura tabular com <code>table-shell</code>, zebra e estados de
+              hover.
+            </p>
+          </div>
+
+          <div class="component-demo" style="flex-direction: column">
+            <div
+              class="table-shell overflow-hidden rounded-3xl border border-slate-100"
+            >
+              <table class="min-w-full divide-y divide-slate-100 text-sm">
+                <thead
+                  class="bg-slate-50 text-xs font-semibold uppercase tracking-wider text-slate-500"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-4 text-left">Contato</th>
+                    <th scope="col" class="px-6 py-4 text-left">Etapa</th>
+                    <th scope="col" class="px-6 py-4 text-left">
+                      Última atividade
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white">
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white"
+                          >S</span
+                        >
+                        <div>
+                          <p class="font-medium text-slate-900">Silvia Ramos</p>
+                          <p class="text-xs text-slate-400">Empresa Aurora</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="ds-badge summary-card-badge--positive"
+                        >Contato iniciado</span
+                      >
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">07/02/2025</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-600"
+                          >*</span
+                        >
+                        <div>
+                          <p class="font-medium text-slate-900">
+                            Contato anônimo
+                          </p>
+                          <p class="text-xs text-slate-400">
+                            Origem não informada
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="ds-badge summary-card-badge--indigo"
+                        >Em triagem</span
+                      >
+                    </td>
+                    <td class="px-6 py-4 text-slate-500">06/02/2025</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="component-tabs" data-component-tabs>
+            <div class="component-tablist" role="tablist" aria-label="Tabela">
+              <button
+                class="component-tab"
+                id="tab-table-html"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-table-html"
+              >
+                HTML
+              </button>
+              <button
+                class="component-tab"
+                id="tab-table-react"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-table-react"
+              >
+                React
+              </button>
+              <button
+                class="component-tab"
+                id="tab-table-vue"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-table-vue"
+              >
+                Vue
+              </button>
+            </div>
+
+            <div
+              class="component-tabpanel"
+              id="panel-table-html"
+              role="tabpanel"
+              aria-labelledby="tab-table-html"
+              tabindex="0"
+            >
+              <pre><code>&lt;div class="table-shell overflow-hidden rounded-3xl border border-slate-100"&gt;
+  &lt;table class="min-w-full divide-y divide-slate-100 text-sm"&gt;
+    &lt;thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wider text-slate-500"&gt;
+      &lt;tr&gt;
+        &lt;th scope="col" class="px-6 py-4 text-left"&gt;Contato&lt;/th&gt;
+        &lt;th scope="col" class="px-6 py-4 text-left"&gt;Etapa&lt;/th&gt;
+        &lt;th scope="col" class="px-6 py-4 text-left"&gt;Última atividade&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody class="divide-y divide-slate-100 bg-white"&gt;
+      &lt;tr class="transition hover:bg-slate-50"&gt;
+        &lt;td class="px-6 py-4"&gt;…&lt;/td&gt;
+        &lt;td class="px-6 py-4"&gt;…&lt;/td&gt;
+        &lt;td class="px-6 py-4 text-slate-500"&gt;07/02/2025&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-table-react"
+              role="tabpanel"
+              aria-labelledby="tab-table-react"
+              tabindex="0"
+            >
+              <pre><code>export function DataTable({ rows }) {
+  return (
+    &lt;div className="table-shell overflow-hidden rounded-3xl border border-slate-100"&gt;
+      &lt;table className="min-w-full divide-y divide-slate-100 text-sm"&gt;
+        &lt;thead className="bg-slate-50 text-xs font-semibold uppercase tracking-wider text-slate-500"&gt;
+          &lt;tr&gt;
+            &lt;th scope="col" className="px-6 py-4 text-left"&gt;Contato&lt;/th&gt;
+            &lt;th scope="col" className="px-6 py-4 text-left"&gt;Etapa&lt;/th&gt;
+            &lt;th scope="col" className="px-6 py-4 text-left"&gt;Última atividade&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody className="divide-y divide-slate-100 bg-white"&gt;
+          {rows.map((row) => (
+            &lt;tr key={row.id} className="transition hover:bg-slate-50"&gt;
+              &lt;td className="px-6 py-4"&gt;{row.contact}&lt;/td&gt;
+              &lt;td className="px-6 py-4"&gt;{row.stage}&lt;/td&gt;
+              &lt;td className="px-6 py-4 text-slate-500"&gt;{row.lastActivity}&lt;/td&gt;
+            &lt;/tr&gt;
+          ))}
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-table-vue"
+              role="tabpanel"
+              aria-labelledby="tab-table-vue"
+              tabindex="0"
+            >
+              <pre><code>&lt;template&gt;
+  &lt;div class="table-shell overflow-hidden rounded-3xl border border-slate-100"&gt;
+    &lt;table class="min-w-full divide-y divide-slate-100 text-sm"&gt;
+      &lt;thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wider text-slate-500"&gt;
+        &lt;tr&gt;
+          &lt;th scope="col" class="px-6 py-4 text-left"&gt;Contato&lt;/th&gt;
+          &lt;th scope="col" class="px-6 py-4 text-left"&gt;Etapa&lt;/th&gt;
+          &lt;th scope="col" class="px-6 py-4 text-left"&gt;Última atividade&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody class="divide-y divide-slate-100 bg-white"&gt;
+        &lt;tr v-for="row in rows" :key="row.id" class="transition hover:bg-slate-50"&gt;
+          &lt;td class="px-6 py-4"&gt;{{ row.contact }}&lt;/td&gt;
+          &lt;td class="px-6 py-4"&gt;{{ row.stage }}&lt;/td&gt;
+          &lt;td class="px-6 py-4 text-slate-500"&gt;{{ row.lastActivity }}&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+defineProps({ rows: Array });
+&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+        <!-- Dropdown de status -->
+        <section class="component-section" id="component-status-menu">
+          <div class="component-section-header">
+            <h2>Dropdown de status</h2>
+            <p>
+              Menu contextual usado para exibir o estado do WhatsApp e oferecer
+              ações rápidas.
+            </p>
+          </div>
+
+          <div class="component-demo" data-preview-dropdown>
+            <button
+              type="button"
+              class="ds-btn ds-btn--ghost"
+              data-preview-trigger
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="inline-flex text-emerald-500">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  class="h-4 w-4"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 .5C5.649.5.5 5.649.5 12c0 2.111.547 4.099 1.6 5.875L.5 23.5l5.876-1.6A11.4 11.4 0 0 0 12 23.5c6.351 0 11.5-5.149 11.5-11.5S18.351.5 12 .5ZM12 21.4a9.4 9.4 0 1 1 9.4-9.4 9.41 9.41 0 0 1-9.4 9.4Z"
+                  />
+                </svg>
+              </span>
+              <span>WhatsApp conectado</span>
+              <i data-lucide="chevron-down" class="h-4 w-4"></i>
+            </button>
+            <div class="app-status-menu hidden" data-preview-menu>
+              <p
+                class="text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-slate-400"
+              >
+                WhatsApp
+              </p>
+              <p class="mt-1 text-slate-500">Conectado à conta principal.</p>
+              <hr class="my-3 border-slate-100" />
+              <button
+                type="button"
+                class="ds-btn ds-btn--ghost ds-btn--sm ds-btn--align-start text-left"
+              >
+                <i data-lucide="power" class="h-4 w-4 text-rose-500"></i>
+                Desconectar
+              </button>
+            </div>
+          </div>
+
+          <div class="component-tabs" data-component-tabs>
+            <div
+              class="component-tablist"
+              role="tablist"
+              aria-label="Dropdown de status"
+            >
+              <button
+                class="component-tab"
+                id="tab-status-html"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-status-html"
+              >
+                HTML
+              </button>
+              <button
+                class="component-tab"
+                id="tab-status-react"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-status-react"
+              >
+                React
+              </button>
+              <button
+                class="component-tab"
+                id="tab-status-vue"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-status-vue"
+              >
+                Vue
+              </button>
+            </div>
+
+            <div
+              class="component-tabpanel"
+              id="panel-status-html"
+              role="tabpanel"
+              aria-labelledby="tab-status-html"
+              tabindex="0"
+            >
+              <pre><code>&lt;div class="status-dropdown"&gt;
+  &lt;button type="button" class="ds-btn ds-btn--ghost" aria-haspopup="true" aria-expanded="false"&gt;
+    &lt;span class="inline-flex text-emerald-500"&gt;…&lt;/span&gt;
+    &lt;span&gt;WhatsApp conectado&lt;/span&gt;
+    &lt;i data-lucide="chevron-down" class="h-4 w-4"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="app-status-menu" hidden&gt;
+    &lt;p class="text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-slate-400"&gt;WhatsApp&lt;/p&gt;
+    &lt;p class="mt-1 text-slate-500"&gt;Conectado à conta principal.&lt;/p&gt;
+    &lt;hr class="my-3 border-slate-100" /&gt;
+    &lt;button type="button" class="ds-btn ds-btn--ghost ds-btn--sm ds-btn--align-start text-left"&gt;
+      &lt;i data-lucide="power" class="h-4 w-4 text-rose-500"&gt;&lt;/i&gt;
+      Desconectar
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-status-react"
+              role="tabpanel"
+              aria-labelledby="tab-status-react"
+              tabindex="0"
+            >
+              <pre><code>import { useDesignTokens } from "./assets/tokens/react";
+
+export function StatusDropdown() {
+  useDesignTokens();
+
+  return (
+    &lt;div className="status-dropdown"&gt;
+      &lt;button className="ds-btn ds-btn--ghost" aria-haspopup="true" aria-expanded="false"&gt;
+        &lt;span className="inline-flex text-emerald-500"&gt;…&lt;/span&gt;
+        &lt;span&gt;WhatsApp conectado&lt;/span&gt;
+        &lt;i data-lucide="chevron-down" className="h-4 w-4" /&gt;
+      &lt;/button&gt;
+      &lt;div className="app-status-menu" hidden&gt;…&lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-status-vue"
+              role="tabpanel"
+              aria-labelledby="tab-status-vue"
+              tabindex="0"
+            >
+              <pre><code>&lt;template&gt;
+  &lt;div class="status-dropdown"&gt;
+    &lt;button class="ds-btn ds-btn--ghost" aria-haspopup="true" aria-expanded="false"&gt;
+      &lt;span class="inline-flex text-emerald-500"&gt;…&lt;/span&gt;
+      &lt;span&gt;WhatsApp conectado&lt;/span&gt;
+      &lt;i data-lucide="chevron-down" class="h-4 w-4"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class="app-status-menu" hidden&gt;…&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+        <!-- Avatar -->
+        <section class="component-section" id="component-avatar">
+          <div class="component-section-header">
+            <h2>Avatar destacado</h2>
+            <p>
+              Tile com sombras e raio maior usado em cabeçalhos e cards para
+              destacar iniciais.
+            </p>
+          </div>
+
+          <div class="component-demo">
+            <div class="backgroundshadow">
+              <div class="al">AL</div>
+            </div>
+            <div
+              class="backgroundshadow"
+              style="
+                background-color: var(--color-success-600);
+                box-shadow: 0px 8px 24px rgba(5, 150, 105, 0.35);
+              "
+            >
+              <div class="al">JP</div>
+            </div>
+          </div>
+
+          <div class="component-tabs" data-component-tabs>
+            <div
+              class="component-tablist"
+              role="tablist"
+              aria-label="Avatar destacado"
+            >
+              <button
+                class="component-tab"
+                id="tab-avatar-html"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-avatar-html"
+              >
+                HTML
+              </button>
+              <button
+                class="component-tab"
+                id="tab-avatar-react"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-avatar-react"
+              >
+                React
+              </button>
+              <button
+                class="component-tab"
+                id="tab-avatar-vue"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-avatar-vue"
+              >
+                Vue
+              </button>
+            </div>
+
+            <div
+              class="component-tabpanel"
+              id="panel-avatar-html"
+              role="tabpanel"
+              aria-labelledby="tab-avatar-html"
+              tabindex="0"
+            >
+              <pre><code>&lt;div class="backgroundshadow"&gt;
+  &lt;div class="al"&gt;AL&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-avatar-react"
+              role="tabpanel"
+              aria-labelledby="tab-avatar-react"
+              tabindex="0"
+            >
+              <pre><code>export function AvatarTile({ initials = 'AL' }) {
+  return (
+    &lt;div className="backgroundshadow"&gt;
+      &lt;div className="al"&gt;{initials}&lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+
+            <div
+              class="component-tabpanel hidden"
+              id="panel-avatar-vue"
+              role="tabpanel"
+              aria-labelledby="tab-avatar-vue"
+              tabindex="0"
+            >
+              <pre><code>&lt;template&gt;
+  &lt;div class="backgroundshadow"&gt;
+    &lt;div class="al"&gt;{{ initials }}&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+defineProps({ initials: { type: String, default: 'AL' } });
+&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      function initComponentTabs() {
+        document
+          .querySelectorAll("[data-component-tabs]")
+          .forEach((tabsRoot) => {
+            const tabButtons = Array.from(
+              tabsRoot.querySelectorAll(".component-tab"),
+            );
+            const panels = Array.from(
+              tabsRoot.querySelectorAll(".component-tabpanel"),
+            );
+
+            function activateTab(targetId) {
+              tabButtons.forEach((button) => {
+                const isActive =
+                  button.getAttribute("aria-controls") === targetId;
+                button.setAttribute(
+                  "aria-selected",
+                  isActive ? "true" : "false",
+                );
+              });
+
+              panels.forEach((panel) => {
+                const isActive = panel.id === targetId;
+                panel.classList.toggle("hidden", !isActive);
+                panel.setAttribute("aria-hidden", isActive ? "false" : "true");
+              });
+            }
+
+            tabButtons.forEach((button) => {
+              button.addEventListener("click", () =>
+                activateTab(button.getAttribute("aria-controls")),
+              );
+
+              button.addEventListener("keydown", (event) => {
+                const currentIndex = tabButtons.indexOf(document.activeElement);
+                if (currentIndex === -1) return;
+
+                if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+                  event.preventDefault();
+                  const nextIndex = (currentIndex + 1) % tabButtons.length;
+                  tabButtons[nextIndex].focus();
+                  activateTab(
+                    tabButtons[nextIndex].getAttribute("aria-controls"),
+                  );
+                }
+
+                if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+                  event.preventDefault();
+                  const prevIndex =
+                    (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+                  tabButtons[prevIndex].focus();
+                  activateTab(
+                    tabButtons[prevIndex].getAttribute("aria-controls"),
+                  );
+                }
+              });
+            });
+
+            const initiallySelected =
+              tabButtons.find(
+                (button) => button.getAttribute("aria-selected") === "true",
+              ) ?? tabButtons[0];
+            if (initiallySelected) {
+              activateTab(initiallySelected.getAttribute("aria-controls"));
+            }
+          });
+      }
+
+      function initComponentSidebarNav() {
+        const links = Array.from(
+          document.querySelectorAll(".component-sidebar-link"),
+        );
+        links.forEach((link) => {
+          link.addEventListener("click", () => {
+            links.forEach((item) => item.classList.remove("is-active"));
+            link.classList.add("is-active");
+          });
+        });
+      }
+
+      function initStatusPreviews() {
+        document.querySelectorAll("[data-preview-dropdown]").forEach((root) => {
+          const trigger = root.querySelector("[data-preview-trigger]");
+          const menu = root.querySelector("[data-preview-menu]");
+          if (!trigger || !menu) return;
+
+          function setOpen(open) {
+            menu.classList.toggle("hidden", !open);
+            trigger.setAttribute("aria-expanded", open ? "true" : "false");
+          }
+
+          trigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            const isOpen = menu.classList.contains("hidden");
+            setOpen(isOpen);
+          });
+
+          document.addEventListener("click", (event) => {
+            if (!root.contains(event.target)) {
+              setOpen(false);
+            }
+          });
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => {
+          initComponentTabs();
+          initComponentSidebarNav();
+          initStatusPreviews();
+          if (window.lucide?.createIcons) {
+            window.lucide.createIcons();
+          }
+        });
+      } else {
+        initComponentTabs();
+        initComponentSidebarNav();
+        initStatusPreviews();
+        if (window.lucide?.createIcons) {
+          window.lucide.createIcons();
+        }
+      }
+    </script>
+  </body>
+</html>

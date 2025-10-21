@@ -1,13 +1,20 @@
 {
-  "name": "adsmagic-prot-tipo",
-  "version": "1.0.0",
-  "description": "Este repositório concentra protótipos de interfaces e fluxos.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "name": "adsmagic-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Workspace evolutivo do design system Adsmagic com componentes React/Vue, Storybook e protótipos.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
-    "test": "playwright test",
+    "dev": "npm run dev --workspace @adsmagic/storybook-hub",
+    "dev:react": "npm run dev --workspace @adsmagic/storybook-react",
+    "dev:vue": "npm run dev --workspace @adsmagic/storybook-vue",
+    "build": "npm run build --workspace @adsmagic/storybook-hub",
+    "build:storybook": "npm run build --workspace @adsmagic/storybook-hub",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug"
@@ -18,7 +25,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fabioaap/Adsmagic-prot-tipo/issues"
   },

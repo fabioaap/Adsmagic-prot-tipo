@@ -1,0 +1,90 @@
+﻿{
+  "typography": {
+    "fontFamily": {
+      "sans": {
+        "value": "\"Inter\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif"
+      }
+    },
+    "fontSize": {
+      "2xs": { "value": "0.625rem" },
+      "xs": { "value": "0.75rem" },
+      "sm": { "value": "0.875rem" },
+      "md": { "value": "1rem" },
+      "lg": { "value": "1.25rem" },
+      "xl": { "value": "1.5rem" }
+    },
+    "fontWeight": {
+      "regular": { "value": 400 },
+      "medium": { "value": 500 },
+      "semibold": { "value": 600 }
+    }
+  },
+  "color": {
+    "white": { "value": "#ffffff" },
+    "slate": {
+      "950": { "value": "#020617" },
+      "900": { "value": "#0f172a" },
+      "700": { "value": "#334155" },
+      "600": { "value": "#475569" },
+      "500": { "value": "#64748b" },
+      "400": { "value": "#94a3b8" },
+      "200": { "value": "#e2e8f0" },
+      "100": { "value": "#f1f5f9" },
+      "50": { "value": "#f8fafc" }
+    },
+    "primary": {
+      "600": { "value": "#2563eb" },
+      "500": { "value": "#3b82f6" },
+      "100": { "value": "#e0f2fe" }
+    },
+    "indigo": {
+      "500": { "value": "#4f46e5" },
+      "100": { "value": "#e0e7ff" }
+    },
+    "success": {
+      "600": { "value": "#059669" },
+      "100": { "value": "#d1fae5" }
+    },
+    "danger": {
+      "600": { "value": "#b91c1c" },
+      "500": { "value": "#f43f5e" },
+      "100": { "value": "#fee2e2" }
+    }
+  },
+  "space": {
+    "2xs": { "value": "0.25rem" },
+    "xs": { "value": "0.5rem" },
+    "sm": { "value": "0.75rem" },
+    "md": { "value": "1rem" },
+    "lg": { "value": "1.5rem" },
+    "xl": { "value": "2rem" }
+  },
+  "radius": {
+    "full": { "value": "999px" },
+    "lg": { "value": "1.5rem" },
+    "md": { "value": "1rem" },
+    "sm": { "value": "0.75rem" }
+  },
+  "border": {
+    "soft": { "value": "{color.slate.200}" },
+    "strong": { "value": "#cbd5e1" }
+  },
+  "shadow": {
+    "card": { "value": "0px 10px 32px rgba(15, 23, 42, 0.06)" },
+    "pop": { "value": "0px 28px 50px -28px rgba(79, 70, 229, 0.25)" },
+    "pill": { "value": "0px 8px 24px rgba(59, 130, 246, 0.35)" }
+  },
+  "transition": {
+    "base": { "value": "150ms ease" }
+  },
+  "alias": {
+    "font": {
+      "sans": { "value": "{typography.fontFamily.sans}" }
+    },
+    "page": {
+      "background": { "value": "{color.slate.100}" },
+      "text": { "value": "{color.slate.900}" },
+      "surface": { "value": "{color.white}" }
+    }
+  }
+}

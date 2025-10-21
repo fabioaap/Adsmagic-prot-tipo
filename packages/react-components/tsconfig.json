@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2020",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "types": ["vitest/globals", "vite/client", "@testing-library/jest-dom"],
+    "declaration": false,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../tokens"
+    }
+  ]
+}
