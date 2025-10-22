@@ -1,63 +1,47 @@
-﻿# Protótipos do Adsmágic
+# Adsmagic Platform Workspace
 
-Este repositório concentra protótipos de interfaces e fluxos.
+Este reposit�rio evoluiu de um prot�tipo est�tico para um workspace completo que concentra:
 
-## Páginas disponíveis
+- **Design tokens** compartilhados (`packages/tokens`), expostos em CSS e TypeScript.
+- **Bibliotecas de componentes** em **React** (`packages/react-components`) e **Vue 3** (`packages/vue-components`).
+- **Storybooks dedicados** para cada stack (`apps/storybook-react`, `apps/storybook-vue`) e um **Storybook hub** (`apps/storybook-hub`) que centraliza a documenta��o.
+- **Prot�tipo HTML legado** preservado em `apps/prototype-static` para consultas r�pidas de UX/UI.
 
-### Principal
+## Organiza��o das pastas
 
-- `index.html`: visão geral do dashboard com métricas, gráficos e painéis resumidos.
-- `contatos.html`: listagem de contatos com filtros, tabela e paginação.
-- `vendas.html`: acompanhamento de pipeline, metas trimestrais e negociações em destaque.
-- `funil.html`: visão do funil com indicadores de conversão e ações recomendadas.
-- `eventos.html`: monitoramento de eventos recebidos dos parceiros com filtros e tabela.
+| Caminho | Descri��o |
+| --- | --- |
+| `packages/tokens` | Fonte �nica dos tokens (`css/base.css`, `src/index.ts`). |
+| `packages/react-components` | Componentes React (ex.: `Button`) com testes Vitest e lint dedicado. |
+| `packages/vue-components` | Equivalentes Vue 3 com slots nomeados e suporte a testes. |
+| `apps/storybook-react` | Cat�logo dos componentes React usando `@storybook/react-vite`. |
+| `apps/storybook-vue` | Cat�logo dos componentes Vue com `@storybook/vue3-vite`. |
+| `apps/storybook-hub` | Hub que referencia os dois cat�logos e inclui documenta��o em MDX. |
+| `apps/prototype-static` | C�pia dos HTML/CSS originais para consulta. |
 
-### Rastreamento
+## Scripts principais
 
-- `links.html`: gestão dos links rastreáveis com métricas por canal e tabela de desempenho.
-- `mensagens.html`: acompanhamento das mensagens rastreadas por origem com filtros e tabela de resultados.
+```bash
+npm install           # prepara todas as depend�ncias do workspace
+npm run dev           # sobe o Storybook hub (porta 6006)
+npm run dev:react     # sobe o Storybook de componentes React (porta 6007)
+npm run dev:vue       # sobe o Storybook de componentes Vue (porta 7007)
+npm run dev:legacy    # serve o prot�tipo legado via http-server (porta 4100)
+npm run build         # gera os Storybooks est�ticos (hub + refs locais)
+npm run lint          # roda os linters de todos os workspaces (se configurados)
+npm run test          # executa os testes unit�rios (React/Vue)
+```
 
-### Sistema
+> Durante o desenvolvimento, mantenha `npm run dev:react` e `npm run dev:vue` rodando em paralelo para que o hub (`npm run dev`) enxergue os cat�logos via `refs`.
 
-- `relatorios.html`: biblioteca de relatórios com filtros, cards analíticos e próximos envios.
-- `integracoes.html`: gerenciamento das integrações, canais conectados e distribuição da Tag Adsmágic.
-- `configuracoes.html`: preferências globais, segurança e logs administrativos da conta.
-- `suporte.html`: central de atendimento com chamados, canais e status dos serviços.
+## Pr�ximos passos sugeridos
 
-## Padrão visual compartilhado
+1. Migrar gradualmente os componentes do prot�tipo HTML para React/Vue, criando stories e testes conforme necess�rio.
+2. Publicar os pacotes `@adsmagic/tokens`, `@adsmagic/react` e `@adsmagic/vue` em um registry privado (ou usar `npm link`/`verdaccio` em ambiente interno).
+3. Automatizar a publica��o dos Storybooks com CI/CD (ex.: GitHub Actions + Vercel/Netlify) e integrar uma ferramenta de regress�o visual.
+4. Expandir a documenta��o em `apps/storybook-hub/docs` com guidelines de UX, checklist de acessibilidade e conven��es de API.
 
-- `assets/css/base.css` concentra tipografia, tokens de cor, espaçamentos e utilitários estruturais (sidebar, header, navegação, tabelas).
-- `assets/js/nav.js` gera a navegação lateral compartilhada, aplica o destaque automático do item ativo, controla o estado recolhido/expandido da sidebar (com persistência em `localStorage`) e injeta os ícones/contadores de cada item.
-- `assets/img/logo.svg` guarda o logotipo usado na barra lateral e nos cabeçalhos.
-- As páginas consomem Tailwind via CDN apenas para utilitários pontuais; qualquer ajuste global deve ser feito primeiro em `base.css`.
-- Para destacar a página atual, adicione o atributo `data-active="<id>"` no elemento `.app-nav` (ex.: `overview`, `contatos`, `vendas`); o script aplica `is-active` automaticamente durante o carregamento.
-- Para habilitar o recolhimento da barra lateral, mantenha o botão com `data-sidebar-toggle` e o gatilho compacto com `data-sidebar-expand`; ambos são manipulados pelo `nav.js` e exibem tooltips automáticos quando a navegação está colapsada.
-- Componentes reutilizáveis contam com classes auxiliares (`.card-shadow`, `.table-shell`, `.badge-soft`) definidas no CSS compartilhado para preservar sombras, bordas e badges.
+## Legado HTML
 
-## Integrações
-
-- [Configuração do MCP do Figma](docs/figma-mcp.md): tokens, manifestos e fluxo para extrair HTML/CSS de frames via MCP.
-  - Obs.: No ambiente Codex Cloud, o servidor MCP do Figma não pode ser executado diretamente; use um cliente local para rodar o fluxo e apenas consulte o repositório por aqui.
-
-## Como compartilhar a `main` com o agente
-
-O ambiente do agente só enxerga as branches que existem localmente no contêiner atual. Se você quer que ele veja a `main` (ou qualquer outra branch de referência), siga os passos abaixo no seu terminal antes de iniciar uma nova conversa:
-
-1. Garanta que a branch exista no repositório remoto:
-   ```bash
-   git checkout main
-   git push origin main
-   ```
-   > Caso ainda não exista, crie a partir da branch desejada: `git checkout -b main` e depois faça o push.
-2. Dentro do contêiner (ou do ambiente que o agente está usando), adicione o mesmo remoto e faça o fetch:
-   ```bash
-   git remote add origin <URL-do-repositorio>
-   git fetch origin main
-   git checkout main
-   ```
-3. Sempre que trouxer novas alterações, rode `git pull origin main` para atualizar a branch local antes de pedir novas mudanças ao agente.
-
-Com isso, a branch `main` passa a estar disponível localmente e o agente pode inspecioná-la, compará-la com outras branches e criar PRs tomando `main` como base.
-
-
+Os arquivos est�ticos permanecem dispon�veis em `apps/prototype-static`. Ao executar `npm run dev:legacy`, o servidor local permite navegar pelos fluxos originais para compara��o visual.
 
