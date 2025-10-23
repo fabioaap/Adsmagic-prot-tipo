@@ -1,0 +1,1 @@
+// Content of src/core/animations.ts

@@ -1,0 +1,1 @@
+// Content of src/core/Stage1920x1080.tsx

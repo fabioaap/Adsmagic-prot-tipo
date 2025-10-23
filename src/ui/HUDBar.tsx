@@ -1,0 +1,1 @@
+// Content of src/ui/HUDBar.tsx

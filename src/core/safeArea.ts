@@ -1,0 +1,1 @@
+// Content of src/core/safeArea.ts
