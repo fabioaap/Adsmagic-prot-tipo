@@ -6,18 +6,13 @@ const tokensSrc = fileURLToPath(new URL("../../../packages/tokens/src", import.m
 const tokensCss = fileURLToPath(new URL("../../../packages/tokens/css", import.meta.url));
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.stories.@(ts|tsx|mdx)"],
+  stories: ["../src/**/*.stories.@(ts|tsx|mdx)", "../../../packages/react-components/src/**/*.stories.@(ts|tsx|mdx)"],
   addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
     "@storybook/addon-a11y",
   ],
   framework: {
     name: "@storybook/react-vite",
     options: {},
-  },
-  docs: {
-    autodocs: "tag",
   },
   async viteFinal(config) {
     config.resolve = config.resolve ?? {};
@@ -32,4 +27,3 @@ const config: StorybookConfig = {
 };
 
 export default config;
-

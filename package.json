@@ -33,5 +33,11 @@
   "homepage": "https://github.com/fabioaap/Adsmagic-prot-tipo#readme",
   "devDependencies": {
     "@playwright/test": "^1.56.1"
+  },
+  "overrides": {
+    "storybook": "^9.1.13",
+    "@storybook/react-vite": "^9.1.13",
+    "@storybook/vue3-vite": "^9.1.13",
+    "@storybook/addon-a11y": "^9.1.13"
   }
 }

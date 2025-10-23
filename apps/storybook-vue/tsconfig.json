@@ -1,8 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["vite/client", "storybook__vue3"],
-    "jsx": "preserve"
+    "types": ["vite/client"],
+    "jsx": "preserve",
+    "module": "ESNext",
+    "moduleResolution": "bundler"
   },
   "include": [
     "src/**/*.ts",

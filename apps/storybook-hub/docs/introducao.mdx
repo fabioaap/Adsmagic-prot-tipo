@@ -1,24 +1,90 @@
-import { Meta } from "@storybook/blocks";
+ï»¿# Design System Adsmagic
 
-<Meta title="Guia/Introducao" />
+Este Storybook Hub centraliza tokens, componentes React e Vue, e fluxos de referencia do Design System da Adsmagic.
 
-# Design System Adsmagic
+## Arquitetura
 
-Este Storybook centraliza tokens, componentes e fluxos de referência.
+- **Tokens**: Design tokens (@adsmagic/tokens) contem cores, espacamentos, tipografia e outros valores de design reutilizaveis
+- **Componentes React**: 9 componentes documentados com stories completas
+- **Componentes Vue**: 9 componentes documentados com stories completas (paridade total com React)
+- **Refs Architecture**: Este hub agrega os Storybooks React e Vue em uma interface unificada
 
-- **Tokens**: publicados via pacote `@adsmagic/tokens` e consumidos por React e Vue.
-- **Componentes React**: acesse em *React Components*.
-- **Componentes Vue**: acesse em *Vue Components*.
-- **Fluxos e guidelines**: mantenha aqui checklists, padrões e anotações de UX.
+## Componentes Disponiveis
 
-## Como navegar
+### React Components (9/9)
 
-1. Suba os Storybooks específicos com `npm run dev:react` e `npm run dev:vue`.
-2. Abra `npm run dev` para este hub e navegue pelos atalhos nas seções laterais.
-3. Adicione novas páginas MDX em `apps/storybook-hub/docs` para documentar padrões.
+- Button - Botoes com variantes primary/secondary
+- AvatarHighlight - Avatar com destaque visual
+- Badge - Indicadores de status e categorias
+- Card - Cartoes de conteudo com header e footer
+- Header - Cabecalho do workspace com stats
+- Sidebar - Navegacao lateral com grupos de links
+- StatusDropdown - Dropdown de selecao de status
+- SummaryCardGrid - Grade de cartoes de metricas
+- DataTable - Tabela de dados com status e acoes
 
-## Próximos passos
+### Vue Components (9/9)
 
-- Migrar demais componentes do protótipo.
-- Publicar builds estáticos (`npm run build`).
-- Configurar verificação visual automática (Chromatic ou Storybook test runner).
+- Button - Botoes com variantes primary/secondary
+- AvatarHighlight - Avatar com destaque visual
+- Badge - Indicadores de status e categorias
+- Card - Cartoes de conteudo com header e footer
+- Header - Cabecalho do workspace com stats
+- Sidebar - Navegacao lateral com grupos de links
+- StatusDropdown - Dropdown de selecao de status
+- SummaryCardGrid - Grade de cartoes de metricas
+- DataTable - Tabela de dados com status e acoes
+
+## Como Iniciar
+
+Execute o script PowerShell que abre tres janelas separadas:
+
+```powershell
+.\start-all-storybooks.ps1
+```
+
+Portas utilizadas:
+- Hub: http://localhost:6006/
+- React: http://localhost:6008/
+- Vue: http://localhost:7007/
+
+## Design Tokens
+
+Os tokens sao definidos em packages/tokens/src/tokens.ts
+
+Exemplo de uso em componentes.
+
+## Desenvolvimento
+
+### Adicionando Novos Componentes
+
+1. Crie o componente em packages/react-components/src/components/ ou packages/vue-components/src/components/
+2. Crie o arquivo de stories ComponentName.stories.ts no mesmo diretorio
+3. Exporte o componente em src/index.ts do pacote correspondente
+4. O componente aparecera automaticamente no Storybook
+
+## Padroes e Guidelines
+
+### Estilo
+- Inline Styles: Todos os componentes usam inline styles com tokens
+- Sem CSS Classes: Evitamos classes CSS para manter consistencia
+- Design Tokens: Sempre use tokens para cores, espacamentos, tipografia
+
+### TypeScript
+- Interfaces de Props: Sempre defina interfaces TypeScript para props
+- Type Safety: Mantenha type safety em todos os componentes e stories
+
+## Versionamento
+
+Storybook v9.1.13 (forcado via npm overrides)
+
+Todos os workspaces usam a mesma versao com compatibilidade garantida entre Hub, React e Vue.
+
+## Contribuindo
+
+Para adicionar novos componentes ou melhorar os existentes:
+
+1. Sempre siga a estrutura de pastas estabelecida
+2. Use design tokens em vez de valores hardcoded
+3. Crie stories que demonstrem todos os estados do componente
+4. Mantenha paridade entre React e Vue quando possivel

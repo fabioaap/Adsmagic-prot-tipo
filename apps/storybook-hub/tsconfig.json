@@ -2,7 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "types": ["vite/client", "storybook__react"]
+    "types": ["vite/client", "storybook__react"],
+    "module": "ESNext",
+    "moduleResolution": "bundler"
   },
   "include": [
     "docs/**/*.mdx",
