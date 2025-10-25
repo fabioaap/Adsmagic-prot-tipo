@@ -24,12 +24,13 @@ Servidor legado (debug): `node test-server.js` (porta 8000).
 ### Storybook Hub
 
 ```bash
+npm run dev:all
 npm run lint --workspace @adsmagic/storybook-hub
 npm run build --workspace @adsmagic/storybook-hub
 npx playwright test --config=playwright.storybook.config.ts
 ```
 
-O arquivo `playwright.storybook.config.ts` roda apenas o smoke `storybook-hub.smoke.spec.ts`. Garanta que o hub esteja rodando (`npm run dev --workspace @adsmagic/storybook-hub`) ou exporte `STORYBOOK_URL` apontando para o build estatico.
+O comando `npm run dev:all` inicia os Storybooks React (6008), Vue (7007) e o Hub (6006) em paralelo. O arquivo `playwright.storybook.config.ts` roda apenas o smoke `storybook-hub.smoke.spec.ts`. Garanta que o hub esteja rodando (manual ou via `dev:all`) ou exporte `STORYBOOK_URL` apontando para o build estatico.
 
 ## Pipeline CI/CD
 
