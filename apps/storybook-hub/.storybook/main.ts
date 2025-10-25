@@ -13,6 +13,11 @@ const repoRootDir = fileURLToPath(new URL("../../..", import.meta.url));
 const config: StorybookConfig = {
   stories: ["../docs/**/*.mdx", "../src/**/*.stories.@(ts|tsx|mdx)"],
   addons: ["@storybook/addon-a11y", "@storybook/addon-docs"],
+  
+  core: {
+    disableTelemetry: true,
+  },
+  
   framework: {
     name: "@storybook/react-vite",
     options: {}
