@@ -1,16 +1,235 @@
 import { Meta } from "@storybook/blocks";
 
-<Meta title="Guia/Visao Geral" />
+<Meta title="Visao Geral" />
 
-# Design System Adsmagic
+<div style={{
+  minHeight: '60vh',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '4rem 2rem',
+  background: 'linear-gradient(180deg, #F5F5F7 0%, #FFFFFF 100%)',
+  borderRadius: '24px',
+  marginBottom: '3rem',
+  textAlign: 'center'
+}}>
+  <h1 style={{
+    fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+    fontWeight: '700',
+    margin: '0 0 1rem',
+    background: 'linear-gradient(135deg, #007AFF 0%, #5856D6 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    letterSpacing: '-0.02em'
+  }}>
+    Adsmagic
+  </h1>
+  
+  <div style={{
+    fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+    fontWeight: '500',
+    color: '#1D1D1F',
+    margin: '0 0 1rem',
+    maxWidth: '800px',
+    lineHeight: '1.4'
+  }}>
+    Design System Multi-Framework
+  </div>
+  
+  <div style={{
+    fontSize: '1.125rem',
+    color: '#86868B',
+    margin: 0,
+    maxWidth: '600px',
+    lineHeight: '1.6'
+  }}>
+    Componentes React e Vue com tokens compartilhados.<br />
+    Construído para escalar com elegância.
+  </div>
+</div>
 
-Hub unificado de tokens, componentes multi-stack e fluxos operacionais para acelerar a migracao do prototipo legado e garantir consistencia visual.
+## O que você encontra aqui
 
-## Proposito
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+  gap: '1.5rem',
+  margin: '3rem 0'
+}}>
+  <div style={{
+    padding: '2rem',
+    background: '#FFFFFF',
+    borderRadius: '20px',
+    border: '1px solid rgba(0, 0, 0, 0.06)',
+    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)',
+    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+    cursor: 'default'
+  }}>
+    <div style={{
+      width: '48px',
+      height: '48px',
+      borderRadius: '12px',
+      background: 'linear-gradient(135deg, #007AFF 0%, #5856D6 100%)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: '1.25rem',
+      fontSize: '1.5rem'
+    }}>
+      🎨
+    </div>
+    <h3 style={{
+      fontSize: '1.25rem',
+      fontWeight: '600',
+      color: '#1D1D1F',
+      margin: '0 0 0.75rem',
+      letterSpacing: '-0.01em'
+    }}>
+      Tokens
+    </h3>
+    <div style={{
+      fontSize: '0.9375rem',
+      color: '#86868B',
+      margin: 0,
+      lineHeight: '1.6'
+    }}>
+      Cores, tipografia e espaçamentos consistentes em CSS e TypeScript
+    </div>
+  </div>
+  
+  <div style={{
+    padding: '2rem',
+    background: '#FFFFFF',
+    borderRadius: '20px',
+    border: '1px solid rgba(0, 0, 0, 0.06)',
+    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)',
+    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+    cursor: 'default'
+  }}>
+    <div style={{
+      width: '48px',
+      height: '48px',
+      borderRadius: '12px',
+      background: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: '1.25rem',
+      fontSize: '1.5rem'
+    }}>
+      ⚛️
+    </div>
+    <h3 style={{
+      fontSize: '1.25rem',
+      fontWeight: '600',
+      color: '#1D1D1F',
+      margin: '0 0 0.75rem',
+      letterSpacing: '-0.01em'
+    }}>
+      React Components
+    </h3>
+    <div style={{
+      fontSize: '0.9375rem',
+      color: '#86868B',
+      margin: 0,
+      lineHeight: '1.6'
+    }}>
+      Biblioteca completa com testes, stories e documentação autodocs
+    </div>
+  </div>
+  
+  <div style={{
+    padding: '2rem',
+    background: '#FFFFFF',
+    borderRadius: '20px',
+    border: '1px solid rgba(0, 0, 0, 0.06)',
+    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)',
+    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+    cursor: 'default'
+  }}>
+    <div style={{
+      width: '48px',
+      height: '48px',
+      borderRadius: '12px',
+      background: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: '1.25rem',
+      fontSize: '1.5rem'
+    }}>
+      💚
+    </div>
+    <h3 style={{
+      fontSize: '1.25rem',
+      fontWeight: '600',
+      color: '#1D1D1F',
+      margin: '0 0 0.75rem',
+      letterSpacing: '-0.01em'
+    }}>
+      Vue Components
+    </h3>
+    <div style={{
+      fontSize: '0.9375rem',
+      color: '#86868B',
+      margin: 0,
+      lineHeight: '1.6'
+    }}>
+      Paridade completa com React usando Composition API e slots
+    </div>
+  </div>
+</div>
 
-- Garantir linguagem visual unificada em qualquer front-end.
-- Facilitar onboarding de devs, designers e QA.
-- Suportar evolucao controlada do design system.
+## Quickstart
+
+<div style={{
+  padding: '2rem',
+  background: '#1D1D1F',
+  borderRadius: '16px',
+  margin: '2rem 0',
+  fontFamily: '"SF Mono", "Menlo", "Consolas", monospace'
+}}>
+  <pre style={{
+    margin: 0,
+    color: '#FFFFFF',
+    fontSize: '0.875rem',
+    lineHeight: '1.6',
+    overflowX: 'auto'
+  }}>
+    <code>{`# Inicie todos os Storybooks
+.\\start-all-storybooks.ps1
+
+# Ou manualmente
+npm run dev:react  # Porta 6008
+npm run dev:vue    # Porta 7007
+npm run dev        # Hub porta 6006`}</code>
+  </pre>
+</div>
+
+<div style={{
+  padding: '1.5rem 2rem',
+  background: 'linear-gradient(135deg, rgba(0, 122, 255, 0.05) 0%, rgba(88, 86, 214, 0.05) 100%)',
+  borderRadius: '16px',
+  border: '1px solid rgba(0, 122, 255, 0.1)',
+  margin: '2rem 0'
+}}>
+  <div style={{
+    margin: 0,
+    color: '#1D1D1F',
+    fontSize: '0.9375rem',
+    lineHeight: '1.6'
+  }}>
+    <strong style={{color: '#007AFF'}}>💡 Dica:</strong> Use os atalhos de teclado para navegar rapidamente. Pressione <kbd style={{
+      padding: '0.25rem 0.5rem',
+      background: '#FFFFFF',
+      border: '1px solid rgba(0, 0, 0, 0.1)',
+      borderRadius: '6px',
+      fontFamily: 'inherit',
+      fontSize: '0.875rem'
+    }}>?</kbd> para ver todos os atalhos disponíveis.
+  </div>
+</div>
 
 ## O que voce encontra aqui
 

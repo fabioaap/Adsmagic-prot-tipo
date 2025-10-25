@@ -1,0 +1,81 @@
+/**
+ * Tipografia Apple SF Pro
+ * Fontes do sistema Apple para web
+ */
+
+/* SF Pro Display - Para títulos e UI */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: local('SF Pro Display'), local('-apple-system'), local('BlinkMacSystemFont');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* SF Pro Text - Para corpo de texto */
+@font-face {
+  font-family: 'SF Pro Text';
+  src: local('SF Pro Text'), local('-apple-system'), local('BlinkMacSystemFont');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* SF Mono - Para código */
+@font-face {
+  font-family: 'SF Mono';
+  src: local('SF Mono'), local('Menlo'), local('Monaco'), local('Courier New');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Aplicar globalmente */
+:root {
+  /* Títulos e UI */
+  --font-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Corpo de texto */
+  --font-text: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Código */
+  --font-mono: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
+  
+  /* Configurações de renderização Apple */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Aplicar SF Pro Display em headings */
+h1, h2, h3, h4, h5, h6,
+.sbdocs-title,
+.sidebar-header {
+  font-family: var(--font-display) !important;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+/* Aplicar SF Pro Text em corpo */
+body,
+p,
+.sbdocs-p,
+.sidebar-item {
+  font-family: var(--font-text) !important;
+  letter-spacing: -0.005em;
+}
+
+/* Aplicar SF Mono em código */
+code,
+pre,
+.prismjs,
+.docblock-code-toggle {
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0;
+}
+
+/* Melhorias de legibilidade Apple */
+body {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  font-variant-ligatures: common-ligatures;
+}
