@@ -17,16 +17,22 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {}
   },
-  refs: {
+  refs: () => ({
     react: {
       title: "React Components",
-      url: "http://localhost:6008"
+      url: "http://localhost:6008",
+      // Fix: Storybook 9.1.x não gera metadata.json em dev mode
+      // Usando função para permitir fallback dinâmico
+      expanded: false
     },
     vue: {
       title: "Vue Components",
-      url: "http://localhost:7007"
+      url: "http://localhost:7007",
+      // Fix: Storybook 9.1.x não gera metadata.json em dev mode
+      // Usando função para permitir fallback dinâmico
+      expanded: false
     }
-  },
+  }),
   async viteFinal(config) {
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {

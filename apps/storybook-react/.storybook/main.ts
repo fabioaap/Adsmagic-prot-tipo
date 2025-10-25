@@ -9,6 +9,7 @@ const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(ts|tsx|mdx)", "../../../packages/react-components/src/**/*.stories.@(ts|tsx|mdx)"],
   addons: [
     "@storybook/addon-a11y",
+    "@storybook/addon-docs",
   ],
   framework: {
     name: "@storybook/react-vite",

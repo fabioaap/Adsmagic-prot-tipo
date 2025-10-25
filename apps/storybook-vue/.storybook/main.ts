@@ -9,7 +9,8 @@ const tokensSrcDir = fileURLToPath(new URL("../../../packages/tokens/src", impor
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(ts|tsx|mdx)", "../../../packages/vue-components/src/**/*.stories.@(ts|tsx|mdx)"],
   addons: [
-    "@storybook/addon-a11y"
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs",
   ],
   framework: {
     name: "@storybook/vue3-vite",
