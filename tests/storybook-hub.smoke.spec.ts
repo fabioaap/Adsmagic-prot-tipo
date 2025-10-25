@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 const hubUrl = process.env.STORYBOOK_URL ?? "http://localhost:6006";
 
 test.describe("Storybook Hub - smoke", () => {
-  test("carrega a documentação inicial", async ({ page }) => {
+  test("carrega a documentacao inicial", async ({ page }) => {
     let response;
     try {
       response = await page.goto(hubUrl, {
@@ -12,7 +12,7 @@ test.describe("Storybook Hub - smoke", () => {
       });
     } catch (error) {
       test.skip(
-        `Storybook Hub indisponivel em ${hubUrl}. Inicie com "npm run dev" (hub) antes de rodar este teste.`,
+        `Storybook Hub indisponivel em ${hubUrl}. Inicie "npm run dev" (hub) antes de rodar este teste.`,
       );
       return;
     }
@@ -39,6 +39,8 @@ test.describe("Storybook Hub - smoke", () => {
     await expect(
       docsFrame.getByRole("heading", { name: /Proposito/i }),
     ).toBeVisible();
-    await expect(page.getByText(/Guia\/Visao Geral/i)).toBeVisible();
+    await expect(
+      page.locator('[data-item-id="guia-visao-geral--docs"]').first(),
+    ).toBeVisible();
   });
 });

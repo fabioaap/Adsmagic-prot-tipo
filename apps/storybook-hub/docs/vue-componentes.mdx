@@ -1,0 +1,39 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Biblioteca Vue/Componentes" />
+
+# Componentes Vue 3
+
+## Visao geral
+
+- Pacote: `@adsmagic/vue`
+- Stack: Vue 3 (`<script setup>`), Vite, tsup, Vitest
+- Tokens compartilhados via `@adsmagic/tokens`
+
+## Inventario
+
+| Componente | Slots ou Props | Observacoes |
+| --- | --- | --- |
+| `Button` | Slots `leading`/`trailing`, prop `variant` | API equivalente a React |
+| `AvatarHighlight` | Props `name`, `email`, `stats` | Destaque de liderancas |
+| `Badge` | Prop `variant` | Estados e filtros |
+| `Card` | Slots `actions`, props `meta`, `caption` | Layout flexivel |
+| `DataTable` | Prop `rows` tipada | Tokens por status |
+| `Header` | Props para metricas | Integra com `Button` |
+| `Sidebar` | Prop `navGroups` | Navegacao lateral |
+| `StatusDropdown` | Props `options`, `initialValue` | Suporte a `v-model` |
+| `SummaryCardGrid` | Prop `cards` | Grid responsivo |
+
+## Fluxo para novos componentes
+
+1. Implementar `Nome.vue` em `src/components/Nome`.
+2. Adicionar story `Nome.stories.ts`.
+3. Criar teste `Nome.spec.ts` com Testing Library Vue.
+4. Exportar no `index.ts` do pacote.
+5. Rodar lint/test/build do workspace.
+
+## Notas
+
+- Use tokens para todos os estilos.
+- Mantenha paridade com React sempre que possivel.
+- Planejar wrappers Nuxt conforme roadmap.

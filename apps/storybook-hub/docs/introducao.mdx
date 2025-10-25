@@ -1,0 +1,72 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Guia/Visao Geral" />
+
+# Design System Adsmagic
+
+Hub unificado de tokens, componentes multi-stack e fluxos operacionais para acelerar a migracao do prototipo legado e garantir consistencia visual.
+
+## Proposito
+
+- Garantir linguagem visual unificada em qualquer front-end.
+- Facilitar onboarding de devs, designers e QA.
+- Suportar evolucao controlada do design system.
+
+## O que voce encontra aqui
+
+| Secao | Quando consultar | Link |
+| --- | --- | --- |
+| Guia de tokens | Aplicar cores, tipografia e espacamentos oficiais | [`Guia/Tokens`](?path=/docs/guia-tokens--docs) |
+| Biblioteca React | Consumir ou evoluir componentes React | [`Biblioteca React/Componentes`](?path=/docs/biblioteca-react-componentes--docs) |
+| Biblioteca Vue | Consumir ou evoluir componentes Vue 3 | [`Biblioteca Vue/Componentes`](?path=/docs/biblioteca-vue-componentes--docs) |
+| Operacoes - Workflow | Subir ambientes, buildar ou publicar | [`Operacoes/Fluxo de Trabalho`](?path=/docs/operacoes-fluxo-de-trabalho--docs) |
+| Operacoes - Qualidade | Planejar testes, auditorias e monitoracao | [`Operacoes/Qualidade e Testes`](?path=/docs/operacoes-qualidade-e-testes--docs) |
+| Referencias - Migracao | Migrar telas do HTML legado | [`Referencias/Migracao do Prototipo`](?path=/docs/referencias-migracao-do-prototipo--docs) |
+| Referencias - Governanca | Contribuir com diretrizes e processos | [`Referencias/Governanca e Contribuicao`](?path=/docs/referencias-governanca-e-contribuicao--docs) |
+
+## Topologia do workspace
+
+```
+packages/
+  tokens/
+  react-components/
+  vue-components/
+
+apps/
+  storybook-react/
+  storybook-vue/
+  storybook-hub/
+  prototype-static/
+```
+
+## Quickstart
+
+```powershell
+.\start-all-storybooks.ps1
+```
+
+- Hub: [http://localhost:6006/](http://localhost:6006/)
+- React: [http://localhost:6008/](http://localhost:6008/)
+- Vue: [http://localhost:7007/](http://localhost:7007/)
+
+Sem PowerShell?
+
+```bash
+npm run dev:react
+npm run dev:vue
+npm run dev
+```
+
+## Responsabilidades dos pacotes
+
+- `@adsmagic/tokens`: tokens em CSS (`css/base.css`) e TypeScript (`src/index.ts`).
+- `@adsmagic/react`: componentes React com stories e testes.
+- `@adsmagic/vue`: paridade Vue 3 com slots e vitest.
+
+## Como usar o hub
+
+1. Consulte o Guia de Tokens antes de criar novos estilos.
+2. Explore bibliotecas React/Vue para entender props e variantes.
+3. Siga fluxos de operacao para build, versionamento e publicacao.
+4. Execute o checklist de qualidade antes dos PRs.
+5. Registre decisoes de arquitetura e discovery na secao de governanca.

@@ -1,0 +1,52 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Operacoes/Fluxo de Trabalho" />
+
+# Fluxo de Trabalho
+
+## Ambiente local
+
+1. `npm install`
+2. `npm run dev:react`, `npm run dev:vue` e `npm run dev`
+3. `npm run dev:legacy` para comparar com o prototipo HTML
+
+## Scripts chave
+
+| Script | Descricao |
+| --- | --- |
+| `npm run dev` | Storybook Hub (porta 6006) |
+| `npm run dev:react` | Storybook React (porta 6008) |
+| `npm run dev:vue` | Storybook Vue (porta 7007) |
+| `npm run build` | Build estatico do hub |
+| `npm run lint` | Lint nos workspaces configurados |
+| `npm run test` | Vitest + Playwright |
+| `npm run dev:legacy` | Servidor do prototipo (porta 4100) |
+
+## Processo de build
+
+1. Garantir Storybooks React/Vue acessiveis (refs locais).
+2. Executar `npm run build`.
+3. Publicar `apps/storybook-hub/storybook-static` na CDN escolhida.
+
+## Publicacao de pacotes
+
+```bash
+npm run build --workspace @adsmagic/tokens
+npm run build --workspace @adsmagic/react
+npm run build --workspace @adsmagic/vue
+# npm publish (registry privado)
+```
+
+## Automacao sugerida
+
+- CI em PR: install -> lint -> test -> build.
+- CD em main: publicar Storybook e smoke Playwright.
+- Releases: changelog + SemVer.
+
+## Checklist de PR
+
+1. Storybooks sobem sem erros.
+2. `npm run lint` e `npm run test` verdes.
+3. Documentacao atualizada (Hub + README).
+4. Evidencias visuais anexadas.
+5. Plano de rollback registrado.
