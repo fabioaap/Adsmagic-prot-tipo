@@ -1,14 +1,18 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import { fileURLToPath } from "url";
 
-const tokensCssDir = fileURLToPath(new URL("../../../packages/tokens/css", import.meta.url));
-const tokensSrcDir = fileURLToPath(new URL("../../../packages/tokens/src", import.meta.url));
+const tokensCssDir = fileURLToPath(
+  new URL("../../../packages/tokens/css", import.meta.url),
+);
+const tokensSrcDir = fileURLToPath(
+  new URL("../../../packages/tokens/src", import.meta.url),
+);
+const docsDir = fileURLToPath(new URL("../docs", import.meta.url));
+const repoRootDir = fileURLToPath(new URL("../../..", import.meta.url));
 
 const config: StorybookConfig = {
-  stories: ["../docs/**/*.mdx"],
-  addons: [
-    "@storybook/addon-a11y"
-  ],
+  stories: ["../docs/**/*.stories.@(ts|tsx|mdx)", "../src/**/*.stories.@(ts|tsx|mdx)"],
+  addons: ["@storybook/addon-a11y", "@storybook/addon-docs"],
   framework: {
     name: "@storybook/react-vite",
     options: {}
@@ -30,6 +34,15 @@ const config: StorybookConfig = {
       "@adsmagic/tokens/css": tokensCssDir,
       "@adsmagic/tokens": tokensSrcDir,
     };
+    config.server = config.server ?? {};
+    config.server.fs = config.server.fs ?? {};
+    config.server.fs.allow = [
+      ...(config.server.fs.allow ?? []),
+      docsDir,
+      tokensCssDir,
+      tokensSrcDir,
+      repoRootDir,
+    ];
     return config;
   }
 };

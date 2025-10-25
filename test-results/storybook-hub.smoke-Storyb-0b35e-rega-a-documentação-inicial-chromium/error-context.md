@@ -1,0 +1,183 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation "Global" [ref=e6]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - link "Skip to canvas" [ref=e12] [cursor=pointer]:
+          - /url: "#storybook-preview-wrapper"
+        - link "Storybook" [ref=e14] [cursor=pointer]:
+          - /url: ./
+          - img "Storybook" [ref=e15]
+        - button "Shortcuts" [ref=e21] [cursor=pointer]:
+          - img [ref=e22]
+      - generic [ref=e25]: Search for components
+      - generic [ref=e26]:
+        - combobox "Search for components" [ref=e27]:
+          - generic:
+            - img
+          - searchbox "Search for components" [ref=e28]
+          - code: ⌃ K
+          - button "Tag filters" [ref=e32] [cursor=pointer]:
+            - img [ref=e33]
+        - button "Create a new story" [ref=e36] [cursor=pointer]:
+          - img [ref=e37]
+      - generic [ref=e39]:
+        - generic [ref=e41]:
+          - generic [ref=e43]:
+            - img
+            - generic [ref=e44]:
+              - button "Guia" [expanded] [ref=e45] [cursor=pointer]:
+                - img [ref=e47]
+                - text: Guia
+              - button "Collapse" [ref=e49] [cursor=pointer]:
+                - img [ref=e50]
+            - generic [ref=e52]:
+              - link "Visao Geral" [ref=e53] [cursor=pointer]:
+                - /url: /?path=/docs/guia-visao-geral--docs
+                - img [ref=e55]
+                - text: Visao Geral
+              - link "Skip to canvas" [ref=e57] [cursor=pointer]:
+                - /url: "#storybook-preview-wrapper"
+            - link "Tokens" [ref=e59] [cursor=pointer]:
+              - /url: /?path=/docs/guia-tokens--docs
+              - img [ref=e61]
+              - text: Tokens
+            - generic [ref=e63]:
+              - button "Operacoes" [expanded] [ref=e64] [cursor=pointer]:
+                - img [ref=e66]
+                - text: Operacoes
+              - button "Collapse" [ref=e68] [cursor=pointer]:
+                - img [ref=e69]
+            - link "Fluxo de Trabalho" [ref=e72] [cursor=pointer]:
+              - /url: /?path=/docs/operacoes-fluxo-de-trabalho--docs
+              - img [ref=e74]
+              - text: Fluxo de Trabalho
+            - link "Qualidade e Testes" [ref=e77] [cursor=pointer]:
+              - /url: /?path=/docs/operacoes-qualidade-e-testes--docs
+              - img [ref=e79]
+              - text: Qualidade e Testes
+            - generic [ref=e81]:
+              - button "Biblioteca React" [expanded] [ref=e82] [cursor=pointer]:
+                - img [ref=e84]
+                - text: Biblioteca React
+              - button "Collapse" [ref=e86] [cursor=pointer]:
+                - img [ref=e87]
+            - link "Componentes" [ref=e90] [cursor=pointer]:
+              - /url: /?path=/docs/biblioteca-react-componentes--docs
+              - img [ref=e92]
+              - text: Componentes
+            - generic [ref=e94]:
+              - button "Referencias" [expanded] [ref=e95] [cursor=pointer]:
+                - img [ref=e97]
+                - text: Referencias
+              - button "Collapse" [ref=e99] [cursor=pointer]:
+                - img [ref=e100]
+            - link "Governanca e Contribuicao" [ref=e103] [cursor=pointer]:
+              - /url: /?path=/docs/referencias-governanca-e-contribuicao--docs
+              - img [ref=e105]
+              - text: Governanca e Contribuicao
+            - link "Migracao do Prototipo" [ref=e108] [cursor=pointer]:
+              - /url: /?path=/docs/referencias-migracao-do-prototipo--docs
+              - img [ref=e110]
+              - text: Migracao do Prototipo
+            - generic [ref=e112]:
+              - button "Biblioteca Vue" [expanded] [ref=e113] [cursor=pointer]:
+                - img [ref=e115]
+                - text: Biblioteca Vue
+              - button "Collapse" [ref=e117] [cursor=pointer]:
+                - img [ref=e118]
+            - link "Componentes" [ref=e121] [cursor=pointer]:
+              - /url: /?path=/docs/biblioteca-vue-componentes--docs
+              - img [ref=e123]
+              - text: Componentes
+            - generic [ref=e125]:
+              - button "Debug" [expanded] [ref=e126] [cursor=pointer]:
+                - img [ref=e128]
+                - text: Debug
+              - button "Collapse" [ref=e130] [cursor=pointer]:
+                - img [ref=e131]
+            - link "Sample Intro" [ref=e134] [cursor=pointer]:
+              - /url: /?path=/docs/debug-sample-intro--docs
+              - img [ref=e136]
+              - text: Sample Intro
+          - generic "Hide React Components stories" [ref=e138]:
+            - button "React Components" [ref=e139] [cursor=pointer]:
+              - img [ref=e141]
+              - generic "React Components" [ref=e143]
+            - complementary [ref=e144]:
+              - button "toggle indicator" [ref=e146] [cursor=pointer]:
+                - img [ref=e147]
+          - generic [ref=e152]:
+            - text: Oh no! Something went wrong loading this Storybook.
+            - generic [ref=e155] [cursor=pointer]:
+              - text: View error
+              - img [ref=e156]
+            - link "View docs" [ref=e158] [cursor=pointer]:
+              - /url: https://storybook.js.org/docs?ref=ui
+              - generic [ref=e159]:
+                - text: View docs
+                - img [ref=e160]
+          - generic "Hide Vue Components stories" [ref=e162]:
+            - button "Vue Components" [ref=e163] [cursor=pointer]:
+              - img [ref=e165]
+              - generic "Vue Components" [ref=e167]
+            - complementary [ref=e168]:
+              - button "toggle indicator" [ref=e170] [cursor=pointer]:
+                - img [ref=e171]
+          - generic [ref=e176]:
+            - text: Oh no! Something went wrong loading this Storybook.
+            - generic [ref=e179] [cursor=pointer]:
+              - text: View error
+              - img [ref=e180]
+            - link "View docs" [ref=e182] [cursor=pointer]:
+              - /url: https://storybook.js.org/docs?ref=ui
+              - generic [ref=e183]:
+                - text: View docs
+                - img [ref=e184]
+        - text: /
+  - main [ref=e187]:
+    - region "Toolbar" [ref=e188]:
+      - generic [ref=e189]: Toolbar
+      - generic [ref=e190]:
+        - generic [ref=e191]:
+          - button "Apply a grid to the preview" [ref=e192] [cursor=pointer]:
+            - img [ref=e193]
+          - button "Change the background of the preview" [ref=e196] [cursor=pointer]:
+            - img [ref=e197]
+          - button "Apply outlines to the preview" [ref=e200] [cursor=pointer]:
+            - img [ref=e201]
+        - button "Go full screen" [ref=e204] [cursor=pointer]:
+          - img [ref=e205]
+    - generic [ref=e209]:
+      - link "Skip to sidebar" [ref=e210] [cursor=pointer]:
+        - /url: "#guia-visao-geral--docs"
+      - iframe [ref=e211]:
+        - generic [ref=f1e3]:
+          - 'heading "No CSF file attached to this docs file, did you forget to use <Meta of={} />?" [level=1] [ref=f1e4]'
+          - paragraph [ref=f1e5]: "The component failed to render properly, likely due to a configuration issue in Storybook. Here are some common causes and how you can address them:"
+          - list [ref=f1e6]:
+            - listitem [ref=f1e7]:
+              - strong [ref=f1e8]: Missing Context/Providers
+              - text: ": You can use decorators to supply specific contexts or providers, which are sometimes necessary for components to render correctly. For detailed instructions on using decorators, please visit the"
+              - link "Decorators documentation" [ref=f1e9] [cursor=pointer]:
+                - /url: https://storybook.js.org/docs/writing-stories/decorators
+              - text: .
+            - listitem [ref=f1e10]:
+              - strong [ref=f1e11]: Misconfigured Webpack or Vite
+              - text: ": Verify that Storybook picks up all necessary settings for loaders, plugins, and other relevant parameters. You can find step-by-step guides for configuring"
+              - link "Webpack" [ref=f1e12] [cursor=pointer]:
+                - /url: https://storybook.js.org/docs/builders/webpack
+              - text: or
+              - link "Vite" [ref=f1e13] [cursor=pointer]:
+                - /url: https://storybook.js.org/docs/builders/vite
+              - text: with Storybook.
+            - listitem [ref=f1e14]:
+              - strong [ref=f1e15]: Missing Environment Variables
+              - text: ": Your Storybook may require specific environment variables to function as intended. You can set up custom environment variables as outlined in the"
+              - link "Environment Variables documentation" [ref=f1e16] [cursor=pointer]:
+                - /url: https://storybook.js.org/docs/configure/environment-variables
+              - text: .
+          - code [ref=f1e18]: "Error: No CSF file attached to this docs file, did you forget to use <Meta of={} />? at LR2.resolveAttachedModuleExportType (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/storybook_internal_preview_runtime.js?v=26f7f7c0:43509:13) at LR2.resolveOf (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/storybook_internal_preview_runtime.js?v=26f7f7c0:43535:16) at useOf (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/@storybook_blocks.js?v=26f7f7c0:2190:91) at DescriptionContainer (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/@storybook_blocks.js?v=26f7f7c0:3154:20) at renderWithHooks (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/chunk-WPSP2BMU.js?v=26f7f7c0:11548:26) at mountIndeterminateComponent (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/chunk-WPSP2BMU.js?v=26f7f7c0:14926:21) at beginWork (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/chunk-WPSP2BMU.js?v=26f7f7c0:15914:22) at beginWork$1 (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/chunk-WPSP2BMU.js?v=26f7f7c0:19753:22) at performUnitOfWork (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/chunk-WPSP2BMU.js?v=26f7f7c0:19201:20) at workLoopSync (http://localhost:6006/node_modules/.cache/storybook/3faddf6668ae07e3db41fcbe1e14aef2561774946746c430909e53576526da08/sb-vite/deps/chunk-WPSP2BMU.js?v=26f7f7c0:19137:13)"
+```

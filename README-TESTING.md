@@ -1,144 +1,97 @@
-# Testes do Projeto Adsmagic
+# Guia de Testes do Projeto Adsmagic
 
-Este projeto inclui testes automatizados usando Playwright para garantir a qualidade e funcionalidade do layout dos cards.
+Este documento explica como instalar dependencias, executar a suite Playwright e entender o que cada teste garante no prototipo legado do dashboard.
 
-## 🚀 Executando os Testes
+## Requisitos
 
-### Pré-requisitos
+- Node.js LTS (18+)  
+- npm instalado (ou outro gerenciador compatível)
 
-- Node.js instalado
-- npm ou yarn
-
-### Instalação
+## Instalacao
 
 ```bash
 npm install
 ```
 
-### Executar Todos os Testes
+Execute o comando na raiz do workspace para preparar todos os pacotes.
+
+## Executando os testes
+
+### Todos os testes e2e
 
 ```bash
 npm test
 ```
 
-### Executar Testes com Interface Visual
+### Interface visual do Playwright
 
 ```bash
 npm run test:ui
 ```
 
-### Executar Testes em Modo Debug
+### Modo debug (pausas interativas)
 
 ```bash
 npm run test:debug
 ```
 
-### Executar Apenas Testes Específicos
+### Arquivos especificos
 
 ```bash
-# Apenas testes básicos
 npx playwright test tests/basic.spec.js
-
-# Apenas testes de layout
 npx playwright test tests/card-layout.spec.js
 ```
 
-## 📋 Testes Implementados
+## Testes implementados
 
-### Testes Básicos (`tests/basic.spec.js`)
+### `tests/basic.spec.js`
 
-- ✅ Verificação do título da página
-- ✅ Verificação do conteúdo principal do dashboard
-- ✅ Verificação da presença dos cards de resumo
-- ✅ Verificação do posicionamento lado a lado dos dois últimos cards
-- ✅ Teste de responsividade em dispositivos móveis
-- ✅ Verificação da navegação lateral
-- ✅ Verificação da presença de gráficos e tabelas
+- Valida titulo da pagina e conteudo principal do dashboard.
+- Confere cards de resumo, navegacao lateral, tabelas e graficos.
+- Exercita breakpoints mobile, tablet e desktop.
 
-### Testes de Layout (`tests/card-layout.spec.js`)
+### `tests/card-layout.spec.js`
 
-- ✅ Verificação da quantidade exata de cards (14)
-- ✅ Teste de posicionamento lado a lado dos dois últimos cards
-- ✅ Verificação do conteúdo correto dos últimos dois cards
-- ✅ Teste de responsividade em diferentes tamanhos de tela
-- ✅ Verificação do layout em grid apropriado
+- Garante a presenca de 14 cards.
+- Checa alinhamento lado a lado dos dois ultimos cards.
+- Valida conteudo dos cards finais e responsividade em diferentes larguras.
 
-## 🎯 Funcionalidade Testada
+## Funcionalidade coberta
 
-### Layout dos Cards
+- Dois ultimos cards ("Ciclo de vendas" e "Clientes ativos") permanecem lado a lado em viewports largas.
+- Cards mantem espacamento proporcional (cerca de 50% da largura cada um).
+- Layout se reorganiza para 4 colunas (desktop), 3 colunas (tablet), 2 colunas (mobile) e 1 coluna (mobile pequeno).
 
-Os testes verificam especificamente que:
-- Os **dois últimos cards** ("Ciclo de vendas" e "Clientes ativos") ficam **lado a lado**
-- Cada card ocupa aproximadamente **50% da largura disponível**
-- O layout permanece **responsivo** em diferentes dispositivos
-- Os cards mantêm o **espaçamento adequado**
-
-### Breakpoints Responsivos
-
-- **Desktop (>1023px)**: Grid de 4 colunas, últimos 2 cards lado a lado
-- **Tablet (768-1023px)**: Grid de 3 colunas, últimos 2 cards lado a lado
-- **Mobile (480-767px)**: Grid de 2 colunas
-- **Mobile pequeno (<480px)**: Layout de coluna única
-
-## 📊 Resultados Esperados
-
-Quando os testes passam com sucesso:
-- ✅ 36 testes executados (12 por navegador × 3 navegadores)
-- ✅ Todos os testes relacionados ao layout dos cards passam
-- ✅ Layout responsivo funcionando corretamente
-- ✅ Cards posicionados lado a lado conforme especificação
-
-## 🔧 Estrutura do Projeto
+## Estrutura relevante
 
 ```
-├── tests/
-│   ├── basic.spec.js          # Testes básicos da aplicação
-│   └── card-layout.spec.js    # Testes específicos do layout dos cards
-├── playwright.config.js       # Configuração do Playwright
-├── test-server.js             # Servidor de teste Node.js
-└── package.json               # Dependências e scripts
+tests/
+  basic.spec.js        # Testes basicos do dashboard
+  card-layout.spec.js  # Regras especificas de layout dos cards
+playwright.config.js   # Configuracao do Playwright
+test-server.js         # Servidor HTTP simples usado em debug
 ```
 
-## 🚨 Solução de Problemas
+## Troubleshooting rapido
 
-### Se os testes falharem:
+1. **Servidor nao responde**  
+   Rode `node test-server.js` e confirme se a porta 8000 esta livre.
 
-1. **Verifique se o servidor está rodando**:
-   ```bash
-   node test-server.js
-   ```
+2. **Dependencias faltando**  
+   Reinstale com `npm install`.
 
-2. **Verifique se todas as dependências estão instaladas**:
-   ```bash
-   npm install
-   ```
+3. **Falhas visuais ou seletores**  
+   Abra `npm run test:ui` para inspecionar o DOM com o inspector do Playwright.
 
-3. **Execute os testes em modo debug**:
-   ```bash
-   npm run test:debug
-   ```
+4. **Snapshot desatualizado**  
+   Revalide com `npx playwright test --update-snapshots`.
 
-### Problemas Comuns:
+## Cobertura e proximos passos
 
-- **Servidor não inicia**: Verifique se a porta 8000 está disponível
-- **Elementos não encontrados**: Verifique se o HTML está carregando corretamente
-- **Testes de layout falham**: Verifique se o CSS está sendo aplicado corretamente
+- Cobertura atual foca em layout e responsividade do prototipo HTML.
+- Recomenda-se adicionar smoke tests para os Storybooks React/Vue assim que o design system substituir o legado.
+- Avalie integrar regressao visual (Chromatic, Percy) para detectar divergencias no layout.
 
-## 📈 Cobertura de Testes
+## Conclusao
 
-Os testes cobrem:
-- ✅ **Funcionalidade básica** da aplicação
-- ✅ **Layout responsivo** em diferentes dispositivos
-- ✅ **Posicionamento específico** dos cards
-- ✅ **Navegação e estrutura** da página
-- ✅ **Gráficos e seções** principais
-
-## 🎉 Conclusão
-
-Os testes garantem que:
-1. A aplicação carrega corretamente
-2. Os dois últimos cards ficam lado a lado conforme especificado
-3. O layout permanece responsivo em diferentes dispositivos
-4. Todas as funcionalidades principais estão operacionais
-
-Execute `npm test` para verificar se tudo está funcionando corretamente!
+A suite Playwright garante que o dashboard legado continue renderizando corretamente. Execute `npm test` antes de abrir PRs e mantenha este guia alinhado a quaisquer ajustes de layout ou rotas.
