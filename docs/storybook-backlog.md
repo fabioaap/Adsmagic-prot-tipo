@@ -64,17 +64,17 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 - 🧪 **Testes automatizados** implementados (unitários, E2E, visual regression)
 - 📚 **Documentação completa** no Storybook Hub
 - 🚀 **CI/CD pipeline** funcionando com deploy automático
-- 🎨 **Design system** com 14+ componentes padronizados
+- 🎨 **Design system** com **29+ componentes** padronizados (11 React + 18 Vue)
 
 ### Componentes Implementados
-**React Components (7):**
-- Button, Card, Drawer, Header, Sidebar, StatusDropdown, SummaryCardGrid
+**React Components (11):**
+- AvatarHighlight, BadgeShowcase, Button, CardBase, DataTable, Drawer, Header, Sidebar, StatusDropdown, SummaryCardGrid, WhatsAppIndicator
 
-**Vue Components (7):**
-- Button, Card, Drawer, Header, Sidebar, StatusDropdown, SummaryCardGrid
+**Vue Components (18):**
+- DsAvatarHighlight, DsBadge, DsButton, DsCard, DsChannelsChart, DsContactsSalesChart, DsDataTable, DsDrawer, DsFunnelChart, DsHeader, DsInteractionsList, DsRevenueChart, DsSalesList, DsSidebar, DsStatusDropdown, DsSummaryCard, DsSummaryCardGrid, DsWhatsAppIndicator
 
 **Tokens:**
-- Cores, espaçamentos, tipografia, sombras, bordas
+- Sistema completo de design tokens (cores, espaçamentos, tipografia, sombras, bordas)
 
 ### Infraestrutura
 - ✅ Monorepo com workspaces
