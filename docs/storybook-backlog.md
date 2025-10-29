@@ -8,14 +8,22 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 
 | ID | Tarefa | Descricao | Observacoes |
 | --- | --- | --- | --- |
-| SB-09 | Estrategia de versao dos pacotes | Formalizar SemVer, changelog e release notes para `@adsmagic/*`. | Implementado conventional commits, semantic-release e workflow automatico. |
-| SB-10 | Integracao de regressao visual | Selecionar ferramenta (Chromatic/Percy) e configurar. | Implementado com Playwright Visual Comparison - CI/CD, screenshots e guia completo. |
+| SB-13 | Monorepo management avancado | Implementar estrategia de releases independentes e versionamento granular. | Changesets ja configurado, mas pode ser otimizado. |
+| SB-14 | Performance monitoring | Adicionar metricas de build time, bundle size e load time. | Ferramentas como Bundle Analyzer e Lighthouse CI. |
+| SB-15 | Acessibilidade avancada | Implementar testes WCAG 2.1 AA completos e automacao. | Axe-core ja integrado, expandir cobertura. |
+| SB-16 | Integracao Figma MCP | Conectar design system com Figma via MCP para sync automatico. | Documentado em `docs/figma-mcp.md`, implementar integracao. |
+| SB-17 | Otimizacao de bundles | Analisar e otimizar tamanhos de pacotes, tree-shaking e lazy loading. | Focar em reduzir bundle size dos componentes. |
+| SB-18 | Documentacao API | Gerar documentacao OpenAPI/Swagger para componentes programaticos. | Complementar Storybook com docs tecnicas. |
+| SB-19 | Testes de integracao E2E | Expandir cobertura E2E para fluxos completos de usuario. | Alem dos testes atuais, adicionar cenarios complexos. |
+| SB-20 | Internacionalizacao (i18n) | Implementar suporte multi-idioma nos componentes. | Preparar para expansao global. |
 
 ## A Fazer (proximas prioridades)
 
 | ID | Tarefa | Descricao | Observacoes |
 | --- | --- | --- | --- |
-| -- | Nenhum item prioritario pendente | | |
+| SB-13 | Monorepo management avancado | Implementar estrategia de releases independentes e versionamento granular. | Changesets ja configurado, focar em otimizacao. |
+| SB-14 | Performance monitoring | Adicionar metricas de build time, bundle size e load time. | Implementar Bundle Analyzer e Lighthouse CI. |
+| SB-16 | Integracao Figma MCP | Conectar design system com Figma via MCP para sync automatico. | Usar ferramentas existentes em `docs/figma-mcp.md`. |
 
 ## Fazendo
 
@@ -48,10 +56,45 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 
 ---
 
-## Proximos passos imediatos
+## Status do Projeto
 
-1. **Publicação dos pacotes NPM** - Configurar publishing automático dos `@adsmagic/*` packages
-2. **Monorepo management** - Estratégia de releases independentes por pacote
-3. **Performance monitoring** - Métricas de build/load time e otimização
-4. **Acessibilidade avançada** - Testes automatizados WCAG 2.1 AA completos
-5. **Integração com ferramentas externas** - Figma, ZeroHeight, ou similares
+### Métricas Atuais
+- ✅ **12/12 tarefas do MVP** completadas (100%)
+- 📦 **3 pacotes NPM** prontos para publicação (`@adsmagic/tokens`, `@adsmagic/react`, `@adsmagic/vue`)
+- 🧪 **Testes automatizados** implementados (unitários, E2E, visual regression)
+- 📚 **Documentação completa** no Storybook Hub
+- 🚀 **CI/CD pipeline** funcionando com deploy automático
+- 🎨 **Design system** com 14+ componentes padronizados
+
+### Componentes Implementados
+**React Components (7):**
+- Button, Card, Drawer, Header, Sidebar, StatusDropdown, SummaryCardGrid
+
+**Vue Components (7):**
+- Button, Card, Drawer, Header, Sidebar, StatusDropdown, SummaryCardGrid
+
+**Tokens:**
+- Cores, espaçamentos, tipografia, sombras, bordas
+
+### Infraestrutura
+- ✅ Monorepo com workspaces
+- ✅ Build automatizado (Vite + tsup)
+- ✅ Linting e formatação (ESLint flat config)
+- ✅ Versionamento semântico (Changesets)
+- ✅ Publicação automática (GitHub Actions)
+- ✅ Deploy do Storybook (GitHub Pages)
+
+---
+
+1. **SB-13: Monorepo management avancado** - Otimizar estrategia de releases independentes
+2. **SB-14: Performance monitoring** - Implementar metricas e alertas de performance
+3. **SB-16: Integracao Figma MCP** - Conectar com design tokens e componentes
+4. **SB-17: Otimizacao de bundles** - Reduzir tamanhos e melhorar carregamento
+5. **SB-15: Acessibilidade avancada** - Expandir testes WCAG 2.1 AA
+
+### Roadmap Q4 2025
+- Publicacao oficial dos pacotes NPM
+- Documentacao tecnica completa
+- Performance benchmarking
+- Expansao da suite de testes
+- Preparacao para contribuicao externa
