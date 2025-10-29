@@ -23,7 +23,9 @@
     "test:visual": "playwright test --config=playwright.visual.config.ts",
     "test:visual:update": "playwright test --config=playwright.visual.config.ts --update-snapshots",
     "commit": "cz",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "changeset publish",
+    "version": "changeset version"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,8 @@
   },
   "homepage": "https://github.com/fabioaap/Adsmagic-prot-tipo#readme",
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.7",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@playwright/test": "^1.56.1",

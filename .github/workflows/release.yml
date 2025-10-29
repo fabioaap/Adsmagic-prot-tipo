@@ -30,8 +30,10 @@ jobs:
           npm run lint
           npm test
 
-      - name: Release
+      - name: Release com Changesets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: |
+          npm run version
+          npm run release

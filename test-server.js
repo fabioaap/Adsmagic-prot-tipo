@@ -17,24 +17,15 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-  let filePath = '.' + req.url;
+  const filePath = path.join(__dirname, 'apps', 'prototype-static', 'index.html');
 
-  if (filePath === './') {
-    filePath = './index.html';
-  }
-
-  const extname = String(path.extname(filePath)).toLowerCase();
-  const mimeType = mimeTypes[extname] || 'application/octet-stream';
+  const extname = '.html';
+  const mimeType = 'text/html';
 
   fs.readFile(filePath, (error, content) => {
     if (error) {
-      if (error.code === 'ENOENT') {
-        res.writeHead(404);
-        res.end('File not found');
-      } else {
-        res.writeHead(500);
-        res.end('Sorry, check with the site admin for error: ' + error.code + ' ..\n');
-      }
+      res.writeHead(500);
+      res.end('Error: ' + error.code);
     } else {
       res.writeHead(200, { 'Content-Type': mimeType });
       res.end(content, 'utf-8');

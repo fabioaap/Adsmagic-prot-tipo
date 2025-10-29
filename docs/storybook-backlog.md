@@ -44,6 +44,7 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 | SB-09 | Estrategia de versao dos pacotes | Formalizar SemVer, changelog e release notes para `@adsmagic/*`. | Implementado conventional commits, semantic-release e workflow automatico. |
 | SB-10 | Integracao de regressao visual | Selecionar ferramenta (Chromatic/Percy) e configurar. | Implementado com Playwright Visual Comparison - CI/CD, screenshots e guia completo. |
 | SB-11 | Publicacao do Storybook Hub | Deploy automatico via GitHub Pages apos CI passar. | Workflow atualizado com job de deploy; URL: https://fabioaap.github.io/Adsmagic-prot-tipo/
+| SB-12 | Publicacao NPM automatica | Configurar Changesets para releases independentes dos pacotes `@adsmagic/*`. | Changesets configurado, CI/CD atualizado, documentacao criada em `docs/NPM_PUBLISHING.md`.
 
 ---
 
