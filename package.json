@@ -19,7 +19,9 @@
     "test": "npm run test --workspaces --if-present",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
-    "test:debug": "playwright test --debug"
+    "test:debug": "playwright test --debug",
+    "commit": "cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "repository": {
     "type": "git",
@@ -33,8 +35,22 @@
   },
   "homepage": "https://github.com/fabioaap/Adsmagic-prot-tipo#readme",
   "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@playwright/test": "^1.56.1",
-    "concurrently": "^9.1.0"
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.0",
+    "commitizen": "^4.3.1",
+    "concurrently": "^9.1.0",
+    "conventional-changelog-cli": "^5.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "semantic-release": "^25.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "overrides": {
     "storybook": "^9.1.15",
