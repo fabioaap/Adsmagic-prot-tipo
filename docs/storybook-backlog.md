@@ -15,8 +15,7 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 
 | ID | Tarefa | Descricao | Observacoes |
 | --- | --- | --- | --- |
-| SB-09 | Estrategia de versao dos pacotes | Formalizar SemVer, changelog e release notes para `@adsmagic/*`. | Depende da estabilizacao das bibliotecas. |
-| SB-10 | Integracao de regressao visual | Selecionar ferramenta (Chromatic/Percy) e configurar. | Avaliar apos smoke tests estabilizados. |
+| -- | Nenhum item prioritario pendente | | |
 
 ## Fazendo
 
@@ -42,12 +41,16 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 | SB-06 | Smoke test Playwright do hub | Teste de fumaca para docs e navegacao. | Validado via `playwright.storybook.config.ts`. |
 | SB-07 | Revisao/garantia da documentacao | Textos em ASCII e links funcionais. | Baseline pronto para iteracoes futuras. |
 | SB-08 | Checklist de CI/CD | Definir pipeline lint/test/build + publicacao do hub. | Workflow `storybook-hub-ci.yml` criado com lint, build e smoke automatico. |
+| SB-09 | Estrategia de versao dos pacotes | Formalizar SemVer, changelog e release notes para `@adsmagic/*`. | Implementado conventional commits, semantic-release e workflow automatico. |
+| SB-10 | Integracao de regressao visual | Selecionar ferramenta (Chromatic/Percy) e configurar. | Implementado com Playwright Visual Comparison - CI/CD, screenshots e guia completo. |
 | SB-11 | Publicacao do Storybook Hub | Deploy automatico via GitHub Pages apos CI passar. | Workflow atualizado com job de deploy; URL: https://fabioaap.github.io/Adsmagic-prot-tipo/
 
 ---
 
 ## Proximos passos imediatos
 
-1. Discutir canal de publicacao automatica (SB-11) para acesso dos stakeholders.
-2. Planejar estrategia de versao (SB-09) considerando processos de release.
-3. Avaliar integracao de regressao visual (SB-10) apos estabilizar CI/CD.
+1. **Publicação dos pacotes NPM** - Configurar publishing automático dos `@adsmagic/*` packages
+2. **Monorepo management** - Estratégia de releases independentes por pacote
+3. **Performance monitoring** - Métricas de build/load time e otimização
+4. **Acessibilidade avançada** - Testes automatizados WCAG 2.1 AA completos
+5. **Integração com ferramentas externas** - Figma, ZeroHeight, ou similares
