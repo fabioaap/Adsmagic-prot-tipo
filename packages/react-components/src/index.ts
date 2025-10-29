@@ -7,3 +7,5 @@ export { SummaryCardGrid } from "./components/Summary/SummaryCardGrid";
 export { DataTable } from "./components/Table/DataTable";
 export { StatusDropdown } from "./components/StatusDropdown/StatusDropdown";
 export { AvatarHighlight } from "./components/AvatarHighlight/AvatarHighlight";
+export { Drawer } from "./components/Drawer/Drawer";
+export { WhatsAppIndicator } from "./components/WhatsAppIndicator/WhatsAppIndicator";

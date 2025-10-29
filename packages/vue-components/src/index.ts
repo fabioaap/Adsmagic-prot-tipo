@@ -8,4 +8,6 @@ export { default as DsSidebar } from './components/Sidebar/Sidebar.vue';
 export { default as DsStatusDropdown } from './components/StatusDropdown/StatusDropdown.vue';
 export { default as DsSummaryCardGrid } from './components/Summary/SummaryCardGrid.vue';
 export { default as DsDataTable } from './components/Table/DataTable.vue';
+export { default as DsDrawer } from './components/Drawer/Drawer.vue';
+export { default as DsWhatsAppIndicator } from './components/WhatsAppIndicator/WhatsAppIndicator.vue';
 

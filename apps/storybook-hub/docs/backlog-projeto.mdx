@@ -1,0 +1,135 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Backlog do Projeto" />
+
+# Backlog do Projeto — Adsmagic
+
+Este documento centraliza o backlog geral do projeto, incluindo migração, novos componentes e melhorias pós-lançamento. Está formatado para leitura rápida no Storybook e é atualizado sempre que houver mudanças relevantes.
+
+---
+
+## Visão geral rápida
+
+- Escopo: migrar o protótipo HTML para um design system React/Vue, estabilizar Storybook e entregar componentes reutilizáveis.
+- Status atual: migração do dashboard em andamento; componentes básicos e stories prontos.
+
+---
+
+## Backlog (priorizado)
+
+### A Fazer — Prioridade (pós-migração)
+
+- CONT-01 — Lista ↔ Kanban (Contatos)
+  - O que: permitir alternância entre lista e kanban na tela de Contatos.
+  - Observações: requer componente Kanban; UX deve preservar filtros e ordenação.
+
+- CONT-02 — Drawer do contato (visão da conversa)
+  - O que: Drawer lateral com histórico da conversa, ações rápidas e CTA.
+  - Observações: reutilizar `Drawer` já criado; incluir testes de acessibilidade.
+
+- FUN-01 — Etapas configuradas (Funil)
+  - O que: Funil deve exibir apenas etapas configuradas; mover Kanban para Contatos.
+  - Observações: simplificar a tela e evitar duplicação de conceitos.
+
+- FUN-02 — Remover "Oportunidades" redundantes
+  - O que: limpar seções duplicadas e consolidar dados.
+  - Observações: revisar dados atribuídos para evitar perda de informação.
+
+- CONF-01 — Metas via CTA (Configurações)
+  - O que: mostrar CTA contextual no menu de configurações quando metas estiverem vazias.
+  - Observações: adicionar tracking de evento para analytics.
+
+### Longo prazo / Ideias
+
+- PROJ-01 — Migração completa para React/Vue
+  - Descrição: eliminar o HTML legado (`apps/prototype-static`) após migração incremental e validação.
+
+- PROJ-02 — Integração com Figma MCP
+  - Descrição: automatizar geração de código a partir de designs; seguir guia em `docs/figma-mcp.md`.
+
+- PROJ-03 — CI/CD completo
+  - Descrição: pipelines para lint, test, build e deploy do Storybook e pacotes.
+
+---
+
+## Em progresso
+
+(nenhum)
+
+---
+
+## Concluído (exemplos)
+
+- MIGR-01 — Migração do Dashboard
+  - Detalhe: app `dashboard-react` criado com Vite, migrado `index.html` usando `SummaryCardGrid` e `WhatsAppIndicator`. Dev server rodando em http://localhost:5173.
+
+- COMP-01 — Drawer
+  - Detalhe: componente Drawer criado em React/Vue com paridade de API. Testes unitários existentes.
+
+- COMP-02 — WhatsAppIndicator
+  - Detalhe: indicadores (tempo médio de resposta, variação) implementados e testados.
+
+- SB-01..SB-08 — Storybook Hub
+  - Detalhe: estabilização do hub (lint, build, testes, documentação).
+
+---
+
+## Roadmap da Migração (resumo)
+
+1. Preparação — componentes, tokens e Storybook (concluído).
+2. Migrar Dashboard — reproduzir layout e métricas (em curso).
+3. Migrar páginas principais (vendas, funil, contatos) — priorizar por uso.
+4. Testes & limpeza — remover legado e otimizar builds.
+5. Lançamento & monitoramento — deploy e iteração.
+
+Veja o Roadmap completo na seção abaixo para critérios, riscos e responsáveis.
+
+---
+
+## Roadmap da Migração (detalhado)
+
+### Fase 1 — Preparação (concluída)
+- Objetivo: base sólida com componentes e cobertura de testes.
+- Critérios: stories criados, testes passando, hub estável.
+
+### Fase 2 — Migração do Dashboard (em andamento)
+- Objetivo: migrar `index.html` para React/Vue.
+- Itens: SummaryCardGrid, WhatsAppIndicator, gráficos responsivos, testes E2E atualizados.
+
+### Fase 3 — Páginas restantes
+- Objetivo: migrar `vendas.html`, `funil.html`, `contatos.html`.
+- Itens: Kanban, Drawer de contato, rotas e navegação.
+
+### Fase 4 — Testes e limpeza
+- Objetivo: rodar suite completa e remover `apps/prototype-static`.
+
+### Fase 5 — Lançamento e monitoramento
+- Objetivo: deploy, observabilidade e roadmap pós-lançamento.
+
+### Riscos e mitigação
+- Quebras visuais — usar comparação de screenshots e feature flags.
+- Atraso em testes — automatizar E2E desde o início.
+- Dependências — migrar por ordem de dependência (dashboard primeiro).
+
+### Responsáveis e comunicação
+- Dev Lead: coordenação técnica.
+- QA: validação e automação.
+- Design: aprovação visual.
+- Stakeholders: revisões semanais via Storybook Hub.
+
+---
+
+## Próximos passos imediatos
+
+1. Finalizar migração do dashboard na branch atual.
+2. Criar PRs pequenos e revisáveis (um por seção/component).
+3. Validar E2E e publicar preview para stakeholders.
+
+## Como contribuir
+
+- Abra PR com a tag `migration` e referência ao ID do backlog (ex.: `CONT-01`).
+- Atualize esta página via PR quando concluir ou alterar o status de uma tarefa.
+
+---
+
+_Última atualização: 28/10/2025_

@@ -1,0 +1,28 @@
+.channelCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 0;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.percentage {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+}
