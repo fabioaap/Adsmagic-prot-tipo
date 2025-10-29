@@ -20,6 +20,8 @@
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
+    "test:visual": "playwright test --config=playwright.visual.config.ts",
+    "test:visual:update": "playwright test --config=playwright.visual.config.ts --update-snapshots",
     "commit": "cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },

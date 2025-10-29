@@ -8,8 +8,8 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 
 | ID | Tarefa | Descricao | Observacoes |
 | --- | --- | --- | --- |
-| SB-09 | Estrategia de versao dos pacotes | Formalizar SemVer, changelog e release notes para `@adsmagic/*`. | Depende da estabilizacao das bibliotecas. |
-| SB-10 | Integracao de regressao visual | Selecionar ferramenta (Chromatic/Percy) e configurar. | Avaliar apos smoke tests estabilizados. |
+| SB-09 | Estrategia de versao dos pacotes | Formalizar SemVer, changelog e release notes para `@adsmagic/*`. | Implementado conventional commits, semantic-release e workflow automatico. |
+| SB-10 | Integracao de regressao visual | Selecionar ferramenta (Chromatic/Percy) e configurar. | Implementado com Playwright Visual Comparison - CI/CD, screenshots e guia completo. |
 
 ## A Fazer (proximas prioridades)
 
