@@ -1,0 +1,39 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Referencias/Migracao do Prototipo" />
+
+# Migracao do Prototipo HTML
+
+## Objetivo
+
+Migrar telas de `apps/prototype-static` para componentes React/Vue preservando paridade visual e funcional.
+
+## Trilho recomendado
+
+1. Mapear pagina legado e componentes equivalentes.
+2. Implementar com biblioteca alvo reutilizando tokens.
+3. Validar com Playwright e comparacao visual.
+4. Documentar decisoes e gaps.
+
+## Checklist
+
+- [ ] Secoes mapeadas para componentes existentes.
+- [ ] Tokens reutilizados (sem valores hardcoded).
+- [ ] Ajustes registrados (novos tokens/variantes).
+- [ ] Testes Playwright atualizados.
+- [ ] Validacao com design.
+
+## Ferramentas
+
+- `npm run dev:legacy` (porta 4100) para comparar visualmente.
+- Playwright (`--update-snapshots`) para ajustar capturas.
+
+## Status sugerido
+
+| Pagina | Framework | Status | Notas |
+| --- | --- | --- | --- |
+| Dashboard (index) | React | Discovery | Validar graficos e fontes de dados |
+| Funil | Vue | Backlog | Depende de metricas dinamicas |
+| Contatos | React | Backlog | Requer tabela com filtros avancados |
+
+Atualize a tabela conforme as migracoes avancarem.

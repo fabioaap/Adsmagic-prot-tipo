@@ -1,1 +1,67 @@
-{\n  "name": "trivia-starter-kit",\n  "version": "1.0.0",\n  "private": true,\n  "scripts": {\n    "dev": "vite",\n    "build": "vite build",\n    "preview": "vite preview",\n    "lint": "eslint . --ext .ts,.tsx",\n    "format": "prettier --write ."\n  },\n  "dependencies": {\n    "react": "^18.0.0",\n    "react-dom": "^18.0.0",\n    "vite": "^4.0.0",\n    "tailwindcss": "^3.0.0",\n    "animejs": "^3.2.1",\n    "zustand": "^4.0.0"\n  },\n  "devDependencies": {\n    "typescript": "^5.0.0",\n    "eslint": "^8.0.0",\n    "prettier": "^2.0.0"\n  }\n}
+{
+  "name": "adsmagic-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Workspace evolutivo do design system Adsmagic com componentes React/Vue, Storybook e protótipos.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @adsmagic/storybook-hub",
+    "dev:react": "npm run dev --workspace @adsmagic/storybook-react",
+    "dev:vue": "npm run dev --workspace @adsmagic/storybook-vue",
+    "dev:legacy": "npm run serve --workspace @adsmagic/prototype-static",
+    "dev:all": "concurrently \"npm run dev --workspace @adsmagic/storybook-react\" \"npm run dev --workspace @adsmagic/storybook-vue\" \"npm run dev --workspace @adsmagic/storybook-hub\"",
+    "build": "npm run build --workspace @adsmagic/storybook-hub",
+    "build:storybook": "npm run build --workspace @adsmagic/storybook-hub",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:visual": "playwright test --config=playwright.visual.config.ts",
+    "test:visual:update": "playwright test --config=playwright.visual.config.ts --update-snapshots",
+    "commit": "cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "changeset publish",
+    "version": "changeset version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabioaap/Adsmagic-prot-tipo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabioaap/Adsmagic-prot-tipo/issues"
+  },
+  "homepage": "https://github.com/fabioaap/Adsmagic-prot-tipo#readme",
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.7",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@playwright/test": "^1.56.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.0",
+    "commitizen": "^4.3.1",
+    "concurrently": "^9.1.0",
+    "conventional-changelog-cli": "^5.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "semantic-release": "^25.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "overrides": {
+    "storybook": "^9.1.15",
+    "@storybook/react-vite": "^9.1.15",
+    "@storybook/vue3-vite": "^9.1.15",
+    "@storybook/addon-a11y": "^9.1.15"
+  }
+}

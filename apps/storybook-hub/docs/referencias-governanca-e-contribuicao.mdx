@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Referencias/Governanca e Contribuicao" />
+
+# Governanca e Contribuicao
+
+## Principios
+
+1. Design system tratado como produto.
+2. Paridade React/Vue mantida sempre que possivel.
+3. Tokens como fonte unica de estilo.
+4. Documentacao viva no Storybook Hub.
+
+## Fluxo de contribuicao
+
+1. Planejar com squad/design e definir se e delivery ou discovery.
+2. Implementar seguindo guias (tokens, componentes, testes).
+3. Revisar com checklist de qualidade.
+4. Divulgar releases, changelog e comunicacao interna.
+
+## Discovery condicional
+
+Use discovery quando houver incerteza validavel e baixo custo de reversao. Requisitos:
+
+- Hipotese e metrica alvo.
+- Feature flag com TTL, owner e kill-switch.
+- Observabilidade enxuta (logs estruturados, PII mascarada).
+- Plano de rollback documentado.
+
+## Papel das squads
+
+| Papel | Responsabilidade |
+| --- | --- |
+| DS Core | Curadoria de tokens e componentes |
+| Squads Produto | Solicitar evolucoes e validar paridade |
+| QA/Qualidade | Acessibilidade, testes e regressao visual |
+| Platform/DevOps | Automatizar CI/CD e releases |
+
+## Boas praticas de PR
+
+- Contexto, escopo e impacto claros.
+- Links para design, issues e discoverys.
+- Evidencias visuais quando pertinente.
+- Checklist completo e rollback definido.
+
+## Roadmap curto prazo
+
+1. Configurar CI (lint/test/build).
+2. Formalizar estrategia de versionamento e changelog.
+3. Publicar pacotes em registry privado.
+4. Documentar fluxo de discovery com templates.

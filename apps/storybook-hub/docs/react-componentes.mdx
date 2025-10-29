@@ -1,0 +1,40 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Biblioteca React/Componentes" />
+
+# Componentes React
+
+## Visao geral
+
+- Pacote: `@adsmagic/react`
+- Stack: React 18, Vite, tsup, Vitest
+- Estilos inline baseados em `@adsmagic/tokens`
+
+## Inventario
+
+| Componente | Uso | Observacoes |
+| --- | --- | --- |
+| `Button` | CTAs com variantes `primary`, `secondary`, `ghost` | Slots para icones leading/trailing |
+| `AvatarHighlight` | Destaque de liderancas | Badge e meta info |
+| `BadgeShowcase` | Colecao de badges | Status e filtros |
+| `CardBase` | Cartoes de metricas | Header/footer opcionais |
+| `DataTable` | Listas com status | Tokens por estado |
+| `Header` | Hero do workspace | Integra com `Button` |
+| `Sidebar` | Navegacao lateral | Grupos e item ativo |
+| `StatusDropdown` | Dropdown inline | Controle de estados |
+| `SummaryCardGrid` | Grid responsivo | Metricas resumidas |
+
+## Fluxo para novos componentes
+
+1. Criar pasta em `src/components/Nome`.
+2. Implementar componente com tokens.
+3. Adicionar story `Nome.stories.tsx`.
+4. Criar teste `Nome.test.tsx` com Testing Library.
+5. Exportar em `src/index.ts`.
+6. Rodar lint/test/build do workspace.
+
+## Roadmap
+
+- Cobrir estados acessiveis (focus/aria) nas stories.
+- Automatizar releases (SemVer + changelog).
+- Avaliar wrappers para SSR/Next.js conforme demanda.

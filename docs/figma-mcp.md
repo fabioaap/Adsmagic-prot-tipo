@@ -1,11 +1,11 @@
-# Configuração do MCP do Figma
+﻿# Configuração do MCP do Figma
 
 Este guia explica como conectar o projeto aos recursos do Figma utilizando o **Model Context Protocol (MCP)**. O objetivo é permitir que agentes MCP (como o Claude Desktop ou servidores compatíveis) consultem frames, páginas e arquivos do Figma diretamente nas conversas, mantendo os tokens sensíveis fora do repositório.
 
 ## Pré-requisitos
 
 1. **Conta Figma com permissão de leitura nos arquivos desejados.**
-2. **Token de acesso pessoal (PAT) do Figma** – gere em [https://www.figma.com/developers/api#access-tokens](https://www.figma.com/developers/api#access-tokens). Anote o token apenas localmente.
+2. **Token de acesso pessoal (PAT) do Figma** –" gere em [https://www.figma.com/developers/api#access-tokens](https://www.figma.com/developers/api#access-tokens). Anote o token apenas localmente.
 3. **ID do arquivo ou equipe** que você deseja expor via MCP. O ID aparece na URL do Figma (`https://www.figma.com/file/<FILE_ID>/...`).
 4. Ambiente com suporte a MCP (por exemplo, [Claude Desktop](https://www.anthropic.com/claude) ou o pacote `mcp` via `npm`).
 
@@ -83,3 +83,6 @@ Quando alguém enviar o link direto de um frame do Figma no chat (por exemplo, d
 > Dica: se estiver operando pelo CLI `npx mcp`, o comando equivalente fica `npx mcp call figma export-frame-html --file-id <FILE_ID> --node-id <NODE_ID>`. Copie e cole o link original no histórico para manter o contexto da conversa.
 
 Com isso, o projeto fica preparado para consumir dados do Figma via MCP de forma segura e reproduzível.
+
+
+

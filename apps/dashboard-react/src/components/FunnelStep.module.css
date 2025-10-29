@@ -1,0 +1,22 @@
+.funnelStep {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background-color: #EFF6FF;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2563EB;
+  margin: 0;
+}

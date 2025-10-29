@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Mensagens</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="app-sidebar hidden lg:flex">
+        <div class="app-sidebar-body">
+          <div class="app-sidebar-header">
+          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
+            <i data-lucide="chevron-right" class="h-5 w-5"></i>
+          </button>
+          <a class="app-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+            <div class="app-brand-title">
+              <strong>Adsmágic</strong>
+              <span>Growth Suite</span>
+            </div>
+          </a>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
+            <i data-lucide="chevron-left" class="h-5 w-5"></i>
+          </button>
+          </div>
+          <nav class="app-nav" data-active="mensagens"></nav>
+        </div>
+      </aside>
+      <div class="flex flex-1 flex-col">
+        <header class="app-header">
+          <div class="app-header-inner">
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
+                AL
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
+                <p class="text-xs text-slate-500">Marketing Consultant</p>
+              </div>
+              <span class="badge-soft hidden sm:inline-flex">WhatsApp Conectado</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+                <span>Português</span>
+                <i data-lucide="chevron-down" class="h-4 w-4"></i>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50" aria-label="Abrir notificações">
+                <i data-lucide="bell" class="h-5 w-5"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="app-main">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div class="section-title">
+              <h1 class="text-2xl font-semibold text-slate-900">Mensagens</h1>
+              <p class="text-sm text-slate-500">
+                Organize fluxos de conversa e monitore as respostas enviadas pelas suas campanhas integradas.
+              </p>
+            </div>
+            <button class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow transition hover:bg-slate-800">
+              <i data-lucide="plus" class="h-4 w-4"></i>
+              Criar mensagem
+            </button>
+          </div>
+
+          <section class="card-shadow rounded-3xl border border-slate-200 bg-white">
+            <div class="flex flex-col gap-4 border-b border-slate-200 px-6 py-5 lg:flex-row lg:items-center lg:justify-between">
+              <div class="flex flex-col gap-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">Origem</p>
+                <h2 class="text-lg font-semibold text-slate-900">Contatos indicados rastreados</h2>
+              </div>
+              <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-500">
+                <span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                Atualizado há 5 minutos
+              </div>
+            </div>
+            <div class="grid gap-3 border-t border-slate-100 px-6 py-6 sm:grid-cols-2 xl:grid-cols-5">
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Google Ads</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">24</p>
+                <p class="mt-2 text-xs text-slate-500">Fluxos originados por formulários de pesquisa.</p>
+              </article>
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Meta Ads</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">18</p>
+                <p class="mt-2 text-xs text-slate-500">Nutrição automática via campanhas lookalike.</p>
+              </article>
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">TikTok Ads</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">9</p>
+                <p class="mt-2 text-xs text-slate-500">Sequências rápidas para captação mobile.</p>
+              </article>
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Orgânico</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">32</p>
+                <p class="mt-2 text-xs text-slate-500">Landing pages e chat do site conectados.</p>
+              </article>
+              <article class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Outros</p>
+                <p class="mt-3 text-2xl font-semibold text-slate-900">6</p>
+                <p class="mt-2 text-xs text-slate-500">Importações CSV e integrações externas.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="card-shadow rounded-3xl border border-slate-200 bg-white">
+            <div class="flex flex-col gap-4 border-b border-slate-200 px-6 py-5 lg:flex-row lg:items-center lg:justify-between">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">
+                  Resultados
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">
+                  48 mensagens rastreadas
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">
+                  Conversão média 32%
+                </span>
+              </div>
+              <div class="grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_200px_200px]">
+                <label class="sr-only" for="search-messages">Pesquisar mensagens</label>
+                <div class="relative sm:col-span-2 lg:col-span-1">
+                  <input
+                    id="search-messages"
+                    type="search"
+                    placeholder="Pesquise pelo nome da mensagem rastreável"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-2 pr-10 text-sm text-slate-600 placeholder:text-slate-400 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                  />
+                  <i data-lucide="search" class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i>
+                </div>
+                <label class="sr-only" for="filter-origin">Filtrar por origem</label>
+                <select
+                  id="filter-origin"
+                  class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                >
+                  <option>Todas as origens</option>
+                  <option>Google Ads</option>
+                  <option>Meta Ads</option>
+                  <option>TikTok Ads</option>
+                  <option>Orgânico</option>
+                  <option>Outros</option>
+                </select>
+                <label class="sr-only" for="filter-status">Filtrar por status</label>
+                <select
+                  id="filter-status"
+                  class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                >
+                  <option>Todos os status</option>
+                  <option>Ativo</option>
+                  <option>Em teste</option>
+                  <option>Pausado</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-shell overflow-x-auto">
+              <table class="min-w-full table-fixed divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-left">Mensagem</th>
+                    <th scope="col" class="w-32 px-6 py-3 text-left">Origem</th>
+                    <th scope="col" class="w-28 px-6 py-3 text-left">Contatos</th>
+                    <th scope="col" class="w-28 px-6 py-3 text-left">Vendas</th>
+                    <th scope="col" class="w-36 px-6 py-3 text-left">Ticket médio</th>
+                    <th scope="col" class="w-40 px-6 py-3 text-left">Data de criação</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white text-slate-600">
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Entradas do Google</p>
+                      <p class="text-xs text-slate-400">Resposta automática para leads de formulários</p>
+                    </td>
+                    <td class="px-6 py-4">Google Ads</td>
+                    <td class="px-6 py-4">48</td>
+                    <td class="px-6 py-4">30</td>
+                    <td class="px-6 py-4">R$ 650,00</td>
+                    <td class="px-6 py-4 text-slate-500">15/03/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Meta Ads Conversas</p>
+                      <p class="text-xs text-slate-400">Sequência de follow-up com gatilhos de urgência</p>
+                    </td>
+                    <td class="px-6 py-4">Meta Ads</td>
+                    <td class="px-6 py-4">36</td>
+                    <td class="px-6 py-4">18</td>
+                    <td class="px-6 py-4">R$ 590,00</td>
+                    <td class="px-6 py-4 text-slate-500">08/03/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">TikTok Captação</p>
+                      <p class="text-xs text-slate-400">Mensagens curtas com CTA para WhatsApp</p>
+                    </td>
+                    <td class="px-6 py-4">TikTok Ads</td>
+                    <td class="px-6 py-4">22</td>
+                    <td class="px-6 py-4">9</td>
+                    <td class="px-6 py-4">R$ 520,00</td>
+                    <td class="px-6 py-4 text-slate-500">01/03/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Fluxo Google</p>
+                      <p class="text-xs text-slate-400">Nurturing progressivo com ofertas semanais</p>
+                    </td>
+                    <td class="px-6 py-4">Orgânico</td>
+                    <td class="px-6 py-4">28</td>
+                    <td class="px-6 py-4">12</td>
+                    <td class="px-6 py-4">R$ 610,00</td>
+                    <td class="px-6 py-4 text-slate-500">22/02/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Ficha Google</p>
+                      <p class="text-xs text-slate-400">Confirmação de agendamento pós-formulário</p>
+                    </td>
+                    <td class="px-6 py-4">Orgânico</td>
+                    <td class="px-6 py-4">18</td>
+                    <td class="px-6 py-4">7</td>
+                    <td class="px-6 py-4">R$ 580,00</td>
+                    <td class="px-6 py-4 text-slate-500">15/02/2024</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Parceria CRM</p>
+                      <p class="text-xs text-slate-400">Importação semanal via integrações</p>
+                    </td>
+                    <td class="px-6 py-4">Outros</td>
+                    <td class="px-6 py-4">12</td>
+                    <td class="px-6 py-4">5</td>
+                    <td class="px-6 py-4">R$ 540,00</td>
+                    <td class="px-6 py-4 text-slate-500">05/02/2024</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex flex-col items-center justify-between gap-4 px-6 pb-6 pt-5 text-sm text-slate-500 md:flex-row">
+              <p>Mostrando 1-6 de 18 mensagens</p>
+              <div class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2">
+                <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Página anterior">
+                  <i data-lucide="chevron-left" class="h-4 w-4"></i>
+                </button>
+                <div class="flex items-center gap-1">
+                  <button class="h-8 w-8 rounded-xl bg-blue-600 text-sm font-semibold text-white">1</button>
+                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">2</button>
+                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">3</button>
+                  <span class="px-2 text-slate-400">...</span>
+                  <button class="h-8 w-8 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-50">5</button>
+                </div>
+                <button class="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50" aria-label="Próxima página">
+                  <i data-lucide="chevron-right" class="h-4 w-4"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/nav.js"></script>
+  </body>
+</html>
+
+

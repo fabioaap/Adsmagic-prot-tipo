@@ -1,0 +1,69 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Guia/Tokens" />
+
+# Tokens de Design
+
+## Estrutura
+
+- TypeScript: `packages/tokens/src/index.ts`
+- CSS: `packages/tokens/css/base.css`
+- Export: `@adsmagic/tokens` (JS/TS) e `@adsmagic/tokens/css`
+
+## Categorias principais
+
+| Categoria | Chaves | Uso recomendado |
+| --- | --- | --- |
+| `colors` | slate*, primary*, success*, danger*, indigo* | Base da UI e feedbacks |
+| `typography` | familySans, size2XS -> sizeXL, weight* | Hierarquia tipografica |
+| `spacing` | 2xs, xs, sm, md, lg, xl | Margens, paddings e gaps |
+| `radii` | sm, md, lg, full | Cantos arredondados |
+| `shadows` | card, pop, pill | Elevacao e destaque |
+| `transitions` | base | Micro animacoes |
+| `aliases` | surface, pageBackground, borderSoft etc. | Abstracoes para temas |
+
+## Consumo em TypeScript
+
+```ts
+import { tokens } from "@adsmagic/tokens";
+
+const buttonStyle = {
+  backgroundColor: tokens.colors.primary600,
+  color: tokens.colors.white,
+  borderRadius: tokens.radii.full,
+  paddingInline: tokens.spacing.lg,
+};
+```
+
+## Consumo em CSS
+
+```css
+@import "@adsmagic/tokens/css/base.css";
+
+.badge {
+  background-color: var(--color-success-100);
+  color: var(--color-success-600);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+```
+
+## Boas praticas
+
+1. Evite valores hardcoded: derive sempre de um token.
+2. Valide contraste com o addon A11y.
+3. Nomeie tokens por semantica (ex.: `danger`) antes de tons (`red`).
+4. Documente impacto em PRs ao alterar valores existentes.
+
+## Como propor novos tokens
+
+1. Checar se ja existe equivalente com outro nome.
+2. Abrir issue/PR com justificativa (prints Figma, casos de uso).
+3. Atualizar `src/index.ts`, rodar `npm run build --workspace @adsmagic/tokens`.
+4. Atualizar documentacao e historias afetadas.
+
+## Testes
+
+- `npm run test --workspace @adsmagic/tokens`
+- Validar export CSS gerado
+- Auditar contraste via Storybook A11y

@@ -1,0 +1,109 @@
+name: Storybook Hub CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/storybook-hub/**"
+      - "packages/**"
+      - "tests/storybook-hub.smoke.spec.ts"
+      - "playwright.storybook.config.ts"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/storybook-hub-ci.yml"
+  pull_request:
+    paths:
+      - "apps/storybook-hub/**"
+      - "packages/**"
+      - "tests/storybook-hub.smoke.spec.ts"
+      - "playwright.storybook.config.ts"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/storybook-hub-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: 0
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configura Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instala dependências
+        run: npm ci
+
+      - name: Lint Storybook Hub
+        run: npm run lint --workspace @adsmagic/storybook-hub
+
+      - name: Build estático do Storybook Hub
+        run: npm run build --workspace @adsmagic/storybook-hub
+
+      - name: Instala navegadores do Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Sobe servidor estático do Storybook
+        run: |
+          npx --yes http-server apps/storybook-hub/storybook-static -p 6006 --silent &
+          npx --yes wait-on http://127.0.0.1:6006
+
+      - name: Smoke test do Storybook Hub
+        env:
+          STORYBOOK_URL: http://127.0.0.1:6006
+        run: npx playwright test tests/storybook-hub.smoke.spec.ts --config=playwright.storybook.config.ts
+
+      - name: Publica artefatos do Playwright (falhas)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: test-results/
+          if-no-files-found: ignore
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: quality
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configura Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instala dependências
+        run: npm ci
+
+      - name: Build estático do Storybook Hub
+        run: npm run build --workspace @adsmagic/storybook-hub
+
+      - name: Configura GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Faz upload dos arquivos estáticos
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/storybook-hub/storybook-static
+
+      - name: Deploy para GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

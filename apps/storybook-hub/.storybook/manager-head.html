@@ -1,0 +1,120 @@
+<style>
+  /* Tema Apple para Storybook - Injetado via manager-head.html */
+  
+  /* Sidebar */
+  #storybook-explorer-tree,
+  .sidebar-container,
+  [data-side="left"] {
+    background: #F5F5F7 !important; /* Apple Light Gray */
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  }
+  
+  /* Logo/Brand */
+  .sidebar-header [class*="brand"] {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-weight: 600 !important;
+    color: #1D1D1F !important;
+    letter-spacing: -0.02em !important;
+  }
+  
+  /* Itens da sidebar */
+  .sidebar-item,
+  [data-item-id] {
+    color: #1D1D1F !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+  }
+  
+  .sidebar-item:hover,
+  [data-item-id]:hover {
+    background: rgba(0, 122, 255, 0.08) !important;
+  }
+  
+  .sidebar-item[data-selected="true"],
+  [data-selected="true"] {
+    background: rgba(0, 122, 255, 0.12) !important;
+    color: #007AFF !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Toolbar superior */
+  .sb-bar,
+  [class*="toolbar"] {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  }
+  
+  /* Botões da toolbar */
+  button,
+  [role="button"] {
+    border-radius: 8px !important;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  }
+  
+  button:hover {
+    background: rgba(0, 122, 255, 0.08) !important;
+  }
+  
+  /* Links ativos */
+  a[aria-current="page"],
+  [data-selected="true"] a {
+    color: #007AFF !important;
+  }
+  
+  /* Inputs */
+  input,
+  textarea,
+  select {
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    background: #FFFFFF !important;
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #007AFF !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1) !important;
+  }
+  
+  /* Scrollbar estilo macOS */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Renderização de fontes Apple */
+  * {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
+  
+  /* Background geral */
+  body,
+  #storybook-root {
+    background: #FFFFFF !important;
+  }
+  
+  /* Separadores */
+  [class*="separator"],
+  hr {
+    border-color: rgba(0, 0, 0, 0.08) !important;
+  }
+</style>

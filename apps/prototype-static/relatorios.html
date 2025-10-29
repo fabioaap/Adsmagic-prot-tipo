@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adsmágic - Relatórios</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="app-sidebar hidden lg:flex">
+        <div class="app-sidebar-body">
+          <div class="app-sidebar-header">
+          <button type="button" class="app-brand-compact" data-sidebar-expand aria-label="Expandir menu">
+            <i data-lucide="chevron-right" class="h-5 w-5"></i>
+          </button>
+          <a class="app-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo Adsmágic" width="40" height="40" />
+            <div class="app-brand-title">
+              <strong>Adsmágic</strong>
+              <span>Growth Suite</span>
+            </div>
+          </a>
+          <button type="button" class="app-sidebar-toggle" data-sidebar-toggle aria-label="Recolher menu" aria-expanded="true">
+            <i data-lucide="chevron-left" class="h-5 w-5"></i>
+          </button>
+          </div>
+          <nav class="app-nav" data-active="relatorios"></nav>
+        </div>
+      </aside>
+      <div class="flex flex-1 flex-col">
+        <header class="app-header">
+          <div class="app-header-inner">
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
+                AL
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">Dra. Letícia Lopes</p>
+                <p class="text-xs text-slate-500">Marketing Consultant</p>
+              </div>
+              <span class="badge-soft hidden sm:inline-flex">Relatórios agendados</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <button class="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium text-slate-600 transition hover:bg-slate-50 md:inline-flex">
+                <span>Português</span>
+                <i data-lucide="chevron-down" class="h-4 w-4"></i>
+              </button>
+              <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                <i data-lucide="bell" class="h-5 w-5"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="app-main">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div class="section-title">
+              <h1 class="text-2xl font-semibold text-slate-900">Relatórios</h1>
+              <p class="text-sm text-slate-500">Combine indicadores de campanhas, automação e vendas em relatórios personalizáveis.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                Agendar envio
+                <i data-lucide="clock" class="h-4 w-4"></i>
+              </button>
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                Exportar PDF
+                <i data-lucide="file-down" class="h-4 w-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <section class="grid gap-4 lg:grid-cols-3">
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-slate-400">Desempenho geral</p>
+              <div class="mt-5 space-y-4">
+                <div class="flex items-baseline justify-between">
+                  <p class="text-3xl font-semibold text-slate-900">+18%</p>
+                  <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-600">vs mês anterior</span>
+                </div>
+                <p class="text-sm text-slate-500">Crescimento consolidado entre leads, vendas e receita líquida.</p>
+                <div class="h-32 rounded-2xl bg-gradient-to-b from-slate-100 via-white to-white">
+                  <svg viewBox="0 0 320 120" class="h-full w-full">
+                    <path d="M0 90 L40 70 L80 78 L120 54 L160 60 L200 38 L240 42 L280 26 L320 32" fill="none" stroke="#1d4ed8" stroke-width="6" stroke-linecap="round" />
+                    <path d="M0 104 L40 96 L80 88 L120 80 L160 72 L200 64 L240 56 L280 48 L320 40" fill="none" stroke="#10b981" stroke-width="6" stroke-linecap="round" stroke-dasharray="6 8" />
+                  </svg>
+                </div>
+              </div>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-slate-400">ROI consolidado</p>
+              <div class="mt-5 flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                  <p class="text-3xl font-semibold text-slate-900">312%</p>
+                  <span class="text-xs font-medium text-emerald-500">Meta: 280%</span>
+                </div>
+                <div class="grid gap-3 text-xs text-slate-500">
+                  <div class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-2">
+                    <span>Campanhas pagas</span>
+                    <span class="font-semibold text-slate-800">278%</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-2">
+                    <span>Automação</span>
+                    <span class="font-semibold text-slate-800">326%</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-2">
+                    <span>Vendas consultivas</span>
+                    <span class="font-semibold text-slate-800">344%</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-slate-400">Relatórios agendados</p>
+              <div class="mt-5 space-y-3 text-sm text-slate-600">
+                <div class="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Resumo executivo</p>
+                    <p class="text-xs text-slate-500">Segundas-feiras às 08h00</p>
+                  </div>
+                  <span class="text-xs text-slate-400">Último envio 13/05</span>
+                </div>
+                <div class="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Performance de mídia paga</p>
+                    <p class="text-xs text-slate-500">Quartas-feiras às 09h30</p>
+                  </div>
+                  <span class="text-xs text-slate-400">Último envio 15/05</span>
+                </div>
+                <div class="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Pipeline de vendas</p>
+                    <p class="text-xs text-slate-500">Sextas-feiras às 17h00</p>
+                  </div>
+                  <span class="text-xs text-slate-400">Último envio 10/05</span>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="card-shadow rounded-3xl border border-slate-200 bg-white">
+            <div class="flex flex-col gap-4 border-b border-slate-200 px-6 py-5 lg:flex-row lg:items-center lg:justify-between">
+              <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">Biblioteca</span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">14 relatórios salvos</span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-medium text-slate-600">Última edição 15/05</span>
+              </div>
+              <div class="grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_200px_200px]">
+                <label class="sr-only" for="search-reports">Pesquisar relatórios</label>
+                <div class="relative sm:col-span-2 lg:col-span-1">
+                  <input
+                    id="search-reports"
+                    type="search"
+                    placeholder="Busque por nome do relatório"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-2 pr-10 text-sm text-slate-600 placeholder:text-slate-400 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                  />
+                  <i data-lucide="search" class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i>
+                </div>
+                <label class="sr-only" for="filter-period">Filtrar período</label>
+                <select
+                  id="filter-period"
+                  class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                >
+                  <option>Últimos 30 dias</option>
+                  <option>Últimos 60 dias</option>
+                  <option>Último trimestre</option>
+                  <option>Último ano</option>
+                </select>
+                <label class="sr-only" for="filter-owner">Filtrar responsável</label>
+                <select
+                  id="filter-owner"
+                  class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                >
+                  <option>Todos</option>
+                  <option>Marketing</option>
+                  <option>Vendas</option>
+                  <option>Financeiro</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-shell overflow-x-auto">
+              <table class="min-w-full table-fixed divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-left">Relatório</th>
+                    <th scope="col" class="w-40 px-6 py-3 text-left">Categoria</th>
+                    <th scope="col" class="w-32 px-6 py-3 text-left">Atualizado em</th>
+                    <th scope="col" class="w-32 px-6 py-3 text-left">Agendamento</th>
+                    <th scope="col" class="w-32 px-6 py-3 text-left">Compartilhamentos</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white text-slate-600">
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Painel 360° da operação</p>
+                      <p class="text-xs text-slate-400">Indicadores reunindo campanhas, automação e vendas</p>
+                    </td>
+                    <td class="px-6 py-4">Executivo</td>
+                    <td class="px-6 py-4">16/05/2024</td>
+                    <td class="px-6 py-4">Semanal</td>
+                    <td class="px-6 py-4">12 usuários</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Acompanhamento de mídia paga</p>
+                      <p class="text-xs text-slate-400">Custo, conversões, CPA e insights por canal</p>
+                    </td>
+                    <td class="px-6 py-4">Marketing</td>
+                    <td class="px-6 py-4">15/05/2024</td>
+                    <td class="px-6 py-4">Diário</td>
+                    <td class="px-6 py-4">8 usuários</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Pipeline e previsibilidade</p>
+                      <p class="text-xs text-slate-400">Tempo médio por etapa e projeção de receita</p>
+                    </td>
+                    <td class="px-6 py-4">Vendas</td>
+                    <td class="px-6 py-4">13/05/2024</td>
+                    <td class="px-6 py-4">Mensal</td>
+                    <td class="px-6 py-4">5 usuários</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Análise de LTV x CAC</p>
+                      <p class="text-xs text-slate-400">Combina custos de aquisição com receita recorrente</p>
+                    </td>
+                    <td class="px-6 py-4">Financeiro</td>
+                    <td class="px-6 py-4">11/05/2024</td>
+                    <td class="px-6 py-4">Mensal</td>
+                    <td class="px-6 py-4">6 usuários</td>
+                  </tr>
+                  <tr class="transition hover:bg-slate-50">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900">Relatório de retenção</p>
+                      <p class="text-xs text-slate-400">Baseado em cohortes e engajamento pós-venda</p>
+                    </td>
+                    <td class="px-6 py-4">Customer Success</td>
+                    <td class="px-6 py-4">09/05/2024</td>
+                    <td class="px-6 py-4">Mensal</td>
+                    <td class="px-6 py-4">4 usuários</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-100 px-6 py-4 text-xs text-slate-500">
+              <p>Mostrando 5 de 14 relatórios</p>
+              <div class="flex items-center gap-2">
+                <button class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition hover:bg-slate-50">
+                  <i data-lucide="chevron-left" class="h-4 w-4"></i>
+                </button>
+                <button class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-slate-900 text-white transition hover:bg-slate-800">
+                  <i data-lucide="chevron-right" class="h-4 w-4"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="card-shadow grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 lg:grid-cols-2">
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-slate-400">Segmentos destaque</p>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li class="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <span>Lookalike compradores VIP</span>
+                  <span class="font-semibold text-slate-900">+26% conversão</span>
+                </li>
+                <li class="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <span>Leads inbound blog</span>
+                  <span class="font-semibold text-slate-900">+19% receita</span>
+                </li>
+                <li class="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <span>Clientes inativos 90 dias</span>
+                  <span class="font-semibold text-slate-900">-12% churn</span>
+                </li>
+              </ul>
+            </article>
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-slate-400">Próximos relatórios</p>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li class="flex items-start justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Auditoria trimestral</p>
+                    <p class="text-xs text-slate-500">Checklist de métricas e planos de ação</p>
+                  </div>
+                  <span class="text-xs text-slate-400">20/05 às 10h</span>
+                </li>
+                <li class="flex items-start justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Insights do funil</p>
+                    <p class="text-xs text-slate-500">Comparativo de tempos e conversões por etapa</p>
+                  </div>
+                  <span class="text-xs text-slate-400">22/05 às 09h</span>
+                </li>
+                <li class="flex items-start justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <div>
+                    <p class="font-medium text-slate-900">Relatório de product-market fit</p>
+                    <p class="text-xs text-slate-500">Entrevistas e dados qualitativos integrados</p>
+                  </div>
+                  <span class="text-xs text-slate-400">27/05 às 16h</span>
+                </li>
+              </ul>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/nav.js"></script>
+  </body>
+</html>
+
+
+
+

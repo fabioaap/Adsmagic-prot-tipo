@@ -1,0 +1,9 @@
+{
+  "name": "@adsmagic/prototype-static",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Protótipos HTML estáticos utilizados como referência de UX/UI.",
+  "scripts": {
+    "serve": "npx --yes http-server . -p 4100"
+  }
+}

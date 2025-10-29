@@ -1,0 +1,59 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Operacoes/Qualidade e Testes" />
+
+# Qualidade e Testes
+
+## Camadas
+
+- **Unitarios:** Vitest (`@adsmagic/react`, `@adsmagic/vue`)
+- **E2E/UI:** Playwright (prototipo + smoke do hub)
+- **Lint:** `npm run lint --workspaces --if-present`
+- **A11y:** `@storybook/addon-a11y`
+
+## Comandos principais
+
+```bash
+npm run test
+npx playwright test tests/basic.spec.js
+npm run test:ui
+```
+
+Servidor legado (debug): `node test-server.js` (porta 8000).
+
+### Storybook Hub
+
+```bash
+npm run dev:all
+npm run lint --workspace @adsmagic/storybook-hub
+npm run build --workspace @adsmagic/storybook-hub
+npx playwright test --config=playwright.storybook.config.ts
+```
+
+O comando `npm run dev:all` inicia os Storybooks React (6008), Vue (7007) e o Hub (6006) em paralelo. O arquivo `playwright.storybook.config.ts` roda apenas o smoke `storybook-hub.smoke.spec.ts`. Garanta que o hub esteja rodando (manual ou via `dev:all`) ou exporte `STORYBOOK_URL` apontando para o build estatico.
+
+## Pipeline CI/CD
+
+- **Workflow:** `.github/workflows/storybook-hub-ci.yml`
+- **Gatilhos:** push para `main`, Pull Requests relevantes e execucao manual.
+- **Etapas:** `npm ci` → lint do hub → build estatico → instalacao do Chromium (Playwright) → servidor http para `storybook-static` → smoke Playwright.
+- **Artefatos:** traces do Playwright enviados para `test-results` quando ha falha.
+- **Timeout:** 15 minutos com encerramento automatico se o smoke nao responder.
+
+## Expansao sugerida
+
+- Cobrir componentes com testes de interacao e acessibilidade.
+- Automatizar smoke do Storybook Hub e regressao visual.
+- Monitorar acessibilidade e performance em builds publicados.
+
+## Checklist de qualidade
+
+- Roles e atributos ARIA corretos.
+- Contraste minimo AA.
+- Dependencias justificadas.
+- Logs/resultados de testes anexados.
+- Documentacao alinhada.
+
+## Discovery
+
+Ativar modo discovery quando houver incerteza (por exemplo, escolha de ferramenta de regressao visual) e garantir flag, metrica e rollback definidos.
