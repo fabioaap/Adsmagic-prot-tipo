@@ -68,3 +68,42 @@ jobs:
           name: playwright-traces
           path: test-results/
           if-no-files-found: ignore
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: quality
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configura Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instala dependências
+        run: npm ci
+
+      - name: Build estático do Storybook Hub
+        run: npm run build --workspace @adsmagic/storybook-hub
+
+      - name: Configura GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Faz upload dos arquivos estáticos
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/storybook-hub/storybook-static
+
+      - name: Deploy para GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
