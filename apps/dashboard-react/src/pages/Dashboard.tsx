@@ -1,13 +1,46 @@
-import {
-  Layout,
-  SummaryCard,
-  ContactsSalesChart,
-  RevenueChart,
-  ChannelsChart,
-  FunnelChart,
-  InteractionsList,
-  SalesList
-} from '../components';
+import { Suspense, lazy } from 'react';
+import { Layout, SummaryCard } from '../components';
+
+// Lazy load dos componentes pesados (gráficos)
+const ContactsSalesChart = lazy(() => import('../components').then(module => ({ default: module.ContactsSalesChart })));
+const RevenueChart = lazy(() => import('../components').then(module => ({ default: module.RevenueChart })));
+const ChannelsChart = lazy(() => import('../components').then(module => ({ default: module.ChannelsChart })));
+const FunnelChart = lazy(() => import('../components').then(module => ({ default: module.FunnelChart })));
+const InteractionsList = lazy(() => import('../components').then(module => ({ default: module.InteractionsList })));
+const SalesList = lazy(() => import('../components').then(module => ({ default: module.SalesList })));
+
+// Componente de loading para gráficos
+const ChartLoading = () => (
+  <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+    padding: '24px',
+    backgroundColor: '#ffffff',
+    borderRadius: '12px',
+    border: '1px solid #e2e8f0',
+    boxShadow: '0px 10px 32px rgba(15, 23, 42, 0.06)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '200px'
+  }}>
+    <div style={{
+      width: '32px',
+      height: '32px',
+      border: '3px solid #e2e8f0',
+      borderTop: '3px solid #2563eb',
+      borderRadius: '50%',
+      animation: 'spin 1s linear infinite'
+    }} />
+    <span style={{ color: '#64748b', fontSize: '14px' }}>Carregando gráfico...</span>
+    <style>{`
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `}</style>
+  </div>
+);
 
 export const Dashboard = () => {
   const contactsSalesData = [
@@ -82,20 +115,32 @@ export const Dashboard = () => {
 
         {/* Charts Section 1 - Contacts/Sales + Revenue */}
         <section className="grid gap-4 lg:grid-cols-[2fr_1fr]">
-          <ContactsSalesChart data={contactsSalesData} />
-          <RevenueChart data={revenueData} />
+          <Suspense fallback={<ChartLoading />}>
+            <ContactsSalesChart data={contactsSalesData} />
+          </Suspense>
+          <Suspense fallback={<ChartLoading />}>
+            <RevenueChart data={revenueData} />
+          </Suspense>
         </section>
 
         {/* Charts Section 2 - Channels and Funnel */}
         <section className="grid gap-4 lg:grid-cols-2">
-          <ChannelsChart data={channelsData} />
-          <FunnelChart stages={funnelStages} />
+          <Suspense fallback={<ChartLoading />}>
+            <ChannelsChart data={channelsData} />
+          </Suspense>
+          <Suspense fallback={<ChartLoading />}>
+            <FunnelChart stages={funnelStages} />
+          </Suspense>
         </section>
 
         {/* Latest Interactions & Sales Section */}
         <section className="grid gap-4 lg:grid-cols-2">
-          <InteractionsList interactions={interactions} />
-          <SalesList sales={sales} />
+          <Suspense fallback={<ChartLoading />}>
+            <InteractionsList interactions={interactions} />
+          </Suspense>
+          <Suspense fallback={<ChartLoading />}>
+            <SalesList sales={sales} />
+          </Suspense>
         </section>
       </main>
     </Layout>

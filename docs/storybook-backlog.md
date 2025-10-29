@@ -67,8 +67,8 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 - 🎨 **Design system** com **29+ componentes** padronizados (11 React + 18 Vue)
 
 ### Componentes Implementados
-**React Components (11):**
-- AvatarHighlight, BadgeShowcase, Button, CardBase, DataTable, Drawer, Header, Sidebar, StatusDropdown, SummaryCardGrid, WhatsAppIndicator
+**React Components (18):**
+- AvatarHighlight, Badge, Button, Card, ChannelsChart, ContactsSalesChart, DataTable, Drawer, FunnelChart, Header, InteractionsList, RevenueChart, SalesList, Sidebar, StatusDropdown, SummaryCard, SummaryCardGrid, WhatsAppIndicator
 
 **Vue Components (18):**
 - DsAvatarHighlight, DsBadge, DsButton, DsCard, DsChannelsChart, DsContactsSalesChart, DsDataTable, DsDrawer, DsFunnelChart, DsHeader, DsInteractionsList, DsRevenueChart, DsSalesList, DsSidebar, DsStatusDropdown, DsSummaryCard, DsSummaryCardGrid, DsWhatsAppIndicator
