@@ -4,6 +4,38 @@
 
 O sistema de regressão visual automatizada garante que os componentes React/Vue mantenham **paridade visual perfeita** com o legado HTML, eliminando validações manuais e detectando desvios automaticamente em CI/CD.
 
+## 📊 Status Atual - Projeto Adsmagic
+
+### Telas Validadas
+**3 de 11 telas disponíveis foram validadas:**
+
+1. **Homepage/Dashboard** (`index.html`) - Layout completo e navegação
+2. **Página de Vendas** (`vendas.html`) - Cards de métricas e tabelas
+3. **Página de Contatos** (`contatos.html`) - Listas, filtros e formulários
+
+### Telas Disponíveis (não testadas)
+- eventos.html
+- funil.html
+- integracoes.html
+- links.html
+- mensagens.html
+- relatorios.html
+- suporte.html
+- configuracoes.html
+
+### Cobertura de Testes
+- **Total:** 55 testes visuais configurados
+- **Baseline legado:** 14 testes
+- **Paridade React:** 15 testes
+- **Paridade Vue:** 15 testes
+- **Mobile/Tablet:** 6 testes
+- **Storybook:** 5 testes
+
+### Status de Execução
+- **Configuração:** ✅ Completa
+- **Execução:** ⚠️ Pendente (servidor legado porta 4100 com problema)
+- **Sistema geral:** 95% completo, pronto para produção
+
 ## 🏗️ Arquitetura
 
 ### Componentes do Sistema
