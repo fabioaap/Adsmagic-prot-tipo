@@ -1,0 +1,226 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Monitoramento/Sistema de Alertas" />
+
+# Sistema de Alertas de Performance
+
+## Visão Geral
+
+O sistema de alertas permite monitorar métricas críticas de performance em tempo real e notificar equipes automaticamente quando thresholds são ultrapassados. Suporta múltiplos canais de notificação incluindo Slack, email e webhooks genéricos.
+
+## Funcionalidades
+
+### Alertas Automáticos
+
+- **Métricas Monitoradas**: CLS, INP, FCP, LCP, TTFB
+- **Severidades**: Warning, Error, Critical
+- **Cooldown**: Evita spam de notificações repetidas
+- **Regras Configuráveis**: Condições personalizáveis por métrica
+
+### Canais de Notificação
+
+#### Slack
+```bash
+# Configuração via variável de ambiente
+REACT_APP_SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+```
+
+**Exemplo de mensagem no Slack:**
+```
+🚨 *Alerta de Performance CRÍTICO*
+
+Layout instável detectado (0.300). Usuários podem estar experimentando mudanças visuais inesperadas.
+
+• Métrica: CLS
+• Valor: 0.300
+• Timestamp: 15/12/2024 14:30:25
+• Severidade: critical
+```
+
+#### Email
+```bash
+# Configuração via variável de ambiente
+REACT_APP_ALERT_EMAIL_TO=dev-team@adsmagic.com
+```
+
+#### Webhook Genérico
+```bash
+# Configuração via variável de ambiente
+REACT_APP_ALERT_WEBHOOK_URL=https://your-webhook-endpoint.com/alerts
+```
+
+**Payload enviado:**
+```json
+{
+  "alert": {
+    "id": "cls-critical-1734273025123",
+    "ruleId": "cls-critical",
+    "metric": {
+      "name": "CLS",
+      "value": 0.3,
+      "rating": "poor",
+      "timestamp": 1734273025123
+    },
+    "message": "Layout instável detectado (0.300)...",
+    "severity": "critical",
+    "timestamp": 1734273025123,
+    "sent": true,
+    "sentAt": 1734273025124
+  },
+  "timestamp": "2024-12-15T14:30:25.124Z"
+}
+```
+
+## Regras Padrão
+
+O sistema vem pré-configurado com regras otimizadas para métricas críticas:
+
+| Regra | Métrica | Condição | Threshold | Severidade | Cooldown |
+|-------|---------|----------|-----------|------------|----------|
+| CLS Crítico | CLS | > | 0.25 | Critical | 30min |
+| INP Crítico | INP | > | 200ms | Critical | 15min |
+| LCP Alerta | LCP | > | 2500ms | Warning | 60min |
+| FCP Erro | FCP | > | 2000ms | Error | 45min |
+
+## Configuração via Interface
+
+### Acessando a Configuração
+
+1. No Performance Dashboard, clique em "⚙️ Configurar Alertas"
+2. Interface modal permite criar/editar regras
+3. Configuração em tempo real
+
+### Criando Nova Regra
+
+```typescript
+interface AlertRule {
+  id: string;
+  name: string;           // Nome descritivo da regra
+  metric: string;         // CLS, INP, FCP, LCP, TTFB
+  condition: 'gt' | 'lt' | 'eq';  // Maior que, menor que, igual
+  threshold: number;      // Valor limite
+  severity: 'warning' | 'error' | 'critical';
+  channels: AlertChannel[]; // Canais de notificação
+  enabled: boolean;       // Regra ativa/inativa
+  cooldownMinutes: number; // Minutos entre alertas
+}
+```
+
+### Canais Disponíveis
+
+```typescript
+interface AlertChannel {
+  type: 'email' | 'slack' | 'webhook';
+  config: {
+    webhookUrl?: string;   // Para Slack/webhook
+    emailTo?: string;      // Para email
+    slackChannel?: string; // Canal do Slack (opcional)
+  };
+}
+```
+
+## Integração Técnica
+
+### Hook de Monitoramento
+
+```typescript
+// Em usePerformanceMonitoring.ts
+useWebVitals((metric) => {
+  // ... outras operações
+
+  // Verificar alertas configurados
+  if (metric.rating === 'poor') {
+    alertService.checkMetrics([metric]);
+  }
+});
+```
+
+### Serviço de Alertas
+
+```typescript
+import { alertService } from '../services/alertService';
+
+// Verificar métricas manualmente
+const alerts = await alertService.checkMetrics(metrics);
+
+// Configurar via variáveis de ambiente
+alertService.configureFromEnv();
+
+// Gerenciar regras
+alertService.addRule(newRule);
+alertService.updateRule(ruleId, updates);
+alertService.removeRule(ruleId);
+```
+
+## Boas Práticas
+
+### Configuração de Thresholds
+
+- **CLS > 0.25**: Impacto crítico na experiência visual
+- **INP > 200ms**: Interações lentas afetam usabilidade
+- **LCP > 2500ms**: Conteúdo principal demora para carregar
+- **FCP > 2000ms**: Primeira impressão ruim
+
+### Cooldown Recomendado
+
+- **Crítico**: 15-30 minutos (ação imediata necessária)
+- **Erro**: 30-60 minutos (ação prioritária)
+- **Warning**: 60-120 minutos (monitoramento contínuo)
+
+### Canais por Severidade
+
+- **Critical**: Slack + Email (notificação imediata)
+- **Error**: Slack (time técnico)
+- **Warning**: Webhook (sistema de monitoramento)
+
+## Monitoramento e Logs
+
+### Logs de Alertas
+
+```typescript
+// Alertas enviados são logados no console
+console.log('📧 Email alert to dev-team@adsmagic.com:', alert.message);
+
+// Em produção, considere centralizar logs
+// - ELK Stack
+// - Datadog
+// - New Relic
+```
+
+### Métricas de Alertas
+
+- **Taxa de Disparo**: Quantidade de alertas por período
+- **Tempo de Resposta**: Média entre detecção e ação
+- **Precisão**: Percentual de alertas acionáveis
+
+## Troubleshooting
+
+### Alertas Não Disparando
+
+1. Verificar se regras estão habilitadas
+2. Confirmar thresholds apropriados
+3. Checar configuração de canais
+4. Validar variáveis de ambiente
+
+### Spam de Alertas
+
+1. Aumentar cooldown
+2. Refinar condições de trigger
+3. Implementar lógica de agrupamento
+4. Usar severidades apropriadas
+
+### Canais Não Funcionando
+
+1. **Slack**: Validar webhook URL
+2. **Email**: Verificar configuração SMTP
+3. **Webhook**: Testar endpoint manualmente
+
+## Extensões Futuras
+
+### Possíveis Melhorias
+
+- **Machine Learning**: Detecção automática de anomalias
+- **Agrupamento**: Alertas agregados por período
+- **Escalonamento**: Notificações progressivas
+- **Integrações**: Teams, Discord, PagerDuty
+- **Dashboards**: Visualização de alertas históricos

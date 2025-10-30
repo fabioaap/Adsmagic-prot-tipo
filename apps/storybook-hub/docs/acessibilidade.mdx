@@ -1,0 +1,314 @@
+import { Meta } from '@storybook/blocks';
+import { tokens } from '@adsmagic/tokens';
+
+<Meta title="Referências/Acessibilidade" />
+
+# 🎯 Guia de Acessibilidade - WCAG 2.1 AA
+
+## Visão Geral
+
+O Design System Adsmagic implementa **acessibilidade WCAG 2.1 Nível AA** como padrão obrigatório. Este guia documenta os padrões, ferramentas e processos para garantir que todos os componentes atendam aos requisitos de acessibilidade.
+
+## 🏆 Níveis de Conformidade WCAG
+
+### Nível A (Básico)
+- Requisitos mínimos de acessibilidade
+- Barreiras críticas removidas
+
+### Nível AA (Padrão Adsmagic)
+- Requisitos intermediários
+- Maior acessibilidade para usuários com deficiências
+- **Padrão obrigatório** para todos os componentes
+
+### Nível AAA (Avançado)
+- Requisitos mais rigorosos
+- Aplicado apenas em casos específicos (ex.: governo, educação)
+
+## 🔧 Ferramentas e Testes
+
+### Auditoria Automática
+- **axe-core/playwright**: Testes automatizados em CI/CD
+- **Storybook Accessibility Addon**: Verificação visual durante desenvolvimento
+- **Lighthouse Accessibility**: Auditoria integrada ao CI
+
+### Testes Manuais
+- Navegação por teclado (Tab, Shift+Tab, Enter, Space, Escape)
+- Leitores de tela (NVDA, JAWS, VoiceOver)
+- Ferramentas de contraste (Color Contrast Analyzer)
+- Testes com usuários reais
+
+## 🎨 Padrões de Implementação
+
+### Componentes Interativos
+
+#### Botões
+```tsx
+// ✅ Correto - Botão com texto acessível
+<Button onClick={handleClick}>
+  Salvar alterações
+</Button>
+
+// ✅ Correto - Botão com ícone e aria-label
+<Button onClick={handleClick} aria-label="Fechar modal">
+  <XIcon />
+</Button>
+
+// ❌ Incorreto - Botão só com ícone sem texto acessível
+<Button onClick={handleClick}>
+  <XIcon />
+</Button>
+```
+
+#### Estados Loading
+```tsx
+// ✅ Correto - Estado loading com aria-disabled
+<Button loading loadingText="Salvando...">
+  Salvar
+</Button>
+```
+
+### Formulários e Entradas
+
+#### Labels e Descrições
+```tsx
+// ✅ Correto - Label associado via htmlFor
+<label htmlFor="email">Endereço de email</label>
+<input id="email" type="email" />
+
+// ✅ Correto - aria-labelledby para labels complexos
+<div id="email-label">Endereço de email <span className="required">*</span></div>
+<input aria-labelledby="email-label" type="email" />
+```
+
+#### Estados de Erro
+```tsx
+// ✅ Correto - aria-describedby para mensagens de erro
+<input
+  aria-describedby="email-error"
+  aria-invalid={hasError}
+/>
+<div id="email-error" role="alert">
+  Endereço de email inválido
+</div>
+```
+
+### Navegação e Estruturas
+
+#### Cabeçalhos Semânticos
+```tsx
+// ✅ Correto - Hierarquia de cabeçalhos
+<h1>Título da página</h1>
+  <h2>Seção principal</h2>
+    <h3>Subseção</h3>
+  <h2>Outra seção</h2>
+```
+
+#### Tabelas de Dados
+```tsx
+// ✅ Correto - Tabela com roles e scope
+<table role="table" aria-label="Produtos em estoque">
+  <thead>
+    <tr role="row">
+      <th scope="col" role="columnheader">Produto</th>
+      <th scope="col" role="columnheader">Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr role="row">
+      <td role="cell">Notebook</td>
+      <td role="cell">15</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+#### Dropdowns e Selects
+```tsx
+// ✅ Correto - Combobox acessível
+<div>
+  <label id="status-label">Status do projeto</label>
+  <button
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-labelledby="status-label"
+  >
+    Selecionar status
+  </button>
+  <ul role="listbox" aria-labelledby="status-label">
+    <li role="option" aria-selected="true">Ativo</li>
+    <li role="option" aria-selected="false">Pausado</li>
+  </ul>
+</div>
+```
+
+## 🎨 Design Acessível
+
+### Contraste de Cores
+
+#### Requisitos WCAG AA
+- **Texto normal**: Contraste mínimo 4.5:1
+- **Texto grande** (18pt+ ou 14pt+ negrito): Contraste mínimo 3:1
+- **Componentes interativos**: Contraste mínimo 3:1
+
+#### Tokens de Cor Acessíveis
+```tsx
+// ✅ Cores com bom contraste
+tokens.colors.slate900  // Texto principal
+tokens.colors.primary600 // Links e botões
+tokens.colors.success600 // Estados positivos
+tokens.colors.danger600  // Estados de erro
+```
+
+### Foco Visível
+
+#### Indicadores de Foco
+```css
+/* ✅ Foco visível e acessível */
+.focus-visible {
+  outline: 2px solid {tokens.colors.primary600};
+  outline-offset: 2px;
+}
+
+/* ❌ Foco removido completamente */
+.no-focus {
+  outline: none;
+}
+```
+
+### Espaçamento e Toque
+
+#### Áreas de Toque Mínimas
+- **44x44px** para elementos interativos (WCAG)
+- **48x48px** recomendado para melhor usabilidade
+
+## 🔍 Testes Automatizados
+
+### Configuração axe-core
+```typescript
+import AxeBuilder from '@axe-core/playwright';
+
+const accessibilityScanResults = await new AxeBuilder({ page })
+  .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+  .analyze();
+
+// Verificar violações críticas
+const criticalViolations = accessibilityScanResults.violations
+  .filter(v => v.impact === 'critical');
+
+expect(criticalViolations).toHaveLength(0);
+```
+
+### Regras Importantes Verificadas
+
+#### color-contrast
+- Contraste adequado entre texto e fundo
+- Verificado automaticamente em todos os componentes
+
+#### button-name
+- Botões devem ter nome acessível
+- Via texto interno ou aria-label
+
+#### image-alt
+- Imagens devem ter texto alternativo
+- Ou aria-hidden se decorativas
+
+#### heading-order
+- Hierarquia de cabeçalhos correta
+- Sem saltos (h1 → h3 ❌)
+
+#### link-name
+- Links devem ter nome descritivo
+- Evitar "clique aqui", "aqui", etc.
+
+## 🚀 Checklist de Desenvolvimento
+
+### Antes de Commitar
+- [ ] Executar `npm run test:accessibility`
+- [ ] Verificar contraste com ferramenta automática
+- [ ] Testar navegação por teclado
+- [ ] Validar com leitor de tela
+
+### Revisão de Pull Request
+- [ ] Acessibilidade testada automaticamente
+- [ ] Nenhum aumento significativo de violações
+- [ ] Componentes novos incluem testes de acessibilidade
+- [ ] Documentação atualizada com considerações de acessibilidade
+
+### Checklist de Componente
+- [ ] Suporte completo a navegação por teclado
+- [ ] Estados comunicados via ARIA
+- [ ] Contraste adequado (4.5:1 mínimo)
+- [ ] Texto alternativo para imagens
+- [ ] Labels apropriados para formulários
+- [ ] Foco visível e lógico
+- [ ] Sem armadilhas de foco
+
+## 📊 Métricas e Monitoramento
+
+### KPIs de Acessibilidade
+- **Pontuação Lighthouse**: ≥ 90/100
+- **Violações críticas**: 0
+- **Violações sérias**: ≤ 5 por página
+- **Contraste**: 100% compliant
+
+### Relatórios Automatizados
+```typescript
+// Exemplo de relatório gerado automaticamente
+{
+  "score": 95,
+  "grade": "A",
+  "violations": {
+    "critical": 0,
+    "serious": 2,
+    "moderate": 8,
+    "minor": 15
+  },
+  "tests": {
+    "passed": 28,
+    "failed": 2,
+    "incomplete": 1
+  }
+}
+```
+
+## 🛠️ Ferramentas de Desenvolvimento
+
+### Extensões Recomendadas
+- **axe DevTools**: Análise em tempo real
+- **WAVE Evaluation Tool**: Avaliação visual
+- **Color Contrast Analyzer**: Verificação de contraste
+- **NVDA Screen Reader**: Testes com leitores de tela
+
+### Scripts NPM
+```json
+{
+  "scripts": {
+    "accessibility:audit": "axe http://localhost:3000",
+    "accessibility:test": "playwright test tests/accessibility.spec.ts",
+    "accessibility:storybook": "npm run test:storybook -- --addon=@storybook/addon-a11y"
+  }
+}
+```
+
+## 📚 Recursos Adicionais
+
+### Documentação Oficial
+- [WCAG 2.1 Guidelines](https://www.w3.org/TR/WCAG21/)
+- [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [axe-core Rule Descriptions](https://github.com/dequelabs/axe-core/blob/master/doc/rule-descriptions.md)
+
+### Ferramentas Online
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [WAVE Web Accessibility Tool](https://wave.webaim.org/)
+- [Stark for Sketch/Figma](https://www.getstark.co/)
+
+### Comunidades
+- [Web Accessibility Initiative](https://www.w3.org/WAI/)
+- [A11y Project](https://www.a11yproject.com/)
+- [CSS-Tricks Accessibility](https://css-tricks.com/tag/accessibility/)
+
+## 🎯 Compromisso com Acessibilidade
+
+A acessibilidade não é um "extra" - é um **requisito fundamental** do Design System Adsmagic. Todos os componentes devem ser acessíveis por padrão, garantindo que produtos digitais sejam inclusivos e atendam às necessidades de todos os usuários.
+
+**"Acessibilidade é democracia digital"** - Torben Nielsen

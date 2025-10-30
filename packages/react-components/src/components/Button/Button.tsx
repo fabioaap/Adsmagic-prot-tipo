@@ -15,6 +15,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
+  loading?: boolean;
+  loadingText?: string;
 }
 
 const variantTokens: Record<ButtonVariant, CSSProperties> = {
@@ -75,7 +77,10 @@ function ButtonInner(
     size = "md",
     leadingIcon,
     trailingIcon,
+    loading = false,
+    loadingText,
     style,
+    disabled,
     ...rest
   }: ButtonProps,
   ref: ForwardedRef<HTMLButtonElement>,
@@ -87,11 +92,40 @@ function ButtonInner(
     ...style,
   };
 
+  // Determina se o botão tem texto acessível
+  const hasAccessibleText = children || rest['aria-label'] || rest['aria-labelledby'];
+
+  // Se só tem ícones e não tem texto acessível, adiciona aria-hidden aos ícones
+  const iconAriaHidden = !hasAccessibleText && (leadingIcon || trailingIcon);
+
   return (
-    <button ref={ref} style={composedStyle} {...rest}>
-      {leadingIcon ? <span style={iconStyle}>{leadingIcon}</span> : null}
-      <span>{children}</span>
-      {trailingIcon ? <span style={iconStyle}>{trailingIcon}</span> : null}
+    <button
+      ref={ref}
+      style={composedStyle}
+      disabled={disabled || loading}
+      aria-disabled={disabled || loading ? true : undefined}
+      {...rest}
+    >
+      {loading ? (
+        <>
+          <span style={iconStyle} aria-hidden="true">⟳</span>
+          <span>{loadingText || "Carregando..."}</span>
+        </>
+      ) : (
+        <>
+          {leadingIcon ? (
+            <span style={iconStyle} aria-hidden={iconAriaHidden ? "true" : undefined}>
+              {leadingIcon}
+            </span>
+          ) : null}
+          <span>{children}</span>
+          {trailingIcon ? (
+            <span style={iconStyle} aria-hidden={iconAriaHidden ? "true" : undefined}>
+              {trailingIcon}
+            </span>
+          ) : null}
+        </>
+      )}
     </button>
   );
 }

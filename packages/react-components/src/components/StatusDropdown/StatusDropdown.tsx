@@ -52,36 +52,68 @@ export function StatusDropdown() {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<(typeof options)[number]>(options[0]);
 
+  const handleSelect = (option: (typeof options)[number]) => {
+    setSelected(option);
+    setOpen(false);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setOpen(false);
+    } else if (event.key === 'ArrowDown' && !open) {
+      setOpen(true);
+    }
+  };
+
   return (
     <div style={{ position: 'relative', display: 'inline-block' }}>
-      <button type="button" style={triggerStyle} onClick={() => setOpen((prev) => !prev)}>
-        {selected.label}
-        <ChevronDown size={16} />
+      <button
+        type="button"
+        style={triggerStyle}
+        onClick={() => setOpen((prev) => !prev)}
+        onKeyDown={handleKeyDown}
+        aria-haspopup="listbox"
+        aria-expanded={open ? "true" : "false"}
+        aria-labelledby={`status-label-${selected.id}`}
+      >
+        <span id={`status-label-${selected.id}`}>{selected.label}</span>
+        <ChevronDown size={16} aria-hidden="true" />
       </button>
 
       {open ? (
-        <div style={menuStyle} role="listbox">
+        <div
+          style={menuStyle}
+          role="listbox"
+          aria-labelledby={`status-label-${selected.id}`}
+          aria-activedescendant={`option-${selected.id}`}
+        >
           {options.map((option) => {
             const active = option.id === selected.id;
             return (
               <div
                 key={option.id}
+                id={`option-${option.id}`}
                 role="option"
+                aria-selected={active ? "true" : "false"}
                 style={{
                   ...optionStyle,
                   backgroundColor: active ? tokens.colors.primary100 : 'transparent',
                   color: active ? tokens.colors.primary600 : tokens.colors.slate600,
                 }}
-                onClick={() => {
-                  setSelected(option);
-                  setOpen(false);
+                onClick={() => handleSelect(option)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleSelect(option);
+                  }
                 }}
+                tabIndex={0}
               >
                 <div style={{ display: 'flex', flexDirection: 'column', gap: tokens.spacing['2xs'] }}>
                   <strong style={{ fontSize: tokens.typography.sizeSM }}>{option.label}</strong>
                   <span style={{ fontSize: tokens.typography.sizeXS, color: tokens.colors.slate500 }}>{option.description}</span>
                 </div>
-                {active ? <Check size={16} /> : null}
+                {active ? <Check size={16} aria-hidden="true" /> : null}
               </div>
             );
           })}

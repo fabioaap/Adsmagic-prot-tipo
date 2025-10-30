@@ -22,6 +22,8 @@
     "test:debug": "playwright test --debug",
     "test:visual": "playwright test --config=playwright.visual.config.ts",
     "test:visual:update": "playwright test --config=playwright.visual.config.ts --update-snapshots",
+    "test:visual:baseline": "playwright test --config=playwright.visual.config.ts --grep=\"legacy-baseline\"",
+    "test:visual:parity": "playwright test --config=playwright.visual.config.ts --grep=\"parity\"",
     "commit": "cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "release": "changeset publish",

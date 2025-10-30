@@ -64,21 +64,40 @@ const statusStyles: Record<TableRow['status'], CSSProperties> = {
 export function DataTable() {
   return (
     <div style={containerStyle}>
-      <table style={tableStyle}>
+      <table
+        style={tableStyle}
+        role="table"
+        aria-label="Tabela de campanhas publicitárias"
+      >
         <thead>
-          <tr>
-            <th style={headCellStyle}>Campanha</th>
-            <th style={headCellStyle}>Status</th>
-            <th style={headCellStyle}>Orcamento</th>
-            <th style={headCellStyle}>CPA</th>
-            <th style={headCellStyle}>Atualizacao</th>
+          <tr role="row">
+            <th style={headCellStyle} scope="col" role="columnheader">
+              Campanha
+            </th>
+            <th style={headCellStyle} scope="col" role="columnheader">
+              Status
+            </th>
+            <th style={headCellStyle} scope="col" role="columnheader">
+              Orçamento
+            </th>
+            <th style={headCellStyle} scope="col" role="columnheader">
+              CPA
+            </th>
+            <th style={headCellStyle} scope="col" role="columnheader">
+              Atualização
+            </th>
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
-            <tr key={row.campaign}>
-              <td style={{ ...cellStyle, fontWeight: Number(tokens.typography.weightMedium), color: tokens.colors.slate900 }}>{row.campaign}</td>
-              <td style={cellStyle}>
+          {rows.map((row, index) => (
+            <tr key={row.campaign} role="row">
+              <td
+                style={{ ...cellStyle, fontWeight: Number(tokens.typography.weightMedium), color: tokens.colors.slate900 }}
+                role="cell"
+              >
+                {row.campaign}
+              </td>
+              <td style={cellStyle} role="cell">
                 <span
                   style={{
                     display: 'inline-flex',
@@ -91,13 +110,15 @@ export function DataTable() {
                     fontWeight: Number(tokens.typography.weightMedium),
                     ...statusStyles[row.status],
                   }}
+                  role="status"
+                  aria-label={`Status: ${row.status}`}
                 >
                   {row.status}
                 </span>
               </td>
-              <td style={cellStyle}>{row.budget}</td>
-              <td style={cellStyle}>{row.cpa}</td>
-              <td style={cellStyle}>{row.updatedAt}</td>
+              <td style={cellStyle} role="cell">{row.budget}</td>
+              <td style={cellStyle} role="cell">{row.cpa}</td>
+              <td style={cellStyle} role="cell">{row.updatedAt}</td>
             </tr>
           ))}
         </tbody>

@@ -1,0 +1,277 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Biblioteca/Componentes Técnicos" />
+
+# Documentação Técnica Avançada
+
+## Visão Geral
+
+Esta seção contém documentação técnica detalhada para componentes complexos do design system Adsmagic, incluindo implementação, APIs, padrões de uso e considerações de performance.
+
+## DataTable
+
+### Implementação Técnica
+
+O `DataTable` é um componente de tabela responsiva que utiliza tokens do design system para estilização consistente. Implementa um sistema de status com badges coloridas baseadas em tokens.
+
+#### Estrutura de Dados
+
+```typescript
+interface TableRow {
+  campaign: string;
+  status: 'Ativa' | 'Pausada' | 'Rascunho';
+  budget: string;
+  cpa: string;
+  updatedAt: string;
+}
+```
+
+#### Mapeamento de Status
+
+```typescript
+const statusStyles: Record<TableRow['status'], CSSProperties> = {
+  Ativa: {
+    color: tokens.colors.success600,
+    backgroundColor: tokens.colors.success100,
+  },
+  Pausada: {
+    color: tokens.colors.danger500,
+    backgroundColor: tokens.colors.danger100,
+  },
+  Rascunho: {
+    color: tokens.colors.primary600,
+    backgroundColor: tokens.colors.primary100,
+  },
+};
+```
+
+### Considerações de Performance
+
+- **Virtualização**: Para datasets grandes (>1000 linhas), considere implementar virtualização com `react-window`
+- **Memoização**: Os estilos são definidos como constantes para evitar recálculos desnecessários
+- **Keys únicas**: Cada linha deve ter uma `key` única baseada em dados imutáveis
+
+### Acessibilidade
+
+- **Semântica HTML**: Usa elementos `<table>`, `<thead>`, `<tbody>` nativos
+- **Contraste**: Status badges atendem aos requisitos WCAG AA
+- **Navegação**: Suporte completo a navegação por teclado
+
+## Drawer
+
+### Implementação Técnica
+
+O `Drawer` é um componente de painel lateral deslizante com variantes e tamanhos configuráveis.
+
+#### Props da API
+
+```typescript
+export interface DrawerProps extends HTMLAttributes<HTMLDivElement> {
+  variant?: "default" | "overlay";
+  size?: "sm" | "md" | "lg";
+  isOpen?: boolean;
+  onClose?: () => void;
+  children?: ReactNode;
+}
+```
+
+#### Variantes
+
+- **default**: Drawer simples com borda e sombra
+- **overlay**: Drawer com backdrop escuro semi-transparente
+
+#### Tamanhos
+
+```typescript
+const sizeTokens: Record<DrawerSize, CSSProperties> = {
+  sm: { width: "300px" },
+  md: { width: "400px" },
+  lg: { width: "500px" },
+};
+```
+
+### Padrões de Uso
+
+#### Drawer de Contato (Exemplo Prático)
+
+```typescript
+function ContactDrawer({ contact, isOpen, onClose }) {
+  return (
+    <Drawer
+      variant="overlay"
+      size="md"
+      isOpen={isOpen}
+      onClose={onClose}
+    >
+      <ContactHeader contact={contact} />
+      <ConversationHistory messages={contact.messages} />
+      <QuickActions contact={contact} />
+    </Drawer>
+  );
+}
+```
+
+### Considerações de Performance
+
+- **Lazy Loading**: O drawer só renderiza quando `isOpen={true}`
+- **Transições**: Usa `transform` CSS para animações suaves via GPU
+- **Event Delegation**: Backdrop usa event delegation para fechar
+
+### Acessibilidade
+
+- **Focus Management**: Foco automático no drawer quando aberto
+- **Escape Key**: Suporte a fechamento via tecla Escape
+- **ARIA**: Atributos apropriados para screen readers
+
+## Charts (Sistema de Gráficos)
+
+### Implementação Técnica
+
+O sistema de charts inclui múltiplos tipos de gráficos customizados usando SVG e tokens do design system.
+
+#### Componentes Disponíveis
+
+- **FunnelChart**: Gráfico de funil para conversão
+- **RevenueChart**: Gráfico de linhas para receita
+- **ContactsSalesChart**: Gráfico de barras para contatos/vendas
+- **ChannelsChart**: Gráfico de pizza para canais
+
+### Estrutura Comum
+
+Todos os charts seguem um padrão consistente:
+
+```typescript
+interface ChartProps {
+  data?: ChartData[];
+  title?: string;
+  subtitle?: string;
+}
+
+const containerStyle: CSSProperties = {
+  // Estilos base usando tokens
+  borderRadius: tokens.radii.lg,
+  border: `1px solid ${tokens.aliases.borderSoft}`,
+  backgroundColor: tokens.aliases.surface,
+  padding: tokens.spacing.xl,
+  boxShadow: tokens.shadows.card,
+};
+```
+
+### FunnelChart - Exemplo Detalhado
+
+#### Estrutura de Dados
+
+```typescript
+interface FunnelStep {
+  name: string;
+  value: number;
+  percentage: number;
+  color: string;
+}
+```
+
+#### Renderização SVG
+
+```typescript
+function renderFunnelStep(step: FunnelStep, index: number) {
+  const width = calculateStepWidth(step.percentage);
+  const height = STEP_HEIGHT;
+  const y = index * (height + STEP_GAP);
+
+  return (
+    <rect
+      key={step.name}
+      x={(MAX_WIDTH - width) / 2}
+      y={y}
+      width={width}
+      height={height}
+      fill={step.color}
+      rx={tokens.radii.md}
+    />
+  );
+}
+```
+
+### Considerações de Performance
+
+- **SVG Otimizado**: Geometria calculada uma vez por render
+- **Memoização**: Dados e cálculos memoizados com `useMemo`
+- **Lazy Rendering**: Charts só renderizam quando visíveis na viewport
+
+### Responsividade
+
+- **Breakpoints**: Largura adaptável baseada em container
+- **Mobile**: Gráficos empilhados verticalmente em telas pequenas
+- **Touch**: Suporte a gestos de toque para interatividade
+
+### Acessibilidade
+
+- **Text Alternatives**: Descrições textuais para dados visuais
+- **Keyboard Navigation**: Navegação por teclado em elementos interativos
+- **High Contrast**: Suporte a modo de alto contraste
+
+## Padrões de Integração
+
+### Composição com Outros Componentes
+
+```typescript
+// Exemplo: Dashboard com múltiplos componentes
+function SalesDashboard() {
+  const [selectedContact, setSelectedContact] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  return (
+    <div>
+      <Header
+        title="Dashboard de Vendas"
+        metrics={dashboardMetrics}
+      />
+
+      <SummaryCardGrid cards={summaryCards} />
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+        <FunnelChart data={funnelData} />
+        <RevenueChart data={revenueData} />
+      </div>
+
+      <DataTable />
+
+      <Drawer
+        variant="overlay"
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+      >
+        {selectedContact && (
+          <ContactDetails contact={selectedContact} />
+        )}
+      </Drawer>
+    </div>
+  );
+}
+```
+
+### Boas Práticas
+
+1. **Separação de Responsabilidades**: Mantenha lógica de negócio separada dos componentes
+2. **Type Safety**: Use interfaces TypeScript para todos os dados
+3. **Performance**: Implemente lazy loading e memoização quando apropriado
+4. **Acessibilidade**: Sempre teste com screen readers e navegação por teclado
+5. **Responsividade**: Considere mobile-first no design dos componentes
+
+### Testes Recomendados
+
+```typescript
+// Teste de acessibilidade
+test('DataTable should be accessible', async () => {
+  render(<DataTable />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+// Teste de performance
+test('Charts should render within performance budget', () => {
+  const startTime = performance.now();
+  render(<FunnelChart data={largeDataset} />);
+  const renderTime = performance.now() - startTime;
+  expect(renderTime).toBeLessThan(100); // 100ms budget
+});
+```

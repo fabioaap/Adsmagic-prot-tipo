@@ -1,4 +1,4 @@
-name: Visual Regression
+name: Visual Regression Tests
 
 on:
   push:
@@ -6,24 +6,26 @@ on:
       - main
       - master
     paths:
-      - "apps/storybook-hub/**"
+      - "apps/**"
       - "packages/**"
-      - "tests/storybook-visual.spec.ts"
+      - "tests/visual/**"
       - "playwright.visual.config.ts"
+      - "test-server.js"
       - ".github/workflows/visual-regression.yml"
   pull_request:
     paths:
-      - "apps/storybook-hub/**"
+      - "apps/**"
       - "packages/**"
-      - "tests/storybook-visual.spec.ts"
+      - "tests/visual/**"
       - "playwright.visual.config.ts"
+      - "test-server.js"
       - ".github/workflows/visual-regression.yml"
   workflow_dispatch:
 
 jobs:
   visual-regression:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
@@ -40,15 +42,46 @@ jobs:
       - name: Instala navegadores do Playwright
         run: npx playwright install --with-deps chromium
 
+      - name: Build dos componentes React
+        run: npm run build --workspace @adsmagic/react-components
+
+      - name: Build dos componentes Vue
+        run: npm run build --workspace @adsmagic/vue-components
+
+      - name: Build do Storybook React
+        run: npm run build --workspace @adsmagic/storybook-react
+
+      - name: Build do Storybook Vue
+        run: npm run build --workspace @adsmagic/storybook-vue
+
       - name: Build do Storybook Hub
         run: npm run build --workspace @adsmagic/storybook-hub
 
-      - name: Sobe servidor do Storybook
+      - name: Sobe servidores de teste
         run: |
+          # Servidor do legado (porta 8000)
+          node test-server.js &
+          npx --yes wait-on http://127.0.0.1:8000
+
+          # Storybook React (porta 6008)
+          npx --yes http-server apps/storybook-react/storybook-static -p 6008 --silent &
+          npx --yes wait-on http://127.0.0.1:6008
+
+          # Storybook Vue (porta 7007)
+          npx --yes http-server apps/storybook-vue/storybook-static -p 7007 --silent &
+          npx --yes wait-on http://127.0.0.1:7007
+
+          # Storybook Hub (porta 6006)
           npx --yes http-server apps/storybook-hub/storybook-static -p 6006 --silent &
           npx --yes wait-on http://127.0.0.1:6006
 
-      - name: Executa testes visuais
+      - name: Executa testes de baseline (legado)
+        run: npm run test:visual:baseline
+
+      - name: Executa testes de paridade (React/Vue)
+        run: npm run test:visual:parity
+
+      - name: Executa testes visuais completos
         run: npm run test:visual
 
       - name: Publica screenshots de diferenças (falhas)
@@ -56,15 +89,25 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: visual-regression-diffs
-          path: test-results/visual/
+          path: |
+            test-results/visual/
+            snapshots/visual/
           if-no-files-found: ignore
 
-      - name: Publica relatório HTML
+      - name: Publica relatório HTML completo
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: visual-regression-report
-          path: playwright-report/visual/
+          path: test-results/visual/html-report/
+          if-no-files-found: ignore
+
+      - name: Publica baseline snapshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-baseline-snapshots
+          path: snapshots/visual/
           if-no-files-found: ignore
 
       - name: Comentário no PR (falhas)
@@ -76,5 +119,17 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '⚠️ **Visual Regression Failed**\n\nForam detectadas mudanças visuais nos testes. Verifique os artefatos desta execução para ver as diferenças.\n\n📎 [Download dos diffs visuais](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})'
+              body: '⚠️ **Visual Regression Failed**\n\nForam detectadas mudanças visuais que não correspondem ao baseline do legado HTML.\n\n🔍 **O que verificar:**\n- Compare os screenshots nos artefatos desta execução\n- Verifique se mudanças são intencionais\n- Atualize baseline se mudanças forem aprovadas: `npm run test:visual:update`\n\n📎 [Download dos diffs visuais](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})'
+            })
+
+      - name: Comentário no PR (sucesso)
+        if: success() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ **Visual Regression Passed**\n\nTodos os componentes React/Vue mantêm paridade visual com o legado HTML. 🎉'
             })

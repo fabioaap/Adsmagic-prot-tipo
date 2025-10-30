@@ -24,6 +24,7 @@
     "@adsmagic/tokens": "file:../tokens"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
     "@testing-library/jest-dom": "^6.4.0",
     "@testing-library/vue": "^8.1.0",
     "@types/node": "^22.7.5",

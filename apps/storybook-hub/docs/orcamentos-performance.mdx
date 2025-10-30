@@ -1,0 +1,330 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Monitoramento/Orçamentos de Performance" />
+
+# Orçamentos de Performance
+
+## Visão Geral
+
+O sistema de orçamentos de performance permite definir limites aceitáveis para métricas críticas, monitorar compliance em tempo real e receber alertas automáticos quando os limites são excedidos. Baseado nos Core Web Vitals e métricas customizadas.
+
+## Conceitos Fundamentais
+
+### O que são Orçamentos de Performance?
+
+Orçamentos de performance são limites definidos para métricas que garantem uma experiência de usuário aceitável. Quando uma métrica excede seu orçamento, é sinal de que a performance precisa ser otimizada.
+
+### Benefícios
+
+- **Prevenção Proativa**: Identifica problemas antes que afetem usuários
+- **Objetivos Quantificáveis**: Metas claras e mensuráveis
+- **Alertas Automáticos**: Notificações quando limites são ultrapassados
+- **Otimização Guiada**: Foco em melhorias que mais impactam UX
+
+## Orçamentos Padrão
+
+### Core Web Vitals
+
+| Métrica | Orçamento | Severidade | Justificativa |
+|---------|-----------|------------|---------------|
+| **LCP** | ≤ 2500ms | Error | Conteúdo principal deve carregar rapidamente |
+| **INP** | ≤ 100ms | Error | Interações devem ser responsivas |
+| **CLS** | ≤ 0.1 | Error | Layout deve permanecer estável |
+
+### Métricas Adicionais
+
+| Métrica | Orçamento | Severidade | Justificativa |
+|---------|-----------|------------|---------------|
+| **FCP** | ≤ 1800ms | Warning | Primeiro conteúdo deve aparecer rápido |
+| **TTFB** | ≤ 600ms | Warning | Servidor deve responder rapidamente |
+| **Bundle Size** | ≤ 500KB | Warning | Aplicação deve carregar eficientemente |
+
+## Configuração
+
+### Interface de Configuração
+
+Acesse via Performance Dashboard → "💰 Orçamentos"
+
+#### Campos de Configuração
+
+```typescript
+interface PerformanceBudget {
+  id: string;              // Identificador único
+  name: string;            // Nome descritivo
+  metric: string;          // Métrica monitorada
+  budget: number;          // Valor limite
+  unit: 'ms' | 'score' | 'bytes';  // Unidade de medida
+  severity: 'warning' | 'error';   // Nível de severidade
+  enabled: boolean;        // Orçamento ativo
+  description?: string;    // Descrição opcional
+}
+```
+
+### Exemplo Prático
+
+```javascript
+// Orçamento para LCP
+{
+  id: 'lcp-budget',
+  name: 'Largest Contentful Paint',
+  metric: 'LCP',
+  budget: 2500,
+  unit: 'ms',
+  severity: 'error',
+  enabled: true,
+  description: 'Conteúdo principal deve carregar em até 2.5s'
+}
+```
+
+## Avaliação de Compliance
+
+### Status dos Orçamentos
+
+- **✅ Pass**: Métrica dentro do orçamento
+- **⚠️ Warning**: Métrica acima do orçamento (tolerância)
+- **❌ Fail**: Métrica crítica acima do orçamento
+
+### Cálculo de Score
+
+```javascript
+const score = Math.round((passedBudgets / totalBudgets) * 100);
+// Exemplo: 4/5 budgets passaram = 80% score
+```
+
+### Relatório de Compliance
+
+```typescript
+interface BudgetResult {
+  budget: PerformanceBudget;
+  current: number;        // Valor atual da métrica
+  status: 'pass' | 'warning' | 'fail';
+  difference: number;     // Diferença do orçamento
+  percentage: number;     // Percentual acima/abaixo
+}
+```
+
+## Integração com Alertas
+
+### Alertas Automáticos
+
+Quando um orçamento é excedido, o sistema pode:
+
+1. **Log no Console**: Avisos de desenvolvimento
+2. **Notificações por Email/Slack**: Alertas para equipe
+3. **Integração com CI/CD**: Quebras em pipelines
+
+### Regras de Alerta
+
+```javascript
+// Alerta para orçamento crítico
+if (budgetResult.status === 'fail') {
+  alertService.checkMetrics([{
+    name: budget.metric,
+    value: budgetResult.current,
+    rating: 'poor',
+    timestamp: Date.now()
+  }]);
+}
+```
+
+## Boas Práticas
+
+### Definição de Orçamentos
+
+#### Princípios
+
+1. **Baseado em Dados**: Use dados reais de usuários
+2. **Gradual**: Comece conservador e ajuste
+3. **Realista**: Considere infraestrutura e contexto
+4. **Mensurável**: Metas claras e verificáveis
+
+#### Estratégia de Definição
+
+```javascript
+// Abordagem conservadora (75 percentil)
+const lcpBudget = Math.round(userLCPData.p75 * 0.8);
+
+// Abordagem competitiva (90 percentil da indústria)
+const industryLCP90 = 2500; // ms
+const competitiveBudget = industryLCP90 * 0.9;
+```
+
+### Monitoramento Contínuo
+
+#### Métricas de Meta
+
+- **Taxa de Compliance**: % de sessões dentro do orçamento
+- **Tendências**: Melhoria/degradação ao longo do tempo
+- **Impacto**: Correlação com métricas de negócio
+
+#### Revisão Regular
+
+```javascript
+// Revisar budgets mensalmente
+const monthlyReview = {
+  complianceRate: calculateComplianceRate(),
+  recommendations: generateBudgetAdjustments(),
+  alertsTriggered: countBudgetAlerts()
+};
+```
+
+## Implementação Técnica
+
+### Serviço de Budgets
+
+```typescript
+import { budgetService } from '../services/budgetService';
+
+// Verificar compliance
+const results = budgetService.evaluateBudgets(metrics);
+
+// Obter resumo
+const summary = budgetService.getBudgetSummary(results);
+
+// Exportar/importar configuração
+const config = budgetService.exportBudgets();
+budgetService.importBudgets(config);
+```
+
+### Hook de Performance
+
+```typescript
+// Em usePerformanceMonitoring.ts
+useWebVitals((metric) => {
+  // Verificar budgets
+  const budgetResults = budgetService.checkBudgetAlerts([metric]);
+
+  if (budgetResults.some(r => r.status === 'fail')) {
+    console.error('💰 Orçamento excedido:', metric.name);
+  }
+});
+```
+
+## Integração com CI/CD
+
+### Lighthouse CI
+
+```yaml
+# .github/workflows/performance.yml
+- name: Performance Budget
+  uses: treosh/lighthouse-ci-action@v10
+  with:
+    urls: https://adsmagic.com
+    budgetPath: .lighthouserc.json
+    uploadArtifacts: true
+```
+
+### Lighthouse Config
+
+```json
+// .lighthouserc.json
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 3,
+      "startServerCommand": "npm run serve"
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", {"minScore": 0.9}],
+        "categories:accessibility": ["error", {"minScore": 0.9}],
+        "categories:best-practices": ["error", {"minScore": 0.9}],
+        "categories:seo": ["error", {"minScore": 0.9}]
+      }
+    }
+  }
+}
+```
+
+### Bundle Analyzer
+
+```javascript
+// webpack.config.js
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'bundle-report.html',
+      openAnalyzer: false,
+    })
+  ]
+};
+```
+
+## Casos de Uso
+
+### E-commerce
+
+```javascript
+// Orçamentos críticos para conversão
+const ecommerceBudgets = [
+  { metric: 'LCP', budget: 2000, severity: 'error' },    // Produto visível rápido
+  { metric: 'INP', budget: 80, severity: 'error' },      // Carrinho responsivo
+  { metric: 'CLS', budget: 0.05, severity: 'error' }     // Layout estável
+];
+```
+
+### Aplicação Corporativa
+
+```javascript
+// Orçamentos para produtividade
+const enterpriseBudgets = [
+  { metric: 'FCP', budget: 1500, severity: 'warning' },  // Dashboard carrega rápido
+  { metric: 'TTFB', budget: 400, severity: 'warning' },  // API responsiva
+  { metric: 'bundle_size', budget: 300, severity: 'warning' } // App leve
+];
+```
+
+### Mobile-First
+
+```javascript
+// Orçamentos otimizados para mobile
+const mobileBudgets = [
+  { metric: 'LCP', budget: 3000, severity: 'error' },    // Mobile mais lento
+  { metric: 'INP', budget: 150, severity: 'error' },     // Toque responsivo
+  { metric: 'bundle_size', budget: 200, severity: 'error' } // Redes móveis
+];
+```
+
+## Troubleshooting
+
+### Problemas Comuns
+
+#### Orçamentos Muito Estritos
+
+**Sintomas**: Muitos alertas falsos positivos
+
+**Soluções**:
+- Aumentar budgets gradualmente
+- Usar percentis mais altos (p90 vs p75)
+- Considerar contexto (mobile vs desktop)
+
+#### Orçamentos Muito Flexíveis
+
+**Sintomas**: Problemas não detectados
+
+**Soluções**:
+- Reduzir budgets baseado em dados
+- Usar benchmarks da indústria
+- Implementar melhorias incrementais
+
+#### Dados Inconsistentes
+
+**Sintomas**: Métricas variam muito
+
+**Soluções**:
+- Aumentar sample size
+- Filtrar condições especiais (3G lento)
+- Usar medianas ao invés de médias
+
+## Próximos Passos
+
+### Melhorias Planejadas
+
+1. **Machine Learning**: Ajuste automático de budgets
+2. **Predição**: Alertas preventivos baseados em tendências
+3. **Segmentação**: Budgets diferentes por audience
+4. **Integração**: Webpack, Vite, Rollup plugins
+5. **Dashboards**: Visualização avançada de compliance

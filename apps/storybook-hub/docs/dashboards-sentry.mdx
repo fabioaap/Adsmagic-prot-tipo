@@ -1,0 +1,365 @@
+# Dashboards Sentry - Monitoramento de Erros
+
+## Visão Geral
+
+Este documento descreve a configuração de dashboards personalizados no Sentry para monitoramento abrangente de erros e performance da plataforma Adsmagic.
+
+## Pré-requisitos
+
+- Conta Sentry com plano Business ou superior (para dashboards customizados)
+- DSN configurado: `REACT_APP_SENTRY_DSN`
+- Ambiente de produção ativo
+
+## Dashboards Recomendados
+
+### 1. Dashboard de Erros Críticos
+
+**Objetivo:** Monitorar erros que impactam a experiência do usuário
+
+#### Widgets
+
+```json
+{
+  "title": "Erros Críticos - Adsmagic",
+  "description": "Monitoramento de erros críticos por componente e funcionalidade",
+  "widgets": [
+    {
+      "title": "Erros por Tipo",
+      "type": "chart",
+      "query": "level:error OR level:fatal",
+      "fields": ["count()", "error.type"],
+      "groupBy": ["error.type"],
+      "sort": "-count",
+      "limit": 10
+    },
+    {
+      "title": "Erros por Componente",
+      "type": "table",
+      "query": "level:error OR level:fatal",
+      "fields": ["count()", "tags.component", "error.value"],
+      "groupBy": ["tags.component"],
+      "sort": "-count"
+    },
+    {
+      "title": "Taxa de Erro por Release",
+      "type": "chart",
+      "query": "level:error OR level:fatal",
+      "fields": ["count()", "release"],
+      "groupBy": ["release"],
+      "sort": "-count"
+    }
+  ]
+}
+```
+
+#### Queries de Alerta
+
+```javascript
+// Alerta: Taxa de erro > 5%
+{
+  "name": "Taxa de Erro Crítica",
+  "query": "level:error OR level:fatal",
+  "threshold": 5,
+  "timeWindow": 300, // 5 minutos
+  "action": "slack"
+}
+
+// Alerta: Erros de JavaScript > 10/min
+{
+  "name": "Erros JS Excessivos",
+  "query": "error.type:JavaScript",
+  "threshold": 10,
+  "timeWindow": 60, // 1 minuto
+  "action": "email"
+}
+```
+
+### 2. Dashboard de Performance
+
+**Objetivo:** Monitorar métricas de performance críticas
+
+#### Widgets
+
+```json
+{
+  "title": "Performance - Adsmagic",
+  "description": "Métricas de performance e experiência do usuário",
+  "widgets": [
+    {
+      "title": "Core Web Vitals",
+      "type": "chart",
+      "query": "transaction.duration:>0",
+      "fields": ["p75(measurements.lcp)", "p75(measurements.fid)", "p75(measurements.cls)"],
+      "groupBy": ["transaction"],
+      "sort": "-p75_measurements_lcp"
+    },
+    {
+      "title": "Transações Lentas",
+      "type": "table",
+      "query": "transaction.duration:>4000",
+      "fields": ["transaction", "count()", "p95(transaction.duration)"],
+      "groupBy": ["transaction"],
+      "sort": "-p95_transaction_duration"
+    },
+    {
+      "title": "Performance por Página",
+      "type": "chart",
+      "query": "transaction.duration:>0",
+      "fields": ["count()", "transaction"],
+      "groupBy": ["transaction"],
+      "sort": "-count"
+    }
+  ]
+}
+```
+
+### 3. Dashboard de Usuário
+
+**Objetivo:** Monitorar impacto em usuários e sessões
+
+#### Widgets
+
+```json
+{
+  "title": "Impacto em Usuários - Adsmagic",
+  "description": "Monitoramento de usuários afetados por erros",
+  "widgets": [
+    {
+      "title": "Usuários Afetados",
+      "type": "number",
+      "query": "level:error OR level:fatal",
+      "fields": ["count_unique(user.id)"],
+      "sort": "-count_unique_user_id"
+    },
+    {
+      "title": "Sessões com Erro",
+      "type": "number",
+      "query": "level:error OR level:fatal",
+      "fields": ["count_unique(session.id)"]
+    },
+    {
+      "title": "Erros por Usuário",
+      "type": "table",
+      "query": "level:error OR level:fatal",
+      "fields": ["user.id", "count()", "error.value"],
+      "groupBy": ["user.id"],
+      "sort": "-count",
+      "limit": 20
+    }
+  ]
+}
+```
+
+### 4. Dashboard de Releases
+
+**Objetivo:** Monitorar qualidade de releases e regressões
+
+#### Widgets
+
+```json
+{
+  "title": "Releases - Adsmagic",
+  "description": "Qualidade e impacto de novos releases",
+  "widgets": [
+    {
+      "title": "Erros por Release",
+      "type": "chart",
+      "query": "level:error OR level:fatal",
+      "fields": ["count()", "release"],
+      "groupBy": ["release"],
+      "sort": "-count"
+    },
+    {
+      "title": "Performance Regression",
+      "type": "chart",
+      "query": "transaction.duration:>0",
+      "fields": ["p75(transaction.duration)", "release"],
+      "groupBy": ["release"],
+      "sort": "-release"
+    },
+    {
+      "title": "Adoption Rate",
+      "type": "chart",
+      "query": "",
+      "fields": ["count_unique(session.id)", "release"],
+      "groupBy": ["release"],
+      "sort": "-release"
+    }
+  ]
+}
+```
+
+## Configuração de Tags Customizadas
+
+### Tags Essenciais
+
+```typescript
+// Em sentry.ts - adicionar tags contextuais
+Sentry.setTags({
+  component: 'component_name',     // Componente onde ocorreu o erro
+  feature: 'feature_name',         // Funcionalidade afetada
+  user_type: 'admin|client',       // Tipo de usuário
+  environment: 'production|staging' // Ambiente
+});
+```
+
+### Tags por Funcionalidade
+
+```typescript
+// Dashboard
+setTags({ feature: 'dashboard', component: 'PerformanceDashboard' });
+
+// Autenticação
+setTags({ feature: 'auth', component: 'LoginForm' });
+
+// Vendas
+setTags({ feature: 'sales', component: 'SalesFunnel' });
+```
+
+## Alertas Recomendados
+
+### Alertas de Erro
+
+```javascript
+// Erro crítico novo
+{
+  "name": "Novo Erro Crítico",
+  "query": "level:fatal firstSeen:+1h",
+  "threshold": 1,
+  "action": "slack"
+}
+
+// Aumento súbito de erros
+{
+  "name": "Spike de Erros",
+  "query": "level:error",
+  "threshold": "50%", // 50% acima da baseline
+  "timeWindow": 300,
+  "action": "email"
+}
+```
+
+### Alertas de Performance
+
+```javascript
+// Degradação de LCP
+{
+  "name": "LCP Degradado",
+  "query": "measurements.lcp:>4000",
+  "threshold": "20%", // 20% acima da baseline
+  "action": "slack"
+}
+
+// Aumento de CLS
+{
+  "name": "CLS Elevado",
+  "query": "measurements.cls:>0.25",
+  "threshold": 10, // 10 ocorrências
+  "timeWindow": 3600,
+  "action": "webhook"
+}
+```
+
+## Configuração de Releases
+
+### Versionamento Automático
+
+```json
+// package.json - scripts de release
+{
+  "scripts": {
+    "release": "sentry-cli releases new $npm_package_version",
+    "release:finalize": "sentry-cli releases finalize $npm_package_version",
+    "release:set-commits": "sentry-cli releases set-commits $npm_package_version --auto"
+  }
+}
+```
+
+### Integração com CI/CD
+
+```yaml
+# .github/workflows/deploy.yml
+- name: Create Sentry release
+  run: |
+    npm run release
+    npm run release:set-commits
+    npm run release:finalize
+```
+
+## Monitoramento de Terceiros
+
+### Integrações Recomendadas
+
+- **Vercel**: Deploy hooks para releases automáticos
+- **GitHub**: Issues automáticos para erros críticos
+- **Slack**: Notificações em canais específicos
+- **DataDog**: Métricas customizadas e correlações
+
+### Webhooks de Terceiros
+
+```javascript
+// Webhook para integração com ferramentas externas
+app.post('/sentry/webhook', (req, res) => {
+  const { action, data } = req.body;
+
+  if (action === 'issue') {
+    // Criar issue no Jira/GitHub
+    createIssue(data.issue);
+  }
+
+  if (action === 'error') {
+    // Notificar time via Slack
+    notifySlack(data.error);
+  }
+
+  res.sendStatus(200);
+});
+```
+
+## Boas Práticas
+
+### Organização
+
+1. **Dashboards por Equipe**: Frontend, Backend, DevOps
+2. **Dashboards por Produto**: Dashboard, API, Mobile
+3. **Dashboards por Severidade**: Crítico, Warning, Info
+
+### Manutenção
+
+1. **Revisão Mensal**: Atualizar queries e thresholds
+2. **Limpeza**: Remover dashboards obsoletos
+3. **Documentação**: Manter queries documentadas
+
+### Performance
+
+1. **Queries Otimizadas**: Usar campos específicos
+2. **Limites Adequados**: Evitar queries muito largas
+3. **Cache**: Configurar cache apropriado
+
+## Troubleshooting
+
+### Problemas Comuns
+
+#### Dados Não Aparecem
+- Verificar se DSN está correto
+- Confirmar environment ativo
+- Validar tags e campos
+
+#### Alertas Não Disparam
+- Checar thresholds realistas
+- Validar time windows
+- Testar queries manualmente
+
+#### Performance Lenta
+- Otimizar queries complexas
+- Usar agregações apropriadas
+- Implementar paginação
+
+## Próximos Passos
+
+### Melhorias Planejadas
+
+1. **Machine Learning**: Detecção automática de anomalias
+2. **Correlação**: Linking entre erros e performance
+3. **Predictive**: Alertas preventivos baseados em tendências
+4. **Custom Metrics**: Métricas específicas do negócio
