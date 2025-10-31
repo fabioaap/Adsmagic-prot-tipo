@@ -1,19 +1,17 @@
-# 🔍 Guia de Regressão Visual
+# Guia de Regressao Visual
 
-## Visão Geral
+## Visao Geral
 
-O sistema de regressão visual automatizada garante que os componentes React/Vue mantenham **paridade visual perfeita** com o legado HTML, eliminando validações manuais e detectando desvios automaticamente em CI/CD.
+O objetivo da suite de regressao visual e garantir que os componentes React/Vue mantenham paridade com o prototipo HTML legado. A infraestrutura esta configurada, mas depende de alinhar tokens, corrigir o servidor legado e capturar o baseline completo antes de bloquear merges automaticamente.
 
-## 📊 Status Atual - Projeto Adsmagic
+## Status Atual - Projeto Adsmagic
 
-### Telas Validadas
-**3 de 11 telas disponíveis foram validadas:**
+### Telas validadas
+- Homepage/Dashboard (`index.html`)
+- Pagina de Vendas (`vendas.html`)
+- Pagina de Contatos (`contatos.html`)
 
-1. **Homepage/Dashboard** (`index.html`) - Layout completo e navegação
-2. **Página de Vendas** (`vendas.html`) - Cards de métricas e tabelas
-3. **Página de Contatos** (`contatos.html`) - Listas, filtros e formulários
-
-### Telas Disponíveis (não testadas)
+### Telas pendentes de baseline
 - eventos.html
 - funil.html
 - integracoes.html
@@ -23,20 +21,20 @@ O sistema de regressão visual automatizada garante que os componentes React/Vue
 - suporte.html
 - configuracoes.html
 
-### Cobertura de Testes
-- **Total:** 55 testes visuais configurados
-- **Baseline legado:** 14 testes
-- **Paridade React:** 15 testes
-- **Paridade Vue:** 15 testes
-- **Mobile/Tablet:** 6 testes
-- **Storybook:** 5 testes
+### Cobertura de testes (planejada)
+- 55 cenarios Playwright configurados (legacy, React, Vue, mobile/tablet, Storybook)
+- Baseline legado: 14 cenarios
+- Paridade React: 15 cenarios
+- Paridade Vue: 15 cenarios
+- Mobile/Tablet: 6 cenarios
+- Storybook hub: 5 cenarios
 
-### Status de Execução
-- **Configuração:** ✅ Completa
-- **Execução:** ⚠️ Pendente (servidor legado porta 4100 com problema)
-- **Sistema geral:** 95% completo, pronto para produção
+### Status de execucao
+- Configuracao: suites criadas, aguardando revisao de tokens e ajuste da porta do servidor legado (4100 vs 8000).
+- Execucao local: apenas 3 telas possuem screenshots aprovadas; restante aguarda captura apos estabilizar o servidor e componentes.
+- Execucao em CI: bloqueada ate alinhar o servidor, completar baseline e revisar cenarios dependentes.
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 ### Componentes do Sistema
 
@@ -81,9 +79,8 @@ npm run test:visual
 Para executar os testes localmente, você precisa de:
 
 ```bash
-# Terminal 1: Servidor do legado (porta 8000)
-node test-server.js
-
+# Terminal 1: Servidor do legado (padrao 4100)
+node test-server.js # ajuste a porta se o CI exigir 8000
 # Terminal 2: Storybook React (porta 6008)
 npm run dev:react
 
@@ -259,27 +256,27 @@ branch_protection:
 2. **Valide thresholds** regularmente
 3. **Monitore falsos positivos** e ajuste configuração
 
-## 📋 Checklist de Implementação
+## Checklist de Implementacao
 
 ### Setup Inicial
-- [x] Arquivos de configuração criados
+- [x] Arquivos de configuracao criados
 - [x] Scripts npm adicionados
-- [x] CI/CD workflow atualizado
-- [x] Baseline inicial capturado
+- [ ] CI/CD workflow ajustado para fluxo visual
+- [ ] Baseline inicial capturado para todas as telas
 
 ### Desenvolvimento
 - [x] Testes de baseline implementados
 - [x] Testes de paridade React/Vue criados
 - [x] Testes mobile responsivos adicionados
-- [x] Thresholds configurados apropriadamente
+- [ ] Thresholds revisados apos capturar novo baseline
 
-### Manutenção
-- [x] Documentação criada
-- [x] Processo de update definido
+### Manutencao
+- [x] Documentacao criada
+- [ ] Processo de update em uso (aguarda baseline completo)
 - [x] Troubleshooting documentado
-- [x] Melhores práticas estabelecidas
+- [ ] Melhores praticas alinhadas com design/dev (depende dos itens acima)
 
-## 🔗 Recursos Adicionais
+## Recursos Adicionais
 
 - [Playwright Visual Comparisons](https://playwright.dev/docs/test-screenshots)
 - [Visual Regression Testing Guide](https://www.browserstack.com/guide/visual-regression-testing)
@@ -287,4 +284,4 @@ branch_protection:
 
 ---
 
-**🎯 Resultado:** Sistema automatizado que garante paridade visual perfeita entre legado HTML e componentes modernos, eliminando validações manuais e detectando desvios automaticamente! 🚀
+**Resultado parcial:** a infraestrutura de regressao visual esta configurada, mas depende de alinhar tokens, corrigir o servidor legado e capturar o baseline completo antes de garantir paridade visual entre legado HTML e componentes modernos. Execute os passos do checklist para evoluir o sistema.

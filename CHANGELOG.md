@@ -1,27 +1,21 @@
-## 0.1.0 (2025-10-30) - STATUS ATUAL: 95% COMPLETO
+## 0.1.0 (2025-10-30) - Status atual: estabilizacao em andamento
 
-### ✅ **Sistema Pronto para Produção**
-* feat: dashboard React 100% idêntico ao HTML original implementado
-* feat: sistema de design system completo com componentes React/Vue
-* feat: acessibilidade WCAG 2.1 AA totalmente implementada
-* feat: performance monitoring com Web Vitals e Sentry
-* feat: regressão visual automatizada configurada (50 testes)
-* feat: CI/CD completo com GitHub Actions
-* feat: documentação abrangente e guia de desenvolvimento
+### Destaques implementados
+* feat: dashboard React alinhado ao prototipo HTML (pendente validar tokens/telas restantes)
+* feat: bibliotecas de componentes React/Vue com stories dedicados
+* feat: pipelines de lint/build/publicacao configurados (visual regressao ainda bloqueada)
+* feat: suites Playwright para E2E e regressao visual configuradas
+* feat: documentacao inicial (Storybook hub, guias de migracao e testes)
 
-### ⚠️ **Em Andamento - Pequeno Ajuste**
-* fix: servidor legado para testes visuais (porta 4100) - correção pendente
-* test: baseline visual e testes de paridade - aguardando servidor
+### Pendencias criticas
+* fix: servidor legado usado pela suite visual precisa alinhar porta 4100/8000
+* test: capturar baseline completo e revisar paridade React/Vue antes de habilitar CI
+* chore: revisar design tokens utilizados pelos componentes e atualizar documentacao
 
-### 📊 **Métricas de Qualidade**
-* **Funcionalidade:** 100% ✅
-* **Performance:** 95% ✅
-* **Acessibilidade:** 100% ✅
-* **Testes:** 90% ⚠️ (visual pendente)
-* **Documentação:** 95% ✅
-* **Telas validadas:** 3 de 11 disponíveis
-* **Testes visuais:** 55 configurados
-* **Nota Final:** 9.5/10 - Pronto para produção
+### Indicadores atuais
+* **Telas validadas:** 3 de 11
+* **Cenarios visuais configurados:** 55 (baseline parcial)
+* **Status:** repositorio utilizavel para desenvolvimento interno; liberar producao apos concluir pendencias acima
 
 ---
 

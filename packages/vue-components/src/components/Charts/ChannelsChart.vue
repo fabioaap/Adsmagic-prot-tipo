@@ -7,53 +7,94 @@ interface ChannelData {
   color: string;
 }
 
-interface Props {
-  data: ChannelData[];
-}
+withDefaults(
+  defineProps<{
+    data?: ChannelData[];
+  }>(),
+  {
+    data: () => [],
+  },
+);
 
-const props = withDefaults(defineProps<Props>(), {
-  data: () => []
-});
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column' as const,
+  gap: tokens.spacing.lg,
+  borderRadius: tokens.radii.lg,
+  border: `1px solid ${tokens.aliases.borderSoft}`,
+  backgroundColor: tokens.aliases.surface,
+  padding: tokens.spacing.xl,
+  boxShadow: tokens.shadows.card,
+};
+
+const headerStyle = {
+  display: 'flex',
+  alignItems: 'flex-start',
+  justifyContent: 'space-between',
+};
+
+const titleStyle = {
+  fontSize: tokens.typography.sizeLG,
+  fontWeight: Number(tokens.typography.weightSemibold),
+  color: tokens.colors.slate900,
+  margin: 0,
+};
+
+const subtitleStyle = {
+  fontSize: tokens.typography.sizeXS,
+  color: tokens.colors.slate500,
+  margin: 0,
+};
+
+const badgeStyle = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: tokens.radii.full,
+  fontSize: tokens.typography.sizeXS,
+  fontWeight: Number(tokens.typography.weightMedium),
+  paddingInline: tokens.spacing.sm,
+  paddingBlock: tokens.spacing['2xs'],
+  color: tokens.colors.success600,
+  backgroundColor: tokens.colors.success100,
+};
+
+const chartContainerStyle = {
+  display: 'flex',
+  flex: 1,
+  flexDirection: 'column' as const,
+  alignItems: 'center',
+  justifyContent: 'center',
+};
+
+const barChartStyle = {
+  display: 'flex',
+  height: '12rem',
+  width: '100%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: tokens.radii.lg,
+  backgroundColor: tokens.colors.slate50,
+  color: tokens.colors.slate400,
+  fontSize: tokens.typography.sizeSM,
+  textAlign: 'center' as const,
+};
 </script>
 
 <template>
-  <div class="card-shadow flex flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-6">
-    <div class="flex items-start justify-between">
+  <section :style="containerStyle">
+    <div :style="headerStyle">
       <div>
-        <h2 class="text-lg font-semibold text-slate-900">Canais</h2>
-        <p class="text-xs text-slate-500">Performance por canal</p>
+        <h2 :style="titleStyle">Canais</h2>
+        <p :style="subtitleStyle">Performance por canal</p>
       </div>
-      <span class="summary-card-badge summary-card-badge--positive">+12,5%</span>
+      <span :style="badgeStyle">+12,5%</span>
     </div>
-    <div class="flex flex-1 flex-col items-center justify-center">
-      <!-- Placeholder para gráfico de barras - seria implementado com uma lib Vue -->
-      <div class="flex h-48 w-full items-center justify-center rounded-lg bg-slate-50 text-slate-400">
-        <div class="text-center">
-          <div class="text-2xl font-semibold text-slate-900">Gráfico de Barras</div>
-          <div class="text-sm">Canais de comunicação</div>
-        </div>
-      </div>
-      <div class="mt-4 flex w-full justify-between text-xs text-slate-500">
-        <span>WhatsApp</span>
-        <span>Instagram</span>
-        <span>Facebook</span>
-        <span>Site</span>
-      </div>
-    </div>
-  </div>
-</template>
 
-<style scoped>
-.summary-card-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: v-bind('tokens.radii.full');
-  font-size: v-bind('tokens.typography.sizeXS');
-  font-weight: v-bind('tokens.typography.weightMedium');
-  padding-inline: v-bind('tokens.spacing.sm');
-  padding-block: v-bind('tokens.spacing["2xs"]');
-  color: v-bind('tokens.colors.success600');
-  background-color: v-bind('tokens.colors.success100');
-}
-</style>
+    <div :style="chartContainerStyle">
+      <div :style="barChartStyle">
+        Grafico de barras (implementar com biblioteca de chart)
+      </div>
+    </div>
+  </section>
+</template>

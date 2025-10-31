@@ -9,15 +9,19 @@ export const typography = {
   sizeMD: '1rem',
   sizeLG: '1.25rem',
   sizeXL: '1.5rem',
+  size2XL: '2rem',
+  size3XL: '2.5rem',
   weightRegular: '400',
   weightMedium: '500',
   weightSemibold: '600',
+  weightBold: '700',
 } as const;
 
 export const colors = {
   white: '#ffffff',
   slate950: '#020617',
   slate900: '#0f172a',
+  slate800: '#1e293b',
   slate700: '#334155',
   slate600: '#475569',
   slate500: '#64748b',
@@ -31,10 +35,24 @@ export const colors = {
   indigo500: '#4f46e5',
   indigo100: '#e0e7ff',
   success600: '#059669',
+  success500: '#22c55e',
   success100: '#d1fae5',
+  warning600: '#d97706',
+  warning500: '#f59e0b',
+  warning100: '#fef3c7',
   danger600: '#b91c1c',
   danger500: '#f43f5e',
+  danger200: '#fecdd3',
+  danger700: '#991b1b',
   danger100: '#fee2e2',
+  info600: '#0284c7',
+  info500: '#0ea5e9',
+  info100: '#e0f2fe',
+  secondary600: '#6b7280',
+  error500: '#f43f5e',
+  gray600: '#4b5563',
+  gray500: '#6b7280',
+  gray100: '#f3f4f6',
 } as const;
 
 export const spacing = {
@@ -51,6 +69,10 @@ export const radii = {
   lg: '1.5rem',
   md: '1rem',
   sm: '0.75rem',
+} as const;
+
+export const borderRadius = {
+  ...radii,
 } as const;
 
 export const shadows = {
@@ -77,6 +99,7 @@ export const tokens = {
   colors,
   spacing,
   radii,
+  borderRadius,
   shadows,
   transitions,
   aliases,

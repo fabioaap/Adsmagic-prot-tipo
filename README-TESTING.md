@@ -58,16 +58,16 @@ npx playwright test tests/card-layout.spec.js
 
 ### Testes Visuais (Regressão Visual)
 
-#### Arquivos de Teste Visual
-- `tests/visual/legacy-baseline.spec.ts` - 14 testes (baseline HTML legado)
-- `tests/visual/react-parity.spec.ts` - 15 testes (paridade React)
-- `tests/visual/vue-parity.spec.ts` - 15 testes (paridade Vue)
-- `tests/visual/mobile-parity.spec.ts` - 6 testes (responsividade mobile/tablet)
-- `tests/storybook-visual.spec.ts` - 5 testes (Storybook)
+#### Arquivos de Teste Visual configurados
+- `tests/visual/legacy-baseline.spec.ts` - 14 cenarios previstos (baseline HTML legado)
+- `tests/visual/react-parity.spec.ts` - 15 cenarios previstos (paridade React)
+- `tests/visual/vue-parity.spec.ts` - 15 cenarios previstos (paridade Vue)
+- `tests/visual/mobile-parity.spec.ts` - 6 cenarios previstos (responsividade mobile/tablet)
+- `tests/storybook-visual.spec.ts` - 5 cenarios previstos (Storybook)
 
-#### **Total: 55 testes visuais configurados**
+> Os arquivos estao prontos, mas parte dos cenarios depende de capturar novas screenshots e ajustes de infraestrutura antes de rodar em CI.
 
-#### Telas Validadas
+####  Telas Validadas
 **3 de 11 telas disponíveis foram validadas:**
 
 1. **Homepage/Dashboard** (`index.html`) - Layout completo validado
@@ -85,9 +85,9 @@ npx playwright test tests/card-layout.spec.js
 - configuracoes.html
 
 #### Status dos Testes Visuais
-- **Configuração:** ✅ Completa (55 testes implementados)
-- **Execução:** ⚠️ Pendente (servidor legado porta 4100 com problema)
-- **Baseline:** ⏳ Aguardando correção do servidor para captura inicial
+- **Configuracao:** parcial. Suites e scripts existem, mas ha inconsistencias de tokens e desalinhamento de portas interferindo nos cenarios.
+- **Execucao:** pendente. O workflow visual tenta subir o legado na porta 8000 enquanto `test-server.js` usa 4100.
+- **Baseline:** incompleto. Apenas 3 telas possuem screenshots validadas; 8 telas aguardam captura apos ajustar infraestrutura.
 
 ## Funcionalidade coberta
 
@@ -115,9 +115,9 @@ test-server.js                    # Servidor HTTP simples usado em debug
 ## Troubleshooting rapido
 
 1. **Servidor nao responde**  
-   Rode `node test-server.js` e confirme se a porta 8000 esta livre.
+   Rode `node test-server.js` e confirme a porta em uso. O script atual utiliza **4100**; alinhe o workflow/Playwright antes de rodar os testes.
 
-2. **Dependencias faltando**  
+2.  **Dependencias faltando**  
    Reinstale com `npm install`.
 
 3. **Falhas visuais ou seletores**  
@@ -128,15 +128,15 @@ test-server.js                    # Servidor HTTP simples usado em debug
 
 ## Cobertura e proximos passos
 
-- **Cobertura atual:** Layout, responsividade e regressão visual do protótipo HTML
-- **Testes visuais:** 55 testes configurados (3 telas validadas de 11 disponíveis)
-- **Status:** Sistema de testes visuais completo mas aguardando correção do servidor legado
-- **Próximos passos:**
-  - Corrigir servidor legado (porta 4100) para executar baseline visual
-  - Expandir testes para cobrir todas as 11 telas disponíveis
-  - Adicionar smoke tests para os Storybooks React/Vue
-  - Integrar ferramenta de regressão visual (Chromatic, Percy) para detecção automática de divergências
+- **Cobertura atual:** Layout e responsividade do prototipo HTML (Playwright tradicional) + smoke visual parcial.
+- **Testes visuais:** 55 cenarios configurados (3 telas com baseline valido, 8 pendentes).
+- **Status:** aguardando correcao da porta do servidor legado, revisao de tokens e captura do baseline completo.
+- **Proximos passos:**
+  - Padronizar a porta do servidor legado e revalidar o workflow visual
+  - Capturar baseline para as 11 telas do legado
+  - Adicionar smoke tests integrados para os Storybooks React/Vue
+  - Reavaliar ferramentas SaaS (Chromatic/Percy) apos estabilizar Playwright
 
 ## Conclusao
 
-A suite Playwright garante que o dashboard legado continue renderizando corretamente. Execute `npm test` antes de abrir PRs e mantenha este guia alinhado a quaisquer ajustes de layout ou rotas.
+A suite Playwright cobre fluxos principais do legado, mas depende da conclusao das pendencias listadas (baseline completo, alinhamento de portas e tokens) para garantir paridade visual total. Execute `npm test` para smoke e valide manualmente os cenarios pendentes ate que o pipeline visual esteja estavel.
