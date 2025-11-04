@@ -1,0 +1,159 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Logo Adsmágic Adsmágic Growth Suite" [ref=e6] [cursor=pointer]:
+          - /url: index.html
+          - img "Logo Adsmágic" [ref=e7]
+          - generic [ref=e8]:
+            - strong [ref=e9]: Adsmágic
+            - generic [ref=e10]: Growth Suite
+        - button "Recolher menu" [expanded] [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+      - navigation [ref=e14]:
+        - generic [ref=e15]:
+          - paragraph [ref=e16]: Projetos
+          - link "Projetos" [ref=e18] [cursor=pointer]:
+            - /url: projetos.html
+            - img [ref=e20]
+            - generic [ref=e22]: Projetos
+            - button "Abrir menu de Projetos" [ref=e23]:
+              - img [ref=e24]
+        - generic [ref=e27]:
+          - paragraph [ref=e28]: Principal
+          - link "Visão geral" [ref=e30] [cursor=pointer]:
+            - /url: index.html
+            - img [ref=e32]
+            - generic [ref=e37]: Visão geral
+          - link "Contatos" [ref=e39] [cursor=pointer]:
+            - /url: contatos.html
+            - img [ref=e41]
+            - generic [ref=e46]: Contatos
+          - link "Vendas" [ref=e48] [cursor=pointer]:
+            - /url: vendas.html
+            - img [ref=e50]
+            - generic [ref=e54]: Vendas
+          - link "Funil" [ref=e56] [cursor=pointer]:
+            - /url: funil.html
+            - img [ref=e58]
+            - generic [ref=e60]: Funil
+          - link "Eventos" [ref=e62] [cursor=pointer]:
+            - /url: eventos.html
+            - img [ref=e64]
+            - generic [ref=e66]: Eventos
+        - generic [ref=e67]:
+          - paragraph [ref=e68]: Rastreamento
+          - link "Links" [ref=e70] [cursor=pointer]:
+            - /url: links.html
+            - img [ref=e72]
+            - generic [ref=e75]: Links
+          - link "Mensagens" [ref=e77] [cursor=pointer]:
+            - /url: mensagens.html
+            - img [ref=e79]
+            - generic [ref=e82]: Mensagens
+        - generic [ref=e83]:
+          - paragraph [ref=e84]: Sistema
+          - link "Relatórios" [ref=e86] [cursor=pointer]:
+            - /url: relatorios.html
+            - img [ref=e88]
+            - generic [ref=e90]: Relatórios
+          - link "Integrações" [ref=e92] [cursor=pointer]:
+            - /url: integracoes.html
+            - img [ref=e94]
+            - generic [ref=e96]: Integrações
+          - link "Configurações" [ref=e98] [cursor=pointer]:
+            - /url: configuracoes.html
+            - img [ref=e100]
+            - generic [ref=e103]: Configurações
+          - link "Suporte" [ref=e105] [cursor=pointer]:
+            - /url: suporte.html
+            - img [ref=e107]
+            - generic [ref=e114]: Suporte
+        - generic [ref=e115]:
+          - paragraph [ref=e116]: Conta
+          - link "Sair" [ref=e118] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e120]
+            - generic [ref=e123]: Sair
+  - generic [ref=e124]:
+    - banner [ref=e125]:
+      - generic [ref=e126]:
+        - generic [ref=e127]:
+          - generic [ref=e128]: AL
+          - generic [ref=e129]:
+            - paragraph [ref=e130]: Dra. Letícia Lopes
+            - paragraph [ref=e131]: Marketing Consultant
+          - generic [ref=e132]: Workplace Conectado
+        - generic [ref=e134]:
+          - button "Português" [ref=e135] [cursor=pointer]:
+            - generic [ref=e136]: Português
+            - img [ref=e137]
+          - button [ref=e139] [cursor=pointer]:
+            - img [ref=e140]
+    - main [ref=e143]:
+      - generic [ref=e144]:
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - heading "Vendas" [level=1] [ref=e147]
+            - generic [ref=e148]: Workplace Conectado
+          - paragraph [ref=e150]: Acompanhe o status das negociações e exporte relatórios rapidamente.
+        - button "Exportar" [ref=e151] [cursor=pointer]:
+          - text: Exportar
+          - img [ref=e152]
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - generic [ref=e158]: Resultados
+            - generic [ref=e159]: 3 negociações
+          - generic [ref=e160]:
+            - generic [ref=e161]: Pesquisar negociações
+            - generic [ref=e162]:
+              - searchbox "Pesquisar negociações" [ref=e163]
+              - img [ref=e164]
+        - table [ref=e168]:
+          - rowgroup [ref=e169]:
+            - row "Nome Telefone Valor Origem Data da venda" [ref=e170]:
+              - columnheader [ref=e171]
+              - columnheader "Nome" [ref=e172]
+              - columnheader "Telefone" [ref=e173]
+              - columnheader "Valor" [ref=e174]
+              - columnheader "Origem" [ref=e175]
+              - columnheader "Data da venda" [ref=e176]
+          - rowgroup [ref=e177]:
+            - row "S Silvia Ramos Empresa Aurora (11) 99832-4455 R$ 25.000 Canal orgânico 05/06/2024" [ref=e178]:
+              - cell "S" [ref=e179]:
+                - generic [ref=e180]: S
+              - cell "Silvia Ramos Empresa Aurora" [ref=e181]:
+                - generic [ref=e182]: Silvia Ramos
+                - paragraph [ref=e183]: Empresa Aurora
+              - cell "(11) 99832-4455" [ref=e184]
+              - cell "R$ 25.000" [ref=e185]
+              - cell "Canal orgânico" [ref=e186]:
+                - generic [ref=e187]: Canal orgânico
+              - cell "05/06/2024" [ref=e188]
+            - row "S Sérgio Dantas Clínica Horizonte (11) 99847-2254 R$ 12.000 Sem mídia 01/06/2024" [ref=e189]:
+              - cell "S" [ref=e190]:
+                - generic [ref=e191]: S
+              - cell "Sérgio Dantas Clínica Horizonte" [ref=e192]:
+                - generic [ref=e193]: Sérgio Dantas
+                - paragraph [ref=e194]: Clínica Horizonte
+              - cell "(11) 99847-2254" [ref=e195]
+              - cell "R$ 12.000" [ref=e196]
+              - cell "Sem mídia" [ref=e197]:
+                - generic [ref=e198]: Sem mídia
+              - cell "01/06/2024" [ref=e199]
+            - row "C Canal Teams Time comercial (11) 99867-2254 R$ 11.800 Google Ads 28/05/2024" [ref=e200]:
+              - cell "C" [ref=e201]:
+                - generic [ref=e202]: C
+              - cell "Canal Teams Time comercial" [ref=e203]:
+                - generic [ref=e204]: Canal Teams
+                - paragraph [ref=e205]: Time comercial
+              - cell "(11) 99867-2254" [ref=e206]
+              - cell "R$ 11.800" [ref=e207]
+              - cell "Google Ads" [ref=e208]:
+                - generic [ref=e209]: Google Ads
+              - cell "28/05/2024" [ref=e210]
+```

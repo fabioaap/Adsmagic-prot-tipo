@@ -1,36 +1,58 @@
-import { render } from "@testing-library/vue";
-import { expect, test } from "vitest";
-import DsDrawer from "./Drawer.vue";
+import { render, cleanup } from '@testing-library/vue'
+import { afterEach, describe, it, expect } from 'vitest'
+import DsDrawer from './Drawer.vue'
 
-test("renders drawer when open", () => {
-  const { getByText } = render(DsDrawer, {
-    props: { isOpen: true },
-    slots: { default: "<div>Test Content</div>" },
-  });
-  expect(getByText("Test Content")).toBeInTheDocument();
-});
+const renderOptions = {
+  global: {
+    stubs: {
+      teleport: false,
+    },
+  },
+}
 
-test("does not render drawer when closed", () => {
-  const { queryByText } = render(DsDrawer, {
-    props: { isOpen: false },
-    slots: { default: "<div>Test Content</div>" },
-  });
-  expect(queryByText("Test Content")).toBeNull();
-});
+afterEach(() => {
+  cleanup()
+  document.body.innerHTML = ''
+})
 
-test("applies correct size", () => {
-  const { getByText } = render(DsDrawer, {
-    props: { isOpen: true, size: "lg" },
-    slots: { default: "<div>Test</div>" },
-  });
-  const drawer = getByText("Test").parentElement;
-  expect(drawer).toHaveStyle({ width: "500px" });
-});
+describe('DsDrawer', () => {
+  it('renders drawer panel when open', () => {
+    const { getByTestId } = render(DsDrawer, {
+      props: { isOpen: true },
+      slots: { default: '<div>Content</div>' },
+      ...renderOptions,
+    })
 
-test("renders overlay when variant is overlay", () => {
-  render(DsDrawer, {
-    props: { isOpen: true, variant: "overlay" },
-    slots: { default: "<div>Test</div>" },
-  });
-  expect(document.querySelector('[style*="background-color: rgba(0, 0, 0, 0.5)"]')).toBeInTheDocument();
-});
+    expect(getByTestId('drawer-panel')).toBeInTheDocument()
+  })
+
+  it('does not render drawer when closed', () => {
+    const { queryByTestId } = render(DsDrawer, {
+      props: { isOpen: false },
+      slots: { default: '<div>Content</div>' },
+      ...renderOptions,
+    })
+
+    expect(queryByTestId('drawer-panel')).toBeNull()
+  })
+
+  it('applies correct width for large size', () => {
+    const { getByTestId } = render(DsDrawer, {
+      props: { isOpen: true, size: 'lg' },
+      slots: { default: '<div>Content</div>' },
+      ...renderOptions,
+    })
+
+    expect(getByTestId('drawer-panel')).toHaveStyle({ width: '500px' })
+  })
+
+  it('renders overlay when variant is overlay', () => {
+    const { getByTestId } = render(DsDrawer, {
+      props: { isOpen: true, variant: 'overlay' },
+      slots: { default: '<div>Content</div>' },
+      ...renderOptions,
+    })
+
+    expect(getByTestId('drawer-overlay')).toBeInTheDocument()
+  })
+})

@@ -146,13 +146,13 @@ const getStatusColor = (status: string) => {
 const getTypeIcon = (type: string) => {
   switch (type) {
     case 'message':
-      return '�Y'�';
+      return 'MSG';
     case 'call':
-      return '�Y"z';
+      return 'CALL';
     case 'email':
-      return '�o%��?';
+      return 'MAIL';
     default:
-      return '�Y"?';
+      return 'INT';
   }
 };
 </script>
@@ -197,3 +197,4 @@ const getTypeIcon = (type: string) => {
     </div>
   </section>
 </template>
+

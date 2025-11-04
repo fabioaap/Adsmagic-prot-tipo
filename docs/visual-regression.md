@@ -1,287 +1,67 @@
-# Guia de Regressao Visual
+# Regressao Visual - Guia detalhado
 
-## Visao Geral
+Este guia complementa o backlog do Storybook Hub e descreve como operar a suite de regressao visual, seus cenarios e os passos para estabiliza-la.
 
-O objetivo da suite de regressao visual e garantir que os componentes React/Vue mantenham paridade com o prototipo HTML legado. A infraestrutura esta configurada, mas depende de alinhar tokens, corrigir o servidor legado e capturar o baseline completo antes de bloquear merges automaticamente.
+## 1. Resumo do estado atual
+- Porta consolidada do legado: **4100** (`test-server.js`, `playwright.config.js`, workflows).
+- Baseline aprovado: **3 de 11** telas HTML (`index`, `vendas`, `contatos`).
+- Cenarios criados: **55** (legacy, React, Vue, mobile/tablet e Storybook).
+- Workflow `visual-regression` continua bloqueado por:
+  1. Servidor legado intermitente (BL-01).
+  2. Tokens e estilos ainda divergentes do HTML original.
+  3. Falta do baseline das 8 telas restantes.
 
-## Status Atual - Projeto Adsmagic
-
-### Telas validadas
-- Homepage/Dashboard (`index.html`)
-- Pagina de Vendas (`vendas.html`)
-- Pagina de Contatos (`contatos.html`)
-
-### Telas pendentes de baseline
-- eventos.html
-- funil.html
-- integracoes.html
-- links.html
-- mensagens.html
-- relatorios.html
-- suporte.html
-- configuracoes.html
-
-### Cobertura de testes (planejada)
-- 55 cenarios Playwright configurados (legacy, React, Vue, mobile/tablet, Storybook)
-- Baseline legado: 14 cenarios
-- Paridade React: 15 cenarios
-- Paridade Vue: 15 cenarios
-- Mobile/Tablet: 6 cenarios
-- Storybook hub: 5 cenarios
-
-### Status de execucao
-- Configuracao: suites criadas, aguardando revisao de tokens e ajuste da porta do servidor legado (4100 vs 8000).
-- Execucao local: apenas 3 telas possuem screenshots aprovadas; restante aguarda captura apos estabilizar o servidor e componentes.
-- Execucao em CI: bloqueada ate alinhar o servidor, completar baseline e revisar cenarios dependentes.
-
-## Arquitetura
-
-### Componentes do Sistema
-
+## 2. Estrutura dos testes
 ```
-📁 tests/visual/
-├── legacy-baseline.spec.ts    # Baseline do legado HTML
-├── react-parity.spec.ts       # Comparação React vs legado
-├── vue-parity.spec.ts         # Comparação Vue vs legado
-└── mobile-parity.spec.ts      # Testes responsivos
-
-📁 snapshots/visual/           # Screenshots de referência
-📁 test-results/visual/        # Resultados e diffs
+tests/
+  visual/
+    legacy-baseline.spec.ts    # 14 cenarios - baseline do prototipo HTML
+    react-parity.spec.ts       # 15 cenarios - comparacao componentes React
+    vue-parity.spec.ts         # 15 cenarios - comparacao componentes Vue
+    mobile-parity.spec.ts      # 6 cenarios - responsividade
+  storybook-visual.spec.ts     # 5 cenarios - Storybook Hub
+playwright.visual.config.ts    # Configuracao dedicada
+snapshots/visual/              # Screenshots de referencia
+test-results/visual/           # Artefatos temporarios e diffs
 ```
 
-### Fluxo de Funcionamento
-
-1. **Baseline**: Captura screenshots do legado HTML como referência
-2. **Paridade**: Compara componentes React/Vue contra baseline
-3. **Validação**: Detecta diferenças visuais automaticamente
-4. **Ação**: Bloqueia merges ou permite updates controlados
-
-## 🚀 Como Usar
-
-### Configuração Inicial
-
-```bash
-# 1. Instalar dependências
-npm ci
-
-# 2. Instalar navegadores Playwright
-npx playwright install --with-deps
-
-# 3. Criar baseline inicial (primeira vez)
-npm run test:visual:update
-
-# 4. Verificar se tudo funciona
-npm run test:visual
-```
-
-### Servidores Necessários
-
-Para executar os testes localmente, você precisa de:
-
-```bash
-# Terminal 1: Servidor do legado (padrao 4100)
-node test-server.js # ajuste a porta se o CI exigir 8000
-# Terminal 2: Storybook React (porta 6008)
-npm run dev:react
-
-# Terminal 3: Storybook Vue (porta 7007)
-npm run dev:vue
-
-# Terminal 4: Executar testes
-npm run test:visual
-```
-
-### Scripts Disponíveis
-
-```bash
-# Executar todos os testes visuais
-npm run test:visual
-
-# Atualizar baseline (use com cuidado!)
-npm run test:visual:update
-
-# Executar apenas baseline do legado
-npm run test:visual:baseline
-
-# Executar apenas testes de paridade
-npm run test:visual:parity
-```
-
-## 📊 Thresholds e Tolerância
-
-### Configuração de Tolerância
-
-```typescript
-// playwright.visual.config.ts
-expect: {
-  toHaveScreenshot: {
-    threshold: 0.01,        // 1% tolerância padrão
-    maxDiffPixelRatio: 0.05, // Máximo 5% diferença
-  },
-},
-```
-
-### Thresholds por Tipo de Teste
-
-| Tipo de Teste | Threshold | Justificativa |
-|---------------|-----------|---------------|
-| **Baseline legado** | 0.5% | Referência precisa |
-| **Componentes simples** | 1-3% | Diferenças sutis OK |
-| **Gráficos/Charts** | 5-8% | Variações de renderização |
-| **Estados hover/focus** | 3-5% | Transições e anti-aliasing |
-| **Mobile/Tablet** | 2-5% | Diferenças de viewport |
-
-## 🔧 Manutenção do Baseline
-
-### Quando Atualizar Baseline
-
-✅ **Atualize quando:**
-- Mudanças intencionais no design são aprovadas
-- Novos componentes são adicionados
-- Ajustes de responsividade são feitos
-- Correções de bugs visuais são implementadas
-
-❌ **NÃO atualize quando:**
-- Diferenças são acidentais
-- Bugs visuais são introduzidos
-- Sem aprovação do time de design
-
-### Processo de Update
-
-```bash
-# 1. Executar testes para ver diferenças
-npm run test:visual
-
-# 2. Revisar diffs no relatório HTML
-npx playwright show-report test-results/visual/html-report/
-
-# 3. Se mudanças são intencionais, atualizar baseline
-npm run test:visual:update
-
-# 4. Commit das mudanças no baseline
-git add snapshots/visual/
-git commit -m "feat: update visual baseline for [component]"
-```
-
-## 🐛 Troubleshooting
-
-### Problemas Comuns
-
-#### ❌ "No tests found"
-```bash
-# Verificar se arquivos existem
-ls tests/visual/
-
-# Verificar configuração
-npx playwright test --list --config=playwright.visual.config.ts
-```
-
-#### ❌ "Screenshot comparison failed"
-- Verificar se servidores estão rodando
-- Comparar viewport sizes
-- Verificar se componentes renderizaram completamente
-- Ajustar thresholds se diferenças são aceitáveis
-
-#### ❌ "Timeout waiting for element"
-```typescript
-// Adicionar waits mais específicos
-await page.locator('[data-testid="MyComponent"]').waitFor();
-await page.waitForTimeout(1000); // Para animações/charts
-```
-
-#### ❌ Falsos positivos frequentes
-- Aumentar threshold gradualmente
-- Usar `mask` para áreas dinâmicas
-- Excluir elementos não-determinísticos
-
-### Debugging Avançado
-
-```typescript
-// Adicionar screenshots de debug
-await page.screenshot({ path: 'debug-screenshot.png' });
-
-// Comparar manualmente
-const screenshot = await page.screenshot();
-console.log('Screenshot size:', screenshot.length);
-
-// Verificar elementos específicos
-const elements = await page.locator('.my-component').count();
-console.log('Elements found:', elements);
-```
-
-## 📈 CI/CD Integration
-
-### GitHub Actions
-
-O workflow `visual-regression.yml` executa automaticamente:
-
-- ✅ Em pushes para `main`
-- ✅ Em PRs que modificam componentes
-- ✅ On-demand via `workflow_dispatch`
-
-### Resultados
-
-- **Sucesso**: PR aprovado, comentário positivo
-- **Falha**: PR bloqueado, comentário com diffs
-- **Artefatos**: Screenshots, relatórios HTML, baseline
-
-### Configuração de Branch Protection
-
-```yaml
-# .github/settings.yml
-branch_protection:
-  required_status_checks:
-    contexts:
-      - "visual-regression"
-```
-
-## 🎯 Melhores Práticas
-
-### Para Desenvolvedores
-
-1. **Sempre execute testes visuais localmente** antes de commit
-2. **Revise diffs cuidadosamente** antes de atualizar baseline
-3. **Documente mudanças visuais** no PR description
-4. **Use data-testid consistentes** para seletores estáveis
-
-### Para Designers
-
-1. **Aprove mudanças visuais** explicitamente antes do update
-2. **Forneça specs precisas** para novos componentes
-3. **Revise diffs** em PRs que afetam visual
-
-### Para QA
-
-1. **Priorize testes visuais** em sprints de design system
-2. **Valide thresholds** regularmente
-3. **Monitore falsos positivos** e ajuste configuração
-
-## Checklist de Implementacao
-
-### Setup Inicial
-- [x] Arquivos de configuracao criados
-- [x] Scripts npm adicionados
-- [ ] CI/CD workflow ajustado para fluxo visual
-- [ ] Baseline inicial capturado para todas as telas
-
-### Desenvolvimento
-- [x] Testes de baseline implementados
-- [x] Testes de paridade React/Vue criados
-- [x] Testes mobile responsivos adicionados
-- [ ] Thresholds revisados apos capturar novo baseline
-
-### Manutencao
-- [x] Documentacao criada
-- [ ] Processo de update em uso (aguarda baseline completo)
-- [x] Troubleshooting documentado
-- [ ] Melhores praticas alinhadas com design/dev (depende dos itens acima)
-
-## Recursos Adicionais
-
-- [Playwright Visual Comparisons](https://playwright.dev/docs/test-screenshots)
-- [Visual Regression Testing Guide](https://www.browserstack.com/guide/visual-regression-testing)
-- [Chromatic (alternativa SaaS)](https://www.chromatic.com/)
-
----
-
-**Resultado parcial:** a infraestrutura de regressao visual esta configurada, mas depende de alinhar tokens, corrigir o servidor legado e capturar o baseline completo antes de garantir paridade visual entre legado HTML e componentes modernos. Execute os passos do checklist para evoluir o sistema.
+## 3. Executando localmente
+1. Instale dependencias: `npm install`.
+2. Instale navegadores Playwright (primeira execucao em cada maquina): `npx playwright install --with-deps`.
+3. Suba os servidores em terminais separados:
+   - Legado HTML: `node test-server.js` (porta 4100).
+   - Storybook React: `npm run dev:react` (porta 6008).
+   - Storybook Vue: `npm run dev:vue` (porta 7007).
+4. Rode `npm run test:visual`.
+
+### Scripts auxiliares
+- `npm run test:visual:baseline`: executa apenas `legacy-baseline.spec.ts`.
+- `npm run test:visual:parity`: executa React e Vue contra o baseline.
+- `npm run test:visual:update`: atualiza screenshots apos validar uma mudanca intencional.
+
+## 4. Processo para atualizar baseline
+1. Certifique-se com o time de design/PM que a mudanca visual e desejada.
+2. Execute `npm run test:visual:update`.
+3. Analise os diffs em `test-results/visual-reports`.
+4. Commite as imagens em `snapshots/visual/` apenas depois do aval do time.
+
+## 5. Pendencias prioritarias (backlog)
+1. **SB-32 / BL-01:** restaurar o servidor legado (porta 4100) com health-check e script de monitoramento.
+2. **SB-23:** garantir que pipelines CI e scripts locais aguardem o servidor na porta 4100 antes da suite iniciar.
+3. **SB-24:** capturar baseline das 8 telas restantes (`eventos`, `funil`, `integracoes`, `links`, `mensagens`, `relatorios`, `suporte`, `configuracoes`).
+4. **SB-25/SB-26:** revisar tokens, tolerancias e documentacao para refletir o status real.
+5. **SB-27:** plugar `npm test` no CI principal para detectar regressao antes de acionar a suite visual completa.
+
+## 6. Troubleshooting
+- **Timeout no servidor:** verifique se `node test-server.js` esta ativo. Em CI, considere script que aguarde `http://localhost:4100/index.html` responder com HTTP 200.
+- **Diferencas constantes em graficos:** inspecionar carregamento de fontes e animacoes, aplicar `waitForTimeout` ou `mask` em areas dinamicas.
+- **Nenhum teste encontrado:** `npx playwright test --config=playwright.visual.config.ts --list`.
+- **Diferencas pequenas irrecuperaveis:** avalie ajustar `threshold` ou `maxDiffPixelRatio` no config dedicado apos analise com design.
+
+## 7. Proximos passos sugeridos
+1. Automatizar smoke do servidor legado e expor log claro em CI.
+2. Registrar no CHANGELOG quando novas telas tiverem baseline aprovado.
+3. Documentar checklists de aprovacao visual junto ao time de design.
+4. Medir tempo de execucao da suite completa para planejar thresholds de CI.
+
+Com esses itens concluidos, o pipeline de regressao visual podera sair do modo observacao e bloquear PRs com confianca.
