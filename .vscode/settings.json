@@ -1,4 +1,21 @@
 {
+    // === Configurações do Product Engineer ===
+    // Ações de salvamento automáticas: correção ESLint e formatação
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    // Linguagens validadas pelo ESLint
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+        "typescriptreact",
+        "vue"
+    ],
+    // Memória extra para o TypeScript Server (projetos grandes como monorepo)
+    "typescript.tsserver.maxTsServerMemory": 4096,
+    // Formatador padrão ao salvar
+    "editor.formatOnSave": true,
+    // === Configurações existentes do Copilot ===
     "chat.tools.terminal.autoApprove": {
         "cd": true,
         "echo": true,
