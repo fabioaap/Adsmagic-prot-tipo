@@ -26,7 +26,7 @@
             <i data-lucide="chevron-left" class="h-5 w-5"></i>
           </button>
           </div>
-          <nav class="app-nav" data-active="eventos"></nav>
+          <nav class="app-nav" data-active="eventos" data-testid="nav"></nav>
         </div>
       </aside>
       <div class="flex flex-1 flex-col">
@@ -56,15 +56,15 @@
         <main class="app-main">
           <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div class="section-title">
-              <h1 class="text-2xl font-semibold text-slate-900">Eventos</h1>
+              <h1 class="text-2xl font-semibold text-slate-900" data-testid="page-title">Eventos</h1>
               <p class="text-sm text-slate-500">Centralize os disparos recebidos dos parceiros e acompanhe o processamento em tempo real.</p>
             </div>
             <div class="flex flex-wrap items-center gap-3">
-              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50" data-testid="export-csv">
                 Exportar CSV
                 <i data-lucide="download" class="h-4 w-4"></i>
               </button>
-              <button class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-slate-800">
+              <button class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-slate-800" data-testid="add-manual-event">
                 <i data-lucide="plus" class="h-4 w-4"></i>
                 Registrar evento manual
               </button>
@@ -110,6 +110,7 @@
                     type="search"
                     placeholder="Pesquise por parceiro ou contato"
                     class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-2 pr-10 text-sm text-slate-600 placeholder:text-slate-400 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
+                    data-testid="search-input"
                   />
                   <i data-lucide="search" class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i>
                 </div>
@@ -118,6 +119,7 @@
                   id="filter-type"
                   class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
                   aria-label="Filtrar por tipo de evento"
+                  data-testid="filter-type"
                 >
                   <option>Todos os tipos</option>
                   <option>Purchase</option>
@@ -129,6 +131,7 @@
                   id="filter-status"
                   class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-600 focus:border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200"
                   aria-label="Filtrar por status"
+                  data-testid="filter-status"
                 >
                   <option>Todos</option>
                   <option>Processado</option>
@@ -138,7 +141,7 @@
               </div>
             </div>
             <div class="table-shell overflow-x-auto">
-              <table class="min-w-full table-fixed divide-y divide-slate-200 text-sm">
+              <table class="min-w-full table-fixed divide-y divide-slate-200 text-sm" data-testid="events-table">
                 <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
                   <tr>
                     <th scope="col" class="w-16 px-6 py-3 text-left">&nbsp;</th>
