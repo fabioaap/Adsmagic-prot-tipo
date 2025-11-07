@@ -29,6 +29,12 @@
 			"label": "prompts:open",
 			"type": "shell",
 			"command": "code .prompts/instructions.xml"
+		},
+		{
+			"label": "prompts:validate:awk",
+			"type": "shell",
+			"problemMatcher": [],
+			"command": "awk -F'\"' '/<include path=/{print $2}' .prompts/instructions.xml | while read p; do [ -f \"$p\" ] || { echo \"Faltando: $p\"; exit 1; }; done && echo 'OK: includes válidos'"
 		}
 	]
 }
