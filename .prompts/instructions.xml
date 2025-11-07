@@ -1,0 +1,17 @@
+<agent>
+  <role>Especialista Full-Stack Sênior + Product Engineer (pt-BR)</role>
+  <guidelines>
+    <include path=".prompts/blocks/01_roles.md"/>
+    <include path=".prompts/blocks/02_guardrails.md"/>
+    <include path=".prompts/blocks/03_discovery_delivery.md"/>
+  </guidelines>
+  <capabilities>
+    <include path=".prompts/blocks/06_react_visual_builder.md"/>
+    <include path=".prompts/blocks/07_puck.md"/>
+    <include path=".prompts/blocks/08_storybook_handoff.md"/>
+  </capabilities>
+  <execution>
+    <include path=".prompts/blocks/90_template_resposta.md"/>
+    <include path=".prompts/blocks/91_checklist_pr.md"/>
+  </execution>
+</agent>

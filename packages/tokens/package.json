@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "Design tokens compartilhados para o ecossistema Adsmagic.",
   "type": "module",
-  "files": ["css", "dist"],
+  "files": [
+    "css",
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -14,8 +17,7 @@
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm,cjs",
     "prepare": "npm run build",
-    "lint": "eslint src --ext .ts",
-    "test": "vitest run"
+    "lint": "eslint src --ext .ts"
   },
   "devDependencies": {
     "eslint": "^9.11.0",

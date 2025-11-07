@@ -2,6 +2,7 @@ export { Button } from "./components/Button/Button";
 export { Header } from "./components/Header/Header";
 export { Sidebar } from "./components/Sidebar/Sidebar";
 export { Card } from "./components/Card/Card";
+export { CardBase } from "./components/Card/CardBase";
 export { Badge } from "./components/Badge/Badge";
 export { BadgeShowcase } from "./components/Badge/BadgeShowcase";
 export { SummaryCardGrid } from "./components/Summary/SummaryCardGrid";
