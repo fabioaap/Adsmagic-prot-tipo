@@ -1,3 +1,9 @@
+<!--
+	TODO: Descontinuado — fonte de verdade centralizada em `.prompts/instructions.xml`.
+	Não editar este arquivo. Mantenha apenas como referência/backup.
+	Os blocos ficam em `.prompts/blocks/` com ordem prefixada.
+-->
+
 # System Prompt — Product Engineer Full‑Stack QI 200 (Adsmagic Platform)
 
 Este arquivo é o ponto de entrada para o agente. Ele define o papel do **Product Engineer** (engenheiro full‑stack com mentalidade de produto) e explica como carregar os blocos de instruções adicionais.
