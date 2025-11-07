@@ -1,0 +1,11 @@
+# Product Engineer — Regras do Workspace Adsmagic (pt‑BR)
+
+- Sempre responder no formato definido em `.prompts/blocks/00_core.md` (ordem fixa).  
+- O código é a fonte da verdade: priorize Storybook Hub em `apps/storybook-hub`, componentes React em `packages/react-components` e Vue em `packages/vue-components`.  
+- Se modificar um componente ou criar um novo, atualize as stories e testes visuais; se houver tokens, atualize `packages/tokens` e gere artefatos CSS/TS.  
+- Se a tarefa envolver descoberta técnica ou de produto, consulte `.prompts/blocks/01_discovery.md` e siga o processo OST/hypótese/métrica/flag.  
+- Se houver dúvida ou lacuna de conhecimento, ative o `.prompts/blocks/05_search_mode.md` e cite fontes oficiais.  
+- Nunca manter UI duplicada no Figma; use Figma/Dev Mode apenas para especificação e alinhamento.  
+- Commits devem seguir Conventional Commits em pt‑BR; PRs pequenos, reversíveis, com checklist completo (vide `.github/PULL_REQUEST_TEMPLATE.md`).
+- Testes visuais: 55 testes configurados em `tests/visual/` usando Playwright - aguardando correção do servidor legado (porta 4100).
+- Documentação: sempre atualize `CHANGELOG.md`, `README-TESTING.md` e docs em `apps/storybook-hub/docs/`.

@@ -7,57 +7,162 @@ interface ContactsSalesData {
   sales: number;
 }
 
-interface Props {
-  data: ContactsSalesData[];
-}
+withDefaults(
+  defineProps<{
+    data?: ContactsSalesData[];
+  }>(),
+  {
+    data: () => [],
+  },
+);
 
-const props = withDefaults(defineProps<Props>(), {
-  data: () => []
-});
+const containerStyle = {
+  borderRadius: tokens.radii.lg,
+  border: `1px solid ${tokens.aliases.borderSoft}`,
+  backgroundColor: tokens.aliases.surface,
+  padding: tokens.spacing.lg,
+  boxShadow: tokens.shadows.card,
+  display: 'flex',
+  flexDirection: 'column' as const,
+  gap: tokens.spacing.lg,
+};
+
+const headerStyle = {
+  display: 'flex',
+  alignItems: 'flex-start',
+  justifyContent: 'space-between',
+};
+
+const titleStyle = {
+  fontSize: tokens.typography.sizeLG,
+  fontWeight: Number(tokens.typography.weightSemibold),
+  color: tokens.colors.slate900,
+  margin: 0,
+};
+
+const subtitleStyle = {
+  fontSize: tokens.typography.sizeXS,
+  color: tokens.colors.slate500,
+  margin: 0,
+};
+
+const exportButtonStyle = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: tokens.spacing.sm,
+  borderRadius: tokens.radii.lg,
+  border: `1px solid ${tokens.aliases.borderSoft}`,
+  paddingInline: tokens.spacing.md,
+  paddingBlock: tokens.spacing.sm,
+  fontSize: tokens.typography.sizeXS,
+  fontWeight: Number(tokens.typography.weightMedium),
+  color: tokens.colors.slate600,
+  backgroundColor: 'transparent',
+  cursor: 'pointer',
+};
+
+const contentStyle = {
+  display: 'flex',
+  alignItems: 'flex-end',
+  gap: tokens.spacing.xl,
+};
+
+const chartContainerStyle = {
+  flex: 1,
+  height: '14rem',
+  overflow: 'auto',
+  display: 'flex',
+  flexDirection: 'column' as const,
+  gap: tokens.spacing.lg,
+};
+
+const chartPlaceholderStyle = {
+  display: 'flex',
+  height: '100%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: tokens.colors.slate400,
+  fontSize: tokens.typography.sizeSM,
+};
+
+const xAxisStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  fontSize: tokens.typography.sizeXS,
+  color: tokens.colors.slate400,
+};
+
+const statsContainerStyle = {
+  display: 'flex',
+  flexDirection: 'column' as const,
+  gap: tokens.spacing.lg,
+  width: '9rem',
+  fontSize: tokens.typography.sizeXS,
+  color: tokens.colors.slate500,
+};
+
+const statItemStyle = {
+  display: 'flex',
+  flexDirection: 'column' as const,
+  gap: tokens.spacing['2xs'],
+};
+
+const statLabelStyle = {
+  fontWeight: Number(tokens.typography.weightSemibold),
+  color: tokens.colors.slate900,
+  margin: 0,
+};
+
+const statValueStyle = {
+  fontSize: tokens.typography.sizeMD,
+  fontWeight: Number(tokens.typography.weightSemibold),
+  margin: 0,
+};
 </script>
 
 <template>
-  <div class="card-shadow rounded-3xl border border-slate-200 bg-white p-6">
-    <div class="flex items-start justify-between">
+  <section :style="containerStyle">
+    <div :style="headerStyle">
       <div>
-        <h2 class="text-lg font-semibold text-slate-900">Contatos e Vendas</h2>
-        <p class="text-xs text-slate-500">Volume por semana</p>
+        <h2 :style="titleStyle">Contatos e Vendas</h2>
+        <p :style="subtitleStyle">Volume por semana</p>
       </div>
-      <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+      <button
+        type="button"
+        :style="exportButtonStyle"
+        @mouseenter="(event) => (event.currentTarget as HTMLButtonElement).style.backgroundColor = tokens.colors.slate50"
+        @mouseleave="(event) => (event.currentTarget as HTMLButtonElement).style.backgroundColor = 'transparent'"
+      >
         Exportar CSV
       </button>
     </div>
-    <div class="mt-6 flex items-end gap-6">
-      <div class="flex-1">
-        <div class="h-56 overflow-auto">
-          <!-- Placeholder para gráfico - seria implementado com uma lib Vue -->
-          <div class="flex h-full items-center justify-center text-slate-400">
-            Gráfico de linha (implementar com vue-chartjs ou similar)
-          </div>
+
+    <div :style="contentStyle">
+      <div :style="chartContainerStyle">
+        <div :style="chartPlaceholderStyle">
+          Grafico de linha (implementar com biblioteca de chart)
         </div>
-        <div class="mt-4 flex items-center justify-between text-xs text-slate-400">
+        <div :style="xAxisStyle">
           <span>Fev</span>
           <span>Mar</span>
           <span>Abr</span>
           <span>Mai</span>
         </div>
       </div>
-      <div class="flex w-36 flex-col gap-4 text-xs text-slate-500">
-        <div>
-          <p class="font-semibold text-slate-900">Contatos</p>
-          <p>Semana atual</p>
-          <p class="text-base font-semibold text-indigo-600">273</p>
-        </div>
-        <div>
-          <p class="font-semibold text-slate-900">Vendas</p>
-          <p>Semana atual</p>
-          <p class="text-base font-semibold text-emerald-500">78</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
 
-<style scoped>
-/* Estilos inline conforme necessário */
-</style>
+      <aside :style="statsContainerStyle">
+        <div :style="statItemStyle">
+          <p :style="statLabelStyle">Contatos</p>
+          <p>Semana atual</p>
+          <p :style="{ ...statValueStyle, color: tokens.colors.primary600 }">273</p>
+        </div>
+        <div :style="statItemStyle">
+          <p :style="statLabelStyle">Vendas</p>
+          <p>Semana atual</p>
+          <p :style="{ ...statValueStyle, color: tokens.colors.success600 }">78</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</template>

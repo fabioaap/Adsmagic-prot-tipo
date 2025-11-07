@@ -78,8 +78,13 @@ const overlayStyle = {
 
 <template>
   <Teleport to="body">
-    <div v-if="isOpen && variant === 'overlay'" :style="overlayStyle" @click="$emit('close')" />
-    <div v-if="isOpen" :style="drawerStyle">
+    <div
+      v-if="isOpen && variant === 'overlay'"
+      :style="overlayStyle"
+      data-testid="drawer-overlay"
+      @click="$emit('close')"
+    />
+    <div v-if="isOpen" :style="drawerStyle" data-testid="drawer-panel">
       <slot />
     </div>
   </Teleport>

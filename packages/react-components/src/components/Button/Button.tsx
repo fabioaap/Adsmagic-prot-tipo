@@ -92,11 +92,11 @@ function ButtonInner(
     ...style,
   };
 
-  // Determina se o botão tem texto acessível
-  const hasAccessibleText = children || rest['aria-label'] || rest['aria-labelledby'];
+  // Determina se o botao possui texto acessivel
+  const hasAccessibleText = Boolean(children || rest["aria-label"] || rest["aria-labelledby"]);
 
-  // Se só tem ícones e não tem texto acessível, adiciona aria-hidden aos ícones
-  const iconAriaHidden = !hasAccessibleText && (leadingIcon || trailingIcon);
+  // Se o botao tem apenas icones e nenhum texto, esconde os icones dos leitores de tela
+  const iconAriaHidden = !hasAccessibleText && Boolean(leadingIcon || trailingIcon);
 
   return (
     <button
@@ -108,19 +108,19 @@ function ButtonInner(
     >
       {loading ? (
         <>
-          <span style={iconStyle} aria-hidden="true">⟳</span>
+          <span style={iconStyle} aria-hidden={true}>⟳</span>
           <span>{loadingText || "Carregando..."}</span>
         </>
       ) : (
         <>
           {leadingIcon ? (
-            <span style={iconStyle} aria-hidden={iconAriaHidden ? "true" : undefined}>
+            <span style={iconStyle} aria-hidden={iconAriaHidden ? true : undefined}>
               {leadingIcon}
             </span>
           ) : null}
           <span>{children}</span>
           {trailingIcon ? (
-            <span style={iconStyle} aria-hidden={iconAriaHidden ? "true" : undefined}>
+            <span style={iconStyle} aria-hidden={iconAriaHidden ? true : undefined}>
               {trailingIcon}
             </span>
           ) : null}
@@ -132,3 +132,4 @@ function ButtonInner(
 
 export const Button = forwardRef(ButtonInner);
 Button.displayName = "Button";
+

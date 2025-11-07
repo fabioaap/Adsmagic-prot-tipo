@@ -5,6 +5,28 @@ interface AlertConfigurationProps {
   onClose?: () => void;
 }
 
+const alertFieldIds = {
+  name: 'alert-config-name',
+  metric: 'alert-config-metric',
+  condition: 'alert-config-condition',
+  threshold: 'alert-config-threshold',
+  severity: 'alert-config-severity',
+  cooldown: 'alert-config-cooldown',
+  channelsGroup: 'alert-config-channels',
+} as const;
+
+const srOnlyStyle: React.CSSProperties = {
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: 0,
+  margin: '-1px',
+  overflow: 'hidden',
+  clip: 'rect(0, 0, 0, 0)',
+  whiteSpace: 'nowrap',
+  border: 0,
+};
+
 export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose }) => {
   const [rules, setRules] = useState<AlertRule[]>([]);
   const [isEditing, setIsEditing] = useState<string | null>(null);
@@ -151,10 +173,14 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label
+                htmlFor={alertFieldIds.name}
+                style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}
+              >
                 Nome da Regra
               </label>
               <input
+                id={alertFieldIds.name}
                 type="text"
                 value={newRule.name || ''}
                 onChange={(e) => setNewRule(prev => ({ ...prev, name: e.target.value }))}
@@ -168,10 +194,11 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={alertFieldIds.metric} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Métrica
               </label>
               <select
+                id={alertFieldIds.metric}
                 value={newRule.metric || 'CLS'}
                 onChange={(e) => setNewRule(prev => ({ ...prev, metric: e.target.value }))}
                 style={{
@@ -190,10 +217,11 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={alertFieldIds.condition} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Condição
               </label>
               <select
+                id={alertFieldIds.condition}
                 value={newRule.condition || 'gt'}
                 onChange={(e) => setNewRule(prev => ({ ...prev, condition: e.target.value as 'gt' | 'lt' | 'eq' }))}
                 style={{
@@ -210,10 +238,11 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={alertFieldIds.threshold} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Limite
               </label>
               <input
+                id={alertFieldIds.threshold}
                 type="number"
                 step="0.01"
                 value={newRule.threshold || 0}
@@ -228,10 +257,11 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={alertFieldIds.severity} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Severidade
               </label>
               <select
+                id={alertFieldIds.severity}
                 value={newRule.severity || 'warning'}
                 onChange={(e) => setNewRule(prev => ({ ...prev, severity: e.target.value as 'warning' | 'error' | 'critical' }))}
                 style={{
@@ -248,10 +278,11 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={alertFieldIds.cooldown} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Cooldown (minutos)
               </label>
               <input
+                id={alertFieldIds.cooldown}
                 type="number"
                 value={newRule.cooldownMinutes || 30}
                 onChange={(e) => setNewRule(prev => ({ ...prev, cooldownMinutes: parseInt(e.target.value) }))}
@@ -268,7 +299,7 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
           {/* Canais de notificação */}
           <div style={{ marginBottom: '16px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <label style={{ fontWeight: '500' }}>Canais de Notificação</label>
+              <label id={alertFieldIds.channelsGroup} style={{ fontWeight: '500' }}>Canais de Notificação</label>
               <button
                 onClick={handleAddChannel}
                 style={{
@@ -294,13 +325,18 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
                 backgroundColor: '#f9fafb',
                 borderRadius: '4px'
               }}>
+                <label htmlFor={`alert-channel-type-${index}`} style={srOnlyStyle}>
+                  Tipo de canal {index + 1}
+                </label>
                 <select
+                  id={`alert-channel-type-${index}`}
                   value={channel.type}
                   onChange={(e) => handleUpdateChannel(index, {
                     ...channel,
                     type: e.target.value as 'email' | 'slack' | 'webhook'
                   })}
                   style={{ padding: '4px', border: '1px solid #d1d5db', borderRadius: '4px' }}
+                  aria-describedby={alertFieldIds.channelsGroup}
                 >
                   <option value="slack">Slack</option>
                   <option value="email">Email</option>
@@ -309,6 +345,7 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
 
                 {channel.type === 'slack' && (
                   <input
+                    aria-label={`URL do webhook do Slack do canal ${index + 1}`}
                     type="text"
                     placeholder="Webhook URL do Slack"
                     value={channel.config.webhookUrl || ''}
@@ -322,6 +359,7 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
 
                 {channel.type === 'email' && (
                   <input
+                    aria-label={`Email destinatário do canal ${index + 1}`}
                     type="email"
                     placeholder="Email destinatário"
                     value={channel.config.emailTo || ''}
@@ -335,6 +373,7 @@ export const AlertConfiguration: React.FC<AlertConfigurationProps> = ({ onClose 
 
                 {channel.type === 'webhook' && (
                   <input
+                    aria-label={`URL do webhook do canal ${index + 1}`}
                     type="url"
                     placeholder="URL do Webhook"
                     value={channel.config.webhookUrl || ''}

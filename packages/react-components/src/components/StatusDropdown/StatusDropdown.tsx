@@ -1,6 +1,6 @@
 import { tokens } from "@adsmagic/tokens";
 import { Check, ChevronDown } from "lucide-react";
-import type { CSSProperties } from "react";
+import type { CSSProperties, KeyboardEvent } from "react";
 import { useState } from "react";
 
 const triggerStyle: CSSProperties = {
@@ -57,7 +57,7 @@ export function StatusDropdown() {
     setOpen(false);
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       setOpen(false);
     } else if (event.key === 'ArrowDown' && !open) {
@@ -73,11 +73,11 @@ export function StatusDropdown() {
         onClick={() => setOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
-        aria-expanded={open ? "true" : "false"}
+        aria-expanded={open}
         aria-labelledby={`status-label-${selected.id}`}
       >
         <span id={`status-label-${selected.id}`}>{selected.label}</span>
-        <ChevronDown size={16} aria-hidden="true" />
+        <ChevronDown size={16} aria-hidden={true} />
       </button>
 
       {open ? (
@@ -94,7 +94,7 @@ export function StatusDropdown() {
                 key={option.id}
                 id={`option-${option.id}`}
                 role="option"
-                aria-selected={active ? "true" : "false"}
+                aria-selected={active}
                 style={{
                   ...optionStyle,
                   backgroundColor: active ? tokens.colors.primary100 : 'transparent',
@@ -113,7 +113,7 @@ export function StatusDropdown() {
                   <strong style={{ fontSize: tokens.typography.sizeSM }}>{option.label}</strong>
                   <span style={{ fontSize: tokens.typography.sizeXS, color: tokens.colors.slate500 }}>{option.description}</span>
                 </div>
-                {active ? <Check size={16} aria-hidden="true" /> : null}
+                {active ? <Check size={16} aria-hidden={true} /> : null}
               </div>
             );
           })}

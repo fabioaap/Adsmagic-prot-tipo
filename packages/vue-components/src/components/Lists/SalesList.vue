@@ -10,90 +10,171 @@ interface Sale {
   product: string;
 }
 
-interface Props {
-  sales: Sale[];
-}
+const props = withDefaults(
+  defineProps<{
+    sales?: Sale[];
+  }>(),
+  {
+    sales: () => [],
+  },
+);
 
-const props = withDefaults(defineProps<Props>(), {
-  sales: () => []
-});
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column' as const,
+  gap: tokens.spacing.lg,
+  borderRadius: tokens.radii.lg,
+  border: `1px solid ${tokens.aliases.borderSoft}`,
+  backgroundColor: tokens.aliases.surface,
+  padding: tokens.spacing.xl,
+  boxShadow: tokens.shadows.card,
+};
+
+const headerStyle = {
+  display: 'flex',
+  alignItems: 'flex-start',
+  justifyContent: 'space-between',
+};
+
+const titleStyle = {
+  fontSize: tokens.typography.sizeLG,
+  fontWeight: Number(tokens.typography.weightSemibold),
+  color: tokens.colors.slate900,
+  margin: 0,
+};
+
+const subtitleStyle = {
+  fontSize: tokens.typography.sizeXS,
+  color: tokens.colors.slate500,
+  margin: 0,
+};
+
+const badgeStyle = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: tokens.radii.full,
+  fontSize: tokens.typography.sizeXS,
+  fontWeight: Number(tokens.typography.weightMedium),
+  paddingInline: tokens.spacing.sm,
+  paddingBlock: tokens.spacing['2xs'],
+  color: tokens.colors.success600,
+  backgroundColor: tokens.colors.success100,
+};
+
+const listStyle = {
+  display: 'flex',
+  flexDirection: 'column' as const,
+  gap: tokens.spacing.md,
+};
+
+const itemStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  padding: tokens.spacing.md,
+  borderRadius: tokens.radii.md,
+  backgroundColor: tokens.colors.slate50,
+};
+
+const leftContentStyle = {
+  display: 'flex',
+  flexDirection: 'column' as const,
+  gap: tokens.spacing['2xs'],
+};
+
+const clientStyle = {
+  fontSize: tokens.typography.sizeSM,
+  fontWeight: Number(tokens.typography.weightSemibold),
+  color: tokens.colors.slate900,
+  margin: 0,
+};
+
+const productStyle = {
+  fontSize: tokens.typography.sizeXS,
+  color: tokens.colors.slate600,
+  margin: 0,
+};
+
+const rightContentStyle = {
+  display: 'flex',
+  flexDirection: 'column' as const,
+  alignItems: 'flex-end',
+  gap: tokens.spacing['2xs'],
+};
+
+const valueStyle = {
+  fontSize: tokens.typography.sizeSM,
+  fontWeight: Number(tokens.typography.weightSemibold),
+  color: tokens.colors.slate900,
+  margin: 0,
+};
+
+const dateStyle = {
+  fontSize: tokens.typography.sizeXS,
+  color: tokens.colors.slate500,
+  margin: 0,
+};
+
+const emptyStateStyle = {
+  textAlign: 'center' as const,
+  color: tokens.colors.slate400,
+  padding: tokens.spacing.lg,
+};
 
 const getStatusColor = (status: string) => {
   switch (status) {
     case 'completed':
-      return tokens.colors.success500;
+      return tokens.colors.success600;
     case 'pending':
-      return tokens.colors.warning500;
+      return tokens.colors.primary500;
     case 'cancelled':
-      return tokens.colors.error500;
+      return tokens.colors.danger500;
     default:
-      return tokens.colors.gray500;
+      return tokens.colors.slate500;
   }
 };
 
 const formatCurrency = (value: number) => {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
-    currency: 'BRL'
+    currency: 'BRL',
   }).format(value);
 };
 </script>
 
 <template>
-  <div class="card-shadow flex flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-6">
-    <div class="flex items-start justify-between">
+  <section :style="containerStyle">
+    <div :style="headerStyle">
       <div>
-        <h2 class="text-lg font-semibold text-slate-900">Vendas Recentes</h2>
-        <p class="text-xs text-slate-500">Últimas transações</p>
+        <h3 :style="titleStyle">Vendas Recentes</h3>
+        <p :style="subtitleStyle">Ultimas transacoes</p>
       </div>
-      <span class="summary-card-badge summary-card-badge--positive">R$ 45.230</span>
+      <span :style="badgeStyle">R$ 45.230</span>
     </div>
-    <div class="flex flex-1 flex-col gap-3">
-      <div
-        v-for="sale in sales"
-        :key="sale.id"
-        class="flex items-center justify-between rounded-lg border border-slate-100 p-3 hover:bg-slate-50"
-      >
-        <div class="flex items-center gap-3">
-          <div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-sm">
-            💰
-          </div>
-          <div>
-            <div class="text-sm font-medium text-slate-900">{{ sale.client }}</div>
-            <div class="text-xs text-slate-500">{{ sale.product }}</div>
-          </div>
-        </div>
-        <div class="text-right">
-          <div class="text-sm font-semibold text-slate-900">{{ formatCurrency(sale.value) }}</div>
-          <div class="text-xs text-slate-500">{{ sale.date }}</div>
-          <div class="mt-1 flex items-center justify-end gap-1">
-            <div
-              class="h-2 w-2 rounded-full"
-              :style="{ backgroundColor: getStatusColor(sale.status) }"
-            ></div>
-            <span class="text-xs capitalize text-slate-500">{{ sale.status }}</span>
-          </div>
-        </div>
-      </div>
-      <div v-if="sales.length === 0" class="flex flex-col items-center justify-center py-8 text-slate-400">
-        <div class="text-2xl">💸</div>
-        <p class="mt-2 text-sm">Nenhuma venda recente</p>
-      </div>
-    </div>
-  </div>
-</template>
 
-<style scoped>
-.summary-card-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: v-bind('tokens.radii.full');
-  font-size: v-bind('tokens.typography.sizeXS');
-  font-weight: v-bind('tokens.typography.weightMedium');
-  padding-inline: v-bind('tokens.spacing.sm');
-  padding-block: v-bind('tokens.spacing["2xs"]');
-  color: v-bind('tokens.colors.success600');
-  background-color: v-bind('tokens.colors.success100');
-}
-</style>
+    <div :style="listStyle">
+      <template v-if="props.sales.length === 0">
+        <div :style="emptyStateStyle">Nenhuma venda recente</div>
+      </template>
+      <template v-else>
+        <div
+          v-for="sale in props.sales.slice(0, 5)"
+          :key="sale.id"
+          :style="itemStyle"
+        >
+          <div :style="leftContentStyle">
+            <p :style="clientStyle">{{ sale.client }}</p>
+            <p :style="productStyle">{{ sale.product }}</p>
+          </div>
+          <div :style="rightContentStyle">
+            <p :style="valueStyle">{{ formatCurrency(sale.value) }}</p>
+            <p :style="{ ...dateStyle, color: getStatusColor(sale.status) }">
+              {{ sale.date }}
+            </p>
+          </div>
+        </div>
+      </template>
+    </div>
+  </section>
+</template>

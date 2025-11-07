@@ -1,5 +1,4 @@
 import type { Preview } from "@storybook/react-vite";
-import { tokens } from "@adsmagic/tokens";
 import "@adsmagic/tokens/css/base.css";
 import "./apple-fonts.css"; // Tipografia Apple SF Pro
 
@@ -27,10 +26,10 @@ const preview: Preview = {
         },
       ],
     },
-    
+
     // Actions (eventos) automaticamente detectados
     actions: { argTypesRegex: "^on[A-Z].*" },
-    
+
     // Controles melhorados
     controls: {
       matchers: {
@@ -39,10 +38,10 @@ const preview: Preview = {
       },
       expanded: true, // Mostra controles expandidos por padrão
     },
-    
+
     // Layout padrão
     layout: "padded",
-    
+
     // Viewports responsivos customizados
     viewport: {
       viewports: {
@@ -76,7 +75,7 @@ const preview: Preview = {
         },
       },
     },
-    
+
     // Opções do Docs
     docs: {
       toc: {
@@ -87,7 +86,7 @@ const preview: Preview = {
       },
     },
   },
-  
+
   // Tags globais
   tags: ["autodocs"],
 };

@@ -8,6 +8,16 @@ interface PerformanceBudgetsProps {
   onClose?: () => void;
 }
 
+const budgetFieldIds = {
+  name: 'performance-budget-name',
+  metric: 'performance-budget-metric',
+  unit: 'performance-budget-unit',
+  value: 'performance-budget-value',
+  severity: 'performance-budget-severity',
+  enabled: 'performance-budget-enabled',
+  description: 'performance-budget-description',
+} as const;
+
 export const PerformanceBudgets: React.FC<PerformanceBudgetsProps> = ({
   metrics = [],
   onClose
@@ -216,10 +226,11 @@ export const PerformanceBudgets: React.FC<PerformanceBudgetsProps> = ({
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '16px' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={budgetFieldIds.name} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Nome
               </label>
               <input
+                id={budgetFieldIds.name}
                 type="text"
                 value={newBudget.name || ''}
                 onChange={(e) => setNewBudget(prev => ({ ...prev, name: e.target.value }))}
@@ -233,10 +244,11 @@ export const PerformanceBudgets: React.FC<PerformanceBudgetsProps> = ({
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={budgetFieldIds.metric} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Métrica
               </label>
               <select
+                id={budgetFieldIds.metric}
                 value={newBudget.metric || 'LCP'}
                 onChange={(e) => setNewBudget(prev => ({ ...prev, metric: e.target.value }))}
                 style={{
@@ -256,10 +268,11 @@ export const PerformanceBudgets: React.FC<PerformanceBudgetsProps> = ({
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={budgetFieldIds.unit} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Unidade
               </label>
               <select
+                id={budgetFieldIds.unit}
                 value={newBudget.unit || 'ms'}
                 onChange={(e) => setNewBudget(prev => ({ ...prev, unit: e.target.value as 'ms' | 'score' | 'bytes' }))}
                 style={{
@@ -276,10 +289,11 @@ export const PerformanceBudgets: React.FC<PerformanceBudgetsProps> = ({
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={budgetFieldIds.value} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Orçamento
               </label>
               <input
+                id={budgetFieldIds.value}
                 type="number"
                 step={newBudget.unit === 'score' ? '0.01' : '1'}
                 value={newBudget.budget || 0}
@@ -294,10 +308,11 @@ export const PerformanceBudgets: React.FC<PerformanceBudgetsProps> = ({
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+              <label htmlFor={budgetFieldIds.severity} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
                 Severidade
               </label>
               <select
+                id={budgetFieldIds.severity}
                 value={newBudget.severity || 'warning'}
                 onChange={(e) => setNewBudget(prev => ({ ...prev, severity: e.target.value as 'warning' | 'error' }))}
                 style={{
@@ -313,8 +328,9 @@ export const PerformanceBudgets: React.FC<PerformanceBudgetsProps> = ({
             </div>
 
             <div style={{ display: 'flex', alignItems: 'end' }}>
-              <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+              <label htmlFor={budgetFieldIds.enabled} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
                 <input
+                  id={budgetFieldIds.enabled}
                   type="checkbox"
                   checked={newBudget.enabled ?? true}
                   onChange={(e) => setNewBudget(prev => ({ ...prev, enabled: e.target.checked }))}
@@ -326,10 +342,11 @@ export const PerformanceBudgets: React.FC<PerformanceBudgetsProps> = ({
           </div>
 
           <div style={{ marginBottom: '16px' }}>
-            <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
+            <label htmlFor={budgetFieldIds.description} style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>
               Descrição
             </label>
             <textarea
+              id={budgetFieldIds.description}
               value={newBudget.description || ''}
               onChange={(e) => setNewBudget(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Descrição opcional do orçamento..."

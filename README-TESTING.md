@@ -1,142 +1,68 @@
 # Guia de Testes do Projeto Adsmagic
 
-Este documento explica como instalar dependencias, executar a suite Playwright e entender o que cada teste garante no prototipo legado do dashboard.
+Este guia explica como preparar o ambiente, executar as suites Playwright e acompanhar o status dos testes end-to-end e visuais.
 
 ## Requisitos
-
-- Node.js LTS (18+)  
+- Node.js LTS (18 ou superior)
 - npm instalado (ou outro gerenciador compatível)
 
-## Instalacao
+## Instalação
+Na raiz do repositório, rode:
 
 ```bash
 npm install
 ```
 
-Execute o comando na raiz do workspace para preparar todos os pacotes.
+Esse comando prepara todos os workspaces do monorepo.
 
-## Executando os testes
+## Servidores necessários
+- Legado HTML: `node test-server.js` (porta 4100)
+- Storybook React: `npm run dev:react` (porta 6008)
+- Storybook Vue: `npm run dev:vue` (porta 7007)
 
-### Todos os testes e2e
+Sempre inicie o servidor do legado antes de rodar qualquer teste. Os Storybooks só são necessários para a suite de paridade visual.
 
-```bash
-npm test
-```
+## Suites Playwright
+- `npm test`: smoke E2E (`tests/basic.spec.js` e `tests/card-layout.spec.js`)
+- `npm run test:ui`: interface visual do Playwright
+- `npm run test:debug`: execução com pausas interativas
+- `npx playwright test tests/<arquivo>`: executa um arquivo específico
 
-### Interface visual do Playwright
+### Suites de regressão visual
+- `npm run test:visual`: executa todos os cenários configurados
+- `npm run test:visual:baseline`: captura screenshots do legado
+- `npm run test:visual:parity`: compara React/Vue com o legado
+- `npm run test:visual:update`: atualiza screenshots após validar mudanças intencionais
 
-```bash
-npm run test:ui
-```
+## Cobertura atual
+- **E2E HTML**: garante navegação, cards, tabelas e gráficos principais. Também cobre breakpoints mobile, tablet e desktop.
+- **Card layout**: valida existência dos 14 cards e alinhamento dos dois últimos em telas amplas.
+- **Regressão visual**: 55 cenários criados, com baseline aprovado em 3 de 11 telas HTML (`index`, `vendas`, `contatos`). O restante aguarda captura após ajustes de tokens e layout.
 
-### Modo debug (pausas interativas)
-
-```bash
-npm run test:debug
-```
-
-### Arquivos especificos
-
-```bash
-npx playwright test tests/basic.spec.js
-npx playwright test tests/card-layout.spec.js
-```
-
-## Testes implementados
-
-### `tests/basic.spec.js`
-
-- Valida titulo da pagina e conteudo principal do dashboard.
-- Confere cards de resumo, navegacao lateral, tabelas e graficos.
-- Exercita breakpoints mobile, tablet e desktop.
-
-### `tests/card-layout.spec.js`
-
-- Garante a presenca de 14 cards.
-- Checa alinhamento lado a lado dos dois ultimos cards.
-- Valida conteudo dos cards finais e responsividade em diferentes larguras.
-
-### Testes Visuais (Regressão Visual)
-
-#### Arquivos de Teste Visual
-- `tests/visual/legacy-baseline.spec.ts` - 14 testes (baseline HTML legado)
-- `tests/visual/react-parity.spec.ts` - 15 testes (paridade React)
-- `tests/visual/vue-parity.spec.ts` - 15 testes (paridade Vue)
-- `tests/visual/mobile-parity.spec.ts` - 6 testes (responsividade mobile/tablet)
-- `tests/storybook-visual.spec.ts` - 5 testes (Storybook)
-
-#### **Total: 55 testes visuais configurados**
-
-#### Telas Validadas
-**3 de 11 telas disponíveis foram validadas:**
-
-1. **Homepage/Dashboard** (`index.html`) - Layout completo validado
-2. **Página de Vendas** (`vendas.html`) - Cards e métricas validadas
-3. **Página de Contatos** (`contatos.html`) - Listas e filtros validadas
-
-#### Telas Disponíveis (não testadas)
-- eventos.html
-- funil.html
-- integracoes.html
-- links.html
-- mensagens.html
-- relatorios.html
-- suporte.html
-- configuracoes.html
-
-#### Status dos Testes Visuais
-- **Configuração:** ✅ Completa (55 testes implementados)
-- **Execução:** ⚠️ Pendente (servidor legado porta 4100 com problema)
-- **Baseline:** ⏳ Aguardando correção do servidor para captura inicial
-
-## Funcionalidade coberta
-
-- Dois ultimos cards ("Ciclo de vendas" e "Clientes ativos") permanecem lado a lado em viewports largas.
-- Cards mantem espacamento proporcional (cerca de 50% da largura cada um).
-- Layout se reorganiza para 4 colunas (desktop), 3 colunas (tablet), 2 colunas (mobile) e 1 coluna (mobile pequeno).
-
-## Estrutura relevante
-
+### Arquivos relevantes
 ```
 tests/
-  basic.spec.js                    # Testes basicos do dashboard
-  card-layout.spec.js             # Regras especificas de layout dos cards
-  storybook-visual.spec.ts        # Testes visuais do Storybook (5 testes)
+  basic.spec.js
+  card-layout.spec.js
+  storybook-visual.spec.ts
   visual/
-    legacy-baseline.spec.ts       # Baseline HTML legado (14 testes)
-    react-parity.spec.ts          # Paridade React vs legado (15 testes)
-    vue-parity.spec.ts            # Paridade Vue vs legado (15 testes)
-    mobile-parity.spec.ts         # Responsividade mobile/tablet (6 testes)
-playwright.config.js              # Configuracao do Playwright
-playwright.visual.config.ts       # Configuracao testes visuais
-test-server.js                    # Servidor HTTP simples usado em debug
+    legacy-baseline.spec.ts
+    react-parity.spec.ts
+    vue-parity.spec.ts
+    mobile-parity.spec.ts
+playwright.config.js            # Base URL alinhada na porta 4100
+playwright.visual.config.ts     # Configuração da suite visual
+test-server.js                  # Servidor do protótipo legado
 ```
 
-## Troubleshooting rapido
+## Troubleshooting rápido
+1. **Servidor não responde** – verifique `node test-server.js`. A porta padrão é 4100 e está alinhada com todos os workflows.
+2. **Dependências ausentes** – rode `npm install` novamente.
+3. **Falhas visuais** – abra `npm run test:ui` para inspecionar o DOM.
+4. **Snapshots desatualizados** – use `npx playwright test --update-snapshots` depois de revisar as mudanças.
 
-1. **Servidor nao responde**  
-   Rode `node test-server.js` e confirme se a porta 8000 esta livre.
-
-2. **Dependencias faltando**  
-   Reinstale com `npm install`.
-
-3. **Falhas visuais ou seletores**  
-   Abra `npm run test:ui` para inspecionar o DOM com o inspector do Playwright.
-
-4. **Snapshot desatualizado**  
-   Revalide com `npx playwright test --update-snapshots`.
-
-## Cobertura e proximos passos
-
-- **Cobertura atual:** Layout, responsividade e regressão visual do protótipo HTML
-- **Testes visuais:** 55 testes configurados (3 telas validadas de 11 disponíveis)
-- **Status:** Sistema de testes visuais completo mas aguardando correção do servidor legado
-- **Próximos passos:**
-  - Corrigir servidor legado (porta 4100) para executar baseline visual
-  - Expandir testes para cobrir todas as 11 telas disponíveis
-  - Adicionar smoke tests para os Storybooks React/Vue
-  - Integrar ferramenta de regressão visual (Chromatic, Percy) para detecção automática de divergências
-
-## Conclusao
-
-A suite Playwright garante que o dashboard legado continue renderizando corretamente. Execute `npm test` antes de abrir PRs e mantenha este guia alinhado a quaisquer ajustes de layout ou rotas.
+## Próximos passos recomendados
+1. Manter o servidor legado estável na porta 4100 (local e CI).
+2. Capturar o baseline das 8 telas HTML restantes.
+3. Conectar `npm test` ao pipeline principal para o dashboard React.
+4. Revisar tolerâncias e tokens antes de habilitar o bloqueio automático por regressão visual.
