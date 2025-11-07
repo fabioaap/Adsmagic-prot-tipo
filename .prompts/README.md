@@ -6,7 +6,8 @@ Este repositório contém um conjunto de arquivos de instruções para orientar 
 
 ```
 .prompts/
-  instructions.md         # Prompt principal (system prompt) – ponto de entrada
+  instructions.md         # [DESCONTINUADO] – usar instructions.xml
+  instructions.xml        # Fonte de verdade (inclui blocos numerados)
   blocks/
     00_core.md            # Persona & regras básicas do Adsmagic
     01_discovery.md       # Processo de discovery (OST/hypótese/métrica/flag)
@@ -18,12 +19,14 @@ Este repositório contém um conjunto de arquivos de instruções para orientar 
 .vscode/settings.json     # Configurações de editor (ESLint, formatador, memória TS)
 .github/PULL_REQUEST_TEMPLATE.md  # Template de PR com checklists
 docs/adr/ADR-0000-template.md     # Template para Architecture Decision Records
+.prompts/archive/
+  Programador FullStack.instructions.md  # Arquivo legado (backup); não editar
 ```
 
 ## Como usar com VS Code, Cursor ou agentes similares
 
 ### 1. Prompt principal
-Configure seu agente para ler `.prompts/instructions.md` como prompt de sistema ou instrução global do projeto. Ele apresenta a persona e indica quando consultar cada bloco.
+Use `.prompts/instructions.xml` como prompt de sistema (fonte única). Ele inclui somente os blocos numerados de `.prompts/blocks/` na ordem correta.
 
 ### 2. Blocos adicionais
 O agente deve carregar os arquivos em `.prompts/blocks/` dependendo da tarefa (via instrução ou referenciando manualmente):
