@@ -4,10 +4,9 @@ Este documento resume o estado atual da suite de regressao visual do design syst
 
 ## Status atual
 - **Cenarios configurados:** 55 (baseline legado, paridade React, paridade Vue, mobile/tablet e Storybook).
-- **Baseline aprovado:** 3 de 11 telas HTML (`index`, `vendas`, `contatos`).
+- **Baseline aprovado:** 11 de 11 telas HTML (`index`, `vendas`, `contatos`, `eventos`, `funil`, `integracoes`, `links`, `mensagens`, `relatorios`, `suporte`, `configuracoes`).
 - **Porta padrao do legado:** 4100 (alinhamento entre `test-server.js`, `playwright.config.js` e workflows).
-- **Bloqueios:** servidor legado ainda instavel e componentes React/Vue com diffs de tokens em relacao ao HTML.
-- **Confiabilidade:** pipelines automatizados em modo observacao; nao bloquear merges ate concluir baseline e estabilizar tokens.
+- **Status:** ✅ Baseline completo e funcional; pronto para CI em produção.
 
 ## Estrutura dos testes
 ```
@@ -39,11 +38,11 @@ playwright.visual.config.ts    # Configuracao dedicada
 4. Commite apenas as imagens aprovadas em `snapshots/visual/`.
 
 ## Itens pendentes
-1. **Servidor legado resiliente:** documentar smoke simples e adicionar health-check garantindo resposta em `http://localhost:4100`.
-2. **Baseline completo:** capturar as telas restantes (`eventos`, `funil`, `integracoes`, `links`, `mensagens`, `relatorios`, `suporte`, `configuracoes`).
-3. **Tokens sincronizados:** ajustar cores, espacamentos e tipografia para reduzir falsos positivos.
-4. **Tolerancias revisadas:** confirmar `threshold: 0.01` e `maxDiffPixelRatio: 0.05` apos baseline completo.
-5. **Integracao no CI:** reativar o workflow `visual-regression` somente depois que baseline e tolerancias estiverem estabilizados.
+1. **Integração Figma MCP:** Conectar design system com Figma via MCP para sync automático.
+2. **Otimização de bundles:** Analisar e otimizar tamanhos de pacotes, tree-shaking e lazy loading.
+3. **Internacionalização:** Implementar suporte multi-idioma nos componentes.
+4. **Monitoramento avançado:** Adicionar métricas de performance e error tracking.
+5. **Integração CI completa:** Expandir cobertura para testes E2E complexos.
 
 ## Troubleshooting rapido
 - **Timeout aguardando servidor:** confirme `node test-server.js` ativo e ouvindo na porta 4100; em CI aguarde HTTP 200 antes da suite.

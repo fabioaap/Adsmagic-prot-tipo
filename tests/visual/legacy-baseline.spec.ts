@@ -18,18 +18,18 @@ test.describe('Legacy Baseline Screenshots', () => {
     path: string
     screenshot: string
   }> = [
-    { label: 'Homepage / Dashboard', path: '/', screenshot: 'homepage-dashboard.png' },
-    { label: 'Pagina de Vendas', path: '/vendas.html', screenshot: 'vendas-page.png' },
-    { label: 'Pagina de Contatos', path: '/contatos.html', screenshot: 'contatos-page.png' },
-    { label: 'Pagina de Eventos', path: '/eventos.html', screenshot: 'eventos-page.png' },
-    { label: 'Pagina de Funil', path: '/funil.html', screenshot: 'funil-page.png' },
-    { label: 'Pagina de Integracoes', path: '/integracoes.html', screenshot: 'integracoes-page.png' },
-    { label: 'Pagina de Links', path: '/links.html', screenshot: 'links-page.png' },
-    { label: 'Pagina de Mensagens', path: '/mensagens.html', screenshot: 'mensagens-page.png' },
-    { label: 'Pagina de Relatorios', path: '/relatorios.html', screenshot: 'relatorios-page.png' },
-    { label: 'Pagina de Suporte', path: '/suporte.html', screenshot: 'suporte-page.png' },
-    { label: 'Pagina de Configuracoes', path: '/configuracoes.html', screenshot: 'configuracoes-page.png' },
-  ]
+      { label: 'Homepage / Dashboard', path: '/', screenshot: 'homepage-dashboard.png' },
+      { label: 'Pagina de Vendas', path: '/vendas.html', screenshot: 'vendas-page.png' },
+      { label: 'Pagina de Contatos', path: '/contatos.html', screenshot: 'contatos-page.png' },
+      { label: 'Pagina de Eventos', path: '/eventos.html', screenshot: 'eventos-page.png' },
+      { label: 'Pagina de Funil', path: '/funil.html', screenshot: 'funil-page.png' },
+      { label: 'Pagina de Integracoes', path: '/integracoes.html', screenshot: 'integracoes-page.png' },
+      { label: 'Pagina de Links', path: '/links.html', screenshot: 'links-page.png' },
+      { label: 'Pagina de Mensagens', path: '/mensagens.html', screenshot: 'mensagens-page.png' },
+      { label: 'Pagina de Relatorios', path: '/relatorios.html', screenshot: 'relatorios-page.png' },
+      { label: 'Pagina de Suporte', path: '/suporte.html', screenshot: 'suporte-page.png' },
+      { label: 'Pagina de Configuracoes', path: '/configuracoes.html', screenshot: 'configuracoes-page.png' },
+    ]
 
   test.describe('Paginas principais do legado', () => {
     for (const pageConfig of legacyPages) {
@@ -47,11 +47,11 @@ test.describe('Legacy Baseline Screenshots', () => {
 
   test.describe('Componentes individuais', () => {
     test('Summary Cards Grid', async ({ page }) => {
-      await page.goto('/vendas.html')
+      await page.goto('/')
       await page.waitForLoadState('networkidle')
 
-      const summaryGrid = page.locator('.summary-cards, .metrics-grid, [class*="summary"]')
-      await expect(summaryGrid.first()).toHaveScreenshot('summary-cards-grid.png', {
+      const summaryGrid = page.locator('.summary-grid')
+      await expect(summaryGrid).toHaveScreenshot('summary-cards-grid.png', {
         threshold: 0.01,
       })
     })
@@ -69,10 +69,10 @@ test.describe('Legacy Baseline Screenshots', () => {
     })
 
     test('Graficos e visualizacoes', async ({ page }) => {
-      await page.goto('/vendas.html')
+      await page.goto('/')
       await page.waitForLoadState('networkidle')
 
-      const charts = page.locator('.chart, .graph, canvas, svg, [class*="chart"]')
+      const charts = page.locator('.funnel-chart, .chart, .graph, canvas, svg')
       if (await charts.count()) {
         await expect(charts.first()).toHaveScreenshot('charts-visualization.png', {
           threshold: 0.02,
@@ -91,7 +91,7 @@ test.describe('Legacy Baseline Screenshots', () => {
     })
 
     test('Botoes principais', async ({ page }) => {
-      await page.goto('/vendas.html')
+      await page.goto('/')
       await page.waitForLoadState('networkidle')
 
       const buttons = page.locator('button, .btn, [class*="button"], input[type="submit"]')

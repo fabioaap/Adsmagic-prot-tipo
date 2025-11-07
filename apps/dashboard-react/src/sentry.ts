@@ -2,19 +2,19 @@ import * as Sentry from '@sentry/react';
 
 export const initSentry = () => {
   Sentry.init({
-    dsn: process.env.REACT_APP_SENTRY_DSN || 'https://your-dsn-here@sentry.io/project-id',
+    dsn: import.meta.env.REACT_APP_SENTRY_DSN || 'https://your-dsn-here@sentry.io/project-id',
     integrations: [],
     // Performance Monitoring
-    tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
+    tracesSampleRate: import.meta.env.MODE === 'production' ? 0.1 : 1.0,
 
     // Configurações de ambiente
-    environment: process.env.NODE_ENV || 'development',
-    release: process.env.REACT_APP_VERSION || '1.0.0',
+    environment: import.meta.env.MODE || 'development',
+    release: import.meta.env.REACT_APP_VERSION || '1.0.0',
 
     // Configurações de erro
     beforeSend(event, hint) {
       // Filtrar erros de desenvolvimento
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.MODE === 'development') {
         console.log('🚨 Sentry event (dev mode):', event);
         return null; // Não enviar em dev
       }

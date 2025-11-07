@@ -90,7 +90,7 @@ class AlertService {
         channels: [
           {
             type: 'webhook',
-            config: { webhookUrl: process.env.REACT_APP_ALERT_WEBHOOK_URL }
+            config: { webhookUrl: import.meta.env.REACT_APP_ALERT_WEBHOOK_URL }
           }
         ],
         enabled: true,
@@ -298,9 +298,9 @@ class AlertService {
 
   // Método para configuração via variáveis de ambiente
   configureFromEnv() {
-    const slackWebhook = process.env.REACT_APP_SLACK_WEBHOOK_URL;
-    const emailTo = process.env.REACT_APP_ALERT_EMAIL_TO;
-    const webhookUrl = process.env.REACT_APP_ALERT_WEBHOOK_URL;
+    const slackWebhook = import.meta.env.REACT_APP_SLACK_WEBHOOK_URL;
+    const emailTo = import.meta.env.REACT_APP_ALERT_EMAIL_TO;
+    const webhookUrl = import.meta.env.REACT_APP_ALERT_WEBHOOK_URL;
 
     if (slackWebhook) {
       this.rules.forEach(rule => {

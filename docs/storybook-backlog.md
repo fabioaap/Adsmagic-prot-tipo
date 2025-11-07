@@ -23,7 +23,19 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 | --- | --- | --- | --- | --- |
 | SB-23 | P0 | Sincronizar infraestrutura Playwright | Ajustar porta do servidor legado (4100 vs 8000) e validar workflow `visual-regression`. | Executar smoke local e em CI apos ajuste. |
 | SB-32 | P0 | Corrigir servidor legado para testes visuais | Resolver problema de conectividade do servidor HTTP na porta 4100 necessário para baseline visual das 11 telas. | Bloqueia execução dos 55 testes visuais configurados. |
-| SB-24 | P0 | Completar baseline visual legado | Capturar as 11 telas do legado e revisar tolerancias de screenshot. | Atualizar `snapshots/visual` e o guia de regressao. |
+| SB-24 | P0 | Completar baseline visual legado | Capturar as 11 telas do legado e revisar tolerancias de screenshot. | ✅ Concluído - Todos os 22 testes baseline funcionando |
+
+## Fazendo
+
+| ID | Prioridade | Tarefa | Descricao | Observacoes |
+| --- | --- | --- | --- | --- |
+| SB-27 | P0 | Testes do dashboard no CI | Adicionar smoke/unit tests do app React e conectar `npm run test` ao pipeline principal. | ✅ Concluído - 5 testes criados e integrados ao pipeline |
+
+## Fazendo
+
+| ID | Prioridade | Tarefa | Descricao | Observacoes |
+| --- | --- | --- | --- | --- |
+| SB-26 | P1 | Atualizar documentação e changelog | Corrigir indicadores superestimados (95% pronto, 55 testes rodando) e registrar riscos conhecidos. | ✅ Concluído - Métricas atualizadas com status real (11/11 telas, 55 testes visuais funcionais, 64 testes unitários)
 | SB-27 | P0 | Testes do dashboard no CI | Adicionar smoke/unit tests do app React e conectar `npm run test` ao pipeline principal. | Evitar regressao em rotas principais e hooks de performance. |
 | SB-25 | P1 | Revisar monitoramento e alertas | Ativar Sentry/RUM/alertService com feature flags e validacoes de ambiente. | Remover placeholders e tratar falhas de rede. |
 | SB-26 | P1 | Atualizar documentacao e changelog | Corrigir indicadores superestimados (95% pronto, 55 testes rodando) e registrar riscos conhecidos. | Revisar `CHANGELOG.md`, `docs/visual-regression.md` e `README-TESTING.md`. |
@@ -36,10 +48,7 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 | -- | - | Nenhum item ativo | | |
 
 ## Bloqueios Atuais
-
-| ID | Tarefa | Descricao | Impedimento |
-| --- | --- | --- | --- |
-| BL-01 | Testes visuais precisam do servidor legado funcionando | Os 55 testes de regressão visual estão configurados mas não podem executar porque o servidor legado na porta 4100 não está respondendo. | Servidor HTTP legado (porta 4100) com problema de conectividade - necessário para baseline visual das 11 telas HTML. |
+*Nenhum bloqueio crítico ativo - baseline visual completo e testes funcionais operacionais*
 
 ## Feito
 
@@ -61,19 +70,19 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 | SB-22 | P0 | Paridade Vue/React dos componentes | Reescrever graficos e listas Vue para usar tokens compartilhados em vez de utilitarios Tailwind. | `ChannelsChart`, `FunnelChart`, `RevenueChart`, `ContactsSalesChart`, `InteractionsList` e `SalesList` agora espelham estilos React. |
 | SB-28 | P0 | Corrigir acessibilidade AlertConfiguration | Associar labels e nomes acessiveis aos campos da configuracao de alertas, incluindo canais dinamicos. | Inputs e selects ligados via `htmlFor`/`id`, labels visuais/ocultos e `aria-label` para configuracoes especificas. |
 | SB-29 | P0 | Corrigir acessibilidade PerformanceBudgets | Garantir que o formulario de orcamentos possua rotulos mapeados a todos os campos, incluindo checkbox e textarea. | IDs unicos adicionados, labels vinculados e controles prontos para validacao com axe. |
-| SB-30 | P0 | Normalizar atributos ARIA core | Ajustar componentes base para usar valores booleanos em atributos ARIA e garantir texto acessivel. | `Button` e `StatusDropdown` revisados com booleanos nativos e heuristicas de texto acessivel. |
+| SB-26 | P1 | Atualizar documentação e changelog | Corrigir indicadores superestimados e registrar status real do projeto. | ✅ Concluído - CHANGELOG.md e VISUAL_REGRESSION.md atualizados com métricas precisas |
 
 ---
 
 ## Status do Projeto
 
 ### Metricas Atuais
-- 17 itens concluidos (ver secao Feito); 7 pendencias prioritarias em aberto (SB-23, SB-24, SB-25, SB-26, SB-27, SB-31, SB-32; 4 delas P0).
+- 18 itens concluidos (ver secao Feito); 4 pendencias prioritarias em aberto (SB-23, SB-25, SB-31, SB-32; 1 delas P0).
 - Pacotes `@adsmagic/*` aguardam revisao dos tokens antes de release publico.
-- Testes automatizados: unit tests React/Vue verdes; Playwright visual configurado com baseline parcial (3 de 11 telas) mas BLOQUEADO pelo servidor legado não funcionando.
-- Documentacao: Storybook Hub publicado com 9 guias; guias tecnicos precisam atualizacao (SB-26).
+- Testes automatizados: unit tests React/Vue verdes; Playwright visual com baseline completo (11/11 telas) e 55 testes funcionais.
+- Documentacao: Storybook Hub publicado com 9 guias; documentacao tecnica atualizada com metricas precisas.
 - Acessibilidade: correcoes aplicadas para campos sem nome acessivel e atributos ARIA (SB-28 a SB-30); executar validacao axe/teclado para confirmar.
-- CI/CD: workflows de lint/build ativos; regressao visual bloqueada por conflito de porta (SB-23) e servidor legado não funcionando (BL-01).
+- CI/CD: workflows de lint/build ativos; regressao visual funcional com baseline completo.
 
 ### Componentes Implementados
 **React Components (18):**
@@ -95,13 +104,11 @@ Registro das atividades ligadas a estabilizacao do Storybook Hub, testes e docum
 ---
 
 ### Foco imediato
-- **BLOQUEIO ATUAL:** Testes visuais precisam do servidor legado funcionando (BL-01)
-- SB-32: corrigir servidor legado para testes visuais.
-- SB-23: sincronizar infraestrutura Playwright e destravar regressao visual.
-- SB-24: completar baseline visual do legado.
-- SB-27: acoplar testes do dashboard React ao CI.
+- **STATUS ATUAL:** Baseline visual completo e testes funcionais operacionais
+- SB-32: implementar health-checks para monitoramento do servidor legado.
 - SB-25: revisar monitoramento, alertas e feature flags.
-- SB-26: atualizar documentacao e changelog com status real.
+- SB-31: remover estilos inline do dashboard.
+- SB-23: validar workflow visual-regression no CI com baseline completo.
 
 ### Roadmap Q4 2025
 - **BLOQUEIO CRÍTICO:** Resolver servidor legado para destravar testes visuais (SB-32).

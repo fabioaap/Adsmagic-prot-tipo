@@ -10,15 +10,8 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@adsmagic/react": "file:../../packages/react-components",
-    "@adsmagic/tokens": "file:../../packages/tokens",
-    "@sentry/react": "^10.22.0",
-    "@sentry/tracing": "^7.120.4",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "recharts": "^3.3.0",
-    "web-vitals": "^5.1.0"
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.0.0",

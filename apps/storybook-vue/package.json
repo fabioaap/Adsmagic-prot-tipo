@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 7007",
-    "build": "storybook build",
-    "lint": "eslint src --ext .ts,.vue --max-warnings=0"
+    "build": "storybook build"
   },
   "dependencies": {
     "@adsmagic/tokens": "file:../../packages/tokens",

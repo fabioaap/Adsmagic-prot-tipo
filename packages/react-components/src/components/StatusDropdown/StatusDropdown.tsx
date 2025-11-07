@@ -1,6 +1,6 @@
 import { tokens } from "@adsmagic/tokens";
 import { Check, ChevronDown } from "lucide-react";
-import type { CSSProperties } from "react";
+import type { CSSProperties, KeyboardEvent } from "react";
 import { useState } from "react";
 
 const triggerStyle: CSSProperties = {
@@ -57,7 +57,7 @@ export function StatusDropdown() {
     setOpen(false);
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       setOpen(false);
     } else if (event.key === 'ArrowDown' && !open) {
